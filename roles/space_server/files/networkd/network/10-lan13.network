@@ -1,0 +1,13 @@
+[Match]
+Name=lan13
+
+[Network]
+DHCP=no
+IPv6AcceptRA=no
+LinkLocalAddressing=no
+Address=10.42.3.1/24
+IPForward=yes
+LLMNR=yes
+MulticastDNS=yes
+LLDP=yes
+EmitLLDP=yes

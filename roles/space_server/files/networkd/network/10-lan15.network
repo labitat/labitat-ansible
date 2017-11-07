@@ -1,0 +1,12 @@
+[Match]
+Name=lan15
+
+[Network]
+DHCP=no
+IPv6AcceptRA=no
+Address=2a01:4260:1ab:f::1/64
+IPForward=ipv6
+LLMNR=yes
+MulticastDNS=yes
+LLDP=yes
+EmitLLDP=yes

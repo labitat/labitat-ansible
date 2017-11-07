@@ -1,0 +1,7 @@
+---
+- name: Setting default locales
+  template:
+    src: locale.conf.j2
+    dest: /etc/locale.conf
+
+# vim: set ts=2 sw=2 et:

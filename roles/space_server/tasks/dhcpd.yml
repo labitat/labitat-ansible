@@ -1,0 +1,31 @@
+---
+- name: Install dhcpd package
+  dnf:
+    name: dhcp-server
+    state: latest
+  notify:
+    - restart dhcpd
+  tags:
+    - packages
+
+- name: Configure dhcpd
+  copy:
+    src: dhcpd/dhcpd.conf
+    dest: '/etc/dhcp/dhcpd.conf'
+  notify:
+    - restart dhcpd
+
+- name: Enable dhcpd service
+  systemd:
+    name: dhcpd.service
+    enabled: yes
+    masked: no
+    state: started
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: systemctl enable dhcpd.service
+  args:
+    creates: '/etc/systemd/system/multi-user.target.wants/dhcpd.service'
+  when: "'container' in ansible_env"
+
+# vim: set ts=2 sw=2 et:

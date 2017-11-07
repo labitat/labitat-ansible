@@ -1,0 +1,34 @@
+---
+- name: Install our nftables service
+  copy:
+    src: nftables/nftables.service
+    dest: '/etc/systemd/system/nftables.service'
+
+- name: Install nftables package
+  dnf:
+    name: nftables
+    state: latest
+  tags:
+    - packages
+
+- name: Configure nftables
+  copy:
+    src: nftables/nftables.conf
+    dest: '/etc/sysconfig/nftables.conf'
+  notify:
+    - reload nftables
+
+- name: Enable nftables service
+  systemd:
+    name: nftables.service
+    enabled: yes
+    masked: no
+    state: started
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: systemctl enable nftables.service
+  args:
+    creates: '/etc/systemd/system/multi-user.target.wants/nftables.service'
+  when: "'container' in ansible_env"
+
+# vim: set ts=2 sw=2 et:

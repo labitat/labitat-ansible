@@ -1,0 +1,15 @@
+[Match]
+Name=wan
+
+[Network]
+DHCP=no
+IPv6AcceptRA=no
+Address=193.106.167.46/29
+Gateway=193.106.167.42
+Address=2a03:5440:1:2935:1ab::3/120
+Gateway=2a03:5440:1:2935:1ab::2
+IPForward=yes
+LLMNR=no
+MulticastDNS=no
+LLDP=yes
+EmitLLDP=no

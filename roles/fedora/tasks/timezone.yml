@@ -1,0 +1,9 @@
+---
+- name: Create /etc/localtime
+  file:
+    path: '/etc/localtime'
+    state: link
+    src: '../usr/share/zoneinfo/{{ timezone }}'
+    force: yes
+
+# vim: set ts=2 sw=2 et:

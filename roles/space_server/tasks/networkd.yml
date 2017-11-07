@@ -1,0 +1,48 @@
+---
+- name: Make sure directory exists
+  file:
+    dest: '/etc/systemd/network'
+    state: directory
+- name: Get current network config
+  shell: 'ls -1 /etc/systemd/network/'
+  check_mode: no
+  register: network_files_all
+- name: Configure network
+  copy:
+    src: '{{ item }}'
+    dest: '/etc/systemd/network/'
+  with_fileglob:
+    - 'networkd/network/*'
+  register: network_files
+  notify:
+    - restart networkd
+- name: Clean up old files
+  file:
+    path: '/etc/systemd/network/{{ item }}'
+    state: absent
+  with_items: '{{ network_files_all.stdout_lines }}'
+  when: "item not in network_files.results|map(attribute='path')|map('basename')"
+  notify:
+    - restart networkd
+
+# Unfortunately a drop-in file doesn't seem to work,
+# so overwrite the whole service file :/
+- name: Don't wait for lan and mgt interfaces to come online
+  copy:
+    src: networkd/systemd-networkd-wait-online.service
+    dest: '/etc/systemd/system/systemd-networkd-wait-online.service'
+
+- name: Enable systemd-networkd
+  systemd:
+    name: systemd-networkd.service
+    enabled: yes
+    masked: no
+    state: started
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: systemctl enable systemd-networkd.service
+  args:
+    creates: '/etc/systemd/system/multi-user.target.wants/systemd-networkd.service'
+  when: "'container' in ansible_env"
+
+# vim: set ts=2 sw=2 et:

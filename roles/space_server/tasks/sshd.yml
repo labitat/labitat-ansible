@@ -1,0 +1,32 @@
+---
+- name: Install sshd package
+  dnf:
+    name: openssh-server
+    state: latest
+  notify:
+    - restart sshd
+  tags:
+    - packages
+
+- name: Configure sshd
+  lineinfile:
+    path: '/etc/ssh/sshd_config'
+    regexp: '^PasswordAuthentication'
+    line: 'PasswordAuthentication no'
+  notify:
+    - restart sshd
+
+- name: Enable sshd service
+  systemd:
+    name: sshd.service
+    enabled: yes
+    masked: no
+    state: started
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: systemctl enable sshd.service
+  args:
+    creates: '/etc/systemd/system/multi-user.target.wants/sshd.service'
+  when: "'container' in ansible_env"
+
+# vim: set ts=2 sw=2 et:

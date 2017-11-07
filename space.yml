@@ -1,0 +1,15 @@
+---
+- hosts: space
+  pre_tasks:
+    - include_vars: '{{ item }}'
+      with_first_found:
+        - files:
+            - /etc/ansible/secrets.yml
+            - secrets.yml
+          skip: true
+      tags:
+        - radius
+  roles:
+    - space_server
+
+# vim: set ts=2 sw=2 et:

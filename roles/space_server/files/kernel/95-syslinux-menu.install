@@ -1,0 +1,40 @@
+#!/bin/bash
+# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
+# ex: ts=8 sw=4 sts=4 et filetype=sh
+
+COMMAND="$1"
+KERNEL_VERSION="$2"
+BOOT_DIR_ABS="$3"
+KERNEL_IMAGE="$4"
+
+if [[ -f /etc/machine-id ]]; then
+    read MACHINE_ID < /etc/machine-id
+fi
+
+if ! [[ $MACHINE_ID ]]; then
+    exit 1
+fi
+
+BOOT_DIR="/$MACHINE_ID/$KERNEL_VERSION"
+BOOT_ROOT=${BOOT_DIR_ABS%$BOOT_DIR}
+MENU="$BOOT_ROOT/loader/${MACHINE_ID}.cfg"
+
+{
+    declare -a paths
+    len=0
+    for path in "$BOOT_ROOT/loader/entries/$MACHINE_ID"-*; do
+        paths[$((len++))]="$path"
+    done
+
+    i=0
+    while [[ $len -gt 0 ]]; do
+        path="${paths[$((--len))]}"
+        echo "LABEL $((++i))"
+        echo "INCLUDE ${path#$BOOT_ROOT}"
+    done
+} > "$MENU" || {
+    echo "Could not create aggregated menu '$MENU'." >&2
+    exit 1
+}
+
+exit 0

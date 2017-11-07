@@ -1,0 +1,32 @@
+---
+hostname: 'space'
+locale:
+  LANG: 'da_DK.UTF-8'
+  LC_COLLATE: 'C'
+  LC_MESSAGES: 'C'
+timezone: 'Europe/Copenhagen'
+packages:
+  install:
+    - initscripts
+    - dosfstools
+    - btrfs-progs
+    - dnf
+    - python2-dnf
+    - 'dnf-command(leaves)'
+    - ansible
+    - vim-enhanced
+    - git
+    - diffutils
+    - htop
+    - man-db
+    - passwd
+    - syslinux
+    - systemd-container
+boot:
+  device: 'LABEL=BOOT'
+  options: 'noauto,noatime,iocharset=iso8859-15,utf8,tz=UTC,dmask=0022,fmask=0133,x-systemd.automount,x-systemd.device-timeout=5min,x-systemd.idle-timeout=5min'
+root:
+  device: 'LABEL=BTRFS'
+  options: 'noatime,ssd,compress=lzo'
+  
+# vim: set ts=2 sw=2 et:

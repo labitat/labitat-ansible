@@ -1,0 +1,42 @@
+---
+- name: Make sure /etc/kernel exists
+  file:
+    path: '/etc/kernel'
+    state: directory
+    mode: 0755
+- name: Make sure /etc/kernel/install.d exists
+  file:
+    path: '/etc/kernel/install.d'
+    state: directory
+    mode: 0755
+
+- name: Mask grubby
+  file:
+    path: '/etc/kernel/install.d/20-grubby.install'
+    state: link
+    src: '/dev/null'
+
+- name: Create syslinux loader entry
+  copy:
+    src: kernel/90-loaderentry.install
+    dest: '/etc/kernel/install.d/90-loaderentry.install'
+    mode: 0755
+- name: Create syslinux menu
+  copy:
+    src: kernel/95-syslinux-menu.install
+    dest: '/etc/kernel/install.d/95-syslinux-menu.install'
+    mode: 0755
+
+- name: Set kernel command line
+  template:
+    src: cmdline.j2
+    dest: '/etc/kernel/cmdline'
+
+- name: Install kernel
+  dnf:
+    name: kernel
+    state: latest
+  tags:
+    - packages
+
+# vim: set ts=2 sw=2 et:

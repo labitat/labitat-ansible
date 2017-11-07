@@ -1,0 +1,13 @@
+client ap1 {
+	ipaddr = 10.42.0.5
+	netmask = 32
+	secret = {{ radius_passwords.ap1 }}
+	nas_type = other
+}
+
+client ap2 {
+	ipaddr = 10.42.0.6
+	netmask = 32
+	secret = {{ radius_passwords.ap2 }}
+	nas_type = other
+}

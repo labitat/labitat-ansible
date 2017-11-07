@@ -1,0 +1,105 @@
+---
+- name: Install our freeradius-assha package
+  dnf:
+    name: '{{ item }}'
+    state: latest
+  with_fileglob:
+    - 'radius/freeradius-assha-*.fc{{ ansible_distribution_major_version }}.*.rpm'
+  notify:
+    - restart radiusd
+  tags:
+    - packages
+
+- name: Make sure curl and diffutils are installed
+  dnf:
+    name: '{{ item }}'
+    state: latest
+  with_items:
+    - curl
+    - diffutils
+  tags:
+    - packages
+
+- name: Disable default site
+  file:
+    path: '/etc/raddb/sites-enabled/default'
+    state: absent
+  notify:
+    - restart radiusd
+- name: Configure radiusd
+  copy:
+    src: 'radius/{{ item }}'
+    dest: '/etc/raddb/{{ item }}'
+    owner: root
+    group: radiusd
+    mode: 0640
+  with_items:
+    - radiusd.conf
+    - mods-available/eap
+    - sites-available/labitat
+  notify:
+    - restart radiusd
+- name: Configure radius clients
+  template:
+    src: 'radius/clients.conf.j2'
+    dest: '/etc/raddb/clients.conf'
+    owner: root
+    group: radiusd
+    mode: 0640
+  notify:
+    - restart radiusd
+- name: Enable labitat site
+  file:
+    path: '/etc/raddb/sites-enabled/labitat'
+    state: link
+    src: '../sites-available/labitat'
+    owner: root
+    group: radiusd
+    force: yes
+  notify:
+    - restart radiusd
+
+- name: Create getusers script
+  template:
+    src: 'radius/getusers.sh.j2'
+    dest: '/etc/raddb/getusers.sh'
+    owner: root
+    group: radiusd
+    mode: 0750
+- name: Create getusers service and timer
+  copy:
+    src: 'radius/{{ item }}'
+    dest: '/etc/systemd/system/{{ item }}'
+  with_items:
+    - getusers.service
+    - getusers.timer
+  notify:
+    - restart getusers
+
+- name: Enable getusers timer
+  systemd:
+    name: getusers.timer
+    enabled: yes
+    masked: no
+    state: started
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: systemctl enable getusers.timer
+  args:
+    creates: '/etc/systemd/system/timers.target.wants/getusers.timer'
+  when: "'container' in ansible_env"
+
+- name: Enable radiusd service
+  systemd:
+    name: radiusd.service
+    enabled: yes
+    masked: no
+    state: started
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: systemctl enable radiusd.service
+  args:
+    creates: '/etc/systemd/system/multi-user.target.wants/radiusd.service'
+  when: "'container' in ansible_env"
+
+# vim: set ts=2 sw=2 et:

@@ -1,0 +1,84 @@
+server labitat {
+
+	listen {
+		type = auth
+		ipaddr = 10.42.0.1
+		port = 0
+
+		limit {
+			max_connections = 16
+				lifetime = 0
+				idle_timeout = 30
+		}
+	}
+
+	authorize {
+		filter_username
+		preprocess
+		auth_log
+
+		eap {
+			ok = return
+		}
+
+		files
+
+		expiration
+		logintime
+		pap
+	}
+
+	authenticate {
+		Auth-Type PAP {
+			pap
+		}
+
+		Auth-Type CHAP {
+			chap
+		}
+
+		Auth-Type MS-CHAP {
+			mschap
+		}
+
+		digest
+		eap
+	}
+
+	preacct {
+		preprocess
+		acct_unique
+		suffix
+		files
+	}
+
+	accounting {
+		unix
+		-sql
+		exec
+		attr_filter.accounting_response
+	}
+
+	session {
+	}
+
+	post-auth {
+		-sql
+		exec
+		remove_reply_message_if_eap
+
+		Post-Auth-Type REJECT {
+			-sql
+			attr_filter.access_reject
+			eap
+			remove_reply_message_if_eap
+		}
+	}
+
+	pre-proxy {
+	}
+
+	post-proxy {
+		eap
+	}
+}

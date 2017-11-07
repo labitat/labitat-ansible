@@ -1,0 +1,12 @@
+[Match]
+Name=lan10
+
+[Network]
+DHCP=no
+IPv6AcceptRA=no
+LinkLocalAddressing=no
+Address=10.42.0.1/24
+IPForward=yes
+LLMNR=yes
+MulticastDNS=yes
+LLDP=yes

@@ -1,0 +1,41 @@
+---
+- name: fstab
+  template:
+    src: fstab.j2
+    dest: /etc/fstab
+  tags:
+    - fstab
+
+- import_tasks: ansible.yml
+  tags: ansible
+- import_tasks: sudo.yml
+  tags: sudo
+- import_tasks: kernel.yml
+  tags: kernel
+- import_tasks: gettys.yml
+  tags: gettys
+- import_tasks: timesyncd.yml
+  tags: timesyncd
+- import_tasks: resolved.yml
+  tags: resolved
+- import_tasks: networkd.yml
+  tags: networkd
+- import_tasks: nftables.yml
+  tags: nftables
+- import_tasks: blackhole.yml
+  tags: blackhole
+- import_tasks: sshd.yml
+  tags: sshd
+- import_tasks: bird.yml
+  tags: bird
+- import_tasks: dhcpd.yml
+  tags: dhcpd
+- import_tasks: radvd.yml
+  tags: radvd
+- import_tasks: radius.yml
+  tags: radius
+  when: radius_passwords is defined
+- import_tasks: named.yml
+  tags: named
+
+# vim: set ts=2 sw=2 et:

@@ -1,0 +1,17 @@
+[Match]
+Name=lan20
+
+[Network]
+DHCP=no
+IPv6AcceptRA=no
+Address=185.38.175.65/26
+Address=2a01:4260:1ab:20::1/64
+IPForward=yes
+LLMNR=no
+MulticastDNS=no
+LLDP=yes
+EmitLLDP=no
+
+[Route]
+Destination=2a01:4260:1ab::cafe/128
+Gateway=2a01:4260:1ab:20::5

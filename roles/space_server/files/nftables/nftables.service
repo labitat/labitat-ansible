@@ -1,0 +1,30 @@
+[Unit]
+Description=Netfilter Tables
+Documentation=man:nft(8)
+Requires=sys-devices-virtual-net-lan10.device
+Requires=sys-devices-virtual-net-lan11.device
+Requires=sys-devices-virtual-net-lan12.device
+Requires=sys-devices-virtual-net-lan13.device
+Requires=sys-devices-virtual-net-lan14.device
+Requires=sys-devices-virtual-net-lan15.device
+Requires=sys-devices-virtual-net-lan20.device
+After=sys-devices-virtual-net-lan10.device
+After=sys-devices-virtual-net-lan11.device
+After=sys-devices-virtual-net-lan12.device
+After=sys-devices-virtual-net-lan13.device
+After=sys-devices-virtual-net-lan14.device
+After=sys-devices-virtual-net-lan15.device
+After=sys-devices-virtual-net-lan20.device
+Before=network-online.target
+
+[Service]
+Type=oneshot
+ProtectSystem=full
+ProtectHome=true
+ExecStart=/sbin/nft -f /etc/sysconfig/nftables.conf
+ExecReload=/sbin/nft 'flush ruleset; include "/etc/sysconfig/nftables.conf";'
+ExecStop=/sbin/nft flush ruleset
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

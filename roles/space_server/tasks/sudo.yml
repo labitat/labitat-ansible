@@ -1,0 +1,16 @@
+---
+- name: Install sudo package
+  dnf:
+    name: sudo
+    state: latest
+  tags:
+    - packages
+
+- name: Install sudoers file
+  copy:
+    src: sudo/sudoers
+    dest: '/etc/sudoers'
+    mode: 0440
+    validate: visudo -cf %s
+
+# vim: set ts=2 sw=2 et:

@@ -1,0 +1,40 @@
+---
+- name: Install radvd package
+  dnf:
+    name: radvd
+    state: latest
+  notify:
+    - restart radvd
+  tags:
+    - packages
+
+- name: Configure radvd
+  copy:
+    src: radvd/radvd.conf
+    dest: '/etc/radvd.conf'
+  notify:
+    - restart radvd
+
+- name: Create service drop-in directory
+  file:
+    dest: '/etc/systemd/system/radvd.service.d'
+    state: directory
+- name: Start radvd after networks are configured
+  copy:
+    src: wait-online.conf
+    dest: '/etc/systemd/system/radvd.service.d/wait-online.conf'
+
+- name: Enable radvd service
+  systemd:
+    name: radvd.service
+    enabled: yes
+    masked: no
+    state: started
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: systemctl enable radvd.service
+  args:
+    creates: '/etc/systemd/system/multi-user.target.wants/radvd.service'
+  when: "'container' in ansible_env"
+
+# vim: set ts=2 sw=2 et:

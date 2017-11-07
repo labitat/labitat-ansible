@@ -1,0 +1,14 @@
+---
+- import_tasks: dnf.yml
+  tags: dnf
+- import_tasks: timezone.yml
+  when: timezone is defined
+  tags: timezone
+- import_tasks: locale.yml
+  when: locale is defined
+  tags: locale
+- import_tasks: hostname.yml
+  when: hostname is defined
+  tags: hostname
+
+# vim: set ts=2 sw=2 et:

@@ -1,0 +1,9 @@
+{{ boot.device }} /boot vfat defaults,{{ boot.options }} 0 2
+
+{% if ansible_distribution_release == 'Rawhide' %}
+{{ root.device }} /     btrfs defaults,{{ root.options }},subvol=/rawhide 0 1
+{% else %}
+{{ root.device }} /     btrfs defaults,{{ root.options }},subvol=/{{ ansible_distribution.lower() }}{{ ansible_distribution_version }} 0 1
+{% endif %}
+{{ root.device }} /home btrfs defaults,{{ root.options }},subvol=/home 0 2
+{{ root.device }} /mnt  btrfs defaults,{{ root.options }},subvol=/ 0 2

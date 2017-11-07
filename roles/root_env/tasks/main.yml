@@ -1,0 +1,11 @@
+---
+- name: root .bash_profile
+  copy:
+    src: files/bash_profile.sh
+    dest: /root/.bash_profile
+- name: root .bashrc
+  template:
+    src: files/bashrc.sh.j2
+    dest: /root/.bashrc
+
+# vim: set ts=2 sw=2 et:

@@ -1,0 +1,34 @@
+---
+#- name: Enable systemd-resolved
+#  systemd:
+#    name: systemd-resolved.service
+#    enabled: yes
+#    masked: no
+#    state: started
+#  when: "'container' not in ansible_env"
+#- name: '- when in nspawn'
+#  command: systemctl enable systemd-resolved.service
+#  args:
+#    creates: '/etc/systemd/system/multi-user.target.wants/systemd-resolved.service'
+#  when: "'container' in ansible_env"
+#
+#- name: Use systemd-resolved
+#  lineinfile:
+#    path: /etc/nsswitch.conf
+#    regexp: '^hosts:'
+#    line: 'hosts: files resolve [!UNAVAIL=return] dns myhostname'
+
+- name: Disable systemd-resolved
+  systemd:
+    name: systemd-resolved.service
+    enabled: no
+    masked: no
+    state: stopped
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: systemctl disable systemd-resolved.service
+  args:
+    removes: '/etc/systemd/system/multi-user.target.wants/systemd-resolved.service'
+  when: "'container' in ansible_env"
+
+# vim: set ts=2 sw=2 et:

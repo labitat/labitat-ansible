@@ -1,0 +1,6 @@
+[NetDev]
+Name=lan11
+Kind=vlan
+
+[VLAN]
+Id=11

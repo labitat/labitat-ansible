@@ -1,0 +1,30 @@
+---
+- name: Create /etc/ansible/hosts
+  copy:
+    src: ansible/hosts
+    dest: '/etc/ansible/hosts'
+
+- name: Configure ansible
+  ini_file:
+    path: /etc/ansible/ansible.cfg
+    section: '{{ item.section }}'
+    option: '{{ item.option }}'
+    value: '{{ item.value }}'
+  with_items:
+    - section: defaults
+      option: 'gathering'
+      value: 'smart'
+    - section: defaults
+      option: 'fact_caching'
+      value: 'jsonfile'
+    - section: defaults
+      option: 'fact_caching_connection'
+      value: '/tmp/ansible'
+    - section: defaults
+      option: 'fact_caching_timeout'
+      value: '600'
+    - section: defaults
+      option: 'error_on_missing_handler'
+      value: 'True'
+
+# vim: set ts=2 sw=2 et:

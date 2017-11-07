@@ -1,0 +1,10 @@
+[Unit]
+Description=Download radius users
+
+[Service]
+Type=oneshot
+ExecStart=/etc/raddb/getusers.sh
+User=root
+Group=radiusd
+ProtectSystem=yes
+ProtectHome=yes

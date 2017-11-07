@@ -1,0 +1,32 @@
+---
+- name: Create /etc/systemd/scripts
+  file:
+    dest: /etc/systemd/scripts
+    state: directory
+- name: Install blackhole script
+  copy:
+    src: blackhole/blackhole.sh
+    dest: '/etc/systemd/scripts/blackhole.sh'
+    mode: 0755
+  notify:
+    - restart blackhole
+
+- name: Install blackhole service
+  copy:
+    src: blackhole/blackhole.service
+    dest: '/etc/systemd/system/blackhole.service'
+
+- name: Enable blackhole service
+  systemd:
+    name: blackhole.service
+    enabled: yes
+    masked: no
+    state: started
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: systemctl enable blackhole.service
+  args:
+    creates: '/etc/systemd/system/multi-user.target.wants/blackhole.service'
+  when: "'container' in ansible_env"
+
+# vim: set ts=2 sw=2 et:

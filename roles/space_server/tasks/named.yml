@@ -1,0 +1,52 @@
+---
+- name: Install bind package
+  dnf:
+    name: bind
+    state: latest
+  notify:
+    - restart named
+  tags:
+    - packages
+
+- name: Configure named
+  copy:
+    src: named/named.conf
+    dest: '/etc/named.conf'
+    mode: 0640
+  notify:
+    - restart named
+- name: Create s zone
+  copy:
+    src: named/s.zone
+    dest: '/etc/named/s.zone'
+  notify:
+    - restart named
+
+- name: Create service drop-in directory
+  file:
+    dest: '/etc/systemd/system/named.service.d'
+    state: directory
+- name: Start named after networks are configured
+  copy:
+    src: wait-online.conf
+    dest: '/etc/systemd/system/named.service.d/wait-online.conf'
+
+- name: Enable named service
+  systemd:
+    name: named.service
+    enabled: yes
+    masked: no
+    state: started
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: systemctl enable named.service
+  args:
+    creates: '/etc/systemd/system/multi-user.target.wants/named.service'
+  when: "'container' in ansible_env"
+
+- name: Use our own resolver
+  copy:
+    dest: /etc/resolv.conf
+    content: "nameserver 127.0.0.1\nnameserver ::1\n"
+
+# vim: set ts=2 sw=2 et ft=yaml:

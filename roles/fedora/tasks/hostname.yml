@@ -1,0 +1,12 @@
+---
+- name: Set hostname
+  hostname:
+    name: '{{ hostname }}'
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  copy:
+    dest: /etc/hostname
+    content: "{{ hostname }}\n"
+  when: "'container' in ansible_env"
+
+# vim: set ts=2 sw=2 et:

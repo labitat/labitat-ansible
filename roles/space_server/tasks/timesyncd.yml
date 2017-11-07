@@ -1,0 +1,15 @@
+---
+- name: Enable systemd-timesyncd
+  systemd:
+    name: systemd-timesyncd.service
+    enabled: yes
+    masked: no
+    state: started
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: systemctl enable systemd-timesyncd.service
+  args:
+    creates: '/etc/systemd/system/sysinit.target.wants/systemd-timesyncd.service'
+  when: "'container' in ansible_env"
+
+# vim: set ts=2 sw=2 et:

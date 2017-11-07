@@ -1,0 +1,66 @@
+---
+- name: reload nftables
+  systemd:
+    name: nftables.service
+    state: reloaded
+  when: "'container' not in ansible_env"
+
+- name: restart networkd
+  systemd:
+    name: systemd-networkd.service
+    state: restarted
+  when: "'container' not in ansible_env"
+
+- name: restart blackhole
+  systemd:
+    name: blackhole.service
+    state: restarted
+  when: "'container' not in ansible_env"
+
+- name: restart sshd
+  systemd:
+    name: sshd.service
+    state: restarted
+  when: "'container' not in ansible_env"
+
+- name: restart bird
+  systemd:
+    name: '{{ item }}.service'
+    state: restarted
+  with_items:
+    - bird
+    - bird6
+  when: "'container' not in ansible_env"
+
+- name: restart dhcpd
+  systemd:
+    name: dhcpd.service
+    state: restarted
+  when: "'container' not in ansible_env"
+
+- name: restart radvd
+  systemd:
+    name: radvd.service
+    state: restarted
+  when: "'container' not in ansible_env"
+
+- name: restart radiusd
+  systemd:
+    name: radiusd.service
+    state: restarted
+  when: "'container' not in ansible_env"
+
+- name: restart getusers
+  systemd:
+    name: getusers.timer
+    state: restarted
+    daemon_reload: yes
+  when: "'container' not in ansible_env"
+
+- name: restart named
+  systemd:
+    name: named.service
+    state: restarted
+  when: "'container' not in ansible_env"
+
+# vim: set ts=2 sw=2 et:

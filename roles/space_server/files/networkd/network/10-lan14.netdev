@@ -1,0 +1,6 @@
+[NetDev]
+Name=lan14
+Kind=vlan
+
+[VLAN]
+Id=14

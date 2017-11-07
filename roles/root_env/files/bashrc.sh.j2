@@ -1,0 +1,34 @@
+# if not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+export PS1='\[\e[1;31m\]\u\[\e[00m\]@\[\e[0;31m\]\h\[\e[1;34m\]\w\[\e[00m\]\$ '
+unset PROMPT_COMMAND
+
+# directory listing
+eval "$(dircolors -b)"
+alias ls='ls --color=auto -F'
+alias ll='ls -Ahl'
+
+# some more alias to avoid making mistakes:
+alias rm='rm -ri'
+alias cp='cp -rid'
+alias mv='mv -i'
+
+# editor
+export EDITOR='vim'
+alias vi='vim'
+
+# network
+alias ip6='ip -6'
+{% if ansible_service_mgr == 'systemd' %}
+
+# systemd
+alias start='systemctl start'
+alias stop='systemctl stop'
+alias restart='systemctl restart'
+alias status='systemctl status'
+alias cgls='systemd-cgls'
+alias cgtop='systemd-cgtop'
+{% endif %}
+
+cd

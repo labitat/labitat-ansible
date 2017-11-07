@@ -1,0 +1,46 @@
+---
+- name: Configure dnf.conf
+  ini_file:
+    path: /etc/dnf/dnf.conf
+    no_extra_spaces: yes
+    section: '{{ item.section }}'
+    option: '{{ item.option }}'
+    value: '{{ item.value }}'
+  with_items:
+    - section: main
+      option: 'install_weak_deps'
+      value: 'False'
+    - section: main
+      option: 'best'
+      value: 'True'
+    - section: main
+      option: 'deltarpm'
+      value: 'False'
+
+- name: Update all packages
+  dnf:
+    name: '*'
+    state: latest
+  tags:
+    - update
+    - packages
+
+- name: Remove packages
+  dnf:
+    name: '{{ item }}'
+    state: absent
+  with_items: '{{ packages.remove }}'
+  when: "'remove' in packages"
+  tags:
+    - packages
+
+- name: Install packages
+  dnf:
+    name: '{{ item }}'
+    state: latest
+  with_items: '{{ packages.install }}'
+  when: "'install' in packages"
+  tags:
+    - packages
+
+# vim: set ts=2 sw=2 et:

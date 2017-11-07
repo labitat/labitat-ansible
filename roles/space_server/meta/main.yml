@@ -1,0 +1,7 @@
+---
+dependencies:
+  - role: fedora
+  - role: root_env
+  - role: users
+
+# vim: set ts=2 sw=2 et:

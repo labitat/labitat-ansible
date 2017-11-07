@@ -1,0 +1,68 @@
+---
+- name: Install bird and bird6 packages
+  dnf:
+    name: '{{ item }}'
+    state: latest
+  with_items:
+    - bird
+    - bird6
+  notify:
+    - restart bird
+  tags:
+    - packages
+
+- name: Make sure /etc/bird exists
+  file:
+    dest: '/etc/bird'
+    state: directory
+    mode: 0755
+- name: Create bird configuration
+  copy:
+    src: '{{ item }}'
+    dest: '/etc/bird/'
+  with_fileglob:
+    - 'bird/*'
+  notify:
+    - restart bird
+
+- name: Create bird.conf and bird6.conf symlinks
+  file:
+    path: '/etc/{{ item }}.conf'
+    state: link
+    src: 'bird/{{ item }}.conf'
+    force: yes
+  with_items:
+    - bird
+    - bird6
+
+# bird6 wants the link to have a link-local address
+# when starting, so wait for it
+- name: Create bird6 service drop-in directory
+  file:
+    dest: '/etc/systemd/system/bird6.service.d'
+    state: directory
+- name: Start bird6 after networks are configured
+  copy:
+    src: wait-online.conf
+    dest: '/etc/systemd/system/bird6.service.d/wait-online.conf'
+
+- name: Enable bird and bird6
+  systemd:
+    name: '{{ item }}.service'
+    enabled: yes
+    masked: no
+    state: started
+  with_items:
+    - bird
+    - bird6
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: 'systemctl enable {{ item }}.service'
+  args:
+    creates: '/etc/systemd/system/multi-user.target.wants/{{ item }}.service'
+  with_items:
+    - bird
+    - bird6
+  when: "'container' in ansible_env"
+
+# vim: set ts=2 sw=2 et:
