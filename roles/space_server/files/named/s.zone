@@ -2,7 +2,7 @@ s.                 600    IN      SOA     space.labitat.dk. xnybre.labitat.dk. 2
 s.                 600    IN      NS      space.labitat.dk.
 
 s.                 600    IN      A       10.42.1.1
-s.                 600    IN      AAAA    fde2:52b4:4a19:1::1
+s.                 600    IN      AAAA    2a01:4260:1ab::
 
 labitrack.s.       600    IN      CNAME   spacewand.labitat.dk.
 track.s.           600    IN      CNAME   spacewand.labitat.dk.
