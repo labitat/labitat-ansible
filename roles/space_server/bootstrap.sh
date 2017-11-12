@@ -34,9 +34,6 @@
 # btrfs subvolume create /mnt/home
 # mount -o noatime,ssd,compress=lzo,subvol=/home /dev/sda2 /home
 #
-# Clone the labitat-ansible git repo to /home/ansible
-# git clone <URL> /home/ansible
-#
 # Run this script
 
 set -e
@@ -60,7 +57,9 @@ dnf \
   --enablerepo=updates \
   install dnf python2-dnf ansible
 
-systemd-nspawn -D "$dest" --bind /boot --bind /home -- \
-  ansible-playbook -i space, -c local /home/ansible/space.yml
+systemd-nspawn -D "$dest" -M space -E ANSIBLE_FORCE_COLOR=1 \
+  --bind /boot --bind /home -- \
+  ansible-pull -i space, -c local \
+    -U 'https://github.com/labitat/labitat-ansible.git' space.yml
 
 # vim: set ts=2 sw=2 et:
