@@ -63,4 +63,10 @@
     state: restarted
   when: "'container' not in ansible_env"
 
+- name: restart avahi-daemon
+  systemd:
+    name: avahi-daemon.service
+    state: restarted
+  when: "'container' not in ansible_env"
+
 # vim: set ts=2 sw=2 et:

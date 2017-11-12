@@ -1,0 +1,86 @@
+---
+- name: Install avahi and tools
+  dnf:
+    name: avahi-tools # pulls in avahi package
+    state: latest
+  notify:
+    - restart avahi-daemon
+  tags:
+    - packages
+
+- name: Configure avahi-daemon
+  ini_file:
+    path: /etc/avahi/avahi-daemon.conf
+    no_extra_spaces: yes
+    section: '{{ item.section }}'
+    option: '{{ item.option }}'
+    value: '{{ item.value }}'
+  with_items:
+    - section: server
+      option: 'host-name'
+      value: '{{ hostname }}'
+    - section: server
+      option: 'domain-name'
+      value: 'local'
+    - section: server
+      option: 'browse-domains'
+      value: ''
+    - section: server
+      option: 'use-ipv4'
+      value: 'yes'
+    - section: server
+      option: 'use-ipv6'
+      value: 'yes'
+    - section: server
+      option: 'allow-interfaces'
+      value: 'lan11,lan12'
+    - section: server
+      option: 'enable-dbus'
+      value: 'yes'
+    - section: server
+      option: 'disallow-other-stacks'
+      value: 'yes'
+    - section: wide-area
+      option: 'enable-wide-area'
+      value: 'yes'
+    - section: publish
+      option: 'disable-publishing'
+      value: 'no'
+    - section: publish
+      option: 'disable-user-service-publishing'
+      value: 'no'
+    - section: publish
+      option: 'publish-addresses'
+      value: 'yes'
+    - section: publish
+      option: 'publish-hinfo'
+      value: 'yes'
+    - section: publish
+      option: 'publish-workstation'
+      value: 'no'
+    - section: publish
+      option: 'publish-domain'
+      value: 'yes'
+    - section: publish
+      option: 'publish-dns-servers'
+      value: '185.38.175.0,2a01:4260:1ab::'
+    - section: publish
+      option: 'publish-resolv-conf-dns-servers'
+      value: 'no'
+  notify:
+    - restart avahi-daemon
+
+- name: Enable avahi-daemon service
+  systemd:
+    name: avahi-daemon.service
+    enabled: yes
+    masked: no
+    state: started
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: systemctl enable avahi-daemon.service
+  args:
+    creates: '/etc/systemd/system/multi-user.target.wants/avahi-daemon.service'
+  when: "'container' in ansible_env"
+
+# vim: set ts=2 sw=2 et:
