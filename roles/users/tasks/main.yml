@@ -11,5 +11,9 @@
   tags:
     - users
     - flummer
+- import_tasks: riiiis.yml
+  tags:
+    - users
+    - riiiis
 
 # vim: set ts=2 sw=2 et:
