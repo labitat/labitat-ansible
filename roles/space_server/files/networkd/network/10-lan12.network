@@ -4,8 +4,10 @@ Name=lan12
 [Network]
 DHCP=no
 IPv6AcceptRA=no
+LinkLocalAddressing=no
 Address=10.42.2.1/24
 #Address=2a01:4260:1ab:c::1/64
+Address=fe80::1/64
 IPForward=yes
 LLMNR=yes
 MulticastDNS=yes

@@ -4,7 +4,9 @@ Name=lan15
 [Network]
 DHCP=no
 IPv6AcceptRA=no
+LinkLocalAddressing=no
 Address=2a01:4260:1ab:f::1/64
+Address=fe80::1/64
 IPForward=ipv6
 LLMNR=yes
 MulticastDNS=yes
