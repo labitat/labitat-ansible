@@ -1,7 +1,8 @@
 ---
 - hosts: space
   pre_tasks:
-    - include_vars: '{{ item }}'
+    - name: Load secrets
+      include_vars: '{{ item }}'
       with_first_found:
         - files:
             - /etc/ansible/secrets.yml
