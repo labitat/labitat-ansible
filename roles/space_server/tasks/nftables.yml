@@ -11,10 +11,18 @@
   tags:
     - packages
 
+- name: Symlink to /etc/nftables.conf
+  file:
+    path: '/etc/sysconfig/nftables.conf'
+    state: link
+    src: '../nftables.conf'
+    force: yes
+  notify:
+    - reload nftables
 - name: Configure nftables
   copy:
     src: nftables/nftables.conf
-    dest: '/etc/sysconfig/nftables.conf'
+    dest: '/etc/nftables.conf'
   notify:
     - reload nftables
 
