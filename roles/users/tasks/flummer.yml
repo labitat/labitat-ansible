@@ -1,0 +1,16 @@
+---
+- name: flummer
+  user:
+    comment: 'Thomas Flummer'
+    name: flummer
+    uid: 1002
+    group: users
+    groups:
+      - wheel
+
+- name: flummer - authorized_keys
+  authorized_key:
+    user: flummer
+    key: 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA0QPLM0CyCr5tqdIeftC4kgmoGOE0EvOoZOZXrJqx2lRJfOh+eK/IjQv3K/MyqPhcHc6swcTfv5LpdgmxxhJmruXTX9OnDp5kyuoYknvD601WwfZATK7tqH3t9okIoW0qobb1jjciCkcNo0mtJ+BJ2HvoELAB0BASQy7EliLuFV6SImWV5nZ5kGaAs8lzS/Wl1c3FJT9OKaHgyYgkHMjH2FuFmQJQ1g+NKBx9BU7XQCddxY5U/s5EO5R6e2tZjxdeRu0v4k5FtUjryaj0zLh6JQteDNQpMr+4JKyfoT2b3TjJSNkd1k338V49CjZkCnt8qi+q4ahyzJVT0aCxSHT4+w== tf@labitat.dk'
+
+# vim: set ts=2 sw=2 et:
