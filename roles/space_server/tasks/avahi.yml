@@ -40,7 +40,7 @@
       value: 'yes'
     - section: server
       option: 'allow-interfaces'
-      value: 'lan11,lan12'
+      value: 'lan11,lan12,lan14'
     - section: server
       option: 'enable-dbus'
       value: 'yes'
