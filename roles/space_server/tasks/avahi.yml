@@ -74,6 +74,9 @@
     - section: publish
       option: 'publish-resolv-conf-dns-servers'
       value: 'no'
+    - section: reflector
+      option: 'enable-reflector'
+      value: 'yes'
   notify:
     - restart avahi-daemon
 
