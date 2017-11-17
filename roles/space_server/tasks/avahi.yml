@@ -8,6 +8,13 @@
   tags:
     - packages
 
+- name: Install nss-mdns package
+  dnf:
+    name: nss-mdns
+    state: latest
+  tags:
+    - packages
+
 - name: Configure avahi-daemon
   ini_file:
     path: /etc/avahi/avahi-daemon.conf
@@ -82,5 +89,11 @@
   args:
     creates: '/etc/systemd/system/multi-user.target.wants/avahi-daemon.service'
   when: "'container' in ansible_env"
+
+- name: Use nss-mdns
+  lineinfile:
+    path: /etc/nsswitch.conf
+    regexp: '^hosts:'
+    line: 'hosts:      files mdns_minimal [NOTFOUND=return] dns myhostname'
 
 # vim: set ts=2 sw=2 et:
