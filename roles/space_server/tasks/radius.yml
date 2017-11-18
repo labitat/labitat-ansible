@@ -22,8 +22,11 @@
 
 - name: Disable default site
   file:
-    path: '/etc/raddb/sites-enabled/default'
+    path: '/etc/raddb/sites-enabled/{{ item }}'
     state: absent
+  with_items:
+    - default
+    - inner-tunnel
   notify:
     - restart radiusd
 - name: Configure radiusd
@@ -37,6 +40,7 @@
     - radiusd.conf
     - mods-available/eap
     - sites-available/labitat
+    - sites-available/labitat-inner
   notify:
     - restart radiusd
 - name: Configure radius clients
@@ -50,12 +54,15 @@
     - restart radiusd
 - name: Enable labitat site
   file:
-    path: '/etc/raddb/sites-enabled/labitat'
+    path: '/etc/raddb/sites-enabled/{{ item }}'
     state: link
-    src: '../sites-available/labitat'
+    src: '../sites-available/{{ item }}'
     owner: root
     group: radiusd
     force: yes
+  with_items:
+    - labitat
+    - labitat-inner
   notify:
     - restart radiusd
 

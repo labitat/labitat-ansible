@@ -1,10 +1,16 @@
 #!/bin/sh
 
-if curl -s -4 -k '{{ radius_passwords.download_url }}' -o /etc/raddb/users.new; then
-	if ! diff -q /etc/raddb/users /etc/raddb/users.new >/dev/null; then
-		mv -f /etc/raddb/users.new /etc/raddb/mods-config/files/authorize
-		systemctl restart radiusd.service
-	fi
-else
-	rm -f /etc/raddb/users.new
+set -e
+
+outfile='/etc/raddb/mods-config/files/authorize'
+tmpfile="$(mktemp /tmp/getusers.XXXXXXXX)"
+cleanup() {
+  rm -f "$tmpfile"
+}
+trap cleanup EXIT SIGINT SIGTERM
+
+curl -s -o "$tmpfile" '{{ radius_passwords.download_url }}'
+if ! diff -q "$tmpfile" "$outfile" >/dev/null; then
+  install -m0640 "$tmpfile" "$outfile"
+  systemctl restart radiusd.service
 fi

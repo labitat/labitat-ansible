@@ -7,8 +7,8 @@ server labitat {
 
 		limit {
 			max_connections = 16
-				lifetime = 0
-				idle_timeout = 30
+			lifetime = 0
+			idle_timeout = 30
 		}
 	}
 
@@ -33,15 +33,6 @@ server labitat {
 			pap
 		}
 
-		Auth-Type CHAP {
-			chap
-		}
-
-		Auth-Type MS-CHAP {
-			mschap
-		}
-
-		digest
 		eap
 	}
 
@@ -53,8 +44,6 @@ server labitat {
 	}
 
 	accounting {
-		unix
-		-sql
 		exec
 		attr_filter.accounting_response
 	}
@@ -63,12 +52,10 @@ server labitat {
 	}
 
 	post-auth {
-		-sql
 		exec
 		remove_reply_message_if_eap
 
 		Post-Auth-Type REJECT {
-			-sql
 			attr_filter.access_reject
 			eap
 			remove_reply_message_if_eap

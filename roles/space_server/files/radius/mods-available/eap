@@ -69,29 +69,29 @@ eap {
 	#  for wireless connections.  It is insecure, and does
 	#  not provide for dynamic WEP keys.
 	#
-	md5 {
-	}
+	#md5 {
+	#}
 
 	#
 	# EAP-pwd -- secure password-based authentication
 	#
-#	pwd {
-#		group = 19
+	#pwd {
+	#	group = 19
 
-		#
-#		server_id = theserver@example.com
+	#	#
+	#	server_id = theserver@example.com
 
-		#  This has the same meaning as for TLS.
-#		fragment_size = 1020
+	#	#  This has the same meaning as for TLS.
+	#	fragment_size = 1020
 
-		# The virtual server which determines the
-		# "known good" password for the user.
-		# Note that unlike TLS, only the "authorize"
-		# section is processed.  EAP-PWD requests can be
-		# distinguished by having a User-Name, but
-		# no User-Password, CHAP-Password, EAP-Message, etc.
-#		virtual_server = "inner-tunnel"
-#	}
+	#	# The virtual server which determines the
+	#	# "known good" password for the user.
+	#	# Note that unlike TLS, only the "authorize"
+	#	# section is processed.  EAP-PWD requests can be
+	#	# distinguished by having a User-Name, but
+	#	# no User-Password, CHAP-Password, EAP-Message, etc.
+	#	virtual_server = "inner-tunnel"
+	#}
 
 	# Cisco LEAP
 	#
@@ -105,8 +105,8 @@ eap {
 	#  User-Password, or the NT-Password attributes.
 	#  'System' authentication is impossible with LEAP.
 	#
-	leap {
-	}
+	#leap {
+	#}
 
 	#  Generic Token Card.
 	#
@@ -119,25 +119,25 @@ eap {
 	#  the users password will go over the wire in plain-text,
 	#  for anyone to see.
 	#
-	gtc {
-		#  The default challenge, which many clients
-		#  ignore..
-		#challenge = "Password: "
+	#gtc {
+	#	#  The default challenge, which many clients
+	#	#  ignore..
+	#	#challenge = "Password: "
 
-		#  The plain-text response which comes back
-		#  is put into a User-Password attribute,
-		#  and passed to another module for
-		#  authentication.  This allows the EAP-GTC
-		#  response to be checked against plain-text,
-		#  or crypt'd passwords.
-		#
-		#  If you say "Local" instead of "PAP", then
-		#  the module will look for a User-Password
-		#  configured for the request, and do the
-		#  authentication itself.
-		#
-		auth_type = PAP
-	}
+	#	#  The plain-text response which comes back
+	#	#  is put into a User-Password attribute,
+	#	#  and passed to another module for
+	#	#  authentication.  This allows the EAP-GTC
+	#	#  response to be checked against plain-text,
+	#	#  or crypt'd passwords.
+	#	#
+	#	#  If you say "Local" instead of "PAP", then
+	#	#  the module will look for a User-Password
+	#	#  configured for the request, and do the
+	#	#  authentication itself.
+	#	#
+	#	auth_type = PAP
+	#}
 
 	## Common TLS configuration for TLS-based EAP types
 	#
@@ -204,7 +204,7 @@ eap {
 		#
 		#  When setting "auto_chain = no", the server certificate
 		#  file MUST include the full certificate chain.
-	#	auto_chain = yes
+		#auto_chain = yes
 
 		#
 		#  If OpenSSL supports TLS-PSK, then we can use
@@ -227,8 +227,8 @@ eap {
 		#  look up the shared key (hexphrase) based on the
 		#  identity.
 		#
-	#	psk_identity = "test"
-	#	psk_hexphrase = "036363823"
+		#psk_identity = "test"
+		#psk_hexphrase = "036363823"
 
 		#
 		#  For DH cipher suites to work, you have to
@@ -247,7 +247,7 @@ eap {
 		#  write to files in its configuration
 		#  directory.
 		#
-	#	random_file = /dev/urandom
+		#random_file = /dev/urandom
 
 		#
 		#  This can never exceed the size of a RADIUS
@@ -258,7 +258,7 @@ eap {
 		#  In these cases, fragment size should be
 		#  1024 or less.
 		#
-	#	fragment_size = 1024
+		#fragment_size = 1024
 
 		#  include_length is a flag which is
 		#  by default set to yes If set to
@@ -268,7 +268,7 @@ eap {
 		#  message is included ONLY in the
 		#  First packet of a fragment series.
 		#
-	#	include_length = yes
+		#include_length = yes
 
 
 		#  Check the Certificate Revocation List
@@ -278,10 +278,10 @@ eap {
 		#    'c_rehash' is OpenSSL's command.
 		#  3) uncomment the lines below.
 		#  5) Restart radiusd
-	#	check_crl = yes
+		#check_crl = yes
 
 		# Check if intermediate CAs have been revoked.
-	#	check_all_crl = yes
+		#check_all_crl = yes
 
 		ca_path = ${cadir}
 
@@ -297,7 +297,7 @@ eap {
 		#  TLS-Client-Cert-Issuer attribute.  This check
 		#  can be done via any mechanism you choose.
 		#
-	#	check_cert_issuer = "/C=GB/ST=Berkshire/L=Newbury/O=My Company Ltd"
+		#check_cert_issuer = "/C=GB/ST=Berkshire/L=Newbury/O=My Company Ltd"
 
 		#
 		#  If check_cert_cn is set, the value will
@@ -315,7 +315,7 @@ eap {
 		#  TLS-Client-Cert-CN attribute.  This check
 		#  can be done via any mechanism you choose.
 		#
-	#	check_cert_cn = %{User-Name}
+		#check_cert_cn = %{User-Name}
 		#
 		# Set this option to specify the allowed
 		# TLS cipher suites.  The format is listed
@@ -340,7 +340,7 @@ eap {
 		#
 		#  For EAP-FAST, this MUST be set to "yes".
 		#
-#		disable_tlsv1_2 = no
+		#disable_tlsv1_2 = no
 
 		#
 
@@ -459,7 +459,7 @@ eap {
 			#  If you want to skip verify on OCSP success,
 			#  uncomment this configuration item, and set it
 			#  to "yes".
-	#		skip_if_ocsp_ok = no
+			#skip_if_ocsp_ok = no
 
 			#  A temporary directory where the client
 			#  certificates are stored.  This directory
@@ -472,7 +472,7 @@ eap {
 			#
 			#  You should also delete all of the files
 			#  in the directory when the server starts.
-	#		tmpdir = /var/run/radiusd/tmp
+			#tmpdir = /var/run/radiusd/tmp
 
 			#  The command used to verify the client cert.
 			#  We recommend using the OpenSSL command-line
@@ -486,7 +486,7 @@ eap {
 			#  in PEM format.  This file is automatically
 			#  deleted by the server when the command
 			#  returns.
-	#		client = "/usr/bin/openssl verify -CApath ${..ca_path} %{TLS-Client-Cert-Filename}"
+			#client = "/usr/bin/openssl verify -CApath ${..ca_path} %{TLS-Client-Cert-Filename}"
 		}
 
 		#
@@ -563,18 +563,18 @@ eap {
 	#  As of Version 3.0, the TLS configuration for TLS-based
 	#  EAP types is above in the "tls-config" section.
 	#
-	tls {
-		# Point to the common TLS configuration
-		tls = tls-common
+	#tls {
+	#	# Point to the common TLS configuration
+	#	tls = tls-common
 
-		#
-		# As part of checking a client certificate, the EAP-TLS
-		# sets some attributes such as TLS-Client-Cert-CN. This
-		# virtual server has access to these attributes, and can
-		# be used to accept or reject the request.
-		#
-	#	virtual_server = check-eap-tls
-	}
+	#	#
+	#	# As part of checking a client certificate, the EAP-TLS
+	#	# sets some attributes such as TLS-Client-Cert-CN. This
+	#	# virtual server has access to these attributes, and can
+	#	# be used to accept or reject the request.
+	#	#
+	##	virtual_server = check-eap-tls
+	#}
 
 
 	## EAP-TTLS
@@ -604,7 +604,7 @@ eap {
 		#  EAP conversation, then this configuration entry is
 		#  ignored.
 		#
-		default_eap_type = md5
+		default_eap_type = pap
 
 		#  The tunneled authentication request does not usually
 		#  contain useful attributes like 'Calling-Station-Id',
@@ -655,13 +655,13 @@ eap {
 		#  the virtual server that processed the
 		#  outer requests.
 		#
-		virtual_server = "inner-tunnel"
+		virtual_server = "labitat-inner"
 
 		#  This has the same meaning, and overwrites, the
 		#  same field in the "tls" configuration, above.
 		#  The default value here is "yes".
 		#
-	#	include_length = yes
+		#include_length = yes
 
 		#
 		# Unlike EAP-TLS, EAP-TTLS does not require a client
@@ -673,7 +673,7 @@ eap {
 		#
 		# in the control items for a request.
 		#
-	#	require_client_cert = yes
+		#require_client_cert = yes
 	}
 
 
@@ -720,87 +720,87 @@ eap {
 	#  EAP module.  Inside of the TLS/PEAP tunnel, we
 	#  recommend using EAP-MS-CHAPv2.
 	#
-	peap {
-		#  Which tls-config section the TLS negotiation parameters
-		#  are in - see EAP-TLS above for an explanation.
-		#
-		#  In the case that an old configuration from FreeRADIUS
-		#  v2.x is being used, all the options of the tls-config
-		#  section may also appear instead in the 'tls' section
-		#  above. If that is done, the tls= option here (and in
-		#  tls above) MUST be commented out.
-		#
-		tls = tls-common
+	#peap {
+	#	#  Which tls-config section the TLS negotiation parameters
+	#	#  are in - see EAP-TLS above for an explanation.
+	#	#
+	#	#  In the case that an old configuration from FreeRADIUS
+	#	#  v2.x is being used, all the options of the tls-config
+	#	#  section may also appear instead in the 'tls' section
+	#	#  above. If that is done, the tls= option here (and in
+	#	#  tls above) MUST be commented out.
+	#	#
+	#	tls = tls-common
 
-		#  The tunneled EAP session needs a default
-		#  EAP type which is separate from the one for
-		#  the non-tunneled EAP module.  Inside of the
-		#  PEAP tunnel, we recommend using MS-CHAPv2,
-		#  as that is the default type supported by
-		#  Windows clients.
-		#
-		default_eap_type = mschapv2
+	#	#  The tunneled EAP session needs a default
+	#	#  EAP type which is separate from the one for
+	#	#  the non-tunneled EAP module.  Inside of the
+	#	#  PEAP tunnel, we recommend using MS-CHAPv2,
+	#	#  as that is the default type supported by
+	#	#  Windows clients.
+	#	#
+	#	default_eap_type = pap
 
-		#  The PEAP module also has these configuration
-		#  items, which are the same as for TTLS.
-		#
-		copy_request_to_tunnel = no
+	#	#  The PEAP module also has these configuration
+	#	#  items, which are the same as for TTLS.
+	#	#
+	#	copy_request_to_tunnel = no
 
-		#
-		#  As of version 3.0.5, this configuration item
-		#  is deprecated.  Instead, you should use
-		#
-		# 	update outer.session-state {
-		#		...
-		#
-		#	}
-		#
-		#  This will cache attributes for the final Access-Accept.
-		#
-		use_tunneled_reply = no
+	#	#
+	#	#  As of version 3.0.5, this configuration item
+	#	#  is deprecated.  Instead, you should use
+	#	#
+	#	# 	update outer.session-state {
+	#	#		...
+	#	#
+	#	#	}
+	#	#
+	#	#  This will cache attributes for the final Access-Accept.
+	#	#
+	#	use_tunneled_reply = no
 
-		#  When the tunneled session is proxied, the
-		#  home server may not understand EAP-MSCHAP-V2.
-		#  Set this entry to "no" to proxy the tunneled
-		#  EAP-MSCHAP-V2 as normal MSCHAPv2.
-		#
-	#	proxy_tunneled_request_as_eap = yes
+	#	#  When the tunneled session is proxied, the
+	#	#  home server may not understand EAP-MSCHAP-V2.
+	#	#  Set this entry to "no" to proxy the tunneled
+	#	#  EAP-MSCHAP-V2 as normal MSCHAPv2.
+	#	#
+	##	proxy_tunneled_request_as_eap = yes
 
-		#
-		#  The inner tunneled request can be sent
-		#  through a virtual server constructed
-		#  specifically for this purpose.
-		#
-		#  If this entry is commented out, the inner
-		#  tunneled request will be sent through
-		#  the virtual server that processed the
-		#  outer requests.
-		#
-		virtual_server = "inner-tunnel"
+	#	#
+	#	#  The inner tunneled request can be sent
+	#	#  through a virtual server constructed
+	#	#  specifically for this purpose.
+	#	#
+	#	#  If this entry is commented out, the inner
+	#	#  tunneled request will be sent through
+	#	#  the virtual server that processed the
+	#	#  outer requests.
+	#	#
+	#	virtual_server = "inner-tunnel"
 
-		# This option enables support for MS-SoH
-		# see doc/SoH.txt for more info.
-		# It is disabled by default.
-		#
-	#	soh = yes
+	#	# This option enables support for MS-SoH
+	#	# see doc/SoH.txt for more info.
+	#	# It is disabled by default.
+	#	#
+	##	soh = yes
 
-		#
-		# The SoH reply will be turned into a request which
-		# can be sent to a specific virtual server:
-		#
-	#	soh_virtual_server = "soh-server"
+	#	#
+	#	# The SoH reply will be turned into a request which
+	#	# can be sent to a specific virtual server:
+	#	#
+	##	soh_virtual_server = "soh-server"
 
-		#
-		# Unlike EAP-TLS, PEAP does not require a client certificate.
-		# However, you can require one by setting the following
-		# option. You can also override this option by setting
-		#
-		#	EAP-TLS-Require-Client-Cert = Yes
-		#
-		# in the control items for a request.
-		#
-	#	require_client_cert = yes
-	}
+	#	#
+	#	# Unlike EAP-TLS, PEAP does not require a client certificate.
+	#	# However, you can require one by setting the following
+	#	# option. You can also override this option by setting
+	#	#
+	#	#	EAP-TLS-Require-Client-Cert = Yes
+	#	#
+	#	# in the control items for a request.
+	#	#
+	##	require_client_cert = yes
+	#}
 
 	#
 	#  This takes no configuration.
@@ -816,68 +816,68 @@ eap {
 	#  of MS-CHAPv2 in EAP by Cisco, which FreeRADIUS does not
 	#  currently support.
 	#
-	mschapv2 {
-		#  Prior to version 2.1.11, the module never
-		#  sent the MS-CHAP-Error message to the
-		#  client.  This worked, but it had issues
-		#  when the cached password was wrong.  The
-		#  server *should* send "E=691 R=0" to the
-		#  client, which tells it to prompt the user
-		#  for a new password.
-		#
-		#  The default is to behave as in 2.1.10 and
-		#  earlier, which is known to work.  If you
-		#  set "send_error = yes", then the error
-		#  message will be sent back to the client.
-		#  This *may* help some clients work better,
-		#  but *may* also cause other clients to stop
-		#  working.
-		#
-#		send_error = no
+	#mschapv2 {
+	#	#  Prior to version 2.1.11, the module never
+	#	#  sent the MS-CHAP-Error message to the
+	#	#  client.  This worked, but it had issues
+	#	#  when the cached password was wrong.  The
+	#	#  server *should* send "E=691 R=0" to the
+	#	#  client, which tells it to prompt the user
+	#	#  for a new password.
+	#	#
+	#	#  The default is to behave as in 2.1.10 and
+	#	#  earlier, which is known to work.  If you
+	#	#  set "send_error = yes", then the error
+	#	#  message will be sent back to the client.
+	#	#  This *may* help some clients work better,
+	#	#  but *may* also cause other clients to stop
+	#	#  working.
+	#	#
+	#	#send_error = no
 
-		#  Server identifier to send back in the challenge.
-		#  This should generally be the host name of the
-		#  RADIUS server.  Or, some information to uniquely
-		#  identify it.
-#		identity = "FreeRADIUS"
-	}
+	#	#  Server identifier to send back in the challenge.
+	#	#  This should generally be the host name of the
+	#	#  RADIUS server.  Or, some information to uniquely
+	#	#  identify it.
+	#	#identity = "FreeRADIUS"
+	#}
 
 	## EAP-FAST
 	#
 	#  The FAST module implements the EAP-FAST protocol
 	#
-#	fast {
-		# Point to the common TLS configuration
-		#
-		# cipher_list though must include "ADH" for anonymous provisioning.
-		# This is not as straight forward as appending "ADH" alongside
-		# "DEFAULT" as "DEFAULT" contains "!aNULL" so instead it is
-		# recommended "ALL:!EXPORT:!eNULL:!SSLv2" is used
-		#
-#		tls = tls-common
+	#fast {
+	#	# Point to the common TLS configuration
+	#	#
+	#	# cipher_list though must include "ADH" for anonymous provisioning.
+	#	# This is not as straight forward as appending "ADH" alongside
+	#	# "DEFAULT" as "DEFAULT" contains "!aNULL" so instead it is
+	#	# recommended "ALL:!EXPORT:!eNULL:!SSLv2" is used
+	#	#
+	#	tls = tls-common
 
-		# PAC lifetime in seconds (default: seven days)
-		#
-#		pac_lifetime = 604800
+	#	# PAC lifetime in seconds (default: seven days)
+	#	#
+	#	pac_lifetime = 604800
 
-		# Authority ID of the server
-		#
-		# if you are running a cluster of RADIUS servers, you should make
-		# the value chosen here (and for "pac_opaque_key") the same on all
-		# your RADIUS servers.  This value should be unique to your
-		# installation.  We suggest using a domain name.
-		#
-#		authority_identity = "1234"
+	#	# Authority ID of the server
+	#	#
+	#	# if you are running a cluster of RADIUS servers, you should make
+	#	# the value chosen here (and for "pac_opaque_key") the same on all
+	#	# your RADIUS servers.  This value should be unique to your
+	#	# installation.  We suggest using a domain name.
+	#	#
+	#	authority_identity = "1234"
 
-		# PAC Opaque encryption key (must be exactly 32 bytes in size)
-		#
-		# This value MUST be secret, and MUST be generated using
-		# a secure method, such as via 'openssl rand -hex 32'
-		#
-#		pac_opaque_key = "0123456789abcdef0123456789ABCDEF"
+	#	# PAC Opaque encryption key (must be exactly 32 bytes in size)
+	#	#
+	#	# This value MUST be secret, and MUST be generated using
+	#	# a secure method, such as via 'openssl rand -hex 32'
+	#	#
+	#	pac_opaque_key = "0123456789abcdef0123456789ABCDEF"
 
-		# Same as for TTLS, PEAP, etc.
-		#
-#		virtual_server = inner-tunnel
-#	}
+	#	# Same as for TTLS, PEAP, etc.
+	#	#
+	#	virtual_server = inner-tunnel
+	#}
 }
