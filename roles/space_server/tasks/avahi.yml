@@ -80,6 +80,13 @@
   notify:
     - restart avahi-daemon
 
+- name: Configure hosts
+  template:
+    src: avahi/hosts.j2
+    dest: '/etc/avahi/hosts'
+  notify:
+    - restart avahi-daemon
+
 - name: Enable avahi-daemon service
   systemd:
     name: avahi-daemon.service

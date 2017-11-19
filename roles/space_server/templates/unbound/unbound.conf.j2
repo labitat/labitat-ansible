@@ -105,36 +105,20 @@ server:
 	local-data: "labitrack.s.    IN AAAA  2a01:4260:1ab::cafe"
 	local-data: "track.s.        IN A     185.38.175.70"
 	local-data: "track.s.        IN AAAA  2a01:4260:1ab::cafe"
-	local-data: "ap.s.           IN A     10.42.0.2"
-	local-data-ptr:                      "10.42.0.2 ap.s."
-	local-data: "doorputer.s.    IN A     10.42.0.3"
-	local-data-ptr:                      "10.42.0.3 doorputer.s."
-	local-data: "foodputer.s.    IN A     10.42.0.4"
-	local-data-ptr:                      "10.42.0.4 foodputer.s."
-	local-data: "ap1.s.          IN A     10.42.0.5"
-	local-data-ptr:                      "10.42.0.5 ap1.s."
-	local-data: "ap2.s.          IN A     10.42.0.6"
-	local-data-ptr:                      "10.42.0.6 ap2.s."
-	local-data: "switch.s.       IN A     10.42.0.9"
-	local-data-ptr:                      "10.42.0.9 switch.s."
-	local-data: "lathe.s.        IN A     10.42.0.12"
-	local-data-ptr:                      "10.42.0.12 lathe.s."
-	local-data: "anna.s.         IN A     10.42.1.9"
-	local-data-ptr:                      "10.42.1.9 anna.s."
-	local-data: "printbrother.s. IN A     10.42.1.32"
-	local-data-ptr:                      "10.42.1.32 printbrother.s."
-	local-data: "infotron.s.     IN A     10.42.1.34"
-	local-data-ptr:                      "10.42.1.34 infotron.s."
-	local-data: "spacemon.s.     IN A     10.42.1.35"
-	local-data-ptr:                      "10.42.1.35 spacemon.s."
-	local-data: "jumbotron.s.    IN A     10.42.1.36"
-	local-data-ptr:                      "10.42.1.36 jumbotron.s."
-	local-data: "hplaserjet.s.   IN A     10.42.1.37"
-	local-data-ptr:                      "10.42.1.37 hplaserjet.s."
-	local-data: "labisound.s.    IN A     10.42.1.40"
-	local-data-ptr:                      "10.42.1.40 labisound.s."
-	local-data: "sound.s.        IN A     10.42.1.80"
-	local-data-ptr:                      "10.42.1.80 sound.s."
+{% for host in local_hosts %}
+{%   for ip in host.ips | ipv4 %}
+{%     if loop.index <= 1 %}
+	local-data: "{{ host.name }}.s. IN A {{ ip }}"
+	local-data-ptr: "{{ ip }} {{ host.name }}.s."
+{%     endif %}
+{%   endfor %}
+{%   for ip in host.ips | ipv6 %}
+{%     if loop.index <= 1 %}
+	local-data: "{{ host.name }}.s. IN AAAA {{ ip }}"
+	local-data-ptr: "{{ ip }} {{ host.name }}.s."
+{%     endif %}
+{%   endfor %}
+{% endfor %}
 
 remote-control:
 	control-enable: yes

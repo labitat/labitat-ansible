@@ -55,7 +55,7 @@ dnf \
   --disablerepo='*' \
   --enablerepo=fedora \
   --enablerepo=updates \
-  install dnf python2-dnf ansible
+  install dnf python2-dnf python-netaddr ansible
 
 systemd-nspawn -D "$dest" -M space -E ANSIBLE_FORCE_COLOR=1 \
   --bind /boot --bind /home -- \

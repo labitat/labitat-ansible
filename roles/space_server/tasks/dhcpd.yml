@@ -9,8 +9,8 @@
     - packages
 
 - name: Configure dhcpd
-  copy:
-    src: dhcpd/dhcpd.conf
+  template:
+    src: dhcpd/dhcpd.conf.j2
     dest: '/etc/dhcp/dhcpd.conf'
   notify:
     - restart dhcpd
