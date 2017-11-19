@@ -57,9 +57,9 @@
     daemon_reload: yes
   when: "'container' not in ansible_env"
 
-- name: restart named
+- name: restart unbound
   systemd:
-    name: named.service
+    name: unbound.service
     state: restarted
   when: "'container' not in ansible_env"
 

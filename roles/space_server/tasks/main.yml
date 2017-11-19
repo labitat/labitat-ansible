@@ -35,8 +35,8 @@
 - import_tasks: radius.yml
   tags: radius
   when: radius_passwords is defined
-- import_tasks: named.yml
-  tags: named
+- import_tasks: unbound.yml
+  tags: unbound
 - import_tasks: avahi.yml
   tags: avahi
 

@@ -1,0 +1,36 @@
+---
+- name: Install unbound package
+  dnf:
+    name: unbound
+    state: latest
+  notify:
+    - restart unbound
+  tags:
+    - packages
+
+- name: Configure unbound
+  copy:
+    src: unbound/unbound.conf
+    dest: '/etc/unbound/unbound.conf'
+  notify:
+    - restart unbound
+
+- name: Enable unbound service
+  systemd:
+    name: unbound.service
+    enabled: yes
+    masked: no
+    state: started
+  when: "'container' not in ansible_env"
+- name: '- when in nspawn'
+  command: systemctl enable unbound.service
+  args:
+    creates: '/etc/systemd/system/multi-user.target.wants/unbound.service'
+  when: "'container' in ansible_env"
+
+- name: Use our own resolver
+  copy:
+    dest: /etc/resolv.conf
+    content: "nameserver 127.0.0.1\nnameserver ::1\n"
+
+# vim: set ts=2 sw=2 et ft=yaml:
