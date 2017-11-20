@@ -39,7 +39,8 @@
 set -e
 set -x
 
-release=26
+release=27
+secrets='/etc/ansible/secrets.yml'
 dest="/mnt/fedora$release"
 if [[ -e "$dest" ]]; then
   echo "Destination '$dest' already exists. Aborting." >&2
@@ -51,11 +52,16 @@ btrfs subvolume create "$dest"
 dnf \
   --assumeyes \
   --installroot="$dest" \
+  --setopt=install_weak_deps=False \
   --releasever=$release \
   --disablerepo='*' \
   --enablerepo=fedora \
   --enablerepo=updates \
-  install dnf python2-dnf python-netaddr ansible
+  install dnf git python2-dnf python-netaddr ansible
+
+if [[ -f "$secrets" ]]; then
+  install -m660 "$secrets" "$dest$secrets"
+fi
 
 systemd-nspawn -D "$dest" -M space -E ANSIBLE_FORCE_COLOR=1 \
   --bind /boot --bind /home -- \
