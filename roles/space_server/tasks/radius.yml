@@ -96,6 +96,15 @@
     creates: '/etc/systemd/system/timers.target.wants/getusers.timer'
   when: "'container' in ansible_env"
 
+- name: Create service drop-in directory
+  file:
+    dest: '/etc/systemd/system/radiusd.service.d'
+    state: directory
+- name: Start radiusd after networks are configured
+  copy:
+    src: wait-online.conf
+    dest: '/etc/systemd/system/radiusd.service.d/wait-online.conf'
+
 - name: Enable radiusd service
   systemd:
     name: radiusd.service
