@@ -25,12 +25,14 @@
   notify:
     - restart networkd
 
-# Unfortunately a drop-in file doesn't seem to work,
-# so overwrite the whole service file :/
+- name: Create systemd-networkd-wait-online drop-in directory
+  file:
+    dest: '/etc/systemd/system/systemd-networkd-wait-online.service.d'
+    state: directory
 - name: Don't wait for lan and mgt interfaces to come online
   copy:
-    src: networkd/systemd-networkd-wait-online.service
-    dest: '/etc/systemd/system/systemd-networkd-wait-online.service'
+    src: networkd/no-lan-mgt.conf
+    dest: '/etc/systemd/system/systemd-networkd-wait-online.service.d/no-lan-mgt.conf'
 
 - name: Enable systemd-networkd
   systemd:
