@@ -11,10 +11,15 @@
 - name: Configure sshd
   lineinfile:
     path: '/etc/ssh/sshd_config'
-    regexp: '^PasswordAuthentication'
-    line: 'PasswordAuthentication no'
+    regexp: '{{ item.regexp }}'
+    line: '{{ item.line }}'
   notify:
     - restart sshd
+  with_items:
+    - regexp: '^PasswordAuthentication'
+      line: 'PasswordAuthentication no'
+    - regexp: '^#*GSSAPIAuthentication'
+      line: 'GSSAPIAuthentication no'
 
 - name: Enable sshd service
   systemd:
