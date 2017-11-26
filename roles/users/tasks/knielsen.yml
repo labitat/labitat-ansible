@@ -1,0 +1,16 @@
+---
+- name: knielsen
+  user:
+    comment: 'Kristian Nielsen'
+    name: knielsen
+    uid: 1004
+    group: users
+    groups:
+      - wheel
+
+- name: knielsen - authorized_keys
+  authorized_key:
+    user: knielsen
+    key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKUAYFshLA2BvcTrKjW90lDjIQkCJ16+uIjfKqB0HDk/ knielsen@urd'
+
+# vim: set ts=2 sw=2 et:

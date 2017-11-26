@@ -1,2 +1,4 @@
 *.retry
 /secrets.yml
+*~
+.*.swp
