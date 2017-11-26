@@ -15,5 +15,9 @@
   tags:
     - users
     - riiiis
+- import_tasks: knielsen.yml
+  tags:
+    - users
+    - knielsen
 
 # vim: set ts=2 sw=2 et:
