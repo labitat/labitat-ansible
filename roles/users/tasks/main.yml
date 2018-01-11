@@ -19,5 +19,9 @@
   tags:
     - users
     - knielsen
+- import_tasks: k2OS.yml
+  tags:
+    - users
+    - k2OS
 
 # vim: set ts=2 sw=2 et:
