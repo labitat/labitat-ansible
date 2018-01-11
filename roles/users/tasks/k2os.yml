@@ -1,0 +1,17 @@
+---
+- name: k2OS
+  user:
+    comment: 'René Mikkelsen'
+    name: k2OS
+    uid: 1005
+    group: users
+    groups:
+      - wheel
+
+- name: k2os - authorized_keys
+  authorized_key:
+    user: k2os
+    key: '{{ item }}'
+  with_items:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAqmvJAMyY117n638/rYw6EtDSY+iHG5xbg/pO932T/0D9X1MVmEnQyOa3597ufBSTUs1GdKtG2N0lyRq91OBS9JN4E+4Hm1t3UgH7/EKbun1Qb0HQMKsI4AR1onsFBeSCkZiijbg9lf7SL6+Ea0cYoXqy3uCWj/Q1PXq+3WlnlLnl9tFhytwuInuTmQvYpHwGgiEs1hIJWjBCbLPMyWbU7LOE6VzXQTbXCJz8FuraX5noiubpii74nHtUzM466ED3JUnf3TPWG8uGitJ7bT2/ZOQ5W83wUC0Xc80Gai3ilRXapQReE7oybePyXkVhP5odBiCu36iqyEgGol8Sb6+S7Q== rene@gw'
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC46lbGFV/7kM4w1C1dLfnIAAanX+IV9vDHw3D8uzEGmwWV0XL8e5rdv1RpKZKHpkAgBcD1m2Y1jVDj1R8QdbGZNSDUoP8z3dMemBDJkqunJjTPIPPeyQFprk/hVkJ4pK0Y+w1lKJquIVDkhQYIQCzuxZraAAq4AgVT3L5ft9WuJm3Apk1w+GESK0oQCZNDOhT8MblqiR+JZBUo2gd68jxr9+Wq3ekE7I/N3sO9HFeze4axcTQKcTs39Oi+RYNKJh44sAdxeo2HUX0IYasyxEr2z8H3BmMn1R/Fxwzj2seLYFu1U21UDZdqN+AfgpEabox0HOKvrNDNBGTC5KwWgWBB rene@denada.dk'
