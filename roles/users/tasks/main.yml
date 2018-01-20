@@ -23,5 +23,9 @@
   tags:
     - users
     - k2OS
+- import_tasks: signout.yml
+  tags:
+    - users
+    - signout
 
 # vim: set ts=2 sw=2 et:
