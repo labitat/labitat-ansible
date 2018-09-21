@@ -5,12 +5,12 @@
 #    enabled: yes
 #    masked: no
 #    state: started
-#  when: "'container' not in ansible_env"
-#- name: '- when in nspawn'
+#  when: not chroot
+#- name: '- when in chroot'
 #  command: systemctl enable systemd-resolved.service
 #  args:
 #    creates: '/etc/systemd/system/multi-user.target.wants/systemd-resolved.service'
-#  when: "'container' in ansible_env"
+#  when: chroot
 #
 #- name: Use systemd-resolved
 #  lineinfile:
@@ -24,11 +24,11 @@
     enabled: no
     masked: no
     state: stopped
-  when: "'container' not in ansible_env"
-- name: '- when in nspawn'
+  when: not chroot
+- name: '- when in chroot'
   command: systemctl disable systemd-resolved.service
   args:
     removes: '/etc/systemd/system/multi-user.target.wants/systemd-resolved.service'
-  when: "'container' in ansible_env"
+  when: chroot
 
 # vim: set ts=2 sw=2 et:

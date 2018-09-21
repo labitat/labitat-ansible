@@ -3,25 +3,25 @@
   systemd:
     name: nftables.service
     state: reloaded
-  when: "'container' not in ansible_env"
+  when: not chroot
 
 - name: restart networkd
   systemd:
     name: systemd-networkd.service
     state: restarted
-  when: "'container' not in ansible_env"
+  when: not chroot
 
 - name: restart blackhole
   systemd:
     name: blackhole.service
     state: restarted
-  when: "'container' not in ansible_env"
+  when: not chroot
 
 - name: restart sshd
   systemd:
     name: sshd.service
     state: restarted
-  when: "'container' not in ansible_env"
+  when: not chroot
 
 - name: restart bird
   systemd:
@@ -30,43 +30,43 @@
   with_items:
     - bird
     - bird6
-  when: "'container' not in ansible_env"
+  when: not chroot
 
 - name: restart dhcpd
   systemd:
     name: dhcpd.service
     state: restarted
-  when: "'container' not in ansible_env"
+  when: not chroot
 
 - name: restart radvd
   systemd:
     name: radvd.service
     state: restarted
-  when: "'container' not in ansible_env"
+  when: not chroot
 
 - name: restart radiusd
   systemd:
     name: radiusd.service
     state: restarted
-  when: "'container' not in ansible_env"
+  when: not chroot
 
 - name: restart getusers
   systemd:
     name: getusers.timer
     state: restarted
     daemon_reload: yes
-  when: "'container' not in ansible_env"
+  when: not chroot
 
 - name: restart unbound
   systemd:
     name: unbound.service
     state: restarted
-  when: "'container' not in ansible_env"
+  when: not chroot
 
 - name: restart avahi-daemon
   systemd:
     name: avahi-daemon.service
     state: restarted
-  when: "'container' not in ansible_env"
+  when: not chroot
 
 # vim: set ts=2 sw=2 et:

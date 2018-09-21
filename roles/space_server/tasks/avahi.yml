@@ -93,12 +93,12 @@
     enabled: yes
     masked: no
     state: started
-  when: "'container' not in ansible_env"
-- name: '- when in nspawn'
+  when: not chroot
+- name: '- when in chroot'
   command: systemctl enable avahi-daemon.service
   args:
     creates: '/etc/systemd/system/multi-user.target.wants/avahi-daemon.service'
-  when: "'container' in ansible_env"
+  when: chroot
 
 - name: Use nss-mdns
   lineinfile:

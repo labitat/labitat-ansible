@@ -55,14 +55,14 @@
   with_items:
     - bird
     - bird6
-  when: "'container' not in ansible_env"
-- name: '- when in nspawn'
+  when: not chroot
+- name: '- when in chroot'
   command: 'systemctl enable {{ item }}.service'
   args:
     creates: '/etc/systemd/system/multi-user.target.wants/{{ item }}.service'
   with_items:
     - bird
     - bird6
-  when: "'container' in ansible_env"
+  when: chroot
 
 # vim: set ts=2 sw=2 et:

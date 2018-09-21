@@ -1,6 +1,10 @@
 ---
 - hosts: space
   pre_tasks:
+    - name: Detect chroot
+      set_fact:
+        chroot: "{{ ansible_connection == 'chroot' or 'container' in ansible_env }}"
+      tags: always
     - name: Load secrets
       include_vars: '{{ item }}'
       with_first_found:

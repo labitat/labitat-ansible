@@ -21,12 +21,12 @@
     enabled: yes
     masked: no
     state: started
-  when: "'container' not in ansible_env"
-- name: '- when in nspawn'
+  when: not chroot
+- name: '- when in chroot'
   command: systemctl enable unbound.service
   args:
     creates: '/etc/systemd/system/multi-user.target.wants/unbound.service'
-  when: "'container' in ansible_env"
+  when: chroot
 
 - name: Use our own resolver
   copy:
