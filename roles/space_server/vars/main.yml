@@ -13,14 +13,18 @@ dnf_conf:
   'main.deltarpm': 'False'
 
 dnf_packages:
+  'glibc-langpack-da': present
+  'glibc-langpack-en': present
   'initscripts': present
+  'hostname': present
+  'iproute': present
   'dosfstools': present
   'btrfs-progs': present
   'dnf': present
-  'python2-dnf': present
   'dnf-command(leaves)': present
+  'python-unversioned-command': present
   'ansible': present
-  'python-netaddr': present
+  'python3-netaddr': present # for dhcpd template
   'vim-enhanced': present
   'git': present
   'diffutils': present

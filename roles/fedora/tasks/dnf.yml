@@ -12,26 +12,23 @@
 
 - name: Remove packages
   dnf:
-    name: '{{ item }}'
+    name: "{{ dnf_packages|dictsort(true)|selectattr(1,'equalto','absent')|map(attribute=0)|list }}"
     state: absent
-  with_items: "{{ dnf_packages|dictsort(true)|selectattr(1,'equalto','absent')|map(attribute=0)|list }}"
-
   tags:
   - packages
 
-- name: Update all packages
+- name: Upgrade all packages
   dnf:
     name: '*'
     state: latest
   tags:
-  - update
+  - upgrade
   - packages
 
 - name: Install packages
   dnf:
-    name: '{{ item }}'
+    name: "{{ dnf_packages|dictsort(true)|selectattr(1,'equalto','present')|map(attribute=0)|list }}"
     state: present
-  with_items: "{{ dnf_packages|dictsort(true)|selectattr(1,'equalto','present')|map(attribute=0)|list }}"
   tags:
   - packages
 

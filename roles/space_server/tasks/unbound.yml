@@ -1,7 +1,9 @@
 ---
 - name: Install unbound package
   dnf:
-    name: unbound
+    name:
+    - policycoreutils # needed for unbound-keygen.service
+    - unbound
     state: present
   tags:
   - packages
@@ -37,4 +39,4 @@
     group: root
     mode: 0644
 
-# vim: set ts=2 sw=2 et ft=yaml:
+# vim: set ts=2 sw=2 et:

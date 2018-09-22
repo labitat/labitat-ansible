@@ -1,12 +1,11 @@
 ---
 - name: Install freeradius-python, curl and diffutils package
   dnf:
-    name: '{{ item }}'
+    name:
+    - freeradius-python
+    - curl
+    - diffutils
     state: present
-  with_items:
-  - freeradius-python
-  - curl
-  - diffutils
   tags:
   - packages
 

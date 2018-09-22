@@ -23,8 +23,9 @@
 #
 # Install syslinux:
 # mount -o noatime,fmask=0133,dmask=0022,utf8 /dev/sda1 /boot
+# mkdir /boot/syslinux
 # syslinux -d syslinux -i /dev/sda1
-# cp /usr/share/syslinux/{ldlinux,libutil,menu}.c32 /boot/syslinux/
+# cp /usr/share/syslinux/{libutil,menu}.c32 /boot/syslinux/
 # dd bs=440 count=1 if=/usr/share/syslinux/gptmbr.bin of=/dev/sda
 #
 # Mount root filesystem:
@@ -39,7 +40,7 @@
 set -e
 set -x
 
-release=27
+release=29
 secrets='/etc/ansible/secrets.yml'
 dest="/mnt/fedora$release"
 if [[ -e "$dest" ]]; then
@@ -57,15 +58,31 @@ dnf \
   --disablerepo='*' \
   --enablerepo=fedora \
   --enablerepo=updates \
-  install dnf git python2-dnf python-netaddr ansible
+  install glibc-langpack-en dnf git ansible python3-netaddr python-unversioned-command
 
 if [[ -f "$secrets" ]]; then
   install -m660 "$secrets" "$dest$secrets"
 fi
 
-systemd-nspawn -D "$dest" -M space -E ANSIBLE_FORCE_COLOR=1 \
-  --bind /boot --bind /home -- \
-  ansible-pull -i space, -c local \
-    -U 'https://github.com/labitat/labitat-ansible.git' space.yml
+for i in /var/lib/machines /var/lib/portables; do
+  if [[ -d "$dest$i" ]]; then
+    btrfs subvolume delete "$dest$i"
+  fi
+  echo "Creating $i"
+  install -o root -g root -m755 -d "$dest$i"
+done
+
+exec systemd-nspawn \
+  -D "$dest" \
+  -M space \
+  -E ANSIBLE_FORCE_COLOR=1 \
+  --bind /boot \
+  --bind /home \
+  -- \
+  ansible-pull \
+  -i space.labitat.dk, \
+  -c local \
+  -U 'https://github.com/labitat/labitat-ansible.git' \
+  space.yml
 
 # vim: set ts=2 sw=2 et:

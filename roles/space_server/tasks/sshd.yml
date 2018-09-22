@@ -36,9 +36,11 @@
     regexp: '{{ item.regexp }}'
     line: '{{ item.line }}'
   with_items:
+  - regexp: '^[# ]*PermitRootLogin'
+    line: 'PermitRootLogin no'
   - regexp: '^PasswordAuthentication'
     line: 'PasswordAuthentication no'
-  - regexp: '^#*GSSAPIAuthentication'
+  - regexp: '^[# ]*GSSAPIAuthentication'
     line: 'GSSAPIAuthentication no'
   notify:
   - restart sshd

@@ -1,11 +1,10 @@
 ---
 - name: Install bird and bird6 packages
   dnf:
-    name: '{{ item }}'
+    name:
+    - bird
+    - bird6
     state: present
-  with_items:
-  - bird
-  - bird6
   tags:
   - packages
 

@@ -5,4 +5,4 @@
 {% else %}
 {% set subvol = '/%s%s' % (ansible_distribution.lower(), ansible_distribution_version) %}
 {% endif %}
-console=ttyS0,115200n8 ro root={{ root.device }} rootfstype=btrfs ro rootflags={{ root.options|regex_replace('noatime,','') }},subvol={{ subvol }} rootwait audit=0
+console=ttyS0,115200n8 ro root={{ root.device }} rootfstype=btrfs ro rootflags={{ root.options|regex_replace('noatime,','') }},subvol={{ subvol }} rootwait audit=0 systemd.unified_cgroup_hierarchy=1

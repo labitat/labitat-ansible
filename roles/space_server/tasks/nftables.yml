@@ -14,14 +14,6 @@
   tags:
   - packages
 
-- name: Symlink to /etc/nftables.conf
-  file:
-    path: '/etc/sysconfig/nftables.conf'
-    src: '../nftables.conf'
-    state: link
-    force: yes
-  notify:
-  - reload nftables
 - name: Configure nftables
   copy:
     dest: '/etc/nftables.conf'
@@ -29,6 +21,15 @@
     owner: root
     group: root
     mode: 0644
+  notify:
+  - reload nftables
+
+- name: Symlink to /etc/nftables.conf
+  file:
+    path: '/etc/sysconfig/nftables.conf'
+    src: '../nftables.conf'
+    state: link
+    force: yes
   notify:
   - reload nftables
 

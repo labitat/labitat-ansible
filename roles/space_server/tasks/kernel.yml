@@ -10,11 +10,15 @@
   - '/etc/kernel'
   - '/etc/kernel/install.d'
 
-- name: Mask grubby
+- name: Mask grub and grubby
   file:
-    path: '/etc/kernel/install.d/20-grubby.install'
+    path: '/etc/kernel/install.d/{{ item }}'
     src: '/dev/null'
     state: link
+    force: yes
+  with_items:
+  - 20-grub.install
+  - 20-grubby.install
 
 - name: Create syslinux loader entry and menu
   copy:
