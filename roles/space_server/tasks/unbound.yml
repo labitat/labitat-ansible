@@ -2,9 +2,7 @@
 - name: Install unbound package
   dnf:
     name: unbound
-    state: latest
-  notify:
-    - restart unbound
+    state: present
   tags:
     - packages
 

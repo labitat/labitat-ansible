@@ -2,9 +2,7 @@
 - name: Install dhcpd package
   dnf:
     name: dhcp-server
-    state: latest
-  notify:
-    - restart dhcpd
+    state: present
   tags:
     - packages
 

@@ -2,9 +2,7 @@
 - name: Install radvd package
   dnf:
     name: radvd
-    state: latest
-  notify:
-    - restart radvd
+    state: present
   tags:
     - packages
 

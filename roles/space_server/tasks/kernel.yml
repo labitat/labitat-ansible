@@ -46,7 +46,7 @@
 - name: Install kernel
   dnf:
     name: kernel
-    state: latest
+    state: present
   tags:
     - packages
 

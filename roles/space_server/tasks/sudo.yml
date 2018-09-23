@@ -2,7 +2,7 @@
 - name: Install sudo package
   dnf:
     name: sudo
-    state: latest
+    state: present
   tags:
     - packages
 

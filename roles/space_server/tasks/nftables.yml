@@ -10,7 +10,7 @@
 - name: Install nftables package
   dnf:
     name: nftables
-    state: latest
+    state: present
   tags:
     - packages
 

@@ -2,9 +2,7 @@
 - name: Install sshd package
   dnf:
     name: openssh-server
-    state: latest
-  notify:
-    - restart sshd
+    state: present
   tags:
     - packages
 

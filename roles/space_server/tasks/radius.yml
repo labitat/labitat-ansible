@@ -2,18 +2,16 @@
 - name: Install our freeradius-assha package
   dnf:
     name: '{{ item }}'
-    state: latest
+    state: present
   with_fileglob:
     - 'radius/freeradius-assha-*.fc{{ ansible_distribution_major_version }}.*.rpm'
-  notify:
-    - restart radiusd
   tags:
     - packages
 
 - name: Make sure curl and diffutils are installed
   dnf:
     name: '{{ item }}'
-    state: latest
+    state: present
   with_items:
     - curl
     - diffutils

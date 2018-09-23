@@ -2,16 +2,14 @@
 - name: Install avahi and tools
   dnf:
     name: avahi-tools # pulls in avahi package
-    state: latest
-  notify:
-    - restart avahi-daemon
+    state: present
   tags:
     - packages
 
 - name: Install nss-mdns package
   dnf:
     name: nss-mdns
-    state: latest
+    state: present
   tags:
     - packages
 
