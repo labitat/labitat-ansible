@@ -12,6 +12,9 @@
   template:
     src: unbound/unbound.conf.j2
     dest: '/etc/unbound/unbound.conf'
+    owner: root
+    group: root
+    mode: 0644
   notify:
     - restart unbound
 
@@ -32,5 +35,8 @@
   copy:
     dest: /etc/resolv.conf
     content: "nameserver 127.0.0.1\nnameserver ::1\n"
+    owner: root
+    group: root
+    mode: 0644
 
 # vim: set ts=2 sw=2 et ft=yaml:

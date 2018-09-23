@@ -84,6 +84,9 @@
   template:
     src: avahi/hosts.j2
     dest: '/etc/avahi/hosts'
+    owner: root
+    group: root
+    mode: 0644
   notify:
     - restart avahi-daemon
 

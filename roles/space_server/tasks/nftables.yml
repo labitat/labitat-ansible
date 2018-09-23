@@ -3,6 +3,9 @@
   copy:
     src: nftables/nftables.service
     dest: '/etc/systemd/system/nftables.service'
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Install nftables package
   dnf:
@@ -23,6 +26,9 @@
   copy:
     src: nftables/nftables.conf
     dest: '/etc/nftables.conf'
+    owner: root
+    group: root
+    mode: 0644
   notify:
     - reload nftables
 

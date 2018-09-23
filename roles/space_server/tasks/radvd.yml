@@ -12,6 +12,9 @@
   copy:
     src: radvd/radvd.conf
     dest: '/etc/radvd.conf'
+    owner: root
+    group: root
+    mode: 0644
   notify:
     - restart radvd
 
@@ -19,10 +22,16 @@
   file:
     dest: '/etc/systemd/system/radvd.service.d'
     state: directory
+    owner: root
+    group: root
+    mode: 0755
 - name: Start radvd after networks are configured
   copy:
     src: wait-online.conf
     dest: '/etc/systemd/system/radvd.service.d/wait-online.conf'
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Enable radvd service
   systemd:

@@ -3,10 +3,15 @@
   file:
     dest: /etc/systemd/scripts
     state: directory
+    owner: root
+    group: root
+    mode: 0755
 - name: Install blackhole script
   copy:
     src: blackhole/blackhole.sh
     dest: '/etc/systemd/scripts/blackhole.sh'
+    owner: root
+    group: root
     mode: 0755
   notify:
     - restart blackhole
@@ -15,6 +20,9 @@
   copy:
     src: blackhole/blackhole.service
     dest: '/etc/systemd/system/blackhole.service'
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Enable blackhole service
   systemd:

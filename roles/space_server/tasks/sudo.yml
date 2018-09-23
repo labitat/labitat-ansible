@@ -10,6 +10,8 @@
   copy:
     src: sudo/sudoers
     dest: '/etc/sudoers'
+    owner: root
+    group: root
     mode: 0440
     validate: visudo -cf %s
 

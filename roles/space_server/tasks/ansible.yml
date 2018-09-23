@@ -3,6 +3,9 @@
   copy:
     src: ansible/hosts
     dest: '/etc/ansible/hosts'
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Configure ansible
   ini_file:

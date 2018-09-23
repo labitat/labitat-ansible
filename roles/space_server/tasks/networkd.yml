@@ -3,6 +3,9 @@
   file:
     dest: '/etc/systemd/network'
     state: directory
+    owner: root
+    group: root
+    mode: 0755
 - name: Get current network config
   shell: 'ls -1 /etc/systemd/network/'
   check_mode: no
@@ -11,6 +14,9 @@
   copy:
     src: '{{ item }}'
     dest: '/etc/systemd/network/'
+    owner: root
+    group: root
+    mode: 0644
   with_fileglob:
     - 'networkd/network/*'
   register: network_files
@@ -29,10 +35,16 @@
   file:
     dest: '/etc/systemd/system/systemd-networkd-wait-online.service.d'
     state: directory
+    owner: root
+    group: root
+    mode: 0755
 - name: Don't wait for lan and mgt interfaces to come online
   copy:
     src: networkd/no-lan-mgt.conf
     dest: '/etc/systemd/system/systemd-networkd-wait-online.service.d/no-lan-mgt.conf'
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Enable systemd-networkd
   systemd:

@@ -7,6 +7,9 @@
   copy:
     dest: /etc/hostname
     content: "{{ hostname }}\n"
+    owner: root
+    group: root
+    mode: 0644
   when: chroot
 
 # vim: set ts=2 sw=2 et:

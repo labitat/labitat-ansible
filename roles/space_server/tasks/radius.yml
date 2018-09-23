@@ -77,6 +77,9 @@
   copy:
     src: 'radius/{{ item }}'
     dest: '/etc/systemd/system/{{ item }}'
+    owner: root
+    group: root
+    mode: 0644
   with_items:
     - getusers.service
     - getusers.timer
@@ -100,10 +103,16 @@
   file:
     dest: '/etc/systemd/system/radiusd.service.d'
     state: directory
+    owner: root
+    group: root
+    mode: 0755
 - name: Start radiusd after networks are configured
   copy:
     src: wait-online.conf
     dest: '/etc/systemd/system/radiusd.service.d/wait-online.conf'
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Enable radiusd service
   systemd:

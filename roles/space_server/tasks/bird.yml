@@ -15,11 +15,16 @@
   file:
     dest: '/etc/bird'
     state: directory
+    owner: root
+    group: root
     mode: 0755
 - name: Create bird configuration
   copy:
     src: '{{ item }}'
     dest: '/etc/bird/'
+    owner: root
+    group: root
+    mode: 0644
   with_fileglob:
     - 'bird/*'
   notify:
@@ -41,10 +46,16 @@
   file:
     dest: '/etc/systemd/system/bird6.service.d'
     state: directory
+    owner: root
+    group: root
+    mode: 0755
 - name: Start bird6 after networks are configured
   copy:
     src: wait-online.conf
     dest: '/etc/systemd/system/bird6.service.d/wait-online.conf'
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Enable bird and bird6
   systemd:

@@ -3,11 +3,15 @@
   file:
     path: '/etc/kernel'
     state: directory
+    owner: root
+    group: root
     mode: 0755
 - name: Make sure /etc/kernel/install.d exists
   file:
     path: '/etc/kernel/install.d'
     state: directory
+    owner: root
+    group: root
     mode: 0755
 
 - name: Mask grubby
@@ -20,17 +24,24 @@
   copy:
     src: kernel/90-loaderentry.install
     dest: '/etc/kernel/install.d/90-loaderentry.install'
+    owner: root
+    group: root
     mode: 0755
 - name: Create syslinux menu
   copy:
     src: kernel/95-syslinux-menu.install
     dest: '/etc/kernel/install.d/95-syslinux-menu.install'
+    owner: root
+    group: root
     mode: 0755
 
 - name: Set kernel command line
   template:
     src: cmdline.j2
     dest: '/etc/kernel/cmdline'
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Install kernel
   dnf:

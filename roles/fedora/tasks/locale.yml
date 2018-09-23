@@ -3,5 +3,8 @@
   template:
     src: locale.conf.j2
     dest: /etc/locale.conf
+    owner: root
+    group: root
+    mode: 0644
 
 # vim: set ts=2 sw=2 et:
