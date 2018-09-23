@@ -1,18 +1,14 @@
 ---
-- name: Make sure /etc/kernel exists
-  file:
-    path: '/etc/kernel'
-    state: directory
-    owner: root
-    group: root
-    mode: 0755
 - name: Make sure /etc/kernel/install.d exists
   file:
-    path: '/etc/kernel/install.d'
+    path: '{{ item }}'
     state: directory
     owner: root
     group: root
     mode: 0755
+  with_items:
+    - '/etc/kernel'
+    - '/etc/kernel/install.d'
 
 - name: Mask grubby
   file:
@@ -20,20 +16,14 @@
     state: link
     src: '/dev/null'
 
-- name: Create syslinux loader entry
+- name: Create syslinux loader entry and menu
   copy:
-    src: kernel/90-loaderentry.install
-    dest: '/etc/kernel/install.d/90-loaderentry.install'
+    src: '{{ item }}'
+    dest: '/etc/kernel/install.d/'
     owner: root
     group: root
     mode: 0755
-- name: Create syslinux menu
-  copy:
-    src: kernel/95-syslinux-menu.install
-    dest: '/etc/kernel/install.d/95-syslinux-menu.install'
-    owner: root
-    group: root
-    mode: 0755
+  with_fileglob: 'kernel/*.install'
 
 - name: Set kernel command line
   template:

@@ -19,19 +19,14 @@ BOOT_DIR="/$MACHINE_ID/$KERNEL_VERSION"
 BOOT_ROOT=${BOOT_DIR_ABS%$BOOT_DIR}
 MENU="$BOOT_ROOT/loader/${MACHINE_ID}.cfg"
 
-{
-    declare -a paths
-    len=0
-    for path in "$BOOT_ROOT/loader/entries/$MACHINE_ID"-*; do
-        paths[$((len++))]="$path"
-    done
+readarray -t ENTRIES < <(ls -1 -t "$BOOT_ROOT/loader/entries/$MACHINE_ID"-*)
 
-    i=0
-    while [[ $len -gt 0 ]]; do
-        path="${paths[$((--len))]}"
-        echo "LABEL $((++i))"
-        echo "INCLUDE ${path#$BOOT_ROOT}"
-    done
+{
+  i=0
+  for entry in "${ENTRIES[@]}"; do
+    echo "LABEL $((++i))"
+    echo "INCLUDE ${entry#$BOOT_ROOT}"
+  done
 } > "$MENU" || {
     echo "Could not create aggregated menu '$MENU'." >&2
     exit 1
