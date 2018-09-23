@@ -6,10 +6,6 @@
     owner: root
     group: root
     mode: 0755
-- name: Get current network config
-  shell: 'ls -1 /etc/systemd/network/'
-  check_mode: no
-  register: network_files_all
 - name: Configure network
   copy:
     src: '{{ item }}'
@@ -19,15 +15,6 @@
     mode: 0644
   with_fileglob:
     - 'networkd/network/*'
-  register: network_files
-  notify:
-    - restart networkd
-- name: Clean up old files
-  file:
-    path: '/etc/systemd/network/{{ item }}'
-    state: absent
-  with_items: '{{ network_files_all.stdout_lines }}'
-  when: "item not in network_files.results|map(attribute='path')|map('basename')"
   notify:
     - restart networkd
 
