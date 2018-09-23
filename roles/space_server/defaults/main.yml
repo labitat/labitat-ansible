@@ -5,24 +5,27 @@ locale:
   LC_COLLATE: 'C'
   LC_MESSAGES: 'C'
 timezone: 'Europe/Copenhagen'
-packages:
-  install:
-    - initscripts
-    - dosfstools
-    - btrfs-progs
-    - dnf
-    - python2-dnf
-    - 'dnf-command(leaves)'
-    - ansible
-    - python-netaddr
-    - vim-enhanced
-    - git
-    - diffutils
-    - htop
-    - man-db
-    - passwd
-    - syslinux
-    - systemd-container
+dnf_conf:
+  'main.install_weak_deps': 'False'
+  'main.best': 'True'
+  'main.deltarpm': 'False'
+dnf_packages:
+  'initscripts': present
+  'dosfstools': present
+  'btrfs-progs': present
+  'dnf': present
+  'python2-dnf': present
+  'dnf-command(leaves)': present
+  'ansible': present
+  'python-netaddr': present
+  'vim-enhanced': present
+  'git': present
+  'diffutils': present
+  'htop': present
+  'man-db': present
+  'passwd': present
+  'syslinux': present
+  'systemd-container': present
 boot:
   device: 'LABEL=BOOT'
   options: 'noauto,noatime,iocharset=iso8859-15,utf8,tz=UTC,dmask=0022,fmask=0133,x-systemd.automount,x-systemd.device-timeout=5min,x-systemd.idle-timeout=5min'

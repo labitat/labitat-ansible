@@ -1,46 +1,38 @@
 ---
 - name: Configure dnf.conf
   ini_file:
-    path: /etc/dnf/dnf.conf
+    path: '/etc/dnf/dnf.conf'
     no_extra_spaces: yes
-    section: '{{ item.section }}'
-    option: '{{ item.option }}'
-    value: '{{ item.value }}'
-  with_items:
-    - section: main
-      option: 'install_weak_deps'
-      value: 'False'
-    - section: main
-      option: 'best'
-      value: 'True'
-    - section: main
-      option: 'deltarpm'
-      value: 'False'
+    create: no
+    section: "{{ item.key.split('.',1)[0] }}"
+    option:  "{{ item.key.split('.',1)[1] }}"
+    value:   "{{ item.value|ternary(item.value,omit) }}"
+    state:   "{{ item.value|ternary('present','absent') }}"
+  with_dict: '{{ dnf_conf }}'
+
+- name: Remove packages
+  dnf:
+    name: '{{ item }}'
+    state: absent
+  with_items: "{{ dnf_packages|dictsort(true)|selectattr(1,'equalto','absent')|map(attribute=0)|list }}"
+
+  tags:
+  - packages
 
 - name: Update all packages
   dnf:
     name: '*'
     state: latest
   tags:
-    - update
-    - packages
-
-- name: Remove packages
-  dnf:
-    name: '{{ item }}'
-    state: absent
-  with_items: '{{ packages.remove }}'
-  when: "'remove' in packages"
-  tags:
-    - packages
+  - update
+  - packages
 
 - name: Install packages
   dnf:
     name: '{{ item }}'
-    state: latest
-  with_items: '{{ packages.install }}'
-  when: "'install' in packages"
+    state: present
+  with_items: "{{ dnf_packages|dictsort(true)|selectattr(1,'equalto','present')|map(attribute=0)|list }}"
   tags:
-    - packages
+  - packages
 
 # vim: set ts=2 sw=2 et:
