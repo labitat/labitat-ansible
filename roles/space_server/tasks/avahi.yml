@@ -1,15 +1,11 @@
 ---
-- name: Install avahi and tools
+- name: Install avahi, tools and nss-mdns
   dnf:
-    name: avahi-tools # pulls in avahi package
+    name: '{{ item }}'
     state: present
-  tags:
-    - packages
-
-- name: Install nss-mdns package
-  dnf:
-    name: nss-mdns
-    state: present
+  with_items:
+  - avahi-tools # pulls in avahi package
+  - nss-mdns
   tags:
     - packages
 
