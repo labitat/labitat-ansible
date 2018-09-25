@@ -14,7 +14,7 @@
 #
 #- name: Use systemd-resolved
 #  lineinfile:
-#    path: /etc/nsswitch.conf
+#    path: '/etc/nsswitch.conf'
 #    regexp: '^hosts:'
 #    line: 'hosts: files resolve [!UNAVAIL=return] dns myhostname'
 

@@ -8,8 +8,8 @@
 
 - name: Configure radvd
   copy:
-    src: radvd/radvd.conf
     dest: '/etc/radvd.conf'
+    src: radvd/radvd.conf
     owner: root
     group: root
     mode: 0644
@@ -25,8 +25,8 @@
     mode: 0755
 - name: Start radvd after networks are configured
   copy:
-    src: wait-online.conf
     dest: '/etc/systemd/system/radvd.service.d/wait-online.conf'
+    src: wait-online.conf
     owner: root
     group: root
     mode: 0644

@@ -8,8 +8,8 @@
 
 - name: Configure unbound
   template:
-    src: unbound/unbound.conf.j2
     dest: '/etc/unbound/unbound.conf'
+    src: unbound/unbound.conf.j2
     owner: root
     group: root
     mode: 0644
@@ -31,7 +31,7 @@
 
 - name: Use our own resolver
   copy:
-    dest: /etc/resolv.conf
+    dest: '/etc/resolv.conf'
     content: "nameserver 127.0.0.1\nnameserver ::1\n"
     owner: root
     group: root

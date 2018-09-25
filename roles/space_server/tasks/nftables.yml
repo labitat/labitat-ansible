@@ -1,8 +1,8 @@
 ---
 - name: Install our nftables service
   copy:
-    src: nftables/nftables.service
     dest: '/etc/systemd/system/nftables.service'
+    src: nftables/nftables.service
     owner: root
     group: root
     mode: 0644
@@ -17,15 +17,15 @@
 - name: Symlink to /etc/nftables.conf
   file:
     path: '/etc/sysconfig/nftables.conf'
-    state: link
     src: '../nftables.conf'
+    state: link
     force: yes
   notify:
     - reload nftables
 - name: Configure nftables
   copy:
-    src: nftables/nftables.conf
     dest: '/etc/nftables.conf'
+    src: nftables/nftables.conf
     owner: root
     group: root
     mode: 0644

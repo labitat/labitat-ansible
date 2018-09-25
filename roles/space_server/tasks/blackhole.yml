@@ -1,15 +1,15 @@
 ---
 - name: Create /etc/systemd/scripts
   file:
-    dest: /etc/systemd/scripts
+    dest: '/etc/systemd/scripts'
     state: directory
     owner: root
     group: root
     mode: 0755
 - name: Install blackhole script
   copy:
-    src: blackhole/blackhole.sh
     dest: '/etc/systemd/scripts/blackhole.sh'
+    src: blackhole/blackhole.sh
     owner: root
     group: root
     mode: 0755
@@ -18,8 +18,8 @@
 
 - name: Install blackhole service
   copy:
-    src: blackhole/blackhole.service
     dest: '/etc/systemd/system/blackhole.service'
+    src: blackhole/blackhole.service
     owner: root
     group: root
     mode: 0644

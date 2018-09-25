@@ -1,15 +1,15 @@
 ---
 - name: Create /etc/ansible/hosts
   copy:
-    src: ansible/hosts
     dest: '/etc/ansible/hosts'
+    src: ansible/hosts
     owner: root
     group: root
     mode: 0644
 
 - name: Configure ansible
   ini_file:
-    path: /etc/ansible/ansible.cfg
+    path: '/etc/ansible/ansible.cfg'
     section: '{{ item.section }}'
     option: '{{ item.option }}'
     value: '{{ item.value }}'

@@ -8,8 +8,8 @@
 
 - name: Configure dhcpd
   template:
-    src: dhcpd/dhcpd.conf.j2
     dest: '/etc/dhcp/dhcpd.conf'
+    src: dhcpd/dhcpd.conf.j2
     owner: root
     group: root
     mode: 0644

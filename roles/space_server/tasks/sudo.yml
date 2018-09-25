@@ -8,8 +8,8 @@
 
 - name: Install sudoers file
   copy:
-    src: sudo/sudoers
     dest: '/etc/sudoers'
+    src: sudo/sudoers
     owner: root
     group: root
     mode: 0440

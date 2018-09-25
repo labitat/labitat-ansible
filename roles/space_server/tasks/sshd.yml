@@ -11,13 +11,13 @@
     path: '/etc/ssh/sshd_config'
     regexp: '{{ item.regexp }}'
     line: '{{ item.line }}'
-  notify:
-    - restart sshd
   with_items:
     - regexp: '^PasswordAuthentication'
       line: 'PasswordAuthentication no'
     - regexp: '^#*GSSAPIAuthentication'
       line: 'GSSAPIAuthentication no'
+  notify:
+    - restart sshd
 
 - name: Enable sshd service
   systemd:

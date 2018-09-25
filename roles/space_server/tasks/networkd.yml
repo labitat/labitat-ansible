@@ -8,8 +8,8 @@
     mode: 0755
 - name: Configure network
   copy:
-    src: '{{ item }}'
     dest: '/etc/systemd/network/'
+    src: '{{ item }}'
     owner: root
     group: root
     mode: 0644
@@ -27,8 +27,8 @@
     mode: 0755
 - name: Don't wait for lan and mgt interfaces to come online
   copy:
-    src: networkd/no-lan-mgt.conf
     dest: '/etc/systemd/system/systemd-networkd-wait-online.service.d/no-lan-mgt.conf'
+    src: networkd/no-lan-mgt.conf
     owner: root
     group: root
     mode: 0644

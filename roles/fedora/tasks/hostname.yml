@@ -5,7 +5,7 @@
   when: not chroot
 - name: '- when in chroot'
   copy:
-    dest: /etc/hostname
+    dest: '/etc/hostname'
     content: "{{ hostname }}\n"
     owner: root
     group: root

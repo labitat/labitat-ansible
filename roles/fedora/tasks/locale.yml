@@ -1,8 +1,8 @@
 ---
 - name: Setting default locales
   template:
+    dest: '/etc/locale.conf'
     src: locale.conf.j2
-    dest: /etc/locale.conf
     owner: root
     group: root
     mode: 0644

@@ -29,8 +29,8 @@
     - restart radiusd
 - name: Configure radiusd
   copy:
-    src: 'radius/{{ item }}'
     dest: '/etc/raddb/{{ item }}'
+    src: 'radius/{{ item }}'
     owner: root
     group: radiusd
     mode: 0640
@@ -43,8 +43,8 @@
     - restart radiusd
 - name: Configure radius clients
   template:
-    src: 'radius/clients.conf.j2'
     dest: '/etc/raddb/clients.conf'
+    src: radius/clients.conf.j2
     owner: root
     group: radiusd
     mode: 0640
@@ -53,8 +53,8 @@
 - name: Enable labitat site
   file:
     path: '/etc/raddb/sites-enabled/{{ item }}'
-    state: link
     src: '../sites-available/{{ item }}'
+    state: link
     owner: root
     group: radiusd
     force: yes
@@ -66,15 +66,15 @@
 
 - name: Create getusers script
   template:
-    src: 'radius/getusers.sh.j2'
     dest: '/etc/raddb/getusers.sh'
+    src: radius/getusers.sh.j2
     owner: root
     group: radiusd
     mode: 0750
 - name: Create getusers service and timer
   copy:
-    src: 'radius/{{ item }}'
     dest: '/etc/systemd/system/{{ item }}'
+    src: 'radius/{{ item }}'
     owner: root
     group: root
     mode: 0644
@@ -106,8 +106,8 @@
     mode: 0755
 - name: Start radiusd after networks are configured
   copy:
-    src: wait-online.conf
     dest: '/etc/systemd/system/radiusd.service.d/wait-online.conf'
+    src: wait-online.conf
     owner: root
     group: root
     mode: 0644

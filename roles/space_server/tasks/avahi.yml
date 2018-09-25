@@ -15,7 +15,7 @@
 
 - name: Configure avahi-daemon
   ini_file:
-    path: /etc/avahi/avahi-daemon.conf
+    path: '/etc/avahi/avahi-daemon.conf'
     no_extra_spaces: yes
     section: '{{ item.section }}'
     option: '{{ item.option }}'
@@ -80,8 +80,8 @@
 
 - name: Configure hosts
   template:
-    src: avahi/hosts.j2
     dest: '/etc/avahi/hosts'
+    src: avahi/hosts.j2
     owner: root
     group: root
     mode: 0644
@@ -103,7 +103,7 @@
 
 - name: Use nss-mdns
   lineinfile:
-    path: /etc/nsswitch.conf
+    path: '/etc/nsswitch.conf'
     regexp: '^hosts:'
     line: 'hosts:      files mdns_minimal [NOTFOUND=return] dns myhostname'
 

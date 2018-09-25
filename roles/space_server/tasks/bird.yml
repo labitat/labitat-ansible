@@ -18,8 +18,8 @@
     mode: 0755
 - name: Create bird configuration
   copy:
-    src: '{{ item }}'
     dest: '/etc/bird/'
+    src: '{{ item }}'
     owner: root
     group: root
     mode: 0644
@@ -31,8 +31,8 @@
 - name: Create bird.conf and bird6.conf symlinks
   file:
     path: '/etc/{{ item }}.conf'
-    state: link
     src: 'bird/{{ item }}.conf'
+    state: link
     force: yes
   with_items:
     - bird
@@ -49,8 +49,8 @@
     mode: 0755
 - name: Start bird6 after networks are configured
   copy:
-    src: wait-online.conf
     dest: '/etc/systemd/system/bird6.service.d/wait-online.conf'
+    src: wait-online.conf
     owner: root
     group: root
     mode: 0644

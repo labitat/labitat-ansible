@@ -13,13 +13,13 @@
 - name: Mask grubby
   file:
     path: '/etc/kernel/install.d/20-grubby.install'
-    state: link
     src: '/dev/null'
+    state: link
 
 - name: Create syslinux loader entry and menu
   copy:
-    src: '{{ item }}'
     dest: '/etc/kernel/install.d/'
+    src: '{{ item }}'
     owner: root
     group: root
     mode: 0755
@@ -27,8 +27,8 @@
 
 - name: Set kernel command line
   template:
-    src: cmdline.j2
     dest: '/etc/kernel/cmdline'
+    src: cmdline.j2
     owner: root
     group: root
     mode: 0644
