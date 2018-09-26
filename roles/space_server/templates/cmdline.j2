@@ -1,5 +1,8 @@
-{% if ansible_distribution_release == 'Rawhide' %}
-console=ttyS0,115200n8 ro root={{ root.device }} rootfstype=btrfs ro rootflags={{ root.options|regex_replace('noatime,','') }},subvol=/rawhide rootwait audit=0
+{% if 'subvolume' in root %}
+{% set subvol = root.subvolume %}
+{% elif ansible_distribution_release == 'Rawhide' %}
+{% set subvol = '/rawhide' %}
 {% else %}
-console=ttyS0,115200n8 ro root={{ root.device }} rootfstype=btrfs ro rootflags={{ root.options|regex_replace('noatime,','') }},subvol=/{{ ansible_distribution.lower() }}{{ ansible_distribution_version }} rootwait audit=0
+{% set subvol = '/%s%s' % (ansible_distribution.lower(), ansible_distribution_version) %}
 {% endif %}
+console=ttyS0,115200n8 ro root={{ root.device }} rootfstype=btrfs ro rootflags={{ root.options|regex_replace('noatime,','') }},subvol={{ subvol }} rootwait audit=0
