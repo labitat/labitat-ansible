@@ -4,3 +4,11 @@ Name=lo
 [Network]
 Address=185.38.175.0/32
 Address=2a01:4262:1ab::/128
+
+[Route]
+Type=unreachable
+Destination=185.38.175.0/24
+
+[Route]
+Type=unreachable
+Destination=2a01:4262:1ab::/48

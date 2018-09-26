@@ -23,8 +23,6 @@
   tags: networkd
 - import_tasks: nftables.yml
   tags: nftables
-- import_tasks: blackhole.yml
-  tags: blackhole
 - import_tasks: sshd.yml
   tags: sshd
 - import_tasks: bird.yml
