@@ -2,7 +2,7 @@
 - name: root .bash_profile
   copy:
     dest: '/root/.bash_profile'
-    src: files/bash_profile.sh
+    src: root/bash_profile.sh
     owner: root
     group: root
     mode: 0644
@@ -10,7 +10,7 @@
 - name: root .bashrc
   template:
     dest: '/root/.bashrc'
-    src: files/bashrc.sh.j2
+    src: root/bashrc.sh.j2
     owner: root
     group: root
     mode: 0644

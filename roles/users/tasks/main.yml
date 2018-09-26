@@ -1,4 +1,8 @@
 ---
+- import_tasks: root.yml
+  tags:
+    - users
+    - root
 - import_tasks: esmil.yml
   tags:
     - users
