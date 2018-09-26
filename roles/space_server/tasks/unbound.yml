@@ -9,7 +9,7 @@
 - name: Configure unbound
   template:
     dest: '/etc/unbound/unbound.conf'
-    src: unbound/unbound.conf.j2
+    src: unbound.conf.j2
     owner: root
     group: root
     mode: 0644

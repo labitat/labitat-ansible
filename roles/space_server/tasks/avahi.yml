@@ -77,7 +77,7 @@
 - name: Configure hosts
   template:
     dest: '/etc/avahi/hosts'
-    src: avahi/hosts.j2
+    src: avahi-hosts.j2
     owner: root
     group: root
     mode: 0644

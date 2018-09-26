@@ -2,7 +2,7 @@
 - name: Install our nftables service
   copy:
     dest: '/etc/systemd/system/nftables.service'
-    src: nftables/nftables.service
+    src: nftables.service
     owner: root
     group: root
     mode: 0644
@@ -25,7 +25,7 @@
 - name: Configure nftables
   copy:
     dest: '/etc/nftables.conf'
-    src: nftables/nftables.conf
+    src: nftables.conf
     owner: root
     group: root
     mode: 0644

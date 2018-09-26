@@ -9,7 +9,7 @@
 - name: Configure dhcpd
   template:
     dest: '/etc/dhcp/dhcpd.conf'
-    src: dhcpd/dhcpd.conf.j2
+    src: dhcpd.conf.j2
     owner: root
     group: root
     mode: 0644

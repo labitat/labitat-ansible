@@ -19,7 +19,7 @@
     owner: root
     group: root
     mode: 0644
-  with_fileglob: 'networkd/network/*'
+  with_fileglob: 'network/*'
   register: networkd_created
 
 - name: Delete unneeded network configuration
@@ -39,7 +39,7 @@
 - name: Don't wait for lan and mgt interfaces to come online
   copy:
     dest: '/etc/systemd/system/systemd-networkd-wait-online.service.d/no-lan-mgt.conf'
-    src: networkd/no-lan-mgt.conf
+    src: networkd-no-lan-mgt.conf
     owner: root
     group: root
     mode: 0644

@@ -9,7 +9,7 @@
 - name: Install blackhole script
   copy:
     dest: '/etc/systemd/scripts/blackhole.sh'
-    src: blackhole/blackhole.sh
+    src: blackhole.sh
     owner: root
     group: root
     mode: 0755
@@ -19,7 +19,7 @@
 - name: Install blackhole service
   copy:
     dest: '/etc/systemd/system/blackhole.service'
-    src: blackhole/blackhole.service
+    src: blackhole.service
     owner: root
     group: root
     mode: 0644

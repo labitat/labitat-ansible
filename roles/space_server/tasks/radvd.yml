@@ -9,7 +9,7 @@
 - name: Configure radvd
   copy:
     dest: '/etc/radvd.conf'
-    src: radvd/radvd.conf
+    src: radvd.conf
     owner: root
     group: root
     mode: 0644

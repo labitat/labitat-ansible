@@ -9,7 +9,7 @@
 - name: Install sudoers file
   copy:
     dest: '/etc/sudoers'
-    src: sudo/sudoers
+    src: sudoers
     owner: root
     group: root
     mode: 0440
