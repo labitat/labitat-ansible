@@ -4,10 +4,10 @@
     name: '{{ item }}'
     state: present
   with_items:
-    - bird
-    - bird6
+  - bird
+  - bird6
   tags:
-    - packages
+  - packages
 
 - name: Make sure /etc/bird exists
   file:
@@ -23,10 +23,9 @@
     owner: root
     group: root
     mode: 0644
-  with_fileglob:
-    - 'bird/*'
+  with_fileglob: 'bird/*'
   notify:
-    - restart bird
+  - restart bird
 
 - name: Create bird.conf and bird6.conf symlinks
   file:
@@ -35,8 +34,8 @@
     state: link
     force: yes
   with_items:
-    - bird
-    - bird6
+  - bird
+  - bird6
 
 # bird6 wants the link to have a link-local address
 # when starting, so wait for it
@@ -62,16 +61,16 @@
     masked: no
     state: started
   with_items:
-    - bird
-    - bird6
+  - bird
+  - bird6
   when: not chroot
 - name: '- when in chroot'
   command: 'systemctl enable {{ item }}.service'
   args:
     creates: '/etc/systemd/system/multi-user.target.wants/{{ item }}.service'
   with_items:
-    - bird
-    - bird6
+  - bird
+  - bird6
   when: chroot
 
 # vim: set ts=2 sw=2 et:

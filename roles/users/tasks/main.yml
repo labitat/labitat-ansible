@@ -1,39 +1,39 @@
 ---
 - import_tasks: root.yml
   tags:
-    - users
-    - root
+  - users
+  - root
 - import_tasks: esmil.yml
   tags:
-    - users
-    - esmil
+  - users
+  - esmil
 - import_tasks: ast.yml
   tags:
-    - users
-    - ast
+  - users
+  - ast
 - import_tasks: flummer.yml
   tags:
-    - users
-    - flummer
+  - users
+  - flummer
 - import_tasks: riiiis.yml
   tags:
-    - users
-    - riiiis
+  - users
+  - riiiis
 - import_tasks: knielsen.yml
   tags:
-    - users
-    - knielsen
+  - users
+  - knielsen
 - import_tasks: k2OS.yml
   tags:
-    - users
-    - k2OS
+  - users
+  - k2OS
 - import_tasks: signout.yml
   tags:
-    - users
-    - signout
+  - users
+  - signout
 - import_tasks: semi.yml
   tags:
-    - users
-    - semi
+  - users
+  - semi
 
 # vim: set ts=2 sw=2 et:

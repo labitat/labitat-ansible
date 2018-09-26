@@ -6,14 +6,14 @@
     uid: 1003
     group: users
     groups:
-      - wheel
+    - wheel
 
 - name: riiiis - authorized_keys
   authorized_key:
     user: riiiis
     key: '{{ item }}'
   with_items:
-    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDA/44Ucz9o402vT+aqlQGM37cIagF+lo7tVEvSbksuNC1DgUCTXHzhLG3STx2SdTbL+toGe9p7z/lW5xysPcS01heFt+XzbJbEVTHfXmng0NgIxZPactgJJ0ulCoGe+ehefnVgTFnidTxkm1MngeJbYqlNP5nf6RgygB+yM4P4GGtl2Sa/D/oWuQB7CIvtRrLGl96ON31AwWfVmXRsNT/rqmuMmqvJpR+ZaONfbN3JVYu7J1aHpkIRAN+5LsaSueZTTrmIxI3oGzuIrqegjsf9DxeVnjg6ZppKFSrWKMTx90Ao+Whea7UyXSiAcPl+UEWuE8zf1yVr0V4IxC+TDwuB riiiis@KosmoHP'
-    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOl1iI6dXybz5OhwXFim8FW+KGCGY1Nyx8QMTQjoX1fU0SrBgD8UElq8TbnZjVwrjv1qu53HhHJlZDWr5LGoi9SbBhHEq+zTWzLQwBlUdTv9fkLRTcOENKRM7Y71U/bhPzoIJPF6CBln8X+0Ymvzc8JHh3CP9bJiIxk4cBkgxwL6j6q2Laf+rVLUwdEGN4+T6OsGXIVyF8+pCwa2XmgRf+WVuUj8PAB4SnMYcbH3bOd+twG1CIU89RqLRAxKEGaS9vsuUAHtXxfkyrYyxSeVw0HcyjCom+/K/S5VtdomkgMHTDZ6S6Ua+nlu8x6tY6K83Zgnq/GJZ0TxcA4PCRkwtR riiiis@3k3'
+  - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDA/44Ucz9o402vT+aqlQGM37cIagF+lo7tVEvSbksuNC1DgUCTXHzhLG3STx2SdTbL+toGe9p7z/lW5xysPcS01heFt+XzbJbEVTHfXmng0NgIxZPactgJJ0ulCoGe+ehefnVgTFnidTxkm1MngeJbYqlNP5nf6RgygB+yM4P4GGtl2Sa/D/oWuQB7CIvtRrLGl96ON31AwWfVmXRsNT/rqmuMmqvJpR+ZaONfbN3JVYu7J1aHpkIRAN+5LsaSueZTTrmIxI3oGzuIrqegjsf9DxeVnjg6ZppKFSrWKMTx90Ao+Whea7UyXSiAcPl+UEWuE8zf1yVr0V4IxC+TDwuB riiiis@KosmoHP'
+  - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOl1iI6dXybz5OhwXFim8FW+KGCGY1Nyx8QMTQjoX1fU0SrBgD8UElq8TbnZjVwrjv1qu53HhHJlZDWr5LGoi9SbBhHEq+zTWzLQwBlUdTv9fkLRTcOENKRM7Y71U/bhPzoIJPF6CBln8X+0Ymvzc8JHh3CP9bJiIxk4cBkgxwL6j6q2Laf+rVLUwdEGN4+T6OsGXIVyF8+pCwa2XmgRf+WVuUj8PAB4SnMYcbH3bOd+twG1CIU89RqLRAxKEGaS9vsuUAHtXxfkyrYyxSeVw0HcyjCom+/K/S5VtdomkgMHTDZ6S6Ua+nlu8x6tY6K83Zgnq/GJZ0TxcA4PCRkwtR riiiis@3k3'
 
 # vim: set ts=2 sw=2 et:

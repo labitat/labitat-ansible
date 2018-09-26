@@ -14,7 +14,7 @@
     group: root
     mode: 0755
   notify:
-    - restart blackhole
+  - restart blackhole
 
 - name: Install blackhole service
   copy:

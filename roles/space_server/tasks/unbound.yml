@@ -4,7 +4,7 @@
     name: unbound
     state: present
   tags:
-    - packages
+  - packages
 
 - name: Configure unbound
   template:
@@ -14,7 +14,7 @@
     group: root
     mode: 0644
   notify:
-    - restart unbound
+  - restart unbound
 
 - name: Enable unbound service
   systemd:

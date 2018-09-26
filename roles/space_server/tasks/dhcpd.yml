@@ -4,7 +4,7 @@
     name: dhcp-server
     state: present
   tags:
-    - packages
+  - packages
 
 - name: Configure dhcpd
   template:
@@ -14,7 +14,7 @@
     group: root
     mode: 0644
   notify:
-    - restart dhcpd
+  - restart dhcpd
 
 - name: Enable dhcpd service
   systemd:

@@ -4,7 +4,7 @@
     name: sudo
     state: present
   tags:
-    - packages
+  - packages
 
 - name: Install sudoers file
   copy:

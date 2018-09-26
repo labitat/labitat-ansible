@@ -28,8 +28,8 @@
     name: '{{ item }}.service'
     state: restarted
   with_items:
-    - bird
-    - bird6
+  - bird
+  - bird6
   when: not chroot
 
 - name: restart dhcpd

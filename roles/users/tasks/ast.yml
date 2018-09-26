@@ -6,7 +6,7 @@
     uid: 1001
     group: users
     groups:
-      - wheel
+    - wheel
 
 - name: ast - authorized_keys
   authorized_key:

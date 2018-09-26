@@ -12,7 +12,7 @@
     name: nftables
     state: present
   tags:
-    - packages
+  - packages
 
 - name: Symlink to /etc/nftables.conf
   file:
@@ -21,7 +21,7 @@
     state: link
     force: yes
   notify:
-    - reload nftables
+  - reload nftables
 - name: Configure nftables
   copy:
     dest: '/etc/nftables.conf'
@@ -30,7 +30,7 @@
     group: root
     mode: 0644
   notify:
-    - reload nftables
+  - reload nftables
 
 - name: Enable nftables service
   systemd:

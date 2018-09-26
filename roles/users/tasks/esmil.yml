@@ -6,7 +6,7 @@
     uid: 1000
     group: users
     groups:
-      - wheel
+    - wheel
 
 - name: esmil - authorized_keys
   authorized_key:

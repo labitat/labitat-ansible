@@ -7,8 +7,8 @@
     group: root
     mode: 0755
   with_items:
-    - '/etc/kernel'
-    - '/etc/kernel/install.d'
+  - '/etc/kernel'
+  - '/etc/kernel/install.d'
 
 - name: Mask grubby
   file:
@@ -38,6 +38,6 @@
     name: kernel
     state: present
   tags:
-    - packages
+  - packages
 
 # vim: set ts=2 sw=2 et:

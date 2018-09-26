@@ -3,30 +3,29 @@
   dnf:
     name: '{{ item }}'
     state: present
-  with_fileglob:
-    - 'radius/freeradius-assha-*.fc{{ ansible_distribution_major_version }}.*.rpm'
+  with_fileglob: 'radius/freeradius-assha-*.fc{{ ansible_distribution_major_version }}.*.rpm'
   tags:
-    - packages
+  - packages
 
 - name: Make sure curl and diffutils are installed
   dnf:
     name: '{{ item }}'
     state: present
   with_items:
-    - curl
-    - diffutils
+  - curl
+  - diffutils
   tags:
-    - packages
+  - packages
 
 - name: Disable default site
   file:
     path: '/etc/raddb/sites-enabled/{{ item }}'
     state: absent
   with_items:
-    - default
-    - inner-tunnel
+  - default
+  - inner-tunnel
   notify:
-    - restart radiusd
+  - restart radiusd
 - name: Configure radiusd
   copy:
     dest: '/etc/raddb/{{ item }}'
@@ -35,12 +34,12 @@
     group: radiusd
     mode: 0640
   with_items:
-    - radiusd.conf
-    - mods-available/eap
-    - sites-available/labitat
-    - sites-available/labitat-inner
+  - radiusd.conf
+  - mods-available/eap
+  - sites-available/labitat
+  - sites-available/labitat-inner
   notify:
-    - restart radiusd
+  - restart radiusd
 - name: Configure radius clients
   template:
     dest: '/etc/raddb/clients.conf'
@@ -49,7 +48,7 @@
     group: radiusd
     mode: 0640
   notify:
-    - restart radiusd
+  - restart radiusd
 - name: Enable labitat site
   file:
     path: '/etc/raddb/sites-enabled/{{ item }}'
@@ -59,10 +58,10 @@
     group: radiusd
     force: yes
   with_items:
-    - labitat
-    - labitat-inner
+  - labitat
+  - labitat-inner
   notify:
-    - restart radiusd
+  - restart radiusd
 
 - name: Create getusers script
   template:
@@ -79,10 +78,10 @@
     group: root
     mode: 0644
   with_items:
-    - getusers.service
-    - getusers.timer
+  - getusers.service
+  - getusers.timer
   notify:
-    - restart getusers
+  - restart getusers
 
 - name: Enable getusers timer
   systemd:

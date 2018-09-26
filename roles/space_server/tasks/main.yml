@@ -7,7 +7,7 @@
     group: root
     mode: 0644
   tags:
-    - fstab
+  - fstab
 
 - import_tasks: ansible.yml
   tags: ansible

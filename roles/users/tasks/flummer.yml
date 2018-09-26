@@ -6,7 +6,7 @@
     uid: 1002
     group: users
     groups:
-      - wheel
+    - wheel
 
 - name: flummer - authorized_keys
   authorized_key:

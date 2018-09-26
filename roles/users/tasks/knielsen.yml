@@ -6,7 +6,7 @@
     uid: 1004
     group: users
     groups:
-      - wheel
+    - wheel
 
 - name: knielsen - authorized_keys
   authorized_key:

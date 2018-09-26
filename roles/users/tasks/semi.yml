@@ -6,7 +6,7 @@
     uid: 1010
     group: users
     groups:
-      - wheel
+    - wheel
 
 - name: semi - authorized_keys
   authorized_key:

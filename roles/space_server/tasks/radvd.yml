@@ -4,7 +4,7 @@
     name: radvd
     state: present
   tags:
-    - packages
+  - packages
 
 - name: Configure radvd
   copy:
@@ -14,7 +14,7 @@
     group: root
     mode: 0644
   notify:
-    - restart radvd
+  - restart radvd
 
 - name: Create service drop-in directory
   file:
