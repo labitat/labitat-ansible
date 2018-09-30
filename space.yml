@@ -1,5 +1,5 @@
 ---
-- hosts: space
+- hosts: space.labitat.dk
   pre_tasks:
   - name: Detect chroot
     set_fact:
