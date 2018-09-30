@@ -14,4 +14,17 @@
     user: esmil
     key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUS/4G4YgI7LeJll8BUHCcdkCK3klSxzhqEY3X2df5+ esmil@stitch'
 
+- name: esmil - copy dotfiles
+  copy:
+    dest: '~esmil/.{{ item }}'
+    src: 'esmil/{{ item }}'
+    owner: esmil
+    group: users
+    mode: 0644
+  with_items:
+  - bash_profile
+  - bashrc
+  - bashrc_root
+  - gitconfig
+
 # vim: set ts=2 sw=2 et:

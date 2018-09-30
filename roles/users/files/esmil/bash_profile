@@ -1,0 +1,5 @@
+export LANG=da_DK.UTF-8
+export LC_COLLATE=C
+export LC_MESSAGES=C
+
+. "$HOME/.bashrc"

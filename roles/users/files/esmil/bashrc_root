@@ -1,0 +1,40 @@
+# if not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+export PS1='\[\e[1;31m\]\u\[\e[00m\]@\[\e[0;31m\]\h\[\e[1;34m\]\w\[\e[00m\]\$ '
+unset PROMPT_COMMAND
+export -n PROMPT_COMMAND
+
+# directory listing
+if type dircolors > /dev/null 2>&1; then
+  eval "$(dircolors -b)"
+fi
+alias ls='ls --color=auto -F'
+alias ll='ls -Ahl'
+
+# some more alias to avoid making mistakes:
+alias rm='rm -ri'
+alias cp='cp -rid'
+alias mv='mv -i'
+
+# editor
+export EDITOR='vim'
+alias vi='vim'
+
+# pager
+export PAGER='less'
+export LESS='-FRXS'
+
+# network
+alias ip6='ip -6'
+
+# systemd
+alias start='systemctl start'
+alias stop='systemctl stop'
+alias restart='systemctl restart'
+alias status='systemctl status'
+alias cgls='systemd-cgls'
+alias cgtop='systemd-cgtop'
+
+stty -ixon
+cd

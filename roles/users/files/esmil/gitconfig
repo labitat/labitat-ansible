@@ -1,0 +1,24 @@
+[user]
+	name = Emil Renner Berthing
+	email = esmil@mailme.dk
+[color]
+	ui = auto
+[apply]
+	whitespace = warn
+[alias]
+	cdiff = diff --cached
+	co = checkout
+	cp = cherry-pick
+	st = status
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	graph = log --all --graph --decorate --oneline --abbrev-commit
+[core]
+	editor = vim
+[log]
+	decorate = true
+[push]
+	default = upstream
+[rebase]
+	autoSquash = true
+[clean]
+	requireForce = false
