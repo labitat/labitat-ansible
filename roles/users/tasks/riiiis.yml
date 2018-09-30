@@ -3,10 +3,11 @@
   user:
     comment: 'Christian Riis'
     name: riiiis
+    shell: '/bin/bash'
     uid: 1003
     group: users
     groups:
-    - wheel
+    - '{{ sudo_group }}'
 
 - name: riiiis - authorized_keys
   authorized_key:

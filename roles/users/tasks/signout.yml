@@ -3,10 +3,11 @@
   user:
     comment: 'Dennis K Jensen'
     name: signout
+    shell: '/bin/bash'
     uid: 1024
     group: users
     groups:
-    - wheel
+    - '{{ sudo_group }}'
 
 - name: signout - authorized_keys
   authorized_key:

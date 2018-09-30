@@ -3,10 +3,11 @@
   user:
     comment: 'René Mikkelsen'
     name: k2OS
+    shell: '/bin/bash'
     uid: 1005
     group: users
     groups:
-    - wheel
+    - '{{ sudo_group }}'
 
 - name: k2OS - authorized_keys
   authorized_key:

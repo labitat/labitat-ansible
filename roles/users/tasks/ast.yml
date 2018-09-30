@@ -3,10 +3,11 @@
   user:
     comment: 'Asbjørn Sloth Tønnesen'
     name: ast
+    shell: '/bin/bash'
     uid: 1001
     group: users
     groups:
-    - wheel
+    - '{{ sudo_group }}'
 
 - name: ast - authorized_keys
   authorized_key:

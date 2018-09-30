@@ -3,10 +3,11 @@
   user:
     comment: 'Thomas Flummer'
     name: flummer
+    shell: '/bin/bash'
     uid: 1002
     group: users
     groups:
-    - wheel
+    - '{{ sudo_group }}'
 
 - name: flummer - authorized_keys
   authorized_key:
