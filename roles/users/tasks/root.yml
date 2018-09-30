@@ -1,18 +1,13 @@
 ---
-- name: root .bash_profile
+- name: root - dotfiles
   copy:
-    dest: '/root/.bash_profile'
-    src: root/bash_profile.sh
+    dest: '~root/.{{ item }}'
+    src: 'root/{{ item }}'
     owner: root
     group: root
     mode: 0644
-
-- name: root .bashrc
-  template:
-    dest: '/root/.bashrc'
-    src: root/bashrc.sh.j2
-    owner: root
-    group: root
-    mode: 0644
+  with_items:
+  - bash_profile
+  - bashrc
 
 # vim: set ts=2 sw=2 et:

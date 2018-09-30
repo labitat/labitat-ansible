@@ -1,0 +1,5 @@
+if [[ -n "$SUDO_USER" && -f "/home/$SUDO_USER/.bashrc_root" ]]; then
+  . "/home/$SUDO_USER/.bashrc_root"
+else
+  . "$HOME/.bashrc"
+fi
