@@ -1,9 +1,10 @@
 ---
 hostname: 'space'
 locale:
-  LANG: 'da_DK.UTF-8'
-  LC_COLLATE: 'C'
-  LC_MESSAGES: 'C'
+  default:
+    LANG: 'da_DK.UTF-8'
+    LC_COLLATE: 'C'
+    LC_MESSAGES: 'C'
 timezone: 'Europe/Copenhagen'
 dnf_conf:
   'main.install_weak_deps': 'False'
