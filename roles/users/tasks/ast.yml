@@ -4,7 +4,7 @@
     comment: 'Asbjørn Sloth Tønnesen'
     name: ast
     shell: '/bin/bash'
-    uid: 1001
+    uid: 2001
     group: users
     groups:
     - '{{ sudo_group }}'

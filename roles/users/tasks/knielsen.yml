@@ -4,7 +4,7 @@
     comment: 'Kristian Nielsen'
     name: knielsen
     shell: '/bin/bash'
-    uid: 1004
+    uid: 2004
     group: users
     groups:
     - '{{ sudo_group }}'

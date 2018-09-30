@@ -4,7 +4,7 @@
     comment: 'René Mikkelsen'
     name: k2OS
     shell: '/bin/bash'
-    uid: 1005
+    uid: 2005
     group: users
     groups:
     - '{{ sudo_group }}'

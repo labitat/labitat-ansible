@@ -4,7 +4,7 @@
     comment: 'Troels Bang Jensen'
     name: semi
     shell: '/bin/bash'
-    uid: 1010
+    uid: 2010
     group: users
     groups:
     - '{{ sudo_group }}'

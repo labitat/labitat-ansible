@@ -4,7 +4,7 @@
     comment: 'Dennis K Jensen'
     name: signout
     shell: '/bin/bash'
-    uid: 1024
+    uid: 2024
     group: users
     groups:
     - '{{ sudo_group }}'
