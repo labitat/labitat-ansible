@@ -102,5 +102,9 @@ local_hosts:
 - name: sound
   ips:
   - 10.42.1.80
-  
+- name: snakeskin
+  mac: b8:27:eb:9b:64:d9
+  ips:
+  - 10.42.1.55
+
 # vim: set ts=2 sw=2 et:
