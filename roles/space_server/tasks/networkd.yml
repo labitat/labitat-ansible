@@ -6,6 +6,12 @@
     owner: root
     group: root
     mode: 0755
+
+- name: Register existing network configuration
+  find:
+    paths: '/etc/systemd/network'
+  register: networkd_existing
+
 - name: Configure network
   copy:
     dest: '/etc/systemd/network/'
@@ -14,6 +20,14 @@
     group: root
     mode: 0644
   with_fileglob: 'networkd/network/*'
+  register: networkd_created
+
+- name: Delete unneeded network configuration
+  file:
+    path: '{{ item }}'
+    state: absent
+  with_items: "{{ networkd_existing.files|map(attribute='path')|list }}"
+  when: "item not in networkd_created.results|map(attribute='dest')"
 
 - name: Create systemd-networkd-wait-online drop-in directory
   file:
