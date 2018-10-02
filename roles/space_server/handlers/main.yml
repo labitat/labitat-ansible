@@ -5,12 +5,6 @@
     state: reloaded
   when: not chroot
 
-- name: restart networkd
-  systemd:
-    name: systemd-networkd.service
-    state: restarted
-  when: not chroot
-
 - name: restart blackhole
   systemd:
     name: blackhole.service

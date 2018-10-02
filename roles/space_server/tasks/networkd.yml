@@ -14,8 +14,6 @@
     group: root
     mode: 0644
   with_fileglob: 'networkd/network/*'
-  notify:
-  - restart networkd
 
 - name: Create systemd-networkd-wait-online drop-in directory
   file:
