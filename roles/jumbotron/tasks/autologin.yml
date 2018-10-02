@@ -1,0 +1,32 @@
+---
+- name: Make sure getty@tty1.service.d exists
+  file:
+    path: '/etc/systemd/system/getty@tty1.service.d'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Register existing getty@tty1 config
+  find:
+    paths: '/etc/systemd/system/getty@tty1.service.d/'
+  register: getty_tty1_existing
+
+- name: Autologin jumbotron on tty1
+  copy:
+    dest: '/etc/systemd/system/getty@tty1.service.d/'
+    src: '{{ item }}'
+    owner: root
+    group: root
+    mode: 0644
+  with_fileglob: 'getty@tty1.service.d/*'
+  register: getty_tty1_created
+
+- name: Delete unneeded tty1 configuration
+  file:
+    path: '{{ item }}'
+    state: absent
+  with_items: "{{ getty_tty1_existing.files|map(attribute='path')|list }}"
+  when: "item not in getty_tty1_created.results|map(attribute='dest')"
+
+# vim: set ts=2 sw=2 et:

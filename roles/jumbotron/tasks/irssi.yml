@@ -1,0 +1,35 @@
+---
+- name: Install irssi
+  apt:
+    name: irssi
+    state: present
+  tags:
+  - packages
+
+- name: Make sure ~jumbotron/.irssi exists
+  file:
+    path: '~jumbotron/{{ item }}'
+    state: directory
+    owner: jumbotron
+    group: users
+    mode: 0755
+  with_items:
+  - .irssi
+  - .irssi/scripts
+  - .irssi/scripts/autorun
+
+- name: Configure irssi
+  copy:
+    dest: '~jumbotron/.irssi/config'
+    src: 'irssi.config'
+    owner: jumbotron
+    group: users
+    mode: 0644
+
+- name: Add bot-script
+  file:
+    path: '~jumbotron/.irssi/scripts/autorun/jumbowatch.pl'
+    src: '../../../jumbotron/jumbowatch.pl'
+    state: link
+
+# vim: set ts=2 sw=2 et:

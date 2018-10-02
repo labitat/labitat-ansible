@@ -1,0 +1,5 @@
+if [[ "$(tty)" = '/dev/tty1' ]]; then
+  exec "$HOME/.autologin"
+fi
+
+. "$HOME/.bashrc"

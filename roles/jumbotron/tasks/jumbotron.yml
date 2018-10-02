@@ -1,0 +1,37 @@
+---
+- name: Create jumbotron user
+  user:
+    comment: 'John Jumbotron'
+    name: jumbotron
+    shell: '/bin/bash'
+    uid: 3000
+    group: users
+
+- name: Create jumbotron dotfiles
+  copy:
+    dest: '~jumbotron/.{{ item.name }}'
+    src: '{{ item.name }}'
+    owner: jumbotron
+    group: users
+    mode: '{{ item.mode }}'
+  with_items:
+  - { name: bash_profile, mode: 0o644 }
+  - { name: autologin, mode: 0o755 }
+
+- name: Check out jumbotron repo
+  git:
+    dest: '~jumbotron/jumbotron'
+    repo: 'https://github.com/labitat/jumbotron.git'
+    accept_hostkey: yes
+    clone: yes
+    update: yes
+    remote: origin
+
+- name: Make sure jumbotron owns git repo
+  file:
+    dest: '~jumbotron/jumbotron'
+    owner: jumbotron
+    group: users
+    recurse: yes
+
+# vim: set ts=2 sw=2 et:

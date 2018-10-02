@@ -1,0 +1,35 @@
+---
+- name: Configure VGA output
+  lineinfile:
+    path: '/boot/config.txt'
+    regexp: "^{{ item.rsplit('=', 1)[0] }}="
+    line: '{{ item }}'
+  with_items:
+  - 'dtoverlay=vga666'
+  - 'enable_dpi_lcd=1'
+  - 'display_default_lcd=1'
+  - 'dpi_group=2'
+  - 'dpi_mode=35'
+  - 'dtparam=spi=off'
+  - 'dtparam=i2c_arm=off'
+
+- name: Configure console font
+  lineinfile:
+    path: '/etc/default/console-setup'
+    regexp: "^{{ item.split('=', 1)[0] }}="
+    line: '{{ item }}'
+  with_items:
+  - 'CHARMAP="UTF-8"'
+  - 'CODESET="Lat15"'
+  - 'FONTFACE="Terminus"'
+  - 'FONTSIZE="32x16"'
+
+- name: Configure console keyboard
+  lineinfile:
+    path: '/etc/default/keyboard'
+    regexp: "^{{ item.split('=', 1)[0] }}="
+    line: '{{ item }}'
+  with_items:
+  - 'XKBLAYOUT="dk"'
+
+# vim: set ts=2 sw=2 et:

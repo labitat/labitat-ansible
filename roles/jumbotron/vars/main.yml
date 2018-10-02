@@ -1,0 +1,28 @@
+---
+hostname: 'jumbotron'
+
+resolved_conf:
+  'Resolve.DNSSEC': 'yes'
+
+apt_sources:
+  raspbian:
+    components:
+    - main
+    - contrib
+    - no-free
+    - rpi
+
+apt_packages:
+  'logrotate': absent
+  'cron': absent
+
+  'git': present           # to check out jumbotron repo
+  'wiringpi': present      # for jumbotron_ping script
+  'console-setup': present # for proper console font/keyboard
+  'irssi': present
+
+  # jumbowatch.pl dependencies
+  'libjson-perl': present
+  'libwww-perl': present
+
+# vim: set ts=2 sw=2 et:
