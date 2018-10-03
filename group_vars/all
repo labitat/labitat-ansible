@@ -1,0 +1,11 @@
+---
+locale:
+  generated: # must be sorted
+  - da_DK.UTF-8 UTF-8
+  - en_US.UTF-8 UTF-8
+  default:
+    LANG: 'en_US.UTF-8'
+
+timezone: 'Europe/Copenhagen'
+
+# vim: set ft=yaml ts=2 sw=2 et:

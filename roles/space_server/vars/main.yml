@@ -1,0 +1,8 @@
+---
+locale:
+  default:
+    LANG: 'da_DK.UTF-8'
+    LC_COLLATE: 'C'
+    LC_MESSAGES: 'C'
+
+# vim: set ts=2 sw=2 et:
