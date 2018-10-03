@@ -1,0 +1,10 @@
+---
+- name: Mount tmpfs on /tmp
+  copy:
+    dest: '/etc/systemd/system/tmp.mount'
+    src: tmp.mount
+    owner: root
+    group: root
+    mode: 0644
+
+# vim: set ts=2 sw=2 et:

@@ -1,0 +1,8 @@
+{% for name, opts in apt_sources|dictsort(true) %}
+{% if opts is mapping %}
+deb {{ apt_repos[name]['uri'] }} {{ apt_repos[name].suite }} {{ opts.components|join(' ') }}
+{% if 'source' in opts and opts.source %}
+deb-src {{ apt_repos[name]['uri'] }} {{ apt_repos[name].suite }} {{ opts.components|join(' ') }}
+{% endif %}
+{% endif %}
+{% endfor %}

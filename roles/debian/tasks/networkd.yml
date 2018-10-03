@@ -1,0 +1,27 @@
+---
+- name: Enable/disable systemd-networkd
+  systemd:
+    name: systemd-networkd.service
+    enabled: "{{ use_networkd|ternary('yes','no') }}"
+    masked:  "{{ use_networkd|ternary('no',omit) }}"
+    # let the current network daemons run undisturbed until reboot
+    # aka. don't cut the pipe we're connected through
+    #state:  "{{ use_networkd|ternary('started','stopped') }}"
+  when: not chroot
+- name: '- when in chroot'
+  command: "systemctl {{ use_networkd|ternary('enable','disable') }} systemd-networkd.service"
+  when: chroot
+
+- name: Mask Debian networking.service
+  systemd:
+    name: networking.service
+    enabled: no
+    masked: yes
+  when: use_networkd and not chroot
+- name: '- when in chroot'
+  block:
+  - command: systemctl disable networking.service
+  - command: systemctl mask networking.service
+  when: use_networkd and chroot
+
+# vim: set ts=2 sw=2 et:

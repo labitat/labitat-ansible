@@ -1,0 +1,68 @@
+---
+- name: Don't install recommended packages
+  copy:
+    dest: '/etc/apt/apt.conf.d/06norecommends'
+    src: 06norecommends
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Don't start services by default
+  copy:
+    dest: '/usr/sbin/policy-rc.d'
+    content: "exit 101\n"
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Remove packages
+  apt:
+    name: '{{ item }}'
+    state: absent
+    autoremove: yes
+    purge: yes
+  with_items: "{{ apt_packages|dictsort(true)|selectattr(1,'equalto','absent')|map(attribute=0)|list }}"
+  tags:
+  - packages
+
+- name: Configure /etc/apt/sources.list
+  template:
+    dest: '/etc/apt/sources.list'
+    src: sources.list.j2
+    owner: root
+    group: root
+    mode: 0644
+  when: apt_sources is defined
+
+- name: Download repository keys
+  apt_key:
+    url: "{{ apt_repos[item.key]['key_url'] }}"
+    id: "{{ apt_repos[item.key]['key_id'] }}"
+    state: present
+  with_dict: '{{ apt_sources }}'
+  when: apt_sources is defined and 'key_url' in apt_repos[item.key]
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  tags:
+  - update
+  - packages
+
+- name: Upgrade all packages
+  apt:
+    name: '*'
+    state: latest
+  tags:
+  - upgrade
+  - packages
+
+- name: Install packages
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items: "{{ apt_packages|dictsort(true)|selectattr(1,'equalto','present')|map(attribute=0)|list }}"
+  tags:
+  - packages
+
+# vim: set ts=2 sw=2 et:

@@ -1,0 +1,42 @@
+---
+use_tmpfs: true
+use_resolved: true
+use_networkd: true
+use_timesyncd: true
+
+locale:
+  generated: # must be sorted
+  - en_US.UTF-8 UTF-8
+  default:
+    LANG: 'en_US.UTF-8'
+
+systemd_conf: {}
+journald_conf: {}
+logind_conf: {}
+resolved_conf: {}
+timesyncd_conf: {}
+
+apt_repos:
+  base:
+    uri: 'https://deb.debian.org/debian'
+    suite: '{{ ansible_distribution_release }}'
+  security:
+    uri: 'https://deb.debian.org/debian-security'
+    suite: '{{ ansible_distribution_release }}/updates'
+  updates:
+    uri: 'https://deb.debian.org/debian'
+    suite: '{{ ansible_distribution_release }}-updates'
+  backports:
+    uri: 'https://deb.debian.org/debian'
+    suite: '{{ ansible_distribution_release }}-backports'
+
+apt_packages:
+  'apt-transport-https': present
+  'libpam-systemd': present
+  'libnss-myhostname': present
+  'vim': present
+  'deborphan': present
+
+sudo_group: 'sudo'
+
+# vim: set ts=2 sw=2 et:

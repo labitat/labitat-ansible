@@ -1,0 +1,25 @@
+---
+- name: Configure systemd-timesyncd
+  ini_file:
+    path: '/etc/systemd/timesyncd.conf'
+    no_extra_spaces: yes
+    section: "{{ item.key.split('.',1)[0] }}"
+    option:  "{{ item.key.split('.',1)[1] }}"
+    value:   "{{ item.value|ternary(item.value,omit) }}"
+    state:   "{{ item.value|ternary('present','absent') }}"
+  with_dict: '{{ timesyncd_conf }}'
+  when: use_timesyncd
+  notify: restart timesyncd
+
+- name: Enable systemd-timesyncd
+  systemd:
+    name: systemd-timesyncd.service
+    enabled: "{{ use_timesyncd|ternary('yes','no') }}"
+    masked: no
+    state: "{{ use_timesyncd|ternary('started','stopped') }}"
+  when: not chroot
+- name: '- when in chroot'
+  command: systemctl enable systemd-timesyncd.service
+  when: chroot
+
+# vim: set ts=2 sw=2 et:
