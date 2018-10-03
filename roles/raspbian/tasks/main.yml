@@ -1,0 +1,10 @@
+---
+- import_tasks: networkd.yml
+  tags: networkd
+- import_tasks: remove_pi.yml
+  when: >
+    (ansible_user is not defined or ansible_user != 'pi') and
+    (ansible_ssh_user is not defined or ansible_ssh_user != 'pi')
+  tags: remove_pi
+
+# vim: set ts=2 sw=2 et:

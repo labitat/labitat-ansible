@@ -1,0 +1,104 @@
+---
+journald_conf:
+  # don't write journal to sd-card,
+  'Journal.Storage': 'volatile'
+  # just keep the last 16M in memory
+  'Journal.RuntimeMaxUse': '16M'
+  'Journal.ForwardToSyslog': 'no'
+
+apt_repos:
+  raspbian:
+    # doesn't support https, psh
+    uri: 'http://raspbian.raspberrypi.org/raspbian'
+    suite: '{{ ansible_distribution_release }}'
+
+apt_packages:
+  # remove all this crap
+  'vim-tiny': absent
+  'mountall': absent
+  'libmnl-dev': absent
+  'cifs-utils': absent
+  'samba-common': absent
+  'nfs-common': absent
+  'blends-tasks': absent
+  'info': absent
+  'geoip-database': absent
+  'iso-codes': absent
+  'dmidecode': absent
+  'debconf-i18n': absent
+  'rename': absent
+  'libpng-tools': absent
+  'v4l-utils': absent
+  'hardlink': absent
+  'libpam-chksshpwd': absent
+  'libsysfs2': absent
+  'ed': absent
+  'ncdu': absent
+  'libpng-dev': absent
+  'fakeroot': absent
+  'libusb-0.1-4': absent
+  'libpng16-16': absent
+  'libfakeroot': absent
+  'libboost-iostreams1.60.0': absent
+  'libboost-iostreams1.58.0': absent
+  'tcpd': absent
+  'libmtp-runtime': absent
+  'libglib2.0-data': absent
+  'libfreetype6-dev': absent
+  'dphys-swapfile': absent
+  'luajit': absent
+  'libsasl2-modules': absent
+  'libestr0': absent
+  'libfastjson4': absent
+  'net-tools': absent
+  'gdb': absent
+  'xdg-user-dirs': absent
+  'raspberrypi-net-mods': absent
+  'liblogging-stdlog0': absent
+  'liblognorm5': absent
+  'libudev0': absent
+  'libnih-dbus1': absent
+  'libnih1': absent
+  'plymouth': absent
+  'libplymouth4': absent
+  'apt-listchanges': absent
+  'xml-core': absent
+  'rsyslog': absent
+  'libident': absent
+  'libsigc++-1.2-5c2': absent
+  'paxctl': absent
+  'paxctld': absent
+  'libfile-fcntllock-perl': absent
+  'libalgorithm-merge-perl': absent
+  'libalgorithm-diff-xs-perl': absent
+  'libtext-iconv-perl': absent
+  'libtext-wrapi18n-perl': absent
+  'libtext-charwidth-perl': absent
+  'xauth': absent
+  'shared-mime-info': absent
+  'libdrm2': absent
+  'isc-dhcp-common': absent
+  'libdns-export162': absent
+  'libisc-export160': absent
+  'policykit-1': absent
+  'build-essential': absent
+  'libc6-dbg': absent
+  'libc6-dev': absent
+  'pkg-config': absent
+  'libraspberrypi-dev': absent
+  'gcc': absent
+  'cpp': absent
+  'gcc-6': absent
+  'gcc-5-base': absent
+  'gcc-4.9-base': absent
+  'gcc-4.8-base': absent
+  'gcc-4.7-base': absent
+  'gcc-4.6-base': absent
+  'isc-dhcp-client': absent
+  'dpkg-dev': absent
+  'libdpkg-perl': absent
+  'apt-utils': absent
+  'avahi-daemon': absent
+  'dhcpcd5': absent
+
+# vim: set ts=2 sw=2 et:

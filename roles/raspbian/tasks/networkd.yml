@@ -1,0 +1,8 @@
+---
+- name: Clean up old dhcpcd configuration
+  file:
+    path: '/etc/systemd/system/dhcpcd.service.d'
+    state: absent
+  when: use_networkd
+
+# vim: set ts=2 sw=2 et:

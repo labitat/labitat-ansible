@@ -1,0 +1,13 @@
+---
+- name: Remove pi user
+  user:
+    name: pi
+    state: absent
+    remove: true
+
+- name: Remove pi sudoers rule
+  file:
+    path: '/etc/sudoers.d/010_pi-nopasswd'
+    state: absent
+
+# vim: set ts=2 sw=2 et:
