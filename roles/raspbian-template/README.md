@@ -52,4 +52,5 @@ ansible-playbook -D \
 Now is a good time to ssh into it and reboot it,
 so it uses the new network setup after boot.
 
+[downloads]: https://www.raspberrypi.org/downloads/raspbian/
 [ssh]: https://en.wikipedia.org/wiki/Secure_Shell
