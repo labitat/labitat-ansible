@@ -1,0 +1,12 @@
+---
+- name: Install network configuration
+  copy:
+    dest: '/etc/systemd/network/10-eth0.network'
+    src: eth0.network
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - networkd-config
+
+# vim: set ts=2 sw=2 et:

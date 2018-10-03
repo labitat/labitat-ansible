@@ -1,0 +1,12 @@
+---
+hostname: 'raspbian-template'
+
+apt_sources:
+  raspbian:
+    components:
+    - main
+    - contrib
+    - no-free
+    - rpi
+
+# vim: set ts=2 sw=2 et:
