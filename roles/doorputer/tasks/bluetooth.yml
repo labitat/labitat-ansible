@@ -1,0 +1,16 @@
+---
+- name: Disable hciuart service
+  systemd:
+    name: hciuart.service
+    enabled: no
+    masked: no
+    state: stopped
+
+- name: Disable bluetooth service
+  systemd:
+    name: bluetooth.service
+    enabled: no
+    masked: no
+    state: stopped
+
+# vim: set ts=2 sw=2 et:

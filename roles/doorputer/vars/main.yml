@@ -1,0 +1,27 @@
+---
+hostname: 'doorputer'
+
+users:
+  'esmil': sudo
+  'ast': sudo
+  'flummer': sudo
+  'riiiis': sudo
+  'knielsen': sudo
+  'signout': sudo
+
+apt_sources:
+  raspbian:
+    components:
+    - main
+    - contrib
+    - non-free
+    - rpi
+
+apt_packages:
+  'git': present # to check out lockserver repo
+
+  # lockserver dependencies
+  'python3-serial': present
+  'sqlite3': present
+
+# vim: set ts=2 sw=2 et:

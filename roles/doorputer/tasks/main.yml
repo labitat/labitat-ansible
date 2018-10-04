@@ -1,0 +1,27 @@
+---
+- name: Install network configuration
+  copy:
+    dest: '/etc/systemd/network/10-eth0.network'
+    src: eth0.network
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - networkd-config
+
+- name: Set message of the day
+  copy:
+    dest: '/etc/motd'
+    src: motd
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - motd
+
+- import_tasks: bluetooth.yml
+  tags: bluetooth
+- import_tasks: lockserver.yml
+  tags: lockserver
+
+# vim: set ts=2 sw=2 et:

@@ -1,0 +1,69 @@
+---
+- name: Create doorman user
+  user:
+    comment: 'Doorman Doris'
+    name: doorman
+    shell: '/bin/bash'
+    uid: 3000
+    group: users
+    groups:
+    - dialout
+    - gpio
+
+- name: Check out lockserver repo
+  git:
+    dest: '~doorman/lockserver'
+    repo: 'https://github.com/labitat/lockserver.git'
+    accept_hostkey: yes
+    clone: yes
+    update: yes
+    remote: origin
+
+- name: Make sure doorman owns git repo
+  file:
+    dest: '~doorman/lockserver'
+    owner: doorman
+    group: users
+    recurse: yes
+
+- name: Initialize database
+  command:
+    argv:
+    - '/usr/bin/sqlite3'
+    - 'users.db'
+    - '.read lockserver/structure.sql'
+  become_user: doorman
+  args:
+    chdir: '/home/doorman'
+    creates: '/home/doorman/users.db'
+
+- name: Create pasword file
+  copy:
+    dest: '~doorman/lockserver.password'
+    content: "{{ doorputer_webpassword }}\n"
+    owner: doorman
+    group: users
+    mode: 0600
+  when: doorputer_webpassword is defined
+
+- name: Install lockserver service
+  copy:
+    dest: '/etc/systemd/system/lockserver.service'
+    src: lockserver.service
+    owner: root
+    group: root
+    mode: 0644
+  register: lockserver_service
+
+- name: Reload systemd
+  command: systemctl daemon-reload
+  when: lockserver_service is changed
+
+- name: Enable lockserver service
+  systemd:
+    name: lockserver.service
+    enabled: yes
+    masked: no
+    state: started
+
+# vim: set ts=2 sw=2 et:

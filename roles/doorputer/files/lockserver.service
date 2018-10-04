@@ -1,0 +1,15 @@
+[Unit]
+Description=Lockserver
+
+[Service]
+Type=simple
+User=doorman
+WorkingDirectory=/home/doorman
+ExecStartPre=/home/doorman/lockserver/init.sh
+ExecStart=/home/doorman/lockserver/lockd.py
+StandardOutput=syslog
+StandardError=inherit
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
