@@ -15,10 +15,6 @@
   tags: kernel
 - import_tasks: gettys.yml
   tags: gettys
-- import_tasks: timesyncd.yml
-  tags: timesyncd
-- import_tasks: resolved.yml
-  tags: resolved
 - import_tasks: networkd.yml
   tags: networkd
 - import_tasks: nftables.yml

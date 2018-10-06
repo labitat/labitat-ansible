@@ -1,4 +1,28 @@
 ---
+use_resolved: true
+use_networkd: true
+use_timesyncd: true
+
+locale:
+  default:
+    LANG: 'en_US.UTF-8'
+
+systemd_conf: {}
+journald_conf: {}
+logind_conf: {}
+resolved_conf: {}
+timesyncd_conf: {}
+
+dnf_packages:
+  'glibc-langpack-en': present
+  'initscripts': present
+  'hostname': present
+  'dnf': present
+  'passwd': present
+  'vim-enhanced': present
+  'dnf-command(leaves)': present
+  'python-unversioned-command': present
+
 sudo_group: 'wheel'
 
 # vim: set ts=2 sw=2 et:

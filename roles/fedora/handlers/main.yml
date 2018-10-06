@@ -1,0 +1,14 @@
+---
+- name: restart resolved
+  systemd:
+    name: systemd-resolved.service
+    state: restarted
+  when: not chroot
+
+- name: restart timesyncd
+  systemd:
+    name: systemd-timesyncd.service
+    state: restarted
+  when: not chroot
+
+# vim: set ts=2 sw=2 et:

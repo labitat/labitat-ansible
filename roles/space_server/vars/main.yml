@@ -1,6 +1,8 @@
 ---
 hostname: 'space'
 
+use_resolved: false
+
 locale:
   default:
     LANG: 'da_DK.UTF-8'
@@ -14,23 +16,15 @@ dnf_conf:
 
 dnf_packages:
   'glibc-langpack-da': present
-  'glibc-langpack-en': present
-  'initscripts': present
-  'hostname': present
   'iproute': present
   'dosfstools': present
   'btrfs-progs': present
-  'dnf': present
-  'dnf-command(leaves)': present
-  'python-unversioned-command': present
   'ansible': present
   'python3-netaddr': present # for dhcpd template
-  'vim-enhanced': present
   'git': present
   'diffutils': present
   'htop': present
   'man-db': present
-  'passwd': present
   'syslinux': present
   'systemd-container': present
 

@@ -44,17 +44,4 @@
     group: root
     mode: 0644
 
-- name: Enable systemd-networkd
-  systemd:
-    name: systemd-networkd.service
-    enabled: yes
-    masked: no
-    state: started
-  when: not chroot
-- name: '- when in chroot'
-  command: systemctl enable systemd-networkd.service
-  args:
-    creates: '/etc/systemd/system/multi-user.target.wants/systemd-networkd.service'
-  when: chroot
-
 # vim: set ts=2 sw=2 et:

@@ -1,0 +1,15 @@
+---
+- name: Enable/disable systemd-networkd
+  systemd:
+    name: systemd-networkd.service
+    enabled: "{{ use_networkd|ternary('yes','no') }}"
+    masked:  "{{ use_networkd|ternary('no',omit) }}"
+    # let the current network daemons run undisturbed until reboot
+    # aka. don't cut the pipe we're connected through
+    #state:  "{{ use_networkd|ternary('started','stopped') }}"
+  when: not chroot
+- name: '- when in chroot'
+  command: "systemctl {{ use_networkd|ternary('enable','disable') }} systemd-networkd.service"
+  when: chroot
+
+# vim: set ts=2 sw=2 et:

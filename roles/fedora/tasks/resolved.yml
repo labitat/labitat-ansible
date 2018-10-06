@@ -1,0 +1,39 @@
+---
+- name: Configure systemd-resolved
+  ini_file:
+    path: '/etc/systemd/resolved.conf'
+    no_extra_spaces: yes
+    section: "{{ item.key.split('.',1)[0] }}"
+    option:  "{{ item.key.split('.',1)[1] }}"
+    value:   "{{ item.value|ternary(item.value,omit) }}"
+    state:   "{{ item.value|ternary('present','absent') }}"
+  with_dict: '{{ resolved_conf }}'
+  when: use_resolved
+  notify: restart resolved
+
+- name: Enable/disable systemd-resolved
+  systemd:
+    name: systemd-resolved.service
+    enabled: "{{ use_resolved|ternary('yes','no') }}"
+    masked: no
+    state: "{{ use_resolved|ternary('started','stopped') }}"
+  when: not chroot
+- name: '- when in chroot'
+  command: 'systemctl {{ use_resolved|ternary("enable","disable") }} systemd-resolved.service'
+  when: chroot
+
+- name: Symlink /etc/resolv.conf
+  file:
+    path: '/etc/resolv.conf'
+    src: '/run/systemd/resolve/resolv.conf'
+    state: link
+    force: yes
+  when: use_resolved
+- name: Use myhostname and possibly resolved nss plugins
+  lineinfile:
+    path: /etc/nsswitch.conf
+    regexp: '^hosts:'
+    line: 'hosts:          files resolve [!UNAVAIL=return] dns myhostname'
+  when: use_resolved
+
+# vim: set ts=2 sw=2 et:

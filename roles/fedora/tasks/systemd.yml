@@ -1,0 +1,32 @@
+---
+- name: Configure systemd system.conf
+  ini_file:
+    path: '/etc/systemd/system.conf'
+    no_extra_spaces: yes
+    section: "{{ item.key.split('.',1)[0] }}"
+    option:  "{{ item.key.split('.',1)[1] }}"
+    value:   "{{ item.value|ternary(item.value,omit) }}"
+    state:   "{{ item.value|ternary('present','absent') }}"
+  with_dict: '{{ systemd_conf }}'
+
+- name: Configure journald.conf
+  ini_file:
+    path: '/etc/systemd/journald.conf'
+    no_extra_spaces: yes
+    section: "{{ item.key.split('.',1)[0] }}"
+    option:  "{{ item.key.split('.',1)[1] }}"
+    value:   "{{ item.value|ternary(item.value,omit) }}"
+    state:   "{{ item.value|ternary('present','absent') }}"
+  with_dict: '{{ journald_conf }}'
+
+- name: Configure logind.conf
+  ini_file:
+    path: '/etc/systemd/logind.conf'
+    no_extra_spaces: yes
+    section: "{{ item.key.split('.',1)[0] }}"
+    option:  "{{ item.key.split('.',1)[1] }}"
+    value:   "{{ item.value|ternary(item.value,omit) }}"
+    state:   "{{ item.value|ternary('present','absent') }}"
+  with_dict: '{{ logind_conf }}'
+
+# vim: set ts=2 sw=2 et:
