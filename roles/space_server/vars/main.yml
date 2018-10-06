@@ -45,7 +45,8 @@ local_hosts:
   ips:
   - 10.42.0.2
 - name: doorputer
-  mac: 00:b3:f6:00:36:be
+  description: Front door controlling Raspberry Pi
+  mac: b8:27:eb:d9:92:00
   mdns: false
   ips:
   - 10.42.0.3
