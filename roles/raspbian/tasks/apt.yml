@@ -3,6 +3,7 @@
   systemd:
     name: '{{ item }}'
     enabled: no
+    state: stopped
   with_items:
   - apt-daily.timer
   - apt-daily-upgrade.timer
