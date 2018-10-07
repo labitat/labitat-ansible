@@ -1,0 +1,17 @@
+---
+- name: Disable apt timers
+  systemd:
+    name: '{{ item }}'
+    enabled: no
+  with_items:
+  - apt-daily.timer
+  - apt-daily-upgrade.timer
+  when: not chroot
+- name: '- when in chroot'
+  command: 'systemctl disable {{ item }}'
+  with_items:
+  - apt-daily.timer
+  - apt-daily-upgrade.timer
+  when: chroot
+
+# vim: set ts=2 sw=2 et:

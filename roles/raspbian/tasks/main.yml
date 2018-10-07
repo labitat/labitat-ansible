@@ -1,4 +1,6 @@
 ---
+- import_tasks: apt.yml
+  tags: apt
 - import_tasks: networkd.yml
   tags: networkd
 - import_tasks: remove_pi.yml
