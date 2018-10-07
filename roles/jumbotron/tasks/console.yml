@@ -32,4 +32,15 @@
   with_items:
   - 'XKBLAYOUT="dk"'
 
+- name: Enable console-setup
+  systemd:
+    name: console-setup.service
+    enabled: yes
+    masked: no
+    state: started
+  when: not chroot
+- name: '- when in chroot'
+  command: systemctl enable console-setup.service
+  when: chroot
+
 # vim: set ts=2 sw=2 et:
