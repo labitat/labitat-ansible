@@ -6,8 +6,7 @@
     shell: '/bin/bash'
     uid: 2001
     group: users
-    groups:
-    - '{{ sudo_group }}'
+    groups: '{{ user_groups }}'
 
 - name: ast - authorized_keys
   authorized_key:

@@ -1,0 +1,5 @@
+---
+user_groups:
+- '{{ sudo_group }}'
+
+# vim: set ts=2 sw=2 et:

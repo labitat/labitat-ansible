@@ -6,8 +6,7 @@
     shell: '/bin/bash'
     uid: 2000
     group: users
-    groups:
-    - '{{ sudo_group }}'
+    groups: '{{ user_groups }}'
 
 - name: esmil - authorized_keys
   authorized_key:
