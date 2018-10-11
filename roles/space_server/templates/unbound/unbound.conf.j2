@@ -11,10 +11,10 @@ server:
 	interface: 127.0.0.1
 	interface: ::1
 	interface: 185.38.175.0
-	interface: 2a01:4260:1ab::
+	interface: 2a01:4262:1ab::
 
 	outgoing-interface: 185.38.175.0
-	outgoing-interface: 2a01:4260:1ab::
+	outgoing-interface: 2a01:4262:1ab::
 	outgoing-port-permit: 32768-60999
 	outgoing-port-avoid: 0-32767
 
@@ -33,13 +33,13 @@ server:
 	# not free wifi     10.42.3.0/24
 	access-control-tag: 10.42.4.0/24 "local"
 	access-control-tag: 10.42.5.0/24 "local"
-	access-control: 2a01:4260:1ab::/48 allow
-	access-control-tag: 2a01:4260:1ab:a::/64 "local"
-	access-control-tag: 2a01:4260:1ab:b::/64 "local"
-	access-control-tag: 2a01:4260:1ab:c::/64 "local"
-	# not free wifi     2a01:4260:1ab:d::/64
-	access-control-tag: 2a01:4260:1ab:e::/64 "local"
-	access-control-tag: 2a01:4260:1ab:f::/64 "local"
+	access-control: 2a01:4262:1ab::/48 allow
+	access-control-tag: 2a01:4262:1ab:a::/64 "local"
+	access-control-tag: 2a01:4262:1ab:b::/64 "local"
+	access-control-tag: 2a01:4262:1ab:c::/64 "local"
+	# not free wifi     2a01:4262:1ab:d::/64
+	access-control-tag: 2a01:4262:1ab:e::/64 "local"
+	access-control-tag: 2a01:4262:1ab:f::/64 "local"
 
 	chroot: ""
 	username: "unbound"
@@ -100,11 +100,11 @@ server:
 	local-data: "s.              IN SOA   space.labitat.dk. esmil.labitat.dk. 20171119 3600 1200 604800 10800"
 	local-data: "s.              IN NS    space.labitat.dk."
 	local-data: "s.              IN A     10.42.1.1"
-	local-data: "s.              IN AAAA  2a01:4260:1ab::"
+	local-data: "s.              IN AAAA  2a01:4262:1ab::"
 	local-data: "labitrack.s.    IN A     185.38.175.70"
-	local-data: "labitrack.s.    IN AAAA  2a01:4260:1ab::cafe"
+	local-data: "labitrack.s.    IN AAAA  2a01:4262:1ab::cafe"
 	local-data: "track.s.        IN A     185.38.175.70"
-	local-data: "track.s.        IN AAAA  2a01:4260:1ab::cafe"
+	local-data: "track.s.        IN AAAA  2a01:4262:1ab::cafe"
 {% for host in local_hosts %}
 {%   for ip in host.ips | ipv4 %}
 {%     if loop.index <= 1 %}

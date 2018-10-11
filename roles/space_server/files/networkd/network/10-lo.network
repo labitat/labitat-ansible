@@ -3,4 +3,4 @@ Name=lo
 
 [Network]
 Address=185.38.175.0/32
-Address=2a01:4260:1ab::/128
+Address=2a01:4262:1ab::/128

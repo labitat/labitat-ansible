@@ -64,7 +64,7 @@
     value: 'yes'
   - section: publish
     option: 'publish-dns-servers'
-    value: '185.38.175.0,2a01:4260:1ab::'
+    value: '185.38.175.0,2a01:4262:1ab::'
   - section: publish
     option: 'publish-resolv-conf-dns-servers'
     value: 'no'

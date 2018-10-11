@@ -6,7 +6,7 @@ DHCP=no
 IPv6AcceptRA=no
 LinkLocalAddressing=no
 Address=10.42.4.1/24
-#Address=2a01:4260:1ab:e::1/64
+#Address=2a01:4262:1ab:e::1/64
 Address=fe80::1/64
 IPForward=yes
 LLMNR=yes
@@ -15,5 +15,5 @@ LLDP=yes
 EmitLLDP=yes
 
 [Route]
-Destination=2a01:4260:1ab:e::/64
-PreferredSource=2a01:4260:1ab::
+Destination=2a01:4262:1ab:e::/64
+PreferredSource=2a01:4262:1ab::

@@ -100,7 +100,7 @@ local_hosts:
   mdns: false
   ips:
   - 10.42.1.37
-  - 2a01:4260:1ab:b:9657:a5ff:fece:e26c
+  - 2a01:4262:1ab:b:9657:a5ff:fece:e26c
 - name: snakeskin
   description: Snakeskin controlling Raspberry Pi
   mac: b8:27:eb:9b:64:d9
