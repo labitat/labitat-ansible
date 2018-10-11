@@ -101,17 +101,10 @@ local_hosts:
   ips:
   - 10.42.1.37
   - 2a01:4260:1ab:b:9657:a5ff:fece:e26c
-- name: labisound
-  mac: 00:16:e6:f7:43:b0
-  ips:
-  - 10.42.1.40
-- name: sound
-  ips:
-  - 10.42.1.80
 - name: snakeskin
   description: Snakeskin controlling Raspberry Pi
   mac: b8:27:eb:9b:64:d9
   ips:
-  - 10.42.1.55
+  - 10.42.1.38
 
 # vim: set ts=2 sw=2 et:
