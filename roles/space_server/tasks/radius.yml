@@ -1,31 +1,15 @@
 ---
-- name: Install our freeradius-assha package
-  dnf:
-    name: '{{ item }}'
-    state: present
-  with_fileglob: 'radius/freeradius-assha-*.fc{{ ansible_distribution_major_version }}.*.rpm'
-  tags:
-  - packages
-
-- name: Make sure curl and diffutils are installed
+- name: Install freeradius-python, curl and diffutils package
   dnf:
     name: '{{ item }}'
     state: present
   with_items:
+  - freeradius-python
   - curl
   - diffutils
   tags:
   - packages
 
-- name: Disable default site
-  file:
-    path: '/etc/raddb/sites-enabled/{{ item }}'
-    state: absent
-  with_items:
-  - default
-  - inner-tunnel
-  notify:
-  - restart radiusd
 - name: Configure radiusd
   copy:
     dest: '/etc/raddb/{{ item }}'
@@ -36,10 +20,22 @@
   with_items:
   - radiusd.conf
   - mods-available/eap
+  - mods-available/python-assha
   - sites-available/labitat
   - sites-available/labitat-inner
   notify:
   - restart radiusd
+
+- name: Create assha python script
+  copy:
+    dest: '/etc/raddb/mods-config/python/assha.py'
+    src: 'radius/assha.py'
+    owner: root
+    group: root
+    mode: 0755
+  notify:
+  - restart radiusd
+
 - name: Configure radius clients
   template:
     dest: '/etc/raddb/clients.conf'
@@ -49,17 +45,35 @@
     mode: 0640
   notify:
   - restart radiusd
-- name: Enable labitat site
+
+- name: Configure radius sites
   file:
-    path: '/etc/raddb/sites-enabled/{{ item }}'
-    src: '../sites-available/{{ item }}'
-    state: link
+    path: '/etc/raddb/sites-enabled/{{ item.name }}'
+    src: '../sites-available/{{ item.name }}'
+    state: '{{ item.state }}'
     owner: root
     group: radiusd
     force: yes
   with_items:
-  - labitat
-  - labitat-inner
+  - { name: default,       state: absent }
+  - { name: inner-tunnel,  state: absent }
+  - { name: labitat,       state: link }
+  - { name: labitat-inner, state: link }
+  notify:
+  - restart radiusd
+
+- name: Configure radius modules
+  file:
+    path: '/etc/raddb/mods-enabled/{{ item.name }}'
+    src: '../mods-available/{{ item.name }}'
+    state: '{{ item.state }}'
+    owner: root
+    group: radiusd
+    force: yes
+  with_items:
+  - { name: files,        state: absent }
+  - { name: python,       state: absent }
+  - { name: python-assha, state: link }
   notify:
   - restart radiusd
 
@@ -70,6 +84,7 @@
     owner: root
     group: radiusd
     mode: 0750
+
 - name: Create getusers service and timer
   copy:
     dest: '/etc/systemd/system/{{ item }}'
@@ -103,6 +118,7 @@
     owner: root
     group: root
     mode: 0755
+
 - name: Start radiusd after networks are configured
   copy:
     dest: '/etc/systemd/system/radiusd.service.d/wait-online.conf'

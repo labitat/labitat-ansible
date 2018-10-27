@@ -21,8 +21,6 @@ server labitat {
 			ok = return
 		}
 
-		files
-
 		expiration
 		logintime
 		pap
@@ -40,7 +38,6 @@ server labitat {
 		preprocess
 		acct_unique
 		suffix
-		files
 	}
 
 	accounting {

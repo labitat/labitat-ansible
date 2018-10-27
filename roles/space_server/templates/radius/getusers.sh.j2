@@ -12,5 +12,5 @@ trap cleanup EXIT SIGINT SIGTERM
 curl -fs -o "$tmpfile" '{{ radius_passwords.download_url }}'
 if ! diff -q "$tmpfile" "$outfile" >/dev/null; then
   install -m0640 "$tmpfile" "$outfile"
-  systemctl restart radiusd.service
+  #systemctl restart radiusd.service
 fi

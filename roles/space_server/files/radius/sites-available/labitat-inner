@@ -13,7 +13,7 @@ server labitat-inner {
 			ok = return
 		}
 
-		files
+		python
 		expiration
 		logintime
 		pap
@@ -24,6 +24,7 @@ server labitat-inner {
 			pap
 		}
 
+		python
 		eap
 	}
 
