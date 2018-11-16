@@ -40,7 +40,7 @@
     state: "{{ dnf_makecache|ternary('started','stopped') }}"
   when: not chroot
 - name: '- when in chroot'
-  command: 'systemctl {{ dnf_makecache|ternary("enable","disable") }} dnf-makecache.timer'
+  command: "systemctl {{ dnf_makecache|ternary('enable','disable') }} dnf-makecache.timer"
   when: chroot
 
 # vim: set ts=2 sw=2 et:

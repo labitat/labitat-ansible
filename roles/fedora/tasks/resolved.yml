@@ -19,7 +19,7 @@
     state: "{{ use_resolved|ternary('started','stopped') }}"
   when: not chroot
 - name: '- when in chroot'
-  command: 'systemctl {{ use_resolved|ternary("enable","disable") }} systemd-resolved.service'
+  command: "systemctl {{ use_resolved|ternary('enable','disable') }} systemd-resolved.service"
   when: chroot
 
 - name: Symlink /etc/resolv.conf
