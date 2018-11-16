@@ -32,4 +32,15 @@
   tags:
   - packages
 
+- name: Configure dnf-makecache timer
+  systemd:
+    name: dnf-makecache.timer
+    enabled: "{{ dnf_makecache|ternary('yes','no') }}"
+    masked: no
+    state: "{{ dnf_makecache|ternary('started','stopped') }}"
+  when: not chroot
+- name: '- when in chroot'
+  command: 'systemctl {{ dnf_makecache|ternary("enable","disable") }} dnf-makecache.timer'
+  when: chroot
+
 # vim: set ts=2 sw=2 et:

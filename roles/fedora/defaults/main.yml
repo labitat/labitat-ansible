@@ -13,6 +13,8 @@ logind_conf: {}
 resolved_conf: {}
 timesyncd_conf: {}
 
+dnf_makecache: false
+
 dnf_packages:
   'glibc-langpack-en': present
   'initscripts': present
