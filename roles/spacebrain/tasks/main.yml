@@ -1,0 +1,9 @@
+---
+- import_tasks: networkd.yml
+  tags: networkd
+- import_tasks: nginx.yml
+  tags: nginx
+- import_tasks: blipserver.yml
+  tags: blipserver
+
+# vim: set ts=2 sw=2 et:

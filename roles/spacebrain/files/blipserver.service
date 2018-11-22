@@ -1,0 +1,21 @@
+[Unit]
+Description=Blip Server
+#Requires=postgresql.service
+#After=postgresql.service
+Requires=dev-serial-blipduino.device
+After=dev-serial-blipduino.device
+
+[Service]
+#Type=oneshot
+Type=simple
+User=blipserver
+#PAMName=login
+WorkingDirectory=/home/blipserver/blipserver
+ExecStartPre=/bin/stty -F /dev/serial/blipduino raw -echo -hup cs8 parenb -parodd -cstopb -echo 9600
+#ExecStart=/usr/bin/tmux new-session -s blipserver -d 'lem blip.lua'
+ExecStart=/usr/bin/lem /home/blipserver/blipserver/blip.lua
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

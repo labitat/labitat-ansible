@@ -1,0 +1,33 @@
+---
+hostname: 'spacebrain'
+
+journald_conf:
+  # don't write journal to disk
+  'Journal.Storage': 'volatile'
+  # just keep the last 16M in memory
+  'Journal.RuntimeMaxUse': '16M'
+  'Journal.ForwardToSyslog': 'no'
+
+apt_release: 'buster'
+
+apt_sources:
+  base:
+    components:
+    - main
+    - contrib
+    - non-free
+  security:
+    components:
+    - main
+    - contrib
+    - non-free
+  updates:
+    components:
+    - main
+    - contrib
+    - non-free
+
+apt_packages:
+  'nginx': present
+
+# vim: set ts=2 sw=2 et:

@@ -1,0 +1,46 @@
+---
+- name: Make sure /etc/systemd/network exists
+  file:
+    dest: '/etc/systemd/network'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Register existing network configuration
+  find:
+    paths: '/etc/systemd/network'
+  register: networkd_existing
+
+- name: Configure network
+  copy:
+    dest: '/etc/systemd/network/'
+    src: '{{ item }}'
+    owner: root
+    group: root
+    mode: 0644
+  with_fileglob: 'networkd/*'
+  register: networkd_created
+
+- name: Delete unneeded network configuration
+  file:
+    path: '{{ item }}'
+    state: absent
+  with_items: "{{ networkd_existing.files|map(attribute='path')|difference(networkd_created.results|map(attribute='dest'))|list }}"
+
+- name: Create systemd-networkd-wait-online drop-in directory
+  file:
+    dest: '/etc/systemd/system/systemd-networkd-wait-online.service.d'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+- name: Don't wait for enp1s0 interface
+  copy:
+    dest: '/etc/systemd/system/systemd-networkd-wait-online.service.d/no-enp1s0.conf'
+    src: networkd-no-enp1s0.conf
+    owner: root
+    group: root
+    mode: 0644
+
+# vim: set ts=2 sw=2 et:

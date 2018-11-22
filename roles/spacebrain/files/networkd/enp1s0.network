@@ -1,0 +1,13 @@
+[Match]
+Name=enp1s0
+
+#[Link]
+#ARP=no
+
+[Network]
+LinkLocalAddressing=no
+DHCP=no
+IPv6AcceptRA=no
+LLMNR=no
+MulticastDNS=no
+VLAN=enp1s0.20

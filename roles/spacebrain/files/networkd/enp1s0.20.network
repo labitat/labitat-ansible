@@ -1,0 +1,10 @@
+[Match]
+Name=enp1s0.20
+
+[Network]
+DHCP=no
+IPv6AcceptRA=no
+Address=185.38.175.69/26
+Gateway=185.38.175.65
+Address=2a01:4262:1ab:20::6/64
+Gateway=2a01:4262:1ab:20::1
