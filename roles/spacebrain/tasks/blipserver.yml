@@ -1,0 +1,34 @@
+---
+- name: Create serial device symlinks
+  copy:
+    dest: '/etc/udev/rules.d/71-persistent-usb.rules'
+    src: '71-persistent-usb.rules'
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Create blipserver service
+  copy:
+    dest: '/etc/systemd/system/blipserver.service'
+    src: 'blipserver.service'
+    owner: root
+    group: root
+    mode: 0644
+  register: blipserver_service
+
+- name: Reload systemd
+  command: systemctl daemon-reload
+  when: blipserver_service is changed
+
+- name: Enable blipserver service
+  systemd:
+    name: blipserver.service
+    enabled: yes
+    masked: no
+    state: started
+  when: not chroot
+- name: '- when in chroot'
+  command: systemctl enable blipserver.service
+  when: chroot
+
+# vim: set ts=2 sw=2 et:

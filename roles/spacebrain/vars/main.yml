@@ -1,0 +1,45 @@
+---
+hostname: 'spacebrain'
+
+apt_release: 'buster'
+
+apt_sources_role:
+  base:
+    components:
+    - main
+    - contrib
+    - non-free
+  security:
+    components:
+    - main
+    - contrib
+    - non-free
+  updates:
+    components:
+    - main
+    - contrib
+    - non-free
+
+apt_packages_role:
+  'nginx': present
+
+journald_conf_role:
+  # don't write journal to disk
+  'Journal.Storage': 'volatile'
+  # just keep the last 16M in memory
+  'Journal.RuntimeMaxUse': '16M'
+  'Journal.ForwardToSyslog': 'no'
+
+networkd_ignore:
+- 'enp1s0'
+
+users:
+  'ast': sudo
+  'esmil': sudo
+  'flummer': sudo
+  'semi': sudo
+  'riiiis': sudo
+  'knielsen': sudo
+  'k2OS': sudo
+
+# vim: set ts=2 sw=2 et:

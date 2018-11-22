@@ -1,0 +1,4 @@
+SUBSYSTEMS=="usb", ENV{ID_SERIAL}=="1a86_USB2.0-Serial", SYMLINK+="serial/blipduino"
+SUBSYSTEMS=="usb", ENV{ID_SERIAL}=="FTDI_FT232R_USB_UART_AH00SA1T", SYMLINK+="serial/motion001"
+SUBSYSTEMS=="usb", ENV{ID_SERIAL}=="Texas_Instruments_In-Circuit_Debug_Interface_0E1027CF", SYMLINK+="serial/labibus2"
+SUBSYSTEMS=="usb", ENV{ID_SERIAL}=="Texas_Instruments_In-Circuit_Debug_Interface_0E10C837", SYMLINK+="serial/labibus3"

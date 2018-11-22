@@ -1,0 +1,33 @@
+---
+- name: Make sure /etc/systemd/network exists
+  file:
+    dest: '/etc/systemd/network'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Register existing network configuration
+  find:
+    paths: '/etc/systemd/network'
+  register: networkd_existing
+
+- name: Configure network
+  copy:
+    dest: '/etc/systemd/network/'
+    src: '{{ item }}'
+    owner: root
+    group: root
+    mode: 0644
+  with_fileglob: 'networkd/*'
+  loop_control:
+    label: '/etc/systemd/network/{{ item|basename }}'
+  register: networkd_created
+
+- name: Delete unneeded network configuration
+  file:
+    path: '/etc/systemd/network/{{ item }}'
+    state: absent
+  with_items: "{{ networkd_existing.files|map(attribute='path')|map('basename')|difference(networkd_created.results|map(attribute='item')|map('basename'))|list }}"
+
+# vim: set ts=2 sw=2 et:

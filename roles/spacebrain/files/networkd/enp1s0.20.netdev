@@ -1,0 +1,6 @@
+[NetDev]
+Name=enp1s0.20
+Kind=vlan
+
+[VLAN]
+Id=20
