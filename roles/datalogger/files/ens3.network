@@ -1,0 +1,10 @@
+[Match]
+Name=ens3
+
+[Network]
+DHCP=no
+IPv6AcceptRA=no
+Address=10.72.40.30/24
+Gateway=10.72.40.1
+Address=2a01:4260:28:ffff::db/64
+Gateway=2a01:4260:28:ffff::1

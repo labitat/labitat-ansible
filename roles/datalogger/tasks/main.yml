@@ -1,0 +1,15 @@
+---
+- name: Install network configuration
+  copy:
+    dest: '/etc/systemd/network/10-ens3.network'
+    src: ens3.network
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - networkd
+
+#- import_tasks: postgres.yml
+#  tags: postgres
+
+# vim: set ts=2 sw=2 et:

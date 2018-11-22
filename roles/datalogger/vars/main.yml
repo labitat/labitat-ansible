@@ -1,0 +1,26 @@
+---
+hostname: 'datalogger'
+
+use_resolved: false
+use_networkd: false
+
+apt_sources:
+  base:
+    components:
+    - main
+    - contrib
+    - non-free
+  security:
+    components:
+    - main
+    - contrib
+    - non-free
+  updates:
+    components:
+    - main
+    - contrib
+    - non-free
+
+#apt_packages:
+
+# vim: set ts=2 sw=2 et:
