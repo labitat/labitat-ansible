@@ -49,11 +49,12 @@ if [[ -e "$dest" ]]; then
 fi
 
 btrfs subvolume create "$dest"
+chmod 0755 "$dest"
 
 dnf \
   --assumeyes \
-  --installroot="$dest" \
   --setopt=install_weak_deps=False \
+  --installroot="$dest" \
   --releasever=$release \
   --disablerepo='*' \
   --enablerepo=fedora \
