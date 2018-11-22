@@ -1,0 +1,9 @@
+{% if 'package' in item.value %}
+Package: {{ item.value.package }}
+{% endif %}
+{% if 'pin' in item.value %}
+Pin: {{ item.value.pin }}
+{% endif %}
+{% if 'pin-priority' in item.value %}
+Pin-Priority: {{ item.value['pin-priority'] }}
+{% endif %}

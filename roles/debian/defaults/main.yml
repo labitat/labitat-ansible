@@ -16,6 +16,8 @@ logind_conf: {}
 resolved_conf: {}
 timesyncd_conf: {}
 
+apt_preferences: {}
+
 apt_repos:
   base:
     uri: 'https://deb.debian.org/debian'
