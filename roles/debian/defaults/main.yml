@@ -33,7 +33,9 @@ apt_repos:
     suite: '{{ ansible_distribution_release }}-backports'
 
 apt_packages:
+  'netbase': present
   'apt-transport-https': present
+  'dialog': present
   'libpam-systemd': present
   'libnss-myhostname': present
   'vim': present
