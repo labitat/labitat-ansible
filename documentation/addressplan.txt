@@ -1,0 +1,43 @@
+185.38.175.0/24 - allocated and announced
+- 185.38.175.0/26 - first /26 - only first /31 used
+  - 185.38.175.0/32 - space: router-id + NAT (wired + auth wifi)
+  - 185.38.175.1/32 - space: NAT (unauth wifi)
+- 185.38.175.64/26 - vlan20 - labicolo
+  - 185.38.175.65 - <gateway>
+  - 185.38.175.69 - spacebrain.labitat.dk
+  - 185.38.175.70 - spacewand.labitat.dk
+  - 185.38.175.71 - torexit.space.labitat.dk - tor exit node
+  - 185.38.175.75 - labicolo - asbjorn
+
+2a01:4260:1ab::/48 - allocated and announced
+- 2a01:4260:1ab:0xxx::/52 - labitat internal use
+  - 2a01:4260:1ab:00xx::/56
+    - 2a01:4260:1ab:0000::/64 - vanity
+      - 2a01:4262:1ab:: - space
+      - 2a01:4262:1ab::cafe - spacewand
+      - 2a01:4262:1ab::db - spacebrain
+    - 2a01:4260:1ab:000a::/64 - vlan 10
+    - 2a01:4260:1ab:000b::/64 - vlan 11
+    - 2a01:4260:1ab:000c::/64 - vlan 12
+    - 2a01:4260:1ab:000d::/64 - vlan 13
+    - 2a01:4260:1ab:000e::/64 - vlan 14
+    - 2a01:4260:1ab:000f::/64 - vlan 15
+    - 2a01:4260:1ab:0020::/64 - vlan 20
+
+- 2a01:4260:1ab:1xxx::/52 - labicolo 16x /56
+  - 2a01:4260:1ab:10xx::/56 - 256x /64 delegations
+  - 2a01:4260:1ab:11xx::/56 - 16x /60 delegations
+
+
+
+Linknets:
+
+193.106.167.40/29 - Fiberby IPv4 linknet
+- 193.106.167.41 - tgccr1.fiberby.net
+- 193.106.167.42 - inxcr1.fiberby.net
+- 193.106.167.46 - space
+
+2a03:5440:1:2935:1ab::/120 - Fiberby IPv6 linknet
+- 2a03:5440:1:2935:1ab::1 - tgccr1.fiberby.net
+- 2a03:5440:1:2935:1ab::2 - inxcr1.fiberby.net
+- 2a03:5440:1:2935:1ab::3 - space
