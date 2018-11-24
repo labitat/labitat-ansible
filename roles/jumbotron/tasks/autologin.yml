@@ -26,7 +26,6 @@
   file:
     path: '{{ item }}'
     state: absent
-  with_items: "{{ getty_tty1_existing.files|map(attribute='path')|list }}"
-  when: "item not in getty_tty1_created.results|map(attribute='dest')"
+  with_items: "{{ getty_tty1_existing.files|map(attribute='path')|difference(getty_tty1_created.results|map(attribute='dest'))|list }}"
 
 # vim: set ts=2 sw=2 et:
