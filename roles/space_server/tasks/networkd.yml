@@ -1,5 +1,5 @@
 ---
-- name: Make sure directory exists
+- name: Make sure /etc/systemd/network exists
   file:
     dest: '/etc/systemd/network'
     state: directory
@@ -19,15 +19,14 @@
     owner: root
     group: root
     mode: 0644
-  with_fileglob: 'network/*'
+  with_fileglob: 'networkd/*'
   register: networkd_created
 
 - name: Delete unneeded network configuration
   file:
     path: '{{ item }}'
     state: absent
-  with_items: "{{ networkd_existing.files|map(attribute='path')|list }}"
-  when: "item not in networkd_created.results|map(attribute='dest')"
+  with_items: "{{ networkd_existing.files|map(attribute='path')|difference(networkd_created.results|map(attribute='dest'))|list }}"
 
 - name: Create systemd-networkd-wait-online drop-in directory
   file:
