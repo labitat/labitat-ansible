@@ -14,6 +14,10 @@ MulticastDNS=no
 LLDP=yes
 EmitLLDP=no
 
+##
+## Vanity addresses
+##
+
 [Route]
 Destination=2a01:4262:1ab::cafe/128
 Gateway=2a01:4262:1ab:20::5
@@ -21,3 +25,12 @@ Gateway=2a01:4262:1ab:20::5
 [Route]
 Destination=2a01:4262:1ab::db/128
 Gateway=2a01:4262:1ab:20::6
+
+##
+##  Labicolo
+##
+
+# Asbjorn /60
+[Route]
+Destination=2a01:4260:1ab:1100::/60
+Gateway=2a01:4262:1ab:20::75

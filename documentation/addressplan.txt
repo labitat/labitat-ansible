@@ -7,6 +7,7 @@
         * 185.38.175.069    - spacebrain.labitat.dk
         * 185.38.175.070    - spacewand.labitat.dk
         * 185.38.175.071    - reserved for tor exit node
+        * 185.38.175.075    - Asbjorn
 
 ********************* 2a01:4262:1ab:0000::/48  - allocated and announced
  ******************** 2a01:4262:1ab:0xxx::/52  - labitat internal use
@@ -23,10 +24,12 @@
     ***************** 2a01:4262:1ab:0020::/64  - vlan 20 - labicolo
                     * 2a01:4262:1ab:0020::5    - spacewand.labitat.dk
                     * 2a01:4262:1ab:0020::6    - spacebrain.labitat.dk
+                    * 2a01:4262:1ab:0020::75   - Asbjorn
 
  ******************** 2a01:4262:1ab:1xxx::/52  - labicolo 16x /56
   ******************* 2a01:4262:1ab:10xx::/56  - 256x /64 delegations
   ******************* 2a01:4262:1ab:11xx::/56  - 16x /60 delegations
+   ****************** 2a01:4262:1ab:110x::/60  - Asbjorn
 
 
 Linknets:
