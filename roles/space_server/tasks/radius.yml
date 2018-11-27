@@ -48,7 +48,7 @@
 - name: Configure radius sites
   file:
     path: '/etc/raddb/sites-enabled/{{ item.name }}'
-    src: '../sites-available/{{ item.name }}'
+    src: "{{ (item.state == 'link')|ternary('../sites-available/' + item.name,omit) }}"
     state: '{{ item.state }}'
     owner: root
     group: radiusd
@@ -64,7 +64,7 @@
 - name: Configure radius modules
   file:
     path: '/etc/raddb/mods-enabled/{{ item.name }}'
-    src: '../mods-available/{{ item.name }}'
+    src: "{{ (item.state == 'link')|ternary('../mods-available/' + item.name,omit) }}"
     state: '{{ item.state }}'
     owner: root
     group: radiusd
