@@ -1,11 +1,4 @@
 ---
-- name: Install sshd package
-  dnf:
-    name: openssh-server
-    state: present
-  tags:
-  - packages
-
 - name: Create private host keys
   copy:
     dest: '/etc/ssh/{{ item.key }}'

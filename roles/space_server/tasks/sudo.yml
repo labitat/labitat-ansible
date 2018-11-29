@@ -1,11 +1,4 @@
 ---
-- name: Install sudo package
-  dnf:
-    name: sudo
-    state: present
-  tags:
-  - packages
-
 - name: Install sudoers file
   copy:
     dest: '/etc/sudoers'

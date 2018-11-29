@@ -1,14 +1,4 @@
 ---
-- name: Install freeradius-python, curl and diffutils package
-  dnf:
-    name:
-    - freeradius-python
-    - curl
-    - diffutils
-    state: present
-  tags:
-  - packages
-
 - name: Configure radiusd
   copy:
     dest: '/etc/raddb/{{ item }}'

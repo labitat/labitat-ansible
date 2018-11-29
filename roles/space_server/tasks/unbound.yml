@@ -1,13 +1,4 @@
 ---
-- name: Install unbound package
-  dnf:
-    name:
-    - policycoreutils # needed for unbound-keygen.service
-    - unbound
-    state: present
-  tags:
-  - packages
-
 - name: Configure unbound
   template:
     dest: '/etc/unbound/unbound.conf'

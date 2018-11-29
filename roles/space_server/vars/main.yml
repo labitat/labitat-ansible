@@ -22,11 +22,25 @@ dnf_packages:
   'ansible': present
   'python3-netaddr': present # for dhcpd template
   'git': present
-  'diffutils': present
   'htop': present
   'man-db': present
   'syslinux': present
   'systemd-container': present
+  'sudo': present
+  'nftables': present
+  'openssh-server': present
+  'openssh-clients': present
+  'bird': present
+  'bird6': present
+  'dhcp-server': present
+  'radvd': present
+  'freeradius-python': present # pulls in radiusd
+  'curl': present
+  'diffutils': present
+  'policycoreutils': present # needed for unbound-keygen.service
+  'unbound': present
+  'avahi-tools': present # pulls in avahi package
+  'nss-mdns': present
 
 boot:
   device: 'LABEL=BOOT'

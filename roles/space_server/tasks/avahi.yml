@@ -1,13 +1,4 @@
 ---
-- name: Install avahi, tools and nss-mdns
-  dnf:
-    name:
-    - avahi-tools # pulls in avahi package
-    - nss-mdns
-    state: present
-  tags:
-  - packages
-
 - name: Configure avahi-daemon
   ini_file:
     path: '/etc/avahi/avahi-daemon.conf'

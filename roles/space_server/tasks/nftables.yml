@@ -7,13 +7,6 @@
     group: root
     mode: 0644
 
-- name: Install nftables package
-  dnf:
-    name: nftables
-    state: present
-  tags:
-  - packages
-
 - name: Configure nftables
   copy:
     dest: '/etc/nftables.conf'

@@ -1,13 +1,4 @@
 ---
-- name: Install bird and bird6 packages
-  dnf:
-    name:
-    - bird
-    - bird6
-    state: present
-  tags:
-  - packages
-
 - name: Make sure /etc/bird exists
   file:
     dest: '/etc/bird'

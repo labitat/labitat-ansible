@@ -1,11 +1,4 @@
 ---
-- name: Install radvd package
-  dnf:
-    name: radvd
-    state: present
-  tags:
-  - packages
-
 - name: Configure radvd
   copy:
     dest: '/etc/radvd.conf'

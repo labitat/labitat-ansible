@@ -1,11 +1,4 @@
 ---
-- name: Install dhcpd package
-  dnf:
-    name: dhcp-server
-    state: present
-  tags:
-  - packages
-
 - name: Configure dhcpd
   template:
     dest: '/etc/dhcp/dhcpd.conf'
