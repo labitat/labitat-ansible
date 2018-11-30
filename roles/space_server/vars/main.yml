@@ -33,7 +33,6 @@ dnf_packages:
   'bird': present
   'bird6': present
   'dhcp-server': present
-  'radvd': present
   'freeradius-python': present # pulls in radiusd
   'curl': present
   'diffutils': present

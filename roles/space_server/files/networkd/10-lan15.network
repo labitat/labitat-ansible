@@ -4,11 +4,30 @@ Name=lan15
 [Network]
 DHCP=no
 IPv6AcceptRA=no
-LinkLocalAddressing=no
-Address=2a01:4262:1ab:f::1/64
+# systemd-networkd thinks link is degraded
+# unless it has an ipv4 address :(
+Address=10.42.5.1/24
+#Address=2a01:4262:1ab:f::1/64
 Address=fe80::1/64
+IPv6PrefixDelegation=static
 IPForward=ipv6
 LLMNR=yes
 MulticastDNS=yes
 LLDP=yes
 EmitLLDP=yes
+
+[Route]
+Destination=2a01:4262:1ab:f::/64
+PreferredSource=2a01:4262:1ab::
+
+[IPv6PrefixDelegation]
+RouterLifetimeSec=14400
+RouterPreference=medium
+EmitDNS=yes
+DNS=2a01:4262:1ab::
+DNSLifetimeSec=14400
+
+[IPv6Prefix]
+Prefix=2a01:4262:1ab:f::/64
+ValidLifetimeSec=86400
+PreferredLifetimeSec=14400
