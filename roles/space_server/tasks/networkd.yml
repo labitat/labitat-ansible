@@ -28,19 +28,4 @@
     state: absent
   with_items: "{{ networkd_existing.files|map(attribute='path')|difference(networkd_created.results|map(attribute='dest'))|list }}"
 
-- name: Create systemd-networkd-wait-online drop-in directory
-  file:
-    dest: '/etc/systemd/system/systemd-networkd-wait-online.service.d'
-    state: directory
-    owner: root
-    group: root
-    mode: 0755
-- name: Don't wait for lan and mgt interfaces to come online
-  copy:
-    dest: '/etc/systemd/system/systemd-networkd-wait-online.service.d/no-lan-mgt.conf'
-    src: networkd-no-lan-mgt.conf
-    owner: root
-    group: root
-    mode: 0644
-
 # vim: set ts=2 sw=2 et:

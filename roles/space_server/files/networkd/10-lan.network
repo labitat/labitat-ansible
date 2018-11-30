@@ -1,8 +1,9 @@
 [Match]
 Name=lan
 
-#[Link]
+[Link]
 #ARP=no
+RequiredForOnline=no
 
 [Network]
 DHCP=no

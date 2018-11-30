@@ -1,6 +1,9 @@
 [Match]
 Name=mgt
 
+[Link]
+RequiredForOnline=no
+
 [Network]
 DHCP=no
 IPv6AcceptRA=no
