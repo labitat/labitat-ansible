@@ -7,8 +7,9 @@ RequiredForOnline=no
 [Network]
 DHCP=no
 IPv6AcceptRA=no
+LinkLocalAddressing=no
 Address=192.168.112.1/24
-#IPForward=ipv4
+IPForward=ipv4
 DHCPServer=yes
 LLMNR=yes
 MulticastDNS=yes
@@ -16,7 +17,7 @@ LLDP=yes
 EmitLLDP=yes
 
 [DHCPServer]
-DNS=192.168.112.1
 EmitDNS=yes
+DNS=192.168.112.1
 EmitNTP=no
 EmitTimezone=yes

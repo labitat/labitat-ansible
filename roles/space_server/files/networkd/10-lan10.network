@@ -10,3 +10,4 @@ IPForward=yes
 LLMNR=yes
 MulticastDNS=yes
 LLDP=yes
+EmitLLDP=yes
