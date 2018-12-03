@@ -1,6 +1,9 @@
 [Match]
 Name=lan13
 
+[Link]
+ARP=yes
+
 [Network]
 DHCP=no
 IPv6AcceptRA=no

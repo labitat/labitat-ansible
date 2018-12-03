@@ -2,7 +2,7 @@
 Name=lan
 
 [Link]
-#ARP=no
+ARP=no
 RequiredForOnline=no
 
 [Network]
