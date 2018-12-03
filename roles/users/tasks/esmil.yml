@@ -7,6 +7,7 @@
     uid: 2000
     group: users
     groups: '{{ user_groups }}'
+    password: '$6$1RwgF85UfHCIPzNd$Ow9pn9muQ2raoB0andBcrDkB9UqqmXylqWVXDsxgFqhHc5uNk7MZdhtGnz9P5UOSwadEpHkSG0VrP9eOPM8nj0'
 
 - name: esmil - authorized_keys
   authorized_key:
