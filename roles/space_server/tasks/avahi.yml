@@ -91,6 +91,6 @@
   lineinfile:
     path: '/etc/nsswitch.conf'
     regexp: '^hosts:'
-    line: 'hosts:      files mdns_minimal [NOTFOUND=return] dns myhostname'
+    line: 'hosts:      files myhostname mdns_minimal [NOTFOUND=return] dns'
 
 # vim: set ts=2 sw=2 et:
