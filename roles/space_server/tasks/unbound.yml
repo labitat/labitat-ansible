@@ -1,4 +1,12 @@
 ---
+- name: Create /etc/resolv.conf
+  copy:
+    dest: '/etc/resolv.conf'
+    src: resolv.conf
+    owner: root
+    group: root
+    mode: 0644
+
 - name: Configure unbound
   template:
     dest: '/etc/unbound/unbound.conf'
