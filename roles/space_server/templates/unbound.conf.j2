@@ -59,7 +59,9 @@ server:
 	rrset-roundrobin: yes
 	minimal-responses: yes
 
-	module-config: "validator iterator"
+	module-config: "dns64 validator iterator"
+
+	dns64-prefix: 2a01:4262:1ab:0:0:f::/96
 
 	trust-anchor-signaling: yes
 

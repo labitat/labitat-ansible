@@ -30,6 +30,8 @@
   when: radius_passwords is defined
 - import_tasks: unbound.yml
   tags: unbound
+- import_tasks: tayga.yml
+  tags: tayga
 - import_tasks: avahi.yml
   tags: avahi
 

@@ -2,7 +2,7 @@
 Name=lan15
 
 [Link]
-ARP=no
+ARP=yes
 
 [Network]
 DHCP=no

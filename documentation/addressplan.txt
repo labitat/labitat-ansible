@@ -16,6 +16,7 @@
                     * 2a01:4262:1ab:0000::     - space.labitat.dk
                     * 2a01:4262:1ab:0000::cafe - spacewand.labitat.dk
                     * 2a01:4262:1ab:0000::db   - spacebrain.labitat.dk
+            ********* 2a01:4262:1ab:0000:0:f::/96 - nat64/dns64 prefix
     ***************** 2a01:4262:1ab:000a::/64  - vlan 10 - infrastructure
     ***************** 2a01:4262:1ab:000b::/64  - vlan 11 - member wired
     ***************** 2a01:4262:1ab:000c::/64  - vlan 12 - member wireless

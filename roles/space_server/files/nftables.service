@@ -8,6 +8,7 @@ Requires=sys-devices-virtual-net-lan13.device
 Requires=sys-devices-virtual-net-lan14.device
 Requires=sys-devices-virtual-net-lan15.device
 Requires=sys-devices-virtual-net-lan20.device
+Requires=sys-devices-virtual-net-nat64.device
 After=sys-devices-virtual-net-lan10.device
 After=sys-devices-virtual-net-lan11.device
 After=sys-devices-virtual-net-lan12.device
@@ -15,6 +16,7 @@ After=sys-devices-virtual-net-lan13.device
 After=sys-devices-virtual-net-lan14.device
 After=sys-devices-virtual-net-lan15.device
 After=sys-devices-virtual-net-lan20.device
+After=sys-devices-virtual-net-nat64.device
 Before=network-online.target
 
 [Service]

@@ -1,0 +1,15 @@
+[Match]
+Name=nat64
+
+[Network]
+DHCP=no
+IPv6AcceptRA=no
+Address=10.42.128.1/17
+IPForward=yes
+LLMNR=no
+MulticastDNS=no
+LLDP=no
+
+[Route]
+Destination=2a01:4262:1ab:0:0:f::/96
+PreferredSource=2a01:4262:1ab::

@@ -1,0 +1,25 @@
+---
+- name: Create labitat.conf
+  copy:
+    dest: '/etc/tayga/labitat.conf'
+    src: tayga-labitat.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart tayga
+
+- name: Create /etc/systemd/system/sys-devices-virtual-net-nat64.device.wants
+  file:
+    path: '/etc/systemd/system/sys-devices-virtual-net-nat64.device.wants'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Start tayga@labitat.service when nat64 interface is up
+  file:
+    path: '/etc/systemd/system/sys-devices-virtual-net-nat64.device.wants/tayga@labitat.service'
+    src: '/usr/lib/systemd/system/tayga@.service'
+    state: link
+
+# vim: set ts=2 sw=2 et:

@@ -38,6 +38,7 @@ dnf_packages:
   'diffutils': present
   'policycoreutils': present # needed for unbound-keygen.service
   'unbound': present
+  'tayga': present
   'avahi-tools': present # pulls in avahi package
   'nss-mdns': present
 
