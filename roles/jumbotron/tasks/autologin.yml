@@ -24,8 +24,8 @@
 
 - name: Delete unneeded tty1 configuration
   file:
-    path: '{{ item }}'
+    path: '/etc/systemd/system/getty@tty1.service.d/{{ item }}'
     state: absent
-  with_items: "{{ getty_tty1_existing.files|map(attribute='path')|difference(getty_tty1_created.results|map(attribute='dest'))|list }}"
+  with_items: "{{ getty_tty1_existing.files|map(attribute='path')|map('basename')|difference(getty_tty1_created.results|map(attribute='dest')|map('basename'))|list }}"
 
 # vim: set ts=2 sw=2 et:
