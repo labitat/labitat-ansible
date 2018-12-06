@@ -24,8 +24,8 @@
 
 - name: Delete unneeded network configuration
   file:
-    path: '{{ item }}'
+    path: '/etc/systemd/network/{{ item }}'
     state: absent
-  with_items: "{{ networkd_existing.files|map(attribute='path')|difference(networkd_created.results|map(attribute='dest'))|list }}"
+  with_items: "{{ networkd_existing.files|map(attribute='path')|map('basename')|difference(networkd_created.results|map(attribute='item')|map('basename'))|list }}"
 
 # vim: set ts=2 sw=2 et:
