@@ -12,6 +12,37 @@
   command: "systemctl {{ use_networkd|ternary('enable','disable') }} systemd-networkd.service"
   when: chroot
 
+# in Debian 9 (stretch) we need to enable this manually
+# this is fixed in buster though
+- name: Enable/disable systemd-networkd-wait-online
+  systemd:
+    name: systemd-networkd-wait-online.service
+    enabled: "{{ use_networkd|ternary('yes','no') }}"
+    masked: no
+  when: ansible_distribution_release == 'stretch' and not chroot
+- name: '- when in chroot'
+  command: "systemctl {{ use_networkd|ternary('enable','disable') }} systemd-networkd-wait-online.service"
+  when: ansible_distribution_release == 'stretch' and chroot
+
+# use RequiredForOnline in systemd.network files if possible,
+# but for older systemd's set networkd_ignore: ['eth0', 'eth1']
+- name: Create/remove /etc/systemd/system/systemd-networkd-wait-online.service.d
+  file:
+    dest: '/etc/systemd/system/systemd-networkd-wait-online.service.d'
+    state: "{{ (networkd_ignore|length > 0)|ternary('directory','absent') }}"
+    owner: root
+    group: root
+    mode: 0755
+- name: Don't wait for certain interfaces
+  template:
+    dest: '/etc/systemd/system/systemd-networkd-wait-online.service.d/ignore.conf'
+    src: networkd-ignore.conf.j2
+    owner: root
+    group: root
+    mode: 0644
+  when: networkd_ignore|length > 0
+
+# if we use networkd, make sure the networking service is disabled
 - name: Mask Debian networking.service
   systemd:
     name: networking.service

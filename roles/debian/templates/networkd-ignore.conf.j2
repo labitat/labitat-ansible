@@ -1,0 +1,6 @@
+[Service]
+ExecStart=
+ExecStart=/lib/systemd/systemd-networkd-wait-online
+{%- for iface in networkd_ignore %}
+ --ignore {{ iface }}
+{%- endfor %}
