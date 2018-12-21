@@ -35,5 +35,5 @@ Gateway=2a01:4262:1ab:20::6
 
 # Asbjorn /60
 [Route]
-Destination=2a01:4260:1ab:1100::/60
+Destination=2a01:4262:1ab:1100::/60
 Gateway=2a01:4262:1ab:20::75
