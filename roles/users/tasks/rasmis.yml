@@ -1,0 +1,16 @@
+---
+- name: rasmis
+  user:
+    comment: 'Rasmus Malver'
+    name: rasmis
+    shell: '/bin/bash'
+    uid: 2084
+    group: users
+    groups: '{{ user_groups }}'
+
+- name: rasmis - authorized_keys
+  authorized_key:
+    user: rasmus
+    key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwrFlj6fFZHt/yUu764T6ov6XjH3yrbTiRraVTQ+4lLlBPWuMJc390N1B0VG1eQ6onI63V5vV9bLq0cIiPpunAwIhjAZVwLtEZNthBhA6oSpngBE6YVV3+spArhrir3YHhCbmX4hKg04DrrU1xkZkNHNHMonrOSAi4yaNuXWfhfFVElwgy14Uu8ntFRLZY35jFYkzUz4tXrInUcnfl/Fvv/Rvk8qVWfGNT7VcsqHs7BkU5UchpR6hof0+BN+/upesU1NFGQmLRNe81ZKT2darOvTCES8d6lviaA15TY7szYDMOEKM4bHYF2vISMW/WgKJxgpdSZZyvtrMijwhmjWSh rasmus@malentu'
+
+
