@@ -35,9 +35,14 @@
   tags:
   - users
   - semi
-- import_tasks: deni.yml
+
+- import_tasks: richard.yml
   tags:
   - users
-  - deni
+  - richard
 
+- import_tasks: rasmis.yml
+  tags:
+  - users
+  - rasmis
 # vim: set ts=2 sw=2 et:

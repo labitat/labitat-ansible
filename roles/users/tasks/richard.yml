@@ -1,0 +1,19 @@
+---
+- name: richard
+  user:
+    comment: 'Richard Graham'
+    name: richard
+    shell: '/bin/bash'
+    uid: 2042
+    group: users
+    groups: '{{ user_groups }}'
+
+- name: richard - authorized_keys
+  authorized_key:
+    user: richard
+    key: '{{ item }}'
+  with_items:
+  - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD32NTv7Rqp+ft4Kpq/svyhAsZ+g5egNWeXVad8sih6C7XEAtub/tlxn7HuIbFk7E0i+LnApvfxvU5CSkNx4P5nGMkWOlPBSB4z06zW4HJ6iVEY8bFb+npCReCB15Finl72/qdEs1XEZ9jXfhpGsFkbYVJsPpOTQO9hC/xwpe8/bKKjqC3hqhF1TeXKUjr9SfRKbOQo5RI9+tXMc5rhbmNCDPz8wpqqH1YV6exwH7a6QQ5HtXBDMMsdyvc5XQOmGxsKHKyubQL20P/KT021BWDdF2UBP7rQR+B7jkaIO7MkEMjAJOPTJw/WFs74SLQc/DpLWO/m+mDyukDKO/mFHdTb richard@richard-ThinkPad-X200'
+
+
+# vim: set ts=2 sw=2 et:
