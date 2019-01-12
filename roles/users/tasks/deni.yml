@@ -1,0 +1,18 @@
+---
+- name: deni
+  user:
+    comment: 'Denis Smajlović'
+    name: deni
+    shell: '/bin/bash'
+    uid: 2006
+    group: users
+    groups: '{{ user_groups }}'
+
+- name: deni - authorized_keys
+  authorized_key:
+    user: deni
+    key: '{{ item }}'
+  with_items:
+  - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDD9uhh9kUG3NLYLDSwh1ahtzb7ZaJJBVfCozwDSE33wdd8vroDLIwkedOiXJrCw+6pt2CJP9pneyLHhAygHwFkQ7yLYwgbsBh7f+xIDjKPeI/0xEggWqmASsOVvRvelzklw9Muwd2C40WS48XlpoAVeXLxYQ+N3XNAXVIBPUgQFgHhyiQ1IoRi7xcQMWyS6c4x1LX+R8GK/jbtmqPNuzQbrGfKwyzyij8VemzQ7HY8n25j6ojWppgDgXztxGRROLqJt93DLwH56oHFXRlSQX9ssu+8aiwV3UKsCGv+UoXQTxkN4t8AGhBOxOovB+XF2F7j80y8b7UB7LFDe2IaAbz97vwiPOJTgj+pfhNihTw3joD9EIjMVq6jgrimpcqijfLsn2YcWzCJSJzsIoiXWjeOC6ha/83RzAvlqXQipP3suqvJJbH5z9XKt2NiQBy5DnTgcshj7p14PIdLlXAGi5qtAjMi2t5zwUoPDa3QmhsL3fcJh4V8f6On8snklSPHBIeDR7OwQan99qfb56gfm7LJ3fmtE9AvKYYptG997YC+s37LIO6kFDttgXNYSdbnz4sJjlxlAorTgv8meapSOzwYNeYrzE/DTXIVoPAOMPOGp3vxsivuD3fYYfhNiNLTr7qO5sYmgSdtlX3efBdn1dtl+8cw9pga58HF0stwAXvR+Q== deni@labitat.dk'
+
+# vim: set ts=2 sw=2 et:

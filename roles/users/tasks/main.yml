@@ -35,5 +35,9 @@
   tags:
   - users
   - semi
+- import_tasks: deni.yml
+  tags:
+  - users
+  - deni
 
 # vim: set ts=2 sw=2 et:
