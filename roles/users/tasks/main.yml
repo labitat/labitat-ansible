@@ -11,6 +11,7 @@
     comment: '{{ userdata[item].name }}'
     shell: "{{ ('shell' in userdata[item])|ternary(userdata[item].shell,'/bin/bash') }}"
     uid: '{{ userdata[item].uid }}'
+    password: "{{ ('password' in userdata[item])|ternary(userdata[item].password,omit) }}"
     group: users
     groups: "{{ (users[item] == 'sudo')|ternary([sudo_group],[]) }}"
   with_items: '{{ users|dictsort()|selectattr(1)|map(attribute=0)|list }}'
