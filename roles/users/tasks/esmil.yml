@@ -1,22 +1,4 @@
 ---
-- name: esmil
-  user:
-    comment: 'Emil Renner Berthing'
-    name: esmil
-    shell: '/bin/bash'
-    uid: 2000
-    group: users
-    groups: '{{ user_groups }}'
-    password: '$6$1RwgF85UfHCIPzNd$Ow9pn9muQ2raoB0andBcrDkB9UqqmXylqWVXDsxgFqhHc5uNk7MZdhtGnz9P5UOSwadEpHkSG0VrP9eOPM8nj0'
-
-- name: esmil - authorized_keys
-  authorized_key:
-    user: esmil
-    key: '{{ item }}'
-  with_items:
-  - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUS/4G4YgI7LeJll8BUHCcdkCK3klSxzhqEY3X2df5+ esmil@stitch'
-  - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIESZrJ5ystrdDYZok0jCJKePa2JUL+t2DrbkMWwNheeQ esmil@plastik2'
-
 - name: esmil - copy dotfiles
   copy:
     dest: '~esmil/.{{ item }}'

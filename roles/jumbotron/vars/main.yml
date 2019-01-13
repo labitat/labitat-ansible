@@ -25,4 +25,9 @@ apt_packages:
   'libjson-perl': present
   'libwww-perl': present
 
+users:
+  'esmil': sudo
+  'riiiis': sudo
+  'knielsen': sudo
+
 # vim: set ts=2 sw=2 et:

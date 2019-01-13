@@ -1,5 +1,62 @@
 ---
-user_groups:
-- '{{ sudo_group }}'
+userdata:
+  'esmil':
+    name: 'Emil Renner Berthing'
+    uid: 2000
+    tasks: true
+    password: '$6$1RwgF85UfHCIPzNd$Ow9pn9muQ2raoB0andBcrDkB9UqqmXylqWVXDsxgFqhHc5uNk7MZdhtGnz9P5UOSwadEpHkSG0VrP9eOPM8nj0'
+    authorized_keys:
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUS/4G4YgI7LeJll8BUHCcdkCK3klSxzhqEY3X2df5+ esmil@stitch'
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIESZrJ5ystrdDYZok0jCJKePa2JUL+t2DrbkMWwNheeQ esmil@plastik2'
+
+  'ast':
+    name: 'Asbjørn Sloth Tønnesen'
+    uid: 2001
+    authorized_keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAyLX2AICoAhOSOnZth9PMlxqgPrw//J2wMtcHQUppqSjHGFkxIkOWnMUwbSZo/kFj2J8e8GJ7xwmC3tTblmJl+Ba1R77SEETJQpM1/TgWcCK5L7KpK/XP7yTCPMds1vczjgIIMA+DS9iuNQkqLSA5B6gdGfbfuPsMB/W8L2gqkVFMiE3zcrxGLwaPPW7fo9rA2Z7tMEZMFy9SB0u3mqY5aoBiI9P5U3rgn96SO8cs/JVnf99RfkJQWmBamZIH3vqwvC3uG+QgB0cQ9Sy9/I4Q75YQKnGPS+ySQVvo3nY9KpULAbHoVZyu3CtzDfXYOxgUXhJ/GerZZUbyHkrndhXteQ== asbjorn@asbjorn.it'
+
+  'flummer':
+    name: 'Thomas Flummer'
+    uid: 2002
+    authorized_keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA0QPLM0CyCr5tqdIeftC4kgmoGOE0EvOoZOZXrJqx2lRJfOh+eK/IjQv3K/MyqPhcHc6swcTfv5LpdgmxxhJmruXTX9OnDp5kyuoYknvD601WwfZATK7tqH3t9okIoW0qobb1jjciCkcNo0mtJ+BJ2HvoELAB0BASQy7EliLuFV6SImWV5nZ5kGaAs8lzS/Wl1c3FJT9OKaHgyYgkHMjH2FuFmQJQ1g+NKBx9BU7XQCddxY5U/s5EO5R6e2tZjxdeRu0v4k5FtUjryaj0zLh6JQteDNQpMr+4JKyfoT2b3TjJSNkd1k338V49CjZkCnt8qi+q4ahyzJVT0aCxSHT4+w== tf@labitat.dk'
+
+  'riiiis':
+    name: 'Christian Riis'
+    uid: 2003
+    authorized_keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDA/44Ucz9o402vT+aqlQGM37cIagF+lo7tVEvSbksuNC1DgUCTXHzhLG3STx2SdTbL+toGe9p7z/lW5xysPcS01heFt+XzbJbEVTHfXmng0NgIxZPactgJJ0ulCoGe+ehefnVgTFnidTxkm1MngeJbYqlNP5nf6RgygB+yM4P4GGtl2Sa/D/oWuQB7CIvtRrLGl96ON31AwWfVmXRsNT/rqmuMmqvJpR+ZaONfbN3JVYu7J1aHpkIRAN+5LsaSueZTTrmIxI3oGzuIrqegjsf9DxeVnjg6ZppKFSrWKMTx90Ao+Whea7UyXSiAcPl+UEWuE8zf1yVr0V4IxC+TDwuB riiiis@KosmoHP'
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOl1iI6dXybz5OhwXFim8FW+KGCGY1Nyx8QMTQjoX1fU0SrBgD8UElq8TbnZjVwrjv1qu53HhHJlZDWr5LGoi9SbBhHEq+zTWzLQwBlUdTv9fkLRTcOENKRM7Y71U/bhPzoIJPF6CBln8X+0Ymvzc8JHh3CP9bJiIxk4cBkgxwL6j6q2Laf+rVLUwdEGN4+T6OsGXIVyF8+pCwa2XmgRf+WVuUj8PAB4SnMYcbH3bOd+twG1CIU89RqLRAxKEGaS9vsuUAHtXxfkyrYyxSeVw0HcyjCom+/K/S5VtdomkgMHTDZ6S6Ua+nlu8x6tY6K83Zgnq/GJZ0TxcA4PCRkwtR riiiis@3k3'
+
+  'knielsen':
+    name: 'Kristian Nielsen'
+    uid: 2004
+    authorized_keys:
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKUAYFshLA2BvcTrKjW90lDjIQkCJ16+uIjfKqB0HDk/ knielsen@urd'
+
+  'k2OS':
+    name: 'René Mikkelsen'
+    uid: 2005
+    authorized_keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAqmvJAMyY117n638/rYw6EtDSY+iHG5xbg/pO932T/0D9X1MVmEnQyOa3597ufBSTUs1GdKtG2N0lyRq91OBS9JN4E+4Hm1t3UgH7/EKbun1Qb0HQMKsI4AR1onsFBeSCkZiijbg9lf7SL6+Ea0cYoXqy3uCWj/Q1PXq+3WlnlLnl9tFhytwuInuTmQvYpHwGgiEs1hIJWjBCbLPMyWbU7LOE6VzXQTbXCJz8FuraX5noiubpii74nHtUzM466ED3JUnf3TPWG8uGitJ7bT2/ZOQ5W83wUC0Xc80Gai3ilRXapQReE7oybePyXkVhP5odBiCu36iqyEgGol8Sb6+S7Q== rene@gw'
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC46lbGFV/7kM4w1C1dLfnIAAanX+IV9vDHw3D8uzEGmwWV0XL8e5rdv1RpKZKHpkAgBcD1m2Y1jVDj1R8QdbGZNSDUoP8z3dMemBDJkqunJjTPIPPeyQFprk/hVkJ4pK0Y+w1lKJquIVDkhQYIQCzuxZraAAq4AgVT3L5ft9WuJm3Apk1w+GESK0oQCZNDOhT8MblqiR+JZBUo2gd68jxr9+Wq3ekE7I/N3sO9HFeze4axcTQKcTs39Oi+RYNKJh44sAdxeo2HUX0IYasyxEr2z8H3BmMn1R/Fxwzj2seLYFu1U21UDZdqN+AfgpEabox0HOKvrNDNBGTC5KwWgWBB rene@denada.dk'
+
+  'semi':
+    name: 'Troels Bang Jensen'
+    uid: 2010
+    authorized_keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUqzAFehYCGZNUZkpARApPI4P/RjrL3qS8KniOyZOpL2YLE7WzzQWoLFhlmuKPygWqHBSPkZNm6JMi36fI5NurIk9GkLw8RnWhcqlA1miaD2wC3iQ2hoFOko2artgM7urZ2HCO0ILfjNzMdWvdBnQQWHudzUvPFNKmOuagp6GvEbs0X7kXi3X1+8lfCkRe0H6i4/RuHakUGQ9xipiIR5SoYdpnwHWlJp3trEM4WQtmQcxFkZZbW0yrujo2iqZ3MwWBkfA9PZG9BuooAWGZzUt/NxF5ImZISyaKG/DTlsEe+cEvjRmLYXZHKcgngC3zsQZAfoNjGXqlbsXbjont1u5p marvin@merlin'
+
+  'signout':
+    name: 'Dennis K Jensen'
+    uid: 2024
+    authorized_keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAgEA7cxO8aWOEk5GL+clhJanzRaC9wJI2foWqiwfVKWoVzihPz05OaIqzeJO/ffz11PeJCkuEH/lJXWtyRCmHDDOwkHZVEMT1Sfw73k0a8yGJh6w+IyaVFlL5cbZ9BTkxATr5JakU8dygJqcelg+kbMcFVUuRylla1sIOgrnDBWLVQK3DvAaPptseNy5tYT2gNRuZLgwWQHOXTMdnp5dV0Bwdimnd8iRvQq/I7PQYKfPKrBFnv9ccjNtK+BByh+nZcKkXmbTjniExwXFbbiECEHf+p+19LcA8oJyKJQUv1VgN0w0qrAijMF+Y+pHswMohb6sT1VfloOPD2viPEcuEDeYil+8106MLnMJzYrOvpotYatCqLAekiN2NpH6Ld4pJbhLdK9FiJreRDT82NgFXUIvPoROFBi04F5L4sNEoiCPXGE/Vb4m5M7u+UBwKtNaoz7JS2Y6XiBVQNXGM63Qgev9E3RKaU5Xi9I6ZoIqK6wbXIPkb6GwPeUD9jm0NlwCQopSz2RDgzrQGRnebEB5pdGKJQ3Xpds+7+jka5rMP2zcRIbhhornz4IiMqnuu91M8URtiTfz7D11lV7ipuwNWhT+ao4hapZGlbN6ToORCsQkPDQw5HGmQZLj/BKMwLGcP0iDtm3pX6dUsXshqvoCGIX8z1HizOhDusVZmnbXvIuzgjM= sign@work-x200s'
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCZQFV1lnkbpxGLb8vzatymPoQBQ8J8CRBdBV4IvmMevGTWBAlOvlr9tIKntkl+GS7lP71i7df7EGD2Oiwgv+3L+gdyTmReo9gl8h2z/uh1AUtL27PK6BMP7SXzv7tqQbO69saSBpljCbuiYWbO6T1lOT6KQMRUkqDfIUYHsK+IktXvvaFWJfRrCZ2B98lg18srWcz1AO4GJjoZtzNhy2KUFnQsp3gPCRdXI1PJMVuvhL997aa2vaCXhPPIIwXh8HhmV3mlNCx6oP1cNoMzsymloKqvX0v3hbsp+kPQXRLIt7d5sxjgb2C3E9DVNAOPHO4CJA9G24IFEq2/ZMvNO/3c56ZROW/KuIDFeUez1iJ8uu81TtQ0TU3t+35LOIyv47jkt6zjaj3CciAZGiJHvafyblSWk7+UDRSzkwtyc2X+XIWQG0LSKxhsXYB3FHMSqmMuRJViN/kAVIkCJU0WuEdhZqswjzfSgR9COoroGQGsbM7kXCk+U7ekXcxNP5ttgv8p4qamS9u6w8WIMvLJK5cOU4OIVtsPsFmk2ot6zQYEQTnRCiqscsPMLLFsapnvydLJ8TtDjhWtFzQ4tD8XkN9+/fxd8G45qk8R921Y7Ftb6qhphIXW/vCH6n/+hN920nj1S/AnWiVPTrBW0tRlI6sUfLkJKyI+Nld/yBPwb+PMmw== foldefrugt'
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEp2eFWf9qOwyqNioVeQC2gMS4fOg1CxKuky78dDhdaa SiGNOUT-T470s'
+
+  'jobbe': {}
+
+users: {}
 
 # vim: set ts=2 sw=2 et:

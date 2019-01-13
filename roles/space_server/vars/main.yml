@@ -42,6 +42,16 @@ dnf_packages:
   'avahi-tools': present # pulls in avahi package
   'nss-mdns': present
 
+users:
+  'esmil': sudo
+  'ast': sudo
+  'flummer': sudo
+  'riiiis': sudo
+  'knielsen': sudo
+  'k2OS': true
+  'semi': true
+  'signout': sudo
+
 boot:
   device: 'LABEL=BOOT'
   options: 'noauto,noatime,iocharset=iso8859-15,utf8,tz=UTC,dmask=0022,fmask=0133,x-systemd.automount,x-systemd.device-timeout=5min,x-systemd.idle-timeout=5min'

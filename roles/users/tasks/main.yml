@@ -3,37 +3,64 @@
   tags:
   - users
   - root
-- import_tasks: esmil.yml
+
+- name: Create users
+  user:
+    name: '{{ item }}'
+    state: present
+    comment: '{{ userdata[item].name }}'
+    shell: "{{ ('shell' in userdata[item])|ternary(userdata[item].shell,'/bin/bash') }}"
+    uid: '{{ userdata[item].uid }}'
+    group: users
+    groups: "{{ (users[item] == 'sudo')|ternary([sudo_group],[]) }}"
+  with_items: '{{ users|dictsort()|selectattr(1)|map(attribute=0)|list }}'
   tags:
   - users
-  - esmil
-- import_tasks: ast.yml
+
+- name: Create .ssh directories
+  file:
+    path: '~{{ item }}/.ssh'
+    state: directory
+    owner: '{{ item }}'
+    group: users
+    mode: 0700
+  with_items: '{{ users|dictsort()|selectattr(1)|map(attribute=0)|list }}'
+  when: "'authorized_keys' in userdata[item]"
   tags:
   - users
-  - ast
-- import_tasks: flummer.yml
+
+- name: Create authorized_keys
+  template:
+    dest: '~{{ item }}/.ssh/authorized_keys'
+    src: authorized_keys.j2
+    owner: '{{ item }}'
+    group: users
+    mode: 0600
+  with_items: '{{ users|dictsort()|selectattr(1)|map(attribute=0)|list }}'
+  when: "'authorized_keys' in userdata[item]"
   tags:
   - users
-  - flummer
-- import_tasks: riiiis.yml
+
+- name: Include user tasks
+  include_tasks:
+    file: '{{ user }}.yml'
+    apply:
+      tags:
+      - users
+  with_items: '{{ users|dictsort()|selectattr(1)|map(attribute=0)|list }}'
+  loop_control:
+    loop_var: user
+  when: "'tasks' in userdata[user] and userdata[user].tasks"
   tags:
   - users
-  - riiiis
-- import_tasks: knielsen.yml
+
+- name: Remove users
+  user:
+    name: '{{ item }}'
+    state: absent
+    remove: yes
+  with_items: '{{ userdata|dictsort()|map(attribute=0)|difference(users|dictsort()|selectattr(1)|map(attribute=0))|list }}'
   tags:
   - users
-  - knielsen
-- import_tasks: k2OS.yml
-  tags:
-  - users
-  - k2OS
-- import_tasks: signout.yml
-  tags:
-  - users
-  - signout
-- import_tasks: semi.yml
-  tags:
-  - users
-  - semi
 
 # vim: set ts=2 sw=2 et:
