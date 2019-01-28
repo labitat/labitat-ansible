@@ -51,6 +51,7 @@ users:
   'k2OS': true
   'semi': true
   'signout': sudo
+  'deni': sudo
 
 boot:
   device: 'LABEL=BOOT'
