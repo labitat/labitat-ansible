@@ -47,6 +47,12 @@ userdata:
     authorized_keys:
     - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD32NTv7Rqp+ft4Kpq/svyhAsZ+g5egNWeXVad8sih6C7XEAtub/tlxn7HuIbFk7E0i+LnApvfxvU5CSkNx4P5nGMkWOlPBSB4z06zW4HJ6iVEY8bFb+npCReCB15Finl72/qdEs1XEZ9jXfhpGsFkbYVJsPpOTQO9hC/xwpe8/bKKjqC3hqhF1TeXKUjr9SfRKbOQo5RI9+tXMc5rhbmNCDPz8wpqqH1YV6exwH7a6QQ5HtXBDMMsdyvc5XQOmGxsKHKyubQL20P/KT021BWDdF2UBP7rQR+B7jkaIO7MkEMjAJOPTJw/WFs74SLQc/DpLWO/m+mDyukDKO/mFHdTb richard@richard-ThinkPad-X200'
 
+  'max':
+    name: 'Max Campbell'
+    uid: 2007
+    authorized_keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDtbHB0B+IEPtC5ni2A9wGGehq21euv46cpowXlucXpe8Q+n3hILAJ2Ce5qvYFTDbpK72gifhXtq5xaG4ZXZJy/QYaKO00mS/Xq50WegqA9bZ9u4Ddw3XAHOyc1QYyoa5edGrbb46/PC861G5KdQgNc4PHf6iTQWYdD/0FAx4B7sqMYC4IMjFmlZWWgzKBOQG+LQ3CZ7UVj70X2YU5l31crJaCPS9za3m/Q5XH+2pYp5q5ixzfU7RVa1AqYwiCJDFsaQ5wxDsLCvy5IxOLsV3NW7iElnvTU+sBavRi3CEi5CH22eBbOj/HPsKnuxQomnOJRa4epM6YR3NfsWshBJo0x max@max-Laptop'
+
   'semi':
     name: 'Troels Bang Jensen'
     uid: 2010
