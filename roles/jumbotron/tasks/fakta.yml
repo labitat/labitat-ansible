@@ -1,0 +1,37 @@
+---
+- name: Install our fakta service
+  copy:
+    dest: '/etc/systemd/system/fakta.service'
+    src: fakta.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install our fakta timer
+  copy:
+    dest: '/etc/systemd/system/fakta.timer'
+    src: fakta.timer
+    owner: root
+    group: root
+    mode: 0644
+  register: fakta_timer
+
+- name: Copy fakta bell script
+  copy:
+    dest: '~jumbotron/fakta-bell.sh'
+    src: 'fakta-bell.sh'
+    owner: jumbotron
+    group: users
+    mode: 0755
+  register: fakta_service
+
+- name: Reload systemd
+  command: systemctl daemon-reload
+  when: fakta_service is changed or fakta_timer is changed
+
+- name: Enable fakta timer
+  systemd:
+    name: fakta.timer
+    enabled: yes
+    masked: no
+    state: started

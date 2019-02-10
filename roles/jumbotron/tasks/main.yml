@@ -38,5 +38,7 @@
   tags: autologin
 - import_tasks: irssi.yml
   tags: irssi
+- import_tasks: fakta.yml
+  tags: fakta
 
 # vim: set ts=2 sw=2 et:

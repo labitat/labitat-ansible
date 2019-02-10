@@ -1,0 +1,7 @@
+[Unit]
+Description=Ring fakta bell
+
+[Service]
+Type=oneshot
+User=jumbotron
+ExecStart=/home/jumbotron/fakta-bell.sh
