@@ -1,0 +1,9 @@
+[Unit]
+Description=Ring fakta bell
+
+[Timer]
+OnCalendar=*-*-* 20:45:00
+Persistent=false
+
+[Install]
+WantedBy=timers.target
