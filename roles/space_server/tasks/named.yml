@@ -1,0 +1,55 @@
+---
+- name: Configure named
+  copy:
+    dest: '/etc/named.conf'
+    src: named.conf
+    owner: root
+    group: named
+    mode: 0640
+  notify:
+  - restart named
+- name: Create s zone
+  template:
+    dest: '/etc/named/s.zone'
+    src: s.zone.j2
+    owner: root
+    group: named
+    mode: 0644
+  notify:
+  - restart named
+
+- name: Create service drop-in directory
+  file:
+    dest: '/etc/systemd/system/named.service.d'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+- name: Start named after networks are configured
+  copy:
+    dest: '/etc/systemd/system/named.service.d/wait-online.conf'
+    src: wait-online.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable named service
+  systemd:
+    name: named.service
+    enabled: yes
+    masked: no
+    state: started
+  when: not chroot
+- name: '- when in nspawn'
+  command: systemctl enable named.service
+  when: chroot
+
+- name: Use our own resolver
+  copy:
+    dest: /etc/resolv.conf
+    content: "nameserver 127.0.0.1\nnameserver ::1\noptions edns0\n"
+    owner: root
+    group: root
+    mode: 0644
+
+# vim: set ts=2 sw=2 et ft=yaml:

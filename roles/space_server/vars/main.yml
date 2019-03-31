@@ -36,8 +36,7 @@ dnf_packages:
   'freeradius-python': present # pulls in radiusd
   'curl': present
   'diffutils': present
-  'policycoreutils': present # needed for unbound-keygen.service
-  'unbound': present
+  'bind': present
   'tayga': present
   'avahi-tools': present # pulls in avahi package
   'nss-mdns': present

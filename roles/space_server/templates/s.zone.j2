@@ -1,0 +1,21 @@
+s.              600    IN   SOA     space.labitat.dk. esmil.labitat.dk. 2019040101 7200 3600 604800 86400
+s.              600    IN   NS      space.labitat.dk.
+
+s.              600    IN   A       10.42.1.1
+s.              600    IN   AAAA    2a01:4260:1ab::
+
+labitrack.s.    600    IN   A     185.38.175.70
+labitrack.s.    600    IN   AAAA  2a01:4262:1ab::cafe
+track.s.        600    IN   A     185.38.175.70
+track.s.        600    IN   AAAA  2a01:4262:1ab::cafe
+{% for host in local_hosts %}
+
+{% if 'ips' in host and host.ips|length > 0 %}
+{% for ip in host.ips|ipv4 %}
+{{ host.name }}.s. 600 IN A {{ ip }}
+{% endfor %}
+{% for ip in host.ips|ipv6 %}
+{{ host.name }}.s. 600 IN AAAA {{ ip }}
+{% endfor %}
+{% endif %}
+{% endfor %}

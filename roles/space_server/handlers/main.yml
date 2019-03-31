@@ -45,9 +45,9 @@
     daemon_reload: yes
   when: not chroot
 
-- name: restart unbound
+- name: restart named
   systemd:
-    name: unbound.service
+    name: named.service
     state: restarted
   when: not chroot
 
