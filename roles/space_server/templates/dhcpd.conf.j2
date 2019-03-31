@@ -12,9 +12,12 @@ ddns-update-style none;
 
 # option definitions common to all supported networks...
 #option domain-name "labitat.dk";
+abandon-lease-time 86400;
 default-lease-time 3600;
 max-lease-time 7200;
 min-lease-time 600;
+dynamic-bootp-lease-length 86400;
+db-time-format local;
 
 # If this DHCP server is the official DHCP server for the local
 # network, the authoritative directive should be uncommented.
@@ -24,180 +27,96 @@ authoritative;
 # have to hack syslog.conf to complete the redirection).
 log-facility daemon;
 
-
 # Admin net
 subnet 10.42.0.0 netmask 255.255.255.0 {
+	server-identifier 10.42.0.1;
 	range 10.42.0.50 10.42.0.69;
 	range 10.42.0.71 10.42.0.250;
 	option routers 10.42.0.1;
 	option domain-name-servers 185.38.175.0;
 	#option ntp-servers 90.185.0.18;
-{% for host in local_hosts %}
-{%   if host.ips | ipaddr('10.42.0.0/24') %}
-{%     if 'mac' in host %}
 
-{%       if 'description' in host %}
-	# {{ host.description }}
-{%       endif %}
-	host {{ host.name }} {
-		hardware ethernet {{ host.mac }};
-		fixed-address {{ host.ips | ipaddr('10.42.0.0/24') | first }};
-{%       if 'filename' in host %}
-		filename "{{ host.filename }}";
-{%       endif %}
-	}
-{%     else %}
-
-{%       if 'description' in host %}
-	# {{ host.description }}
-{%       endif %}
-	#host {{ host.name }} {
-	#	fixed-address {{ host.ips | ipaddr('10.42.0.0/24') | first }};
-	#}
-{%     endif %}
-{%   endif %}
-{% endfor %}
-
-	host spacewand {
-		hardware ethernet 00:1f:7b:b4:0e:00;
-		fixed-address 10.42.0.70;
-	}
+	deny bootp;
+	allow duplicates;
+	allow declines;
+	allow leasequery;
 }
-
 
 # Wired net
 subnet 10.42.1.0 netmask 255.255.255.0 {
+	server-identifier 10.42.1.1;
 	range dynamic-bootp 10.42.1.50 10.42.1.250;
 	option routers 10.42.1.1;
 	option domain-name-servers 185.38.175.0;
 	#option ntp-servers 90.185.0.18;
 	next-server 10.42.1.1;
 	filename "pxelinux.0";
-{% for host in local_hosts %}
-{%   if host.ips | ipaddr('10.42.1.0/24') %}
-{%     if 'mac' in host %}
 
-{%       if 'description' in host %}
-	# {{ host.description }}
-{%       endif %}
-	host {{ host.name }} {
-		hardware ethernet {{ host.mac }};
-		fixed-address {{ host.ips | ipaddr('10.42.1.0/24') | first }};
-{%       if 'filename' in host %}
-		filename "{{ host.filename }}";
-{%       endif %}
-	}
-{%     else %}
-
-{%       if 'description' in host %}
-	# {{ host.description }}
-{%       endif %}
-	#host {{ host.name }} {
-	#	fixed-address {{ host.ips | ipaddr('10.42.1.0/24') | first }};
-	#}
-{%     endif %}
-{%   endif %}
-{% endfor %}
+	allow bootp;
+	allow duplicates;
+	allow declines;
+	allow leasequery;
 }
-
 
 # Private wifi
 subnet 10.42.2.0 netmask 255.255.255.0 {
-	range 10.42.2.50 10.42.2.250;
+	server-identifier 10.42.2.1;
+	range dynamic-bootp 10.42.2.50 10.42.2.250;
 	option routers 10.42.2.1;
 	option domain-name-servers 185.38.175.0;
 	#option ntp-servers 90.185.0.18;
 	next-server 10.42.2.1;
 	filename "pxelinux.0";
-{% for host in local_hosts %}
-{%   if host.ips | ipaddr('10.42.2.0/24') %}
-{%     if 'mac' in host %}
 
-{%       if 'description' in host %}
-	# {{ host.description }}
-{%       endif %}
-	host {{ host.name }} {
-		hardware ethernet {{ host.mac }};
-		fixed-address {{ host.ips | ipaddr('10.42.2.0/24') | first }};
-{%       if 'filename' in host %}
-		filename "{{ host.filename }}";
-{%       endif %}
-	}
-{%     else %}
-
-{%       if 'description' in host %}
-	# {{ host.description }}
-{%       endif %}
-	#host {{ host.name }} {
-	#	fixed-address {{ host.ips | ipaddr('10.42.2.0/24') | first }};
-	#}
-{%     endif %}
-{%   endif %}
-{% endfor %}
+	allow bootp;
+	allow duplicates;
+	allow declines;
+	allow leasequery;
 }
 
 # Free wifi
 subnet 10.42.3.0 netmask 255.255.255.0 {
-	range 10.42.3.50 10.42.3.250;
+	server-identifier 10.42.3.1;
+	range dynamic-bootp 10.42.3.50 10.42.3.250;
 	option routers 10.42.3.1;
 	option domain-name-servers 185.38.175.0;
 	#option ntp-servers 90.185.0.18;
-{% for host in local_hosts %}
-{%   if host.ips | ipaddr('10.42.3.0/24') %}
-{%     if 'mac' in host %}
 
-{%       if 'description' in host %}
-	# {{ host.description }}
-{%       endif %}
-	host {{ host.name }} {
-		hardware ethernet {{ host.mac }};
-		fixed-address {{ host.ips | ipaddr('10.42.3.0/24') | first }};
-{%       if 'filename' in host %}
-		filename "{{ host.filename }}";
-{%       endif %}
-	}
-{%     else %}
-
-{%       if 'description' in host %}
-	# {{ host.description }}
-{%       endif %}
-	#host {{ host.name }} {
-	#	fixed-address {{ host.ips | ipaddr('10.42.3.0/24') | first }};
-	#}
-{%     endif %}
-{%   endif %}
-{% endfor %}
+	allow bootp;
+	allow duplicates;
+	deny declines;
+	deny leasequery;
 }
 
-# Password protected wifi
-subnet 10.42.4.0 netmask 255.255.255.0 {
-	range 10.42.4.50 10.42.4.250;
-	option routers 10.42.4.1;
-	option domain-name-servers 185.38.175.0;
-	#option ntp-servers 90.185.0.18;
-{% for host in local_hosts %}
-{%   if host.ips | ipaddr('10.42.4.0/24') %}
-{%     if 'mac' in host %}
+## Password protected wifi
+#subnet 10.42.4.0 netmask 255.255.255.0 {
+#	server-identifier 10.42.4.1;
+#	range dynamic-bootp 10.42.4.50 10.42.4.250;
+#	option routers 10.42.4.1;
+#	option domain-name-servers 185.38.175.0;
+#	#option ntp-servers 90.185.0.18;
+#
+#	allow bootp;
+#	allow duplicates;
+#	allow declines;
+#	allow leasequery;
+#}
 
-{%       if 'description' in host %}
+group {
+	use-host-decl-names on;
+{% for host in local_hosts %}
+
+{% if 'mac' in host %}
+{% if 'description' in host %}
 	# {{ host.description }}
-{%       endif %}
+{% endif %}
 	host {{ host.name }} {
 		hardware ethernet {{ host.mac }};
-		fixed-address {{ host.ips | ipaddr('10.42.4.0/24') | first }};
-{%       if 'filename' in host %}
+		fixed-address {{ host.ips | first }};
+{% if 'filename' in host %}
 		filename "{{ host.filename }}";
-{%       endif %}
+{% endif %}
 	}
-{%     else %}
-
-{%       if 'description' in host %}
-	# {{ host.description }}
-{%       endif %}
-	#host {{ host.name }} {
-	#	fixed-address {{ host.ips | ipaddr('10.42.4.0/24') | first }};
-	#}
-{%     endif %}
-{%   endif %}
+{% endif %}
 {% endfor %}
 }

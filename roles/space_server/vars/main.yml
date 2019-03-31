@@ -20,7 +20,7 @@ dnf_packages:
   'dosfstools': present
   'btrfs-progs': present
   'ansible': present
-  'python3-netaddr': present # for dhcpd template
+  'python3-netaddr': present # for avahi-hosts template
   'git': present
   'htop': present
   'man-db': present
