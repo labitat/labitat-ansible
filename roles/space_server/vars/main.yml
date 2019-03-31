@@ -61,11 +61,6 @@ root:
   options: 'noatime,ssd,compress=lzo'
 
 local_hosts:
-- name: ap
-  mac: 00:0f:23:94:43:0b
-  mdns: false
-  ips:
-  - 10.42.0.2
 - name: doorputer
   description: Front door controlling Raspberry Pi
   mac: b8:27:eb:d9:92:00
@@ -85,7 +80,6 @@ local_hosts:
   mdns: false
   ips:
   - 10.42.0.6
-  - 10.42.0.7
 - name: switch
   mac: 00:1b:11:6f:42:f8
   mdns: false
