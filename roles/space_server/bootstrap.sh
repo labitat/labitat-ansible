@@ -59,7 +59,7 @@ dnf \
   --disablerepo='*' \
   --enablerepo=fedora \
   --enablerepo=updates \
-  install glibc-langpack-en dnf git ansible python3-netaddr python-unversioned-command
+  install glibc-langpack-en dnf git ansible python-unversioned-command
 
 if [[ -f "$secrets" ]]; then
   install -m660 "$secrets" "$dest$secrets"
