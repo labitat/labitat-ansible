@@ -8,7 +8,30 @@
 # attempt to do a DNS update when a lease is confirmed. We default to the
 # behavior of the version 2 packages ('none', since DHCP v2 didn't
 # have support for DDNS.)
+{% if ddns_secret is defined %}
+ddns-update-style interim;
+ddns-local-address4 127.0.0.1;
+ddns-local-address6 ::1;
+
+key dhcpupdate {
+	algorithm {{ ddns_secret.algorithm }};
+	secret {{ ddns_secret.key }};
+}
+
+zone dhcp. {
+	primary 127.0.0.1;
+	primary6 ::1;
+	key dhcpupdate;
+}
+
+zone 42.10.in-addr.arpa. {
+	primary 127.0.0.1;
+	primary6 ::1;
+	key dhcpupdate;
+}
+{% else %}
 ddns-update-style none;
+{% endif %}
 
 # option definitions common to all supported networks...
 #option domain-name "labitat.dk";
@@ -35,6 +58,7 @@ subnet 10.42.0.0 netmask 255.255.255.0 {
 	option routers 10.42.0.1;
 	option domain-name-servers 185.38.175.0;
 	#option ntp-servers 90.185.0.18;
+	ddns-updates off;
 
 	deny bootp;
 	allow duplicates;
@@ -52,6 +76,13 @@ subnet 10.42.1.0 netmask 255.255.255.0 {
 	next-server 10.42.1.1;
 	filename "pxelinux.0";
 
+	if exists host-name {
+		ddns-hostname = option host-name;
+		ddns-domainname "dhcp";
+	} else {
+		ddns-updates off;
+	}
+
 	allow bootp;
 	allow duplicates;
 	allow declines;
@@ -68,6 +99,13 @@ subnet 10.42.2.0 netmask 255.255.255.0 {
 	next-server 10.42.2.1;
 	filename "pxelinux.0";
 
+	if exists host-name {
+		ddns-hostname = option host-name;
+		ddns-domainname "dhcp";
+	} else {
+		ddns-updates off;
+	}
+
 	allow bootp;
 	allow duplicates;
 	allow declines;
@@ -81,6 +119,13 @@ subnet 10.42.3.0 netmask 255.255.255.0 {
 	option routers 10.42.3.1;
 	option domain-name-servers 185.38.175.0;
 	#option ntp-servers 90.185.0.18;
+
+	if exists host-name {
+		ddns-hostname = option host-name;
+		ddns-domainname "dhcp";
+	} else {
+		ddns-updates off;
+	}
 
 	allow bootp;
 	allow duplicates;
@@ -96,6 +141,13 @@ subnet 10.42.3.0 netmask 255.255.255.0 {
 #	option domain-name-servers 185.38.175.0;
 #	#option ntp-servers 90.185.0.18;
 #
+#	if exists host-name {
+#		ddns-hostname = option host-name;
+#		ddns-domainname "dhcp";
+#	} else {
+#		ddns-updates off;
+#	}
+#
 #	allow bootp;
 #	allow duplicates;
 #	allow declines;
@@ -104,6 +156,7 @@ subnet 10.42.3.0 netmask 255.255.255.0 {
 
 group {
 	use-host-decl-names on;
+	ddns-updates off;
 {% for host in local_hosts %}
 {% if 'mac' in host and 'ipv4' in host %}
 
