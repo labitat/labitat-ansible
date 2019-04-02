@@ -1,4 +1,17 @@
 ---
+- name: Create local zones
+  template:
+    dest: '/etc/named/{{ item }}'
+    src: '{{ item }}.j2'
+    owner: root
+    group: named
+    mode: 0644
+  with_items:
+  - 's.zone'
+  - 'ipv4.rev.zone'
+  notify:
+  - restart named
+
 - name: Configure named
   copy:
     dest: '/etc/named.conf'
@@ -6,15 +19,6 @@
     owner: root
     group: named
     mode: 0640
-  notify:
-  - restart named
-- name: Create s zone
-  template:
-    dest: '/etc/named/s.zone'
-    src: s.zone.j2
-    owner: root
-    group: named
-    mode: 0644
   notify:
   - restart named
 

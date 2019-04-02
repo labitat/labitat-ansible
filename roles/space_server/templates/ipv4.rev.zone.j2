@@ -1,0 +1,12 @@
+42.10.in-addr.arpa. 600 IN SOA space.labitat.dk. esmil.labitat.dk. 2019040101 7200 3600 604800 86400
+42.10.in-addr.arpa. 600 IN NS  space.labitat.dk.
+
+{% for host in local_hosts %}
+{% if 'ipv4' in host %}
+{% for ip in host.ipv4 %}
+{% if ip.startswith('10.42.') %}
+{{ ip.split('.')[3] }}.{{ ip.split('.')[2] }}.42.10.in-addr.arpa. 600 IN PTR {{ host.name }}.s.
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
