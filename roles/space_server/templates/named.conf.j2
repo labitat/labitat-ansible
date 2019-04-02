@@ -86,6 +86,13 @@ acl local {
 	2a01:4262:1ab:c::/64; // member wireless
 	2a01:4262:1ab:f::/64; // member nat64
 };
+{% if ddns_secret is defined %}
+
+key dhcpupdate {
+	algorithm {{ ddns_secret.algorithm }};
+	secret "{{ ddns_secret.key }}";
+};
+{% endif %}
 
 zone "." IN {
 	type hint;
@@ -96,14 +103,30 @@ zone "s" IN {
 	type master;
 	file "/etc/named/s.zone";
 	allow-query { local; };
+	allow-update { none; };
 	allow-transfer { none; };
 };
+{% if ddns_secret is defined %}
+
+zone "dhcp" IN {
+	type master;
+	file "dynamic/dhcp.zone";
+	allow-query { local; };
+	allow-update { key dhcpupdate; };
+	allow-transfer { none; };
+	notify no;
+};
+{% endif %}
 
 zone "42.10.in-addr.arpa" IN {
 	type master;
-	file "/etc/named/ipv4.rev.zone";
+	file "dynamic/ipv4.rev.zone";
 	allow-query { local; };
+{% if ddns_secret is defined %}
+	allow-update { key dhcpupdate; };
+{% endif %}
 	allow-transfer { none; };
+	notify no;
 };
 
 include "/etc/named.rfc1912.zones";

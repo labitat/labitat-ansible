@@ -1,21 +1,40 @@
 ---
-- name: Create local zones
+- name: Create s zone
   template:
-    dest: '/etc/named/{{ item }}'
-    src: '{{ item }}.j2'
+    dest: '/etc/named/s.zone'
+    src: s.zone.j2
     owner: root
     group: named
     mode: 0644
-  with_items:
-  - 's.zone'
-  - 'ipv4.rev.zone'
+  notify:
+  - restart named
+
+- name: Create dhcp zone
+  template:
+    dest: '/var/named/dynamic/dhcp.zone'
+    src: dhcp.zone.j2
+    owner: named
+    group: named
+    mode: 0644
+    force: no
+  notify:
+  - restart named
+
+- name: Create ipv4 reverse dns zone
+  template:
+    dest: '/var/named/dynamic/ipv4.rev.zone'
+    src: ipv4.rev.zone.j2
+    owner: named
+    group: named
+    mode: 0644
+    force: no
   notify:
   - restart named
 
 - name: Configure named
-  copy:
+  template:
     dest: '/etc/named.conf'
-    src: named.conf
+    src: named.conf.j2
     owner: root
     group: named
     mode: 0640
