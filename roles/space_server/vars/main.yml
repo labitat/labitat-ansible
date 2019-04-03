@@ -83,6 +83,12 @@ local_hosts:
   mdns: false
   ipv4:
   - 10.42.0.9
+- name: voip
+  description: LinksysPAP2 SIP box for the phone
+  mac: 00:21:29:0c:91:65
+  mdns: false
+  ipv4:
+  - 10.42.0.10
 - name: lathe
   mdns: false
   ipv4:
