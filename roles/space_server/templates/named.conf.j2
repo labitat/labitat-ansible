@@ -104,7 +104,7 @@ zone "s" IN {
 	file "/etc/named/s.zone";
 	allow-query { local; };
 	allow-update { none; };
-	allow-transfer { none; };
+	allow-transfer { local; };
 };
 {% if ddns_secret is defined %}
 
@@ -113,7 +113,7 @@ zone "dhcp" IN {
 	file "dynamic/dhcp.zone";
 	allow-query { local; };
 	allow-update { key dhcpupdate; };
-	allow-transfer { none; };
+	allow-transfer { local; };
 	notify no;
 };
 {% endif %}
@@ -124,8 +124,10 @@ zone "42.10.in-addr.arpa" IN {
 	allow-query { local; };
 {% if ddns_secret is defined %}
 	allow-update { key dhcpupdate; };
+{% else %}
+	allow-update { none; };
 {% endif %}
-	allow-transfer { none; };
+	allow-transfer { local; };
 	notify no;
 };
 
