@@ -75,7 +75,7 @@ subnet 10.42.1.0 netmask 255.255.255.0 {
 	next-server 10.42.1.1;
 	filename "pxelinux.0";
 
-	if exists host-name {
+	if exists host-name and option host-name ~= "^[0-9A-Za-z-]*$" {
 		ddns-hostname = option host-name;
 		ddns-domainname "dhcp";
 	} else {
@@ -98,7 +98,7 @@ subnet 10.42.2.0 netmask 255.255.255.0 {
 	next-server 10.42.2.1;
 	filename "pxelinux.0";
 
-	if exists host-name {
+	if exists host-name and option host-name ~= "^[0-9A-Za-z-]*$" {
 		ddns-hostname = option host-name;
 		ddns-domainname "dhcp";
 	} else {
@@ -119,7 +119,7 @@ subnet 10.42.3.0 netmask 255.255.255.0 {
 	option domain-name-servers 185.38.175.0;
 	#option ntp-servers 90.185.0.18;
 
-	if exists host-name {
+	if exists host-name and option host-name ~= "^[0-9A-Za-z-]*$" {
 		ddns-hostname = option host-name;
 		ddns-domainname "dhcp";
 	} else {
@@ -140,7 +140,7 @@ subnet 10.42.3.0 netmask 255.255.255.0 {
 #	option domain-name-servers 185.38.175.0;
 #	#option ntp-servers 90.185.0.18;
 #
-#	if exists host-name {
+#	if exists host-name and option host-name ~= "^[0-9A-Za-z-]*$" {
 #		ddns-hostname = option host-name;
 #		ddns-domainname "dhcp";
 #	} else {
