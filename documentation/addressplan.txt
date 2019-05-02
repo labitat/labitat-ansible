@@ -37,12 +37,20 @@
 
 Linknets:
 
-**** 193.106.167.40/29 - Fiberby IPv4 linknet
-   * 193.106.167.41    - tgccr1.fiberby.net
+**** 193.106.167.40/29 - Fiberby IPv4 linknet assigned
+  ** 193.106.167.40/31 - assigned for tgccr1 - space link
+   * 193.106.167.40    - tgccr1.fiberby.net
+   * 193.106.167.41    - space.labitat.dk
+  ** 193.106.167.42/31 - assigned for inxcr1 - space link
    * 193.106.167.42    - inxcr1.fiberby.net
-   * 193.106.167.46    - space.labitat.dk
+   * 193.106.167.43    - space.labitat.dk
+  ** 193.106.167.44/31 - allocated for tgccr1 - future secondary space router link
+  ** 193.106.167.46/31 - allocated for inxcr1 - future secondary space router link
 
-*** 2a03:5440:1:2935:1ab::/120 - Fiberby IPv6 linknet
-  * 2a03:5440:1:2935:1ab::1    - tgccr1.fiberby.net
-  * 2a03:5440:1:2935:1ab::2    - inxcr1.fiberby.net
-  * 2a03:5440:1:2935:1ab::3    - space.labitat.dk
+*** 2a03:5440:1:2935:1ab:1::/120 - Fiberby IPv6 linknet 1
+  * 2a03:5440:1:2935:1ab:1::1    - tgccr1.fiberby.net
+  * 2a03:5440:1:2935:1ab:1::2    - space.labitat.dk
+
+*** 2a03:5440:1:2935:1ab:2::/120 - Fiberby IPv6 linknet 2
+  * 2a03:5440:1:2935:1ab:2::1    - inxcr1.fiberby.net
+  * 2a03:5440:1:2935:1ab:2::2    - space.labitat.dk

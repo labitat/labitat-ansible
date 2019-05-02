@@ -4,8 +4,10 @@ Name=wan
 [Network]
 DHCP=no
 IPv6AcceptRA=no
-Address=193.106.167.46/29
-Address=2a03:5440:1:2935:1ab::3/120
+Address=193.106.167.41/31
+Address=193.106.167.43/31
+Address=2a03:5440:1:2935:1ab:1::2/120
+Address=2a03:5440:1:2935:1ab:2::2/120
 IPForward=yes
 LLMNR=no
 MulticastDNS=no
@@ -13,9 +15,17 @@ LLDP=yes
 EmitLLDP=no
 
 [Route]
-Gateway=193.106.167.42
+Gateway=193.106.167.40
 Metric=1024
 
 [Route]
-Gateway=2a03:5440:1:2935:1ab::2
+Gateway=193.106.167.42
+Metric=1025
+
+[Route]
+Gateway=2a03:5440:1:2935:1ab:1::1
 Metric=1024
+
+[Route]
+Gateway=2a03:5440:1:2935:1ab:2::1
+Metric=1025
