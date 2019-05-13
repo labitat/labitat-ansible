@@ -8,6 +8,7 @@ userdata:
     authorized_keys:
     - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUS/4G4YgI7LeJll8BUHCcdkCK3klSxzhqEY3X2df5+ esmil@stitch'
     - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIESZrJ5ystrdDYZok0jCJKePa2JUL+t2DrbkMWwNheeQ esmil@plastik2'
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHo3wq70/mMiOTgNdijxDp7CjrclMOM9f7JSnMtqSevM esmil@matahari'
 
   'ast':
     name: 'Asbjørn Sloth Tønnesen'
