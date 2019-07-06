@@ -9,7 +9,7 @@ apt_sources:
     components:
     - main
     - contrib
-    - no-free
+    - non-free
     - rpi
 
 apt_packages:
