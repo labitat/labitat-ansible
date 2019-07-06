@@ -6,7 +6,7 @@ apt_sources:
     components:
     - main
     - contrib
-    - no-free
+    - non-free
     - rpi
 
 # vim: set ts=2 sw=2 et:
