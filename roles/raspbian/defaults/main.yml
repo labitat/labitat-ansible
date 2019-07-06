@@ -52,8 +52,10 @@ apt_packages:
   'libfastjson4': absent
   'net-tools': absent
   'gdb': absent
+  'gdbm-l10n': absent
   'xdg-user-dirs': absent
   'raspberrypi-net-mods': absent
+  'libdns-export1104': absent
   'liblogging-stdlog0': absent
   'liblognorm5': absent
   'libudev0': absent
@@ -88,6 +90,7 @@ apt_packages:
   'libraspberrypi-dev': absent
   'gcc': absent
   'cpp': absent
+  'gcc-7-base': absent
   'gcc-6': absent
   'gcc-5-base': absent
   'gcc-4.9-base': absent
