@@ -23,8 +23,12 @@ you and Ansible can log into it on boot.
 
 Now move your sd-card to the Raspberry Pi, connect an ethernet cable
 and lastly the power.
-Once you figure out the ip address of the Raspberry Pi you can run
-the following command to bootstrap it:
+Once you figure out the ip address of the Raspberry Pi it's a good idea
+to ssh into it manually just to accept the host key:
+```sh
+ssh pi@<ip address>
+```
+Now run the following command to bootstrap it:
 
 ```sh
 ansible-playbook -D \
@@ -32,13 +36,14 @@ ansible-playbook -D \
   -e ansible_host=<ip address> \
   -e ansible_ssh_user=pi \
   -e ansible_ssh_pass=raspberry \
+  -e '{"users":{"<your labitat user>":"sudo"}}' \
   raspbian-template.yml
 ```
 
 Now go buy a Mate or something. This will take a long time..
 
 Once it finishes you should have a fully upgraded Raspbian
-with all the Labitat users and their ssh keys in place.
+with your Labitat user and all the ssh keys in place.
 Hence you should now be able run ansible with your own
 ssh user. Eg. just
 
@@ -46,6 +51,7 @@ ssh user. Eg. just
 ansible-playbook -D \
   -i raspbian-template, \
   -e ansible_host=<ip address> \
+  -e '{"users":{"<your labitat user>":"sudo"}}' \
   raspbian-template.yml
 ```
 
