@@ -3,7 +3,7 @@
   tags: apt
 - import_tasks: tmpfs.yml
   tags: tmpfs
-  when: use_tmpfs
+  when: use_tmpfs|bool
 - import_tasks: hosts.yml
   tags: hosts
 - import_tasks: timezone.yml

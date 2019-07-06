@@ -63,9 +63,9 @@
     masked: no
     state: started
   when: not chroot
-- name: '- when in nspawn'
+- name: '- when in chroot'
   command: systemctl enable named.service
-  when: chroot
+  when: chroot|bool
 
 - name: Use our own resolver
   copy:

@@ -13,6 +13,6 @@
   with_items:
   - apt-daily.timer
   - apt-daily-upgrade.timer
-  when: chroot
+  when: chroot|bool
 
 # vim: set ts=2 sw=2 et:

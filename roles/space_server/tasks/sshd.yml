@@ -49,6 +49,6 @@
   command: systemctl enable sshd.service
   args:
     creates: '/etc/systemd/system/multi-user.target.wants/sshd.service'
-  when: chroot
+  when: chroot|bool
 
 # vim: set ts=2 sw=2 et:

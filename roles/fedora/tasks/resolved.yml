@@ -8,7 +8,7 @@
     value:   "{{ item.value|ternary(item.value,omit) }}"
     state:   "{{ item.value|ternary('present','absent') }}"
   with_dict: '{{ resolved_conf }}'
-  when: use_resolved
+  when: use_resolved|bool
   notify: restart resolved
 
 - name: Enable/disable systemd-resolved
@@ -20,7 +20,7 @@
   when: not chroot
 - name: '- when in chroot'
   command: "systemctl {{ use_resolved|ternary('enable','disable') }} systemd-resolved.service"
-  when: chroot
+  when: chroot|bool
 
 - name: Symlink /etc/resolv.conf
   file:
@@ -28,12 +28,12 @@
     src: '/run/systemd/resolve/resolv.conf'
     state: link
     force: yes
-  when: use_resolved
+  when: use_resolved|bool
 - name: Use myhostname and possibly resolved nss plugins
   lineinfile:
     path: /etc/nsswitch.conf
     regexp: '^hosts:'
     line: 'hosts:          files resolve [!UNAVAIL=return] dns myhostname'
-  when: use_resolved
+  when: use_resolved|bool
 
 # vim: set ts=2 sw=2 et:

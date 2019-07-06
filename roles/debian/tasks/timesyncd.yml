@@ -20,6 +20,6 @@
   when: not chroot
 - name: '- when in chroot'
   command: systemctl enable systemd-timesyncd.service
-  when: chroot
+  when: chroot|bool
 
 # vim: set ts=2 sw=2 et:

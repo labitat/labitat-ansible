@@ -9,6 +9,6 @@
     src: '../usr/share/zoneinfo/{{ timezone }}'
     state: link
     force: yes
-  when: chroot
+  when: chroot|bool
 
 # vim: set ts=2 sw=2 et:
