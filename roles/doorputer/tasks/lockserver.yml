@@ -37,14 +37,25 @@
     chdir: '/home/doorman'
     creates: '/home/doorman/users.db'
 
-- name: Create pasword file
-  copy:
-    dest: '~doorman/lockserver.password'
-    content: "{{ doorputer_webpassword }}\n"
+- name: Make sure ~doorman/.config exists
+  file:
+    dest: '~doorman/.config'
+    state: directory
+    owner: doorman
+    group: users
+    mode: 0700
+
+- name: Create lockserver.ini
+  ini_file:
+    path: '~doorman/.config/lockserver.ini'
+    section: "{{ item.key.split('.',1)[0] }}"
+    option:  "{{ item.key.split('.',1)[1] }}"
+    value:   "{{ item.value|ternary(item.value,omit) }}"
+    state:   "{{ item.value|ternary('present','absent') }}"
     owner: doorman
     group: users
     mode: 0600
-  when: doorputer_webpassword is defined
+  with_dict: '{{ lockserver_conf }}'
 
 - name: Install lockserver service
   copy:

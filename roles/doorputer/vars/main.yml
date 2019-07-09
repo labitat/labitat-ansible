@@ -24,4 +24,9 @@ apt_packages:
   'python3-serial': present
   'sqlite3': present
 
+lockserver_conf:
+  'Database.Path': '/home/doorman/users.db'
+  'Serial.Device': '/dev/ttyUSB0'
+  'Daymode.GPIONumber': '2'
+
 # vim: set ts=2 sw=2 et:
