@@ -2,7 +2,7 @@
 Description=Lockserver
 
 [Service]
-Type=simple
+Type=notify
 User=doorman
 WorkingDirectory=/home/doorman
 ExecStartPre=/home/doorman/lockserver/init.sh
