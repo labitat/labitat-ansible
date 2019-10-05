@@ -6,9 +6,12 @@ userdata:
     tasks: true
     password: '$6$1RwgF85UfHCIPzNd$Ow9pn9muQ2raoB0andBcrDkB9UqqmXylqWVXDsxgFqhHc5uNk7MZdhtGnz9P5UOSwadEpHkSG0VrP9eOPM8nj0'
     authorized_keys:
-    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEUS/4G4YgI7LeJll8BUHCcdkCK3klSxzhqEY3X2df5+ esmil@stitch'
     - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIESZrJ5ystrdDYZok0jCJKePa2JUL+t2DrbkMWwNheeQ esmil@plastik2'
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINGvUI9Gme812b75R//zEGJm5pURhaJpWCn7lwMuOrVC esmil@alcazar'
     - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHo3wq70/mMiOTgNdijxDp7CjrclMOM9f7JSnMtqSevM esmil@matahari'
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICafi2jClWwIGo/iU32wJFGAINKKuCfID5uWk+brl4Lo esmil@hercules'
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINiWgFrvPf1h5kTfQA8yR9Rvo5OO7iiPt0cpqMro7+tv esmil@oticon'
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJDcOdiCyJgWqTW3olOo8ufLraQqfDMHdO6TCcuvesQS esmil@evo'
 
   'ast':
     name: 'Asbjørn Sloth Tønnesen'

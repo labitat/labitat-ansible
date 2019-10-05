@@ -1,6 +1,8 @@
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+set -o vi
+
 export PS1='\[\e[1;31m\]\u\[\e[00m\]@\[\e[0;31m\]\h\[\e[1;34m\]\w\[\e[00m\]\$ '
 unset PROMPT_COMMAND
 export -n PROMPT_COMMAND
