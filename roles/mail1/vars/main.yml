@@ -1,0 +1,32 @@
+---
+hostname: 'mail1'
+
+apt_sources:
+  base:
+    components:
+    - main
+    - contrib
+    - non-free
+  security:
+    components:
+    - main
+    - contrib
+    - non-free
+  updates:
+    components:
+    - main
+    - contrib
+    - non-free
+
+apt_packages:
+  'haveged': present
+
+journald_conf:
+  'Journal.Storage': 'persistent'
+
+users:
+  'esmil': sudo
+  'ast': sudo
+  'flummer': sudo
+
+# vim: set ts=2 sw=2 et:

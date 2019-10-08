@@ -1,0 +1,24 @@
+---
+- name: Install network configuration
+  copy:
+    dest: '/etc/systemd/network/10-ens3.network'
+    src: ens3.network
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - networkd-config
+
+- name: Disable unused services
+  systemd:
+    name: '{{ item }}'
+    enabled: no
+  with_items:
+  - remote-fs.target
+  tags:
+  - systemd
+
+- import_tasks: haveged.yml
+  tags: haveged
+
+# vim: set ts=2 sw=2 et:

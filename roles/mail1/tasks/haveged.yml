@@ -1,0 +1,12 @@
+---
+- name: Enable haveged service
+  systemd:
+    name: 'haveged.service'
+    enabled: yes
+    masked: no
+    state: started
+  when: not chroot
+- name: '- when in chroot'
+  command: 'systemctl enable haveged.service'
+
+# vim: set ts=2 sw=2 et:
