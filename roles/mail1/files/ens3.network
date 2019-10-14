@@ -6,5 +6,7 @@ DHCP=no
 IPv6AcceptRA=yes
 Address=10.72.40.20/24
 Gateway=10.72.40.1
+Address=2a01:4260:28:ffff::25/64
+Gateway=2a01:4260:28:ffff::1
 DNS=10.72.40.1
 Domains=labitat.dk
