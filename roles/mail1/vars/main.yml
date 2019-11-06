@@ -28,5 +28,6 @@ users:
   'esmil': sudo
   'ast': sudo
   'flummer': sudo
+  'semi': sudo
 
 # vim: set ts=2 sw=2 et:
