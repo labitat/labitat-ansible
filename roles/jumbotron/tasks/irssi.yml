@@ -19,10 +19,13 @@
     group: users
     mode: 0644
 
-- name: Add autorun link for jumbowatch.pl
+- name: Add autorun link for custom irssi plugins
   file:
-    path: '~jumbotron/.irssi/scripts/autorun/jumbowatch.pl'
-    src: '../../../jumbotron/jumbowatch.pl'
+    path: '~jumbotron/.irssi/scripts/autorun/{{item}}'
+    src: '../../../jumbotron/{{item}}'
     state: link
+  with_items:
+  - jumbowatch.pl
+  - Jumbochatter.pl
 
 # vim: set ts=2 sw=2 et:
