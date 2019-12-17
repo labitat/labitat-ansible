@@ -24,6 +24,7 @@ apt_packages:
   # jumbowatch.pl dependencies
   'libjson-perl': present
   'libwww-perl': present
+  'libanyevent-http-perl': present
 
 users:
   'esmil': sudo
