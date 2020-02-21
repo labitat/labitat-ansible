@@ -25,6 +25,10 @@ apt_packages:
   'libjson-perl': present
   'libwww-perl': present
   'libanyevent-http-perl': present
+  'libxml-libxml-perl': present
+  'libhtml-parser-perl': present
+  'libdatetime-perl': present
+  'libdatetime-format-rfc3339-perl': present
 
 users:
   'esmil': sudo
