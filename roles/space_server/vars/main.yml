@@ -97,6 +97,10 @@ local_hosts:
   mac: 00:e0:c5:6e:d6:8d
   ipv4:
   - 10.42.1.9
+- name: piscreen2
+  mac: b8:27:eb:9b:64:d9
+  ipv4:
+  - 10.42.1.12
 - name: printbrother
   mac: 00:80:77:06:9f:26
   ipv4:
