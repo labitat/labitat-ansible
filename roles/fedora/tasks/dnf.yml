@@ -1,5 +1,7 @@
 ---
 - name: Configure dnf.conf
+  vars:
+    dnf_conf: '{{ dnf_conf_default|combine(dnf_conf_role) }}'
   ini_file:
     path: '/etc/dnf/dnf.conf'
     no_extra_spaces: yes
@@ -11,6 +13,8 @@
   with_dict: '{{ dnf_conf }}'
 
 - name: Remove packages
+  vars:
+    dnf_packages: '{{ dnf_packages_default|combine(dnf_packages_role) }}'
   dnf:
     name: "{{ dnf_packages|dictsort(true)|selectattr(1,'equalto','absent')|map(attribute=0)|list }}"
     state: absent
@@ -26,6 +30,8 @@
   - packages
 
 - name: Install packages
+  vars:
+    dnf_packages: '{{ dnf_packages_default|combine(dnf_packages_role) }}'
   dnf:
     name: "{{ dnf_packages|dictsort(true)|selectattr(1,'equalto','present')|map(attribute=0)|list }}"
     state: present

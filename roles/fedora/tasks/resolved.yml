@@ -1,5 +1,7 @@
 ---
-- name: Configure systemd-resolved
+- name: Configure resolved.conf
+  vars:
+    resolved_conf: '{{ resolved_conf_default|combine(resolved_conf_role) }}'
   ini_file:
     path: '/etc/systemd/resolved.conf'
     no_extra_spaces: yes

@@ -1,5 +1,7 @@
 ---
-- name: Configure systemd-timesyncd
+- name: Configure timesyncd.conf
+  vars:
+    timesyncd_conf: '{{ timesyncd_conf_default|combine(timesyncd_conf_role) }}'
   ini_file:
     path: '/etc/systemd/timesyncd.conf'
     no_extra_spaces: yes

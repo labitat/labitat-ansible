@@ -3,19 +3,30 @@ use_resolved: true
 use_networkd: true
 use_timesyncd: true
 
-locale:
-  default:
-    LANG: 'en_US.UTF-8'
+locale_default:
+  LANG: 'en_US.UTF-8'
 
-systemd_conf: {}
-journald_conf: {}
-logind_conf: {}
-resolved_conf: {}
-timesyncd_conf: {}
+systemd_conf_default: {}
+systemd_conf_role: {}
+
+journald_conf_default: {}
+journald_conf_role: {}
+
+logind_conf_default: {}
+logind_conf_role: {}
+
+resolved_conf_default: {}
+resolved_conf_role: {}
+
+timesyncd_conf_default: {}
+timesyncd_conf_role: {}
+
+dnf_conf_default: {}
+dnf_conf_role: {}
 
 dnf_makecache: false
 
-dnf_packages:
+dnf_packages_default:
   'glibc-langpack-en': present
   'initscripts': present
   'hostname': present
@@ -24,6 +35,7 @@ dnf_packages:
   'vim-enhanced': present
   'dnf-command(leaves)': present
   'python-unversioned-command': present
+dnf_packages_role: {}
 
 sudo_group: 'wheel'
 

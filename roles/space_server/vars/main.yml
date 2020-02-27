@@ -3,18 +3,17 @@ hostname: 'space'
 
 use_resolved: false
 
-locale:
-  default:
-    LANG: 'da_DK.UTF-8'
-    LC_COLLATE: 'C'
-    LC_MESSAGES: 'C'
+locale_default:
+  LANG: 'da_DK.UTF-8'
+  LC_COLLATE: 'C'
+  LC_MESSAGES: 'C'
 
-dnf_conf:
+dnf_conf_role:
   'main.install_weak_deps': 'False'
   'main.best': 'True'
   'main.deltarpm': 'False'
 
-dnf_packages:
+dnf_packages_role:
   'glibc-langpack-da': present
   'iproute': present
   'dosfstools': present
