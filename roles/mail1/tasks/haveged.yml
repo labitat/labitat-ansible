@@ -8,5 +8,6 @@
   when: not chroot
 - name: '- when in chroot'
   command: 'systemctl enable haveged.service'
+  when: chroot
 
 # vim: set ts=2 sw=2 et:
