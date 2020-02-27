@@ -1,7 +1,7 @@
 ---
 hostname: 'mail1'
 
-apt_sources:
+apt_sources_role:
   base:
     components:
     - main
@@ -18,10 +18,10 @@ apt_sources:
     - contrib
     - non-free
 
-apt_packages:
+apt_packages_role:
   'haveged': present
 
-journald_conf:
+journald_conf_role:
   'Journal.Storage': 'persistent'
 
 users:

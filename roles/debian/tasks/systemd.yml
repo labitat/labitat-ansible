@@ -1,5 +1,7 @@
 ---
 - name: Configure systemd system.conf
+  vars:
+    systemd_conf: '{{ systemd_conf_default|combine(systemd_conf_role) }}'
   ini_file:
     path: '/etc/systemd/system.conf'
     no_extra_spaces: yes
@@ -10,6 +12,8 @@
   with_dict: '{{ systemd_conf }}'
 
 - name: Configure journald.conf
+  vars:
+    journald_conf: '{{ journald_conf_default|combine(journald_conf_role) }}'
   ini_file:
     path: '/etc/systemd/journald.conf'
     no_extra_spaces: yes
@@ -20,6 +24,8 @@
   with_dict: '{{ journald_conf }}'
 
 - name: Configure logind.conf
+  vars:
+    logind_conf: '{{ logind_conf_default|combine(logind_conf_role) }}'
   ini_file:
     path: '/etc/systemd/logind.conf'
     no_extra_spaces: yes

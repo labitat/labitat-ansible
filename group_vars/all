@@ -1,10 +1,9 @@
 ---
-locale:
-  generated: # must be sorted
-  - da_DK.UTF-8 UTF-8
-  - en_US.UTF-8 UTF-8
-  default:
-    LANG: 'en_US.UTF-8'
+locale_generated: # must be sorted
+- da_DK.UTF-8 UTF-8
+- en_US.UTF-8 UTF-8
+locale_default:
+  LANG: 'en_US.UTF-8'
 
 timezone: 'Europe/Copenhagen'
 

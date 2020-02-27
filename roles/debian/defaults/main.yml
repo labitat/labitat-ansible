@@ -4,23 +4,34 @@ use_resolved: true
 use_networkd: true
 use_timesyncd: true
 
-locale:
-  generated: # must be sorted
-  - en_US.UTF-8 UTF-8
-  default:
-    LANG: 'en_US.UTF-8'
+locale_generated: # must be sorted
+- en_US.UTF-8 UTF-8
+locale_default:
+  LANG: 'en_US.UTF-8'
 
-systemd_conf: {}
-journald_conf: {}
-logind_conf: {}
-resolved_conf: {}
-networkd_conf: {}
+systemd_conf_default: {}
+systemd_conf_role: {}
+
+journald_conf_default: {}
+journald_conf_role: {}
+
+logind_conf_default: {}
+logind_conf_role: {}
+
+resolved_conf_default: {}
+resolved_conf_role: {}
+
+networkd_conf_default: {}
+networkd_conf_role: {}
 networkd_ignore: []
-timesyncd_conf: {}
 
-apt_preferences: {}
+timesyncd_conf_default: {}
+timesyncd_conf_role: {}
 
-apt_repos:
+apt_preferences_default: {}
+apt_preferences_role: {}
+
+apt_repos_default:
   base:
     uri: 'https://deb.debian.org/debian'
     suite: '{{ apt_release is defined|ternary(apt_release,ansible_distribution_release) }}'
@@ -33,8 +44,12 @@ apt_repos:
   backports:
     uri: 'https://deb.debian.org/debian'
     suite: '{{ apt_release is defined|ternary(apt_release,ansible_distribution_release) }}-backports'
+apt_repos_role: {}
 
-apt_packages:
+apt_sources_default: {}
+apt_sources_role: {}
+
+apt_packages_default:
   'netbase': present
   'apt-transport-https': present
   'dialog': present
@@ -42,6 +57,9 @@ apt_packages:
   'libnss-myhostname': present
   'vim': present
   'deborphan': present
+  'openssh-server': present
+  'sudo': present
+apt_packages_role: {}
 
 sudo_group: 'sudo'
 

@@ -3,9 +3,9 @@
   debconf:
     name: locales
     question: locales/locales_to_be_generated
-    value: "{{ locale.generated|join(', ') }}"
+    value: "{{ locale_generated|join(', ') }}"
     vtype: multiselect
-  register: locale_generated
+  register: locale_generated_debconf
 
 - name: dpkg-reconfigure locales
   block:
@@ -18,10 +18,10 @@
   - debconf:
       name: locales
       question: locales/locales_to_be_generated
-      value: "{{ locale.generated|join(', ') }}"
+      value: "{{ locale_generated|join(', ') }}"
       vtype: multiselect
   - command: dpkg-reconfigure -fnoninteractive locales
-  when: locale_generated is changed
+  when: locale_generated_debconf is changed
 
 - name: Setting default locale
   template:
@@ -35,7 +35,7 @@
   debconf:
     name: locales
     question: locales/default_environment_locale
-    value: '{{ locale.default.LANG }}'
+    value: '{{ locale_default.LANG }}'
     vtype: select
 
 # vim: set ts=2 sw=2 et:

@@ -1,11 +1,4 @@
 ---
-- name: Install sudo
-  apt:
-    name: sudo
-    state: present
-  tags:
-  - packages
-
 - name: Configure sudo
   copy:
     dest: '/etc/sudoers'

@@ -1,5 +1,7 @@
 ---
-- name: Configure systemd-networkd
+- name: Configure networkd.conf
+  vars:
+    networkd_conf: '{{ networkd_conf_default|combine(networkd_conf_role) }}'
   ini_file:
     path: '/etc/systemd/networkd.conf'
     no_extra_spaces: yes
