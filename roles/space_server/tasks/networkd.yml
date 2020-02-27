@@ -20,6 +20,8 @@
     group: root
     mode: 0644
   with_fileglob: 'networkd/*'
+  loop_control:
+    label: '/etc/systemd/network/{{ item|basename }}'
   register: networkd_created
 
 - name: Delete unneeded network configuration

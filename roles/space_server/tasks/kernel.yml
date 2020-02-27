@@ -28,6 +28,8 @@
     group: root
     mode: 0755
   with_fileglob: 'kernel/*.install'
+  loop_control:
+    label: '/etc/kernel/install.d/{{ item|basename }}'
 
 - name: Set kernel command line
   template:
