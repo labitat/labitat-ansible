@@ -20,5 +20,7 @@
   tags: networkd
 - import_tasks: timesyncd.yml
   tags: timesyncd
+- import_tasks: sshd.yml
+  tags: sshd
 
 # vim: set ts=2 sw=2 et:

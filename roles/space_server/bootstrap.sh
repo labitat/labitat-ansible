@@ -41,7 +41,6 @@ set -e
 set -x
 
 release=29
-secrets='/etc/ansible/secrets.yml'
 dest="/mnt/fedora$release"
 if [[ -e "$dest" ]]; then
   echo "Destination '$dest' already exists. Aborting." >&2
@@ -60,10 +59,6 @@ dnf \
   --enablerepo=fedora \
   --enablerepo=updates \
   install glibc-langpack-en dnf git ansible python-unversioned-command
-
-if [[ -f "$secrets" ]]; then
-  install -m660 "$secrets" "$dest$secrets"
-fi
 
 for i in /var/lib/machines /var/lib/portables; do
   if [[ -d "$dest$i" ]]; then

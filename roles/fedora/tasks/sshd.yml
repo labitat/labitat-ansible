@@ -6,10 +6,10 @@
     owner: root
     group: ssh_keys
     mode: 0640
-  with_dict: '{{ ssh_host_keys }}'
+  with_dict: '{{ ssh_host_keys[hostname] }}'
   loop_control:
     label: '/etc/ssh/{{ item.key }}'
-  when: ssh_host_keys is defined
+  when: ssh_host_keys is defined and hostname in ssh_host_keys
 
 - name: Create public host keys
   copy:
@@ -18,12 +18,12 @@
     owner: root
     group: root
     mode: 0644
-  with_dict: '{{ ssh_host_keys }}'
+  with_dict: '{{ ssh_host_keys[hostname] }}'
   loop_control:
     label: '/etc/ssh/{{ item.key }}.pub'
-  when: ssh_host_keys is defined
+  when: ssh_host_keys is defined and hostname in ssh_host_keys
 
-- name: Configure sshd
+- name: Configure SSH daemon
   lineinfile:
     path: '/etc/ssh/sshd_config'
     regexp: '{{ item.regexp }}'
@@ -35,10 +35,9 @@
     line: 'PasswordAuthentication no'
   - regexp: '^[# ]*GSSAPIAuthentication'
     line: 'GSSAPIAuthentication no'
-  notify:
-  - restart sshd
+  notify: restart sshd
 
-- name: Enable sshd service
+- name: Enable SSH daemon
   systemd:
     name: sshd.service
     enabled: yes
@@ -47,8 +46,6 @@
   when: not chroot
 - name: '- when in chroot'
   command: systemctl enable sshd.service
-  args:
-    creates: '/etc/systemd/system/multi-user.target.wants/sshd.service'
   when: chroot|bool
 
 # vim: set ts=2 sw=2 et:
