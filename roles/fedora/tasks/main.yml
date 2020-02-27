@@ -22,5 +22,7 @@
   tags: timesyncd
 - import_tasks: sshd.yml
   tags: sshd
+- import_tasks: sudo.yml
+  tags: sudo
 
 # vim: set ts=2 sw=2 et:

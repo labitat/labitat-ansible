@@ -9,8 +9,6 @@
   tags:
   - fstab
 
-- import_tasks: sudo.yml
-  tags: sudo
 - import_tasks: kernel.yml
   tags: kernel
 - import_tasks: gettys.yml
