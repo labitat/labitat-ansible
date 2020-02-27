@@ -19,6 +19,8 @@
   tags:
   - motd
 
+- import_tasks: alsa.yml
+  tags: alsa
 - import_tasks: bluetooth.yml
   tags: bluetooth
 - import_tasks: lockserver.yml
