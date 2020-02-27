@@ -66,6 +66,6 @@
   block:
   - command: systemctl disable networking.service
   - command: systemctl mask networking.service
-  when: use_networkd and chroot|bool
+  when: use_networkd and chroot
 
 # vim: set ts=2 sw=2 et:
