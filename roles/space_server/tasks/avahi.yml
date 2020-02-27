@@ -3,64 +3,29 @@
   ini_file:
     path: '/etc/avahi/avahi-daemon.conf'
     no_extra_spaces: yes
-    section: '{{ item.section }}'
-    option: '{{ item.option }}'
-    value: '{{ item.value }}'
-  with_items:
-  - section: server
-    option: 'host-name'
-    value: '{{ hostname }}'
-  - section: server
-    option: 'domain-name'
-    value: 'local'
-  - section: server
-    option: 'browse-domains'
-    value: ''
-  - section: server
-    option: 'use-ipv4'
-    value: 'yes'
-  - section: server
-    option: 'use-ipv6'
-    value: 'yes'
-  - section: server
-    option: 'allow-interfaces'
-    value: 'lan11,lan12,lan14'
-  - section: server
-    option: 'enable-dbus'
-    value: 'yes'
-  - section: server
-    option: 'disallow-other-stacks'
-    value: 'yes'
-  - section: wide-area
-    option: 'enable-wide-area'
-    value: 'yes'
-  - section: publish
-    option: 'disable-publishing'
-    value: 'no'
-  - section: publish
-    option: 'disable-user-service-publishing'
-    value: 'no'
-  - section: publish
-    option: 'publish-addresses'
-    value: 'yes'
-  - section: publish
-    option: 'publish-hinfo'
-    value: 'yes'
-  - section: publish
-    option: 'publish-workstation'
-    value: 'no'
-  - section: publish
-    option: 'publish-domain'
-    value: 'yes'
-  - section: publish
-    option: 'publish-dns-servers'
-    value: '185.38.175.0,2a01:4262:1ab::'
-  - section: publish
-    option: 'publish-resolv-conf-dns-servers'
-    value: 'no'
-  - section: reflector
-    option: 'enable-reflector'
-    value: 'yes'
+    section: "{{ item.key.split('.',1)[0] }}"
+    option:  "{{ item.key.split('.',1)[1] }}"
+    value:   "{{ (item.value is string)|ternary(item.value,omit) }}"
+    state:   "{{ (item.value is string)|ternary('present','absent') }}"
+  with_dict:
+    'server.host-name': '{{ hostname }}'
+    'server.domain-name': 'local'
+    'server.browse-domains': ''
+    'server.use-ipv4': 'yes'
+    'server.use-ipv6': 'yes'
+    'server.allow-interfaces': 'lan11,lan12,lan14'
+    'server.enable-dbus': 'yes'
+    'server.disallow-other-stacks': 'yes'
+    'wide-area.enable-wide-area': 'yes'
+    'publish.disable-publishing': 'no'
+    'publish.disable-user-service-publishing': 'no'
+    'publish.publish-addresses': 'yes'
+    'publish.publish-hinfo': 'yes'
+    'publish.publish-workstation': 'no'
+    'publish.publish-domain': 'yes'
+    'publish.publish-dns-servers': '185.38.175.0,2a01:4262:1ab::'
+    'publish.publish-resolv-conf-dns-servers': 'no'
+    'reflector.enable-reflector': 'yes'
   notify:
   - restart avahi-daemon
 
