@@ -1,7 +1,7 @@
 ---
 hostname: 'raspbian-template'
 
-apt_sources:
+apt_sources_role:
   raspbian:
     components:
     - main

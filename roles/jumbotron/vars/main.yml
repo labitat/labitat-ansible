@@ -1,10 +1,10 @@
 ---
 hostname: 'jumbotron'
 
-resolved_conf:
+resolved_conf_role:
   'Resolve.DNSSEC': 'yes'
 
-apt_sources:
+apt_sources_role:
   raspbian:
     components:
     - main
@@ -12,7 +12,7 @@ apt_sources:
     - non-free
     - rpi
 
-apt_packages:
+apt_packages_role:
   'logrotate': absent
   'cron': absent
 

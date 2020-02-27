@@ -46,6 +46,8 @@
     mode: 0700
 
 - name: Create lockserver.ini
+  vars:
+    lockserver_conf: '{{ lockserver_conf_role|combine(lockserver_conf_secrets) }}'
   ini_file:
     path: '~doorman/.config/lockserver.ini'
     section: "{{ item.key.split('.',1)[0] }}"
@@ -56,6 +58,7 @@
     group: users
     mode: 0600
   with_dict: '{{ lockserver_conf }}'
+  when: lockserver_conf_secrets|length > 0
 
 - name: Install lockserver service
   copy:

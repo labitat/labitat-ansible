@@ -1,18 +1,29 @@
 ---
-journald_conf:
+journald_conf_default:
   # don't write journal to sd-card,
   'Journal.Storage': 'volatile'
   # just keep the last 16M in memory
   'Journal.RuntimeMaxUse': '16M'
   'Journal.ForwardToSyslog': 'no'
 
-apt_repos:
+apt_repos_default:
   raspbian:
     # doesn't support https, psh
     uri: 'http://raspbian.raspberrypi.org/raspbian'
     suite: '{{ ansible_distribution_release }}'
 
-apt_packages:
+apt_packages_default:
+  # copied from debian role
+  'netbase': present
+  'apt-transport-https': present
+  'dialog': present
+  'libpam-systemd': present
+  'libnss-myhostname': present
+  'vim': present
+  'deborphan': present
+  'openssh-server': present
+  'sudo': present
+
   # remove all this crap
   'vim-tiny': absent
   'mountall': absent

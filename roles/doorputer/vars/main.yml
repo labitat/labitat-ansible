@@ -1,6 +1,21 @@
 ---
 hostname: 'doorputer'
 
+apt_sources_role:
+  raspbian:
+    components:
+    - main
+    - contrib
+    - non-free
+    - rpi
+
+apt_packages_role:
+  'git': present # to check out lockserver repo
+
+  # lockserver dependencies
+  'python3-serial': present
+  'sqlite3': present
+
 users:
   'esmil': sudo
   'ast': sudo
@@ -9,22 +24,7 @@ users:
   'knielsen': sudo
   'signout': sudo
 
-apt_sources:
-  raspbian:
-    components:
-    - main
-    - contrib
-    - non-free
-    - rpi
-
-apt_packages:
-  'git': present # to check out lockserver repo
-
-  # lockserver dependencies
-  'python3-serial': present
-  'sqlite3': present
-
-lockserver_conf:
+lockserver_conf_role:
   'Database.Path': '/home/doorman/users.db'
   'Serial.Device': '/dev/ttyUSB0'
   'Daymode.GPIONumber': '2'
