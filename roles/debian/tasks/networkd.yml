@@ -32,10 +32,10 @@
     name: systemd-networkd-wait-online.service
     enabled: "{{ use_networkd|ternary('yes','no') }}"
     masked: no
-  when: ansible_distribution_release == 'stretch' and not chroot
+  when: apt_release|default(ansible_distribution_release) == 'stretch' and not chroot
 - name: '- when in chroot'
   command: "systemctl {{ use_networkd|ternary('enable','disable') }} systemd-networkd-wait-online.service"
-  when: ansible_distribution_release == 'stretch' and chroot|bool
+  when: apt_release|default(ansible_distribution_release) == 'stretch' and chroot|bool
 
 # use RequiredForOnline in systemd.network files if possible,
 # but for older systemd's set networkd_ignore: ['eth0', 'eth1']

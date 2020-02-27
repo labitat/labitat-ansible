@@ -10,7 +10,7 @@ apt_repos_default:
   raspbian:
     # doesn't support https, psh
     uri: 'http://raspbian.raspberrypi.org/raspbian'
-    suite: '{{ ansible_distribution_release }}'
+    suite: '{{ apt_release|default(ansible_distribution_release) }}'
 
 apt_packages_default:
   # copied from debian role

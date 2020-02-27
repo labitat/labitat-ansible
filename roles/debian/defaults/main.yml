@@ -34,16 +34,16 @@ apt_preferences_role: {}
 apt_repos_default:
   base:
     uri: 'https://deb.debian.org/debian'
-    suite: '{{ apt_release is defined|ternary(apt_release,ansible_distribution_release) }}'
+    suite: '{{ apt_release|default(ansible_distribution_release) }}'
   security:
     uri: 'https://deb.debian.org/debian-security'
-    suite: '{{ apt_release is defined|ternary(apt_release,ansible_distribution_release) }}/updates'
+    suite: '{{ apt_release|default(ansible_distribution_release) }}/updates'
   updates:
     uri: 'https://deb.debian.org/debian'
-    suite: '{{ apt_release is defined|ternary(apt_release,ansible_distribution_release) }}-updates'
+    suite: '{{ apt_release|default(ansible_distribution_release) }}-updates'
   backports:
     uri: 'https://deb.debian.org/debian'
-    suite: '{{ apt_release is defined|ternary(apt_release,ansible_distribution_release) }}-backports'
+    suite: '{{ apt_release|default(ansible_distribution_release) }}-backports'
 apt_repos_role: {}
 
 apt_sources_default: {}
