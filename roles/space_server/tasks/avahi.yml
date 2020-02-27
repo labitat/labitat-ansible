@@ -50,7 +50,7 @@
   command: systemctl enable avahi-daemon.service
   args:
     creates: '/etc/systemd/system/multi-user.target.wants/avahi-daemon.service'
-  when: chroot|bool
+  when: chroot
 
 - name: Use nss-mdns
   lineinfile:

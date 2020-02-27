@@ -65,7 +65,7 @@
   when: not chroot
 - name: '- when in chroot'
   command: systemctl enable named.service
-  when: chroot|bool
+  when: chroot
 
 - name: Use our own resolver
   copy:

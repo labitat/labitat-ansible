@@ -63,6 +63,6 @@
   with_items:
   - bird
   - bird6
-  when: chroot|bool
+  when: chroot
 
 # vim: set ts=2 sw=2 et:

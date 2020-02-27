@@ -9,7 +9,7 @@
   command: systemctl disable getty@tty1.service
   args:
     removes: '/etc/systemd/system/getty.target.wants/getty@tty1.service'
-  when: chroot|bool
+  when: chroot
 
 - name: Enable serial-getty@ttyS0
   systemd:
@@ -20,6 +20,6 @@
   command: systemctl enable serial-getty@ttyS0.service
   args:
     creates: '/etc/systemd/system/getty.target.wants/serial-getty@ttyS0.service'
-  when: chroot|bool
+  when: chroot
 
 # vim: set ts=2 sw=2 et:

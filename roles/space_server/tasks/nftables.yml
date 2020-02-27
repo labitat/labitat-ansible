@@ -37,6 +37,6 @@
   command: systemctl enable nftables.service
   args:
     creates: '/etc/systemd/system/multi-user.target.wants/nftables.service'
-  when: chroot|bool
+  when: chroot
 
 # vim: set ts=2 sw=2 et:

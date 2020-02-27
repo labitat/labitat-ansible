@@ -10,7 +10,7 @@
     value:   "{{ (item.value is string)|ternary(item.value,omit) }}"
     state:   "{{ (item.value is string)|ternary('present','absent') }}"
   with_dict: '{{ networkd_conf }}'
-  when: use_networkd|bool
+  when: use_networkd
 
 - name: Enable/disable systemd-networkd
   systemd:
@@ -23,7 +23,7 @@
   when: not chroot
 - name: '- when in chroot'
   command: "systemctl {{ use_networkd|ternary('enable','disable') }} systemd-networkd.service"
-  when: chroot|bool
+  when: chroot
 
 # in Debian 9 (stretch) we need to enable this manually
 # this is fixed in buster though
@@ -35,7 +35,7 @@
   when: apt_release|default(ansible_distribution_release) == 'stretch' and not chroot
 - name: '- when in chroot'
   command: "systemctl {{ use_networkd|ternary('enable','disable') }} systemd-networkd-wait-online.service"
-  when: apt_release|default(ansible_distribution_release) == 'stretch' and chroot|bool
+  when: apt_release|default(ansible_distribution_release) == 'stretch' and chroot
 
 # use RequiredForOnline in systemd.network files if possible,
 # but for older systemd's set networkd_ignore: ['eth0', 'eth1']
@@ -66,6 +66,6 @@
   block:
   - command: systemctl disable networking.service
   - command: systemctl mask networking.service
-  when: use_networkd|bool and chroot|bool
+  when: use_networkd and chroot|bool
 
 # vim: set ts=2 sw=2 et:

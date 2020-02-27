@@ -98,7 +98,7 @@
   command: systemctl enable getusers.timer
   args:
     creates: '/etc/systemd/system/timers.target.wants/getusers.timer'
-  when: chroot|bool
+  when: chroot
 
 - name: Create service drop-in directory
   file:
@@ -127,6 +127,6 @@
   command: systemctl enable radiusd.service
   args:
     creates: '/etc/systemd/system/multi-user.target.wants/radiusd.service'
-  when: chroot|bool
+  when: chroot
 
 # vim: set ts=2 sw=2 et:
