@@ -68,6 +68,8 @@
     id: "{{ apt_repos[item.key]['key_id'] }}"
     state: present
   with_dict: '{{ apt_sources }}'
+  loop_control:
+    label: '{{ item.key }}'
   when: "'key_url' in apt_repos[item.key]"
 
 - name: Update apt cache
