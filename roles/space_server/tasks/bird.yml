@@ -1,68 +1,22 @@
 ---
-- name: Make sure /etc/bird exists
-  file:
-    dest: '/etc/bird'
-    state: directory
-    owner: root
-    group: root
-    mode: 0755
-- name: Create bird configuration
+- name: Create /etc/bird.conf
   copy:
-    dest: '/etc/bird/'
-    src: '{{ item }}'
+    dest: '/etc/bird.conf'
+    src: 'bird.conf'
     owner: root
     group: root
     mode: 0644
-  with_fileglob: 'bird/*'
-  loop_control:
-    label: '/etc/bird/{{ item|basename }}'
-  notify:
-  - restart bird
+  notify: restart bird
 
-- name: Create bird.conf and bird6.conf symlinks
-  file:
-    path: '/etc/{{ item }}.conf'
-    src: 'bird/{{ item }}.conf'
-    state: link
-    force: yes
-  with_items:
-  - bird
-  - bird6
-
-# bird6 wants the link to have a link-local address
-# when starting, so wait for it
-- name: Create bird6 service drop-in directory
-  file:
-    dest: '/etc/systemd/system/bird6.service.d'
-    state: directory
-    owner: root
-    group: root
-    mode: 0755
-- name: Start bird6 after networks are configured
-  copy:
-    dest: '/etc/systemd/system/bird6.service.d/wait-online.conf'
-    src: wait-online.conf
-    owner: root
-    group: root
-    mode: 0644
-
-- name: Enable bird and bird6
+- name: Enable bird.service
   systemd:
-    name: '{{ item }}.service'
+    name: 'bird.service'
     enabled: yes
     masked: no
     state: started
-  with_items:
-  - bird
-  - bird6
   when: not chroot
 - name: '- when in chroot'
-  command: 'systemctl enable {{ item }}.service'
-  args:
-    creates: '/etc/systemd/system/multi-user.target.wants/{{ item }}.service'
-  with_items:
-  - bird
-  - bird6
+  command: 'systemctl enable bird.service'
   when: chroot
 
 # vim: set ts=2 sw=2 et:

@@ -1,4 +1,12 @@
 ---
+- name: Make sure /boot/<machine-id> exists
+  file:
+    path: '/boot/{{ ansible_machine_id }}'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
 - name: Make sure /etc/kernel/install.d exists
   file:
     path: '{{ item }}'

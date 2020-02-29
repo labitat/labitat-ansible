@@ -1,0 +1,15 @@
+python3 {
+	module = assha
+
+	#mod_instantiate = ${.module}
+	#func_instantiate = instantiate
+
+	#mod_detach = ${.module}
+	#func_detach = instantiate
+
+	mod_authorize = ${.module}
+	func_authorize = authorize
+
+	mod_authenticate = ${.module}
+	func_authenticate = authenticate
+}

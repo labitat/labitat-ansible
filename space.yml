@@ -6,7 +6,10 @@
       chroot: "{{ ansible_connection == 'chroot' or 'container' in ansible_env }}"
     tags: always
   - name: Load secrets
-    include_vars: 'secrets.yml'
+    include_vars: '{{ item }}'
+    with_first_found:
+    - secrets.yml
+    - /root/secrets.yml
     ignore_errors: yes
     tags: always
   roles:

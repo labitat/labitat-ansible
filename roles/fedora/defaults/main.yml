@@ -37,7 +37,6 @@ dnf_packages_default:
   'passwd': present
   'vim-enhanced': present
   'dnf-command(leaves)': present
-  'python-unversioned-command': present
 dnf_packages_role: {}
 
 sudo_group: 'wheel'

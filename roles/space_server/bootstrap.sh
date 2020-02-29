@@ -36,12 +36,14 @@
 # mount -o noatime,ssd,compress=lzo,subvol=/home /dev/sda2 /home
 #
 # Run this script
+# ./roles/space_server/bootstrap.sh
 
 set -e
 set -x
 
-release=29
+release=31
 dest="/mnt/fedora$release"
+secrets='./secrets.yml'
 if [[ -e "$dest" ]]; then
   echo "Destination '$dest' already exists. Aborting." >&2
   exit 1
@@ -58,7 +60,7 @@ dnf \
   --disablerepo='*' \
   --enablerepo=fedora \
   --enablerepo=updates \
-  install glibc-langpack-en dnf git ansible python-unversioned-command
+  install glibc-langpack-en systemd-udev dnf git ansible
 
 for i in /var/lib/machines /var/lib/portables; do
   if [[ -d "$dest$i" ]]; then
@@ -68,17 +70,22 @@ for i in /var/lib/machines /var/lib/portables; do
   install -o root -g root -m755 -d "$dest$i"
 done
 
+if [[ -f "$secrets" ]]; then
+  install -o root -g root -m600 "$secrets" "$dest/root/secrets.yml"
+fi
+
 exec systemd-nspawn \
   -D "$dest" \
-  -M space \
+  -M space.labitat.dk \
   -E ANSIBLE_FORCE_COLOR=1 \
   --bind /boot \
   --bind /home \
   -- \
   ansible-pull \
-  -i space.labitat.dk, \
-  -c local \
-  -U 'https://github.com/labitat/labitat-ansible.git' \
-  space.yml
+    -i space.labitat.dk, \
+    -c local \
+    -U 'https://github.com/labitat/labitat-ansible.git' \
+    -d /root/ansible \
+    space.yml
 
 # vim: set ts=2 sw=2 et:

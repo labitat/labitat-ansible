@@ -10,7 +10,6 @@ locale_default:
 
 dnf_conf_role:
   'main.install_weak_deps': 'False'
-  'main.best': 'True'
   'main.deltarpm': 'False'
 
 dnf_packages_role:
@@ -23,15 +22,15 @@ dnf_packages_role:
   'htop': present
   'man-db': present
   'syslinux': present
+  'systemd-udev': present
   'systemd-container': present
   'sudo': present
   'nftables': present
   'openssh-server': present
   'openssh-clients': present
   'bird': present
-  'bird6': present
   'dhcp-server': present
-  'freeradius-python': present # pulls in radiusd
+  'python3-freeradius': present # pulls in radiusd
   'curl': present
   'diffutils': present
   'bind': present

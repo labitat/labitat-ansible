@@ -9,7 +9,7 @@
   with_items:
   - radiusd.conf
   - mods-available/eap
-  - mods-available/python-assha
+  - mods-available/python3-assha
   - sites-available/labitat
   - sites-available/labitat-inner
   notify:
@@ -17,7 +17,7 @@
 
 - name: Create assha python script
   copy:
-    dest: '/etc/raddb/mods-config/python/assha.py'
+    dest: '/etc/raddb/mods-config/python3/assha.py'
     src: 'radius/assha.py'
     owner: root
     group: root
@@ -42,6 +42,7 @@
     state: '{{ item.state }}'
     owner: root
     group: radiusd
+    follow: no
     force: yes
   with_items:
   - { name: default,       state: absent }
@@ -58,11 +59,11 @@
     state: '{{ item.state }}'
     owner: root
     group: radiusd
+    follow: no
     force: yes
   with_items:
-  - { name: files,        state: absent }
-  - { name: python,       state: absent }
-  - { name: python-assha, state: link }
+  - { name: files,         state: absent }
+  - { name: python3-assha, state: link }
   notify:
   - restart radiusd
 
@@ -112,6 +113,14 @@
   copy:
     dest: '/etc/systemd/system/radiusd.service.d/wait-online.conf'
     src: wait-online.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Set PYTHONPATH for radiusd
+  copy:
+    dest: '/etc/systemd/system/radiusd.service.d/pythonpath.conf'
+    src: 'radius/pythonpath.conf'
     owner: root
     group: root
     mode: 0644

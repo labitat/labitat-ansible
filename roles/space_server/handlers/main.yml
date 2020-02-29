@@ -13,11 +13,8 @@
 
 - name: restart bird
   systemd:
-    name: '{{ item }}.service'
+    name: bird.service
     state: restarted
-  with_items:
-  - bird
-  - bird6
   when: not chroot
 
 - name: restart dhcpd
