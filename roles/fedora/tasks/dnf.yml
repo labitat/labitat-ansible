@@ -34,6 +34,7 @@
     dnf_packages: '{{ dnf_packages_default|combine(dnf_packages_role) }}'
   dnf:
     name: "{{ dnf_packages|dictsort(true)|selectattr(1,'equalto','present')|map(attribute=0)|list }}"
+    install_weak_deps: no
     state: present
   tags:
   - packages
