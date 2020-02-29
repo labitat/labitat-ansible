@@ -18,6 +18,9 @@ logind_conf_role: {}
 resolved_conf_default: {}
 resolved_conf_role: {}
 
+networkd_conf_default: {}
+networkd_conf_role: {}
+
 timesyncd_conf_default: {}
 timesyncd_conf_role: {}
 

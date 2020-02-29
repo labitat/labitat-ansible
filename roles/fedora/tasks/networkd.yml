@@ -1,4 +1,17 @@
 ---
+- name: Configure networkd.conf
+  vars:
+    networkd_conf: '{{ networkd_conf_default|combine(networkd_conf_role) }}'
+  ini_file:
+    path: '/etc/systemd/networkd.conf'
+    no_extra_spaces: yes
+    section: "{{ item.key.split('.',1)[0] }}"
+    option:  "{{ item.key.split('.',1)[1] }}"
+    value:   "{{ (item.value is string)|ternary(item.value,omit) }}"
+    state:   "{{ (item.value is string)|ternary('present','absent') }}"
+  with_dict: '{{ networkd_conf }}'
+  when: use_networkd and (ansible_distribution_version == 'rawhide' or ansible_distribution_version|int > 29
+
 - name: Enable/disable systemd-networkd
   systemd:
     name: systemd-networkd.service
