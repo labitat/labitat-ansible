@@ -1,4 +1,7 @@
 ---
+#
+# configuration
+#
 - name: Configure radiusd
   copy:
     dest: '/etc/raddb/{{ item }}'
@@ -67,6 +70,9 @@
   notify:
   - restart radiusd
 
+#
+# getusers.sh
+#
 - name: Create getusers script
   template:
     dest: '/etc/raddb/getusers.sh'
@@ -101,6 +107,85 @@
     creates: '/etc/systemd/system/timers.target.wants/getusers.timer'
   when: chroot
 
+#
+# certificates
+#
+- name: Configure /etc/raddb/certs/passwords.mk
+  replace:
+    path: '/etc/raddb/certs/passwords.mk'
+    regexp: '^CA_DEFAULT_DAYS( *= *).*$'
+    replace: "CA_DEFAULT_DAYS\\1'3652'"
+  tags: radius-certs
+
+- name: Configure /etc/raddb/certs/ca.cnf
+  ini_file:
+    path: '/etc/raddb/certs/ca.cnf'
+    section: "{{ item.key.split('.',1)[0] }}"
+    option:  "{{ item.key.split('.',1)[1] }}"
+    value:   "{{ (item.value is string)|ternary(item.value,omit) }}"
+    state:   "{{ (item.value is string)|ternary('present','absent') }}"
+  with_dict:
+    ' CA_default .default_days': '3652'
+    'certificate_authority.countryName': 'DK'
+    'certificate_authority.stateOrProvinceName': 'Copenhagen'
+    'certificate_authority.localityName': 'Frederiksberg'
+    'certificate_authority.organizationName': 'Labitat'
+    'certificate_authority.emailAddress': 'noc@labitat.dk'
+    'certificate_authority.commonName': '"Labitat Network Infrastructure CA"'
+  tags: radius-certs
+
+- name: Configure /etc/raddb/certs/server.cnf
+  ini_file:
+    path: '/etc/raddb/certs/server.cnf'
+    section: "{{ item.key.split('.',1)[0] }}"
+    option:  "{{ item.key.split('.',1)[1] }}"
+    value:   "{{ (item.value is string)|ternary(item.value,omit) }}"
+    state:   "{{ (item.value is string)|ternary('present','absent') }}"
+  with_dict:
+    ' CA_default .default_days': '731'
+    'server.countryName': 'DK'
+    'server.stateOrProvinceName': 'Copenhagen'
+    'server.localityName': 'Frederiksberg'
+    'server.organizationName': 'Labitat'
+    'server.emailAddress': 'noc@labitat.dk'
+    'server.commonName': '"Labitat Radius Authentication 2020"'
+  tags: radius-certs
+
+- name: Configure /etc/raddb/certs/inner-server.cnf
+  ini_file:
+    path: '/etc/raddb/certs/inner-server.cnf'
+    section: "{{ item.key.split('.',1)[0] }}"
+    option:  "{{ item.key.split('.',1)[1] }}"
+    value:   "{{ (item.value is string)|ternary(item.value,omit) }}"
+    state:   "{{ (item.value is string)|ternary('present','absent') }}"
+  with_dict:
+    ' CA_default .default_days': '731'
+    'server.countryName': 'DK'
+    'server.stateOrProvinceName': 'Copenhagen'
+    'server.localityName': 'Frederiksberg'
+    'server.organizationName': 'Labitat'
+    'server.emailAddress': 'noc@labitat.dk'
+    'server.commonName': '"Labitat Radius Inner Server Certificate 2020"'
+  tags: radius-certs
+
+- name: Configure /etc/raddb/certs/client.cnf
+  ini_file:
+    path: '/etc/raddb/certs/client.cnf'
+    section: "{{ item.key.split('.',1)[0] }}"
+    option:  "{{ item.key.split('.',1)[1] }}"
+    value:   "{{ (item.value is string)|ternary(item.value,omit) }}"
+    state:   "{{ (item.value is string)|ternary('present','absent') }}"
+  with_dict:
+    ' CA_default .default_days': '365'
+    'client.countryName': 'DK'
+    'client.stateOrProvinceName': 'Copenhagen'
+    'client.localityName': 'Frederiksberg'
+    'client.organizationName': 'Labitat'
+  tags: radius-certs
+
+#
+# radiusd.service
+#
 - name: Create service drop-in directory
   file:
     dest: '/etc/systemd/system/radiusd.service.d'
