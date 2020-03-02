@@ -25,6 +25,7 @@ apt_packages_role:
   'libjson-perl': present
   'libwww-perl': present
   'libanyevent-http-perl': present
+  'libanyevent-httpd-perl': present
   'libxml-libxml-perl': present
   'libhtml-parser-perl': present
   'libdatetime-perl': present
