@@ -9,6 +9,7 @@
         * 185.38.175.071    - reserved for tor exit node
         * 185.38.175.075    - Asbjorn
         * 185.38.175.076    - Deni
+        * 185.38.175.077    - Graffen
 
 ********************* 2a01:4262:1ab:0000::/48  - allocated and announced
  ******************** 2a01:4262:1ab:0xxx::/52  - labitat internal use
@@ -28,6 +29,7 @@
                     * 2a01:4262:1ab:0020::6    - spacebrain.labitat.dk
                     * 2a01:4262:1ab:0020::75   - Asbjorn
                     * 2a01:4262:1ab:0020::76   - Deni
+                    * 2a01:4262:1ab:0020::77   - Graffen
 
  ******************** 2a01:4262:1ab:1xxx::/52  - labicolo 16x /56
   ******************* 2a01:4262:1ab:10xx::/56  - 256x /64 delegations
