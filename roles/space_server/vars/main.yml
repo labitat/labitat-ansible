@@ -47,6 +47,7 @@ users:
   'k2OS': true
   'semi': true
   'signout': sudo
+  'graffen': true
 
 boot:
   device: 'LABEL=BOOT'
