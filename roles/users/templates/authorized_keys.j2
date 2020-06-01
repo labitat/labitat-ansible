@@ -1,3 +1,9 @@
-{% for key in userdata[item].authorized_keys %}
+{% if users[item] == 'jumponly' %}
+{%   for key in userdata[item].authorized_keys %}
+restrict,command="echo 'This account can only be used for ProxyJump (ssh -J)'",port-forwarding {{ key }}
+{%   endfor %}
+{% else %}
+{%   for key in userdata[item].authorized_keys %}
 {{ key }}
-{% endfor %}
+{%   endfor %}
+{% endif %}
