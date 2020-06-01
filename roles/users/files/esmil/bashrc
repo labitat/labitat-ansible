@@ -1,11 +1,9 @@
 # if not running interactively, don't do anything
-[[ $- != *i* ]] && return
+[[ $- = *i* ]] || return
 
 set -o vi
 
 export PS1='\[\e[1;32m\]\u\[\e[00m\]@\[\e[0;32m\]\h\[\e[1;34m\]\w\[\e[00m\]\$ '
-unset PROMPT_COMMAND
-export -n PROMPT_COMMAND
 
 # directory listing
 if type dircolors > /dev/null 2>&1; then

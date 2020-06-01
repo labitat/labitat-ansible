@@ -6,6 +6,7 @@ userdata:
     tasks: true
     password: '$6$1RwgF85UfHCIPzNd$Ow9pn9muQ2raoB0andBcrDkB9UqqmXylqWVXDsxgFqhHc5uNk7MZdhtGnz9P5UOSwadEpHkSG0VrP9eOPM8nj0'
     authorized_keys:
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOuodYrzc+xUF8BiC39KfzeK11BFXmz6rYMEHxYfhjum esmil@stitch'
     - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIESZrJ5ystrdDYZok0jCJKePa2JUL+t2DrbkMWwNheeQ esmil@plastik2'
     - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINGvUI9Gme812b75R//zEGJm5pURhaJpWCn7lwMuOrVC esmil@alcazar'
     - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHo3wq70/mMiOTgNdijxDp7CjrclMOM9f7JSnMtqSevM esmil@matahari'
