@@ -58,6 +58,12 @@ userdata:
     authorized_keys:
     - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDtbHB0B+IEPtC5ni2A9wGGehq21euv46cpowXlucXpe8Q+n3hILAJ2Ce5qvYFTDbpK72gifhXtq5xaG4ZXZJy/QYaKO00mS/Xq50WegqA9bZ9u4Ddw3XAHOyc1QYyoa5edGrbb46/PC861G5KdQgNc4PHf6iTQWYdD/0FAx4B7sqMYC4IMjFmlZWWgzKBOQG+LQ3CZ7UVj70X2YU5l31crJaCPS9za3m/Q5XH+2pYp5q5ixzfU7RVa1AqYwiCJDFsaQ5wxDsLCvy5IxOLsV3NW7iElnvTU+sBavRi3CEi5CH22eBbOj/HPsKnuxQomnOJRa4epM6YR3NfsWshBJo0x max@max-Laptop'
 
+  'rasmis':
+    name: 'Rasmus Malver'
+    uid: 2008
+    authorized_keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCjpCe2ubpxMtwOU28LUFT/YBGf1vbz8aI7bJqjV4YhpZbprRBD1ShsI0WmvmUUfkCD7rqpTJPTgcpELukcpSocHy/WoSRZpYekAIWa9Hj1DGuXdi0enfCWGGB5WI4Qpn1WRNWQGrIGPUtR/EYSx3Y157GZpEKPjxHkfcUROuFtKBJWSojTIM3QtfjVdm6RKGRMUDtTr2Mnfe8bGEkgfMu+59ktp0t1TjNtcj0gk+vFnVo7fqoz6ty0DW3u3sW0URYnW3rYe77KxN8qgt1Yx8S0Bf76ri4D/GYjH5m57AJOom5FbLiICSMzz/EXJHMdrFURqtst//DvnvHlyP8XY7Or rasmus@Malbook-3.local'
+
   'semi':
     name: 'Troels Bang Jensen'
     uid: 2010

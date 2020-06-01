@@ -48,6 +48,7 @@ users:
   'semi': true
   'graffen': true
   'signout': sudo
+  'rasmis': jumponly
 
 boot:
   device: 'LABEL=BOOT'
