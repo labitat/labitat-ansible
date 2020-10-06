@@ -42,3 +42,8 @@ Gateway=2a01:4262:1ab:20::75
 [Route]
 Destination=2a01:4262:1ab:1110::/60
 Gateway=2a01:4262:1ab:20::79
+
+# Rasmis /56
+[Route]
+Destination=2a01:4262:1ab:2100::/56
+Gateway=2a01:4262:1ab:20::76

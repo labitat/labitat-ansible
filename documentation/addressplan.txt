@@ -8,7 +8,7 @@
         * 185.38.175.070    - spacewand.labitat.dk
         * 185.38.175.071    - reserved for tor exit node
         * 185.38.175.075    - Asbjorn
-        * 185.38.175.076    - Deni
+        * 185.38.175.076    - Rasmis
         * 185.38.175.077    - KTJ
         * 185.38.175.078    - Graffen
 
@@ -29,7 +29,7 @@
                     * 2a01:4262:1ab:0020::5    - spacewand.labitat.dk
                     * 2a01:4262:1ab:0020::6    - spacebrain.labitat.dk
                     * 2a01:4262:1ab:0020::75   - Asbjorn
-                    * 2a01:4262:1ab:0020::76   - Deni
+                    * 2a01:4262:1ab:0020::76   - Rasmis
                     * 2a01:4262:1ab:0020::77   - KTJ
                     * 2a01:4262:1ab:0020::78   - Graffen
 
@@ -39,6 +39,8 @@
    ****************** 2a01:4262:1ab:110x::/60  - Asbjorn
    ****************** 2a01:4262:1ab:111x::/60  - Esmil
 
+ ******************** 2a01:4262:1ab:2xxx::/52  - labicolo 16x /56 delegations
+  ******************* 2a01:4262:1ab:2100::/56  - Rasmis
 
 Linknets:
 
