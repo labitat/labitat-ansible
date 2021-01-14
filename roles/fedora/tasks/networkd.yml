@@ -10,7 +10,7 @@
     value:   "{{ (item.value is string)|ternary(item.value,omit) }}"
     state:   "{{ (item.value is string)|ternary('present','absent') }}"
   with_dict: '{{ networkd_conf }}'
-  when: use_networkd and (ansible_distribution_version == 'rawhide' or ansible_distribution_version|int > 29
+  when: use_networkd
 
 - name: Enable/disable systemd-networkd
   systemd:

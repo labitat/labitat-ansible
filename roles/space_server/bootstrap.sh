@@ -41,7 +41,7 @@
 set -e
 set -x
 
-release=31
+release=33
 dest="/mnt/fedora$release"
 secrets='./secrets.yml'
 if [[ -e "$dest" ]]; then
