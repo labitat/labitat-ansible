@@ -12,8 +12,14 @@ systemd_conf_role: {}
 journald_conf_default: {}
 journald_conf_role: {}
 
+sleep_conf_default: {}
+sleep_conf_role: {}
+
 logind_conf_default: {}
 logind_conf_role: {}
+
+user_conf_default: {}
+user_conf_role: {}
 
 resolved_conf_default: {}
 resolved_conf_role: {}
