@@ -13,7 +13,7 @@
   when: use_timesyncd
   notify: restart timesyncd
 
-- name: Enable systemd-timesyncd
+- name: Enable/disable systemd-timesyncd
   systemd:
     name: systemd-timesyncd.service
     enabled: "{{ use_timesyncd|ternary('yes','no') }}"
@@ -21,7 +21,7 @@
     state: "{{ use_timesyncd|ternary('started','stopped') }}"
   when: not chroot
 - name: '- when in chroot'
-  command: systemctl enable systemd-timesyncd.service
+  command: "systemctl {{ use_timesyncd|ternary('enable','disable') }} systemd-timesyncd.service"
   when: chroot
 
 # vim: set ts=2 sw=2 et:
