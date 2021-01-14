@@ -11,4 +11,10 @@
     state: restarted
   when: not chroot
 
+- name: restart homed
+  systemd:
+    name: systemd-homed.service
+    state: restarted
+  when: not chroot
+
 # vim: set ts=2 sw=2 et:

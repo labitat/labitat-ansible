@@ -2,6 +2,7 @@
 use_resolved: true
 use_networkd: true
 use_timesyncd: true
+use_homed: false
 
 locale_default:
   LANG: 'en_US.UTF-8'
@@ -29,6 +30,9 @@ networkd_conf_role: {}
 
 timesyncd_conf_default: {}
 timesyncd_conf_role: {}
+
+homed_conf_default: {}
+homed_conf_role: {}
 
 dnf_conf_default: {}
 dnf_conf_role: {}
