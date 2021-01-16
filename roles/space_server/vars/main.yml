@@ -78,6 +78,11 @@ local_hosts:
   mdns: false
   ipv4:
   - 10.42.0.6
+- name: bunkerap1
+  description: Wifi accesspoint in bunkers
+  mdns: false
+  ipv4:
+  - 10.42.0.7
 - name: switch
   description: Main switch
   mdns: false
