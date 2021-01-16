@@ -79,7 +79,7 @@ local_hosts:
   ipv4:
   - 10.42.0.6
 - name: switch
-  mac: 00:1b:11:6f:42:f8
+  description: Main switch
   mdns: false
   ipv4:
   - 10.42.0.9
