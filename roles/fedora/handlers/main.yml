@@ -17,4 +17,10 @@
     state: restarted
   when: not chroot
 
+- name: restart sshd
+  systemd:
+    name: sshd.service
+    state: restarted
+  when: not chroot
+
 # vim: set ts=2 sw=2 et:

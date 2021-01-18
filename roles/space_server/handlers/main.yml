@@ -5,12 +5,6 @@
     state: reloaded
   when: not chroot
 
-- name: restart sshd
-  systemd:
-    name: sshd.service
-    state: restarted
-  when: not chroot
-
 - name: restart bird
   systemd:
     name: bird.service
