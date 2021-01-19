@@ -27,6 +27,7 @@ dnf_packages_role:
   'systemd-networkd': present
   'systemd-container': present
   'sudo': present
+  'certbot': present
   'chrony': present
   'nftables': present
   'openssh-server': present
