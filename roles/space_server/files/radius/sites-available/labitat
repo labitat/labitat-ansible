@@ -15,7 +15,7 @@ server labitat {
 	authorize {
 		filter_username
 		preprocess
-		auth_log
+		#auth_log
 
 		eap {
 			ok = return

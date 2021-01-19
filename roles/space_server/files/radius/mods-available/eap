@@ -181,8 +181,8 @@ eap {
 	#  authenticate via EAP-TLS!  This is likely not what you want.
 	#
 	tls-config tls-common {
-		private_key_password = whatever
-		private_key_file = ${certdir}/server.pem
+	#	private_key_password = whatever
+		private_key_file = ${certdir}/privkey.pem
 
 		#  If Private key & Certificate are located in
 		#  the same file, then private_key_file &
@@ -218,7 +218,7 @@ eap {
 		#  give advice which will work everywhere.  Instead,
 		#  we give general guidelines.
 		#
-		certificate_file = ${certdir}/server.pem
+		certificate_file = ${certdir}/fullchain.pem
 
 		#  Trusted Root CA list
 		#
@@ -231,7 +231,7 @@ eap {
 		#  In that case, this CA file should contain
 		#  *one* CA certificate.
 		#
-		ca_file = ${cadir}/ca.pem
+	#	ca_file = ${cadir}/ca.pem
 
 	 	#  OpenSSL will automatically create certificate chains,
 	 	#  unless we tell it to not do that.  The problem is that
@@ -392,8 +392,8 @@ eap {
 		#  tls_max_version.
 		#
 	#	disable_tlsv1_2 = no
-		disable_tlsv1_1 = yes
-		disable_tlsv1 = yes
+	#	disable_tlsv1_1 = yes
+	#	disable_tlsv1 = yes
 
 		#  Set min / max TLS version.  Mainly for Debian
 		#  "trusty", which disables older versions of TLS, and
