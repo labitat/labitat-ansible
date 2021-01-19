@@ -1,0 +1,22 @@
+---
+- name: Configure chrony.conf
+  copy:
+    dest: '/etc/chrony.conf'
+    src: chrony.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart chronyd
+
+- name: Enable chronyd service
+  systemd:
+    name: chronyd.service
+    enabled: yes
+    masked: no
+    state: started
+  when: not chroot
+- name: '- when in chroot'
+  command: systemctl enable chronyd.service
+  when: chroot
+
+# vim: set ts=2 sw=2 et ft=yaml:

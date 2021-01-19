@@ -17,6 +17,8 @@
   tags: networkd
 - import_tasks: nftables.yml
   tags: nftables
+- import_tasks: chrony.yml
+  tags: chrony
 - import_tasks: bird.yml
   tags: bird
 - import_tasks: dhcpd.yml

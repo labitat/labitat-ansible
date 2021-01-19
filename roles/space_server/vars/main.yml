@@ -2,6 +2,7 @@
 hostname: 'space'
 
 use_resolved: false
+use_timesyncd: false
 
 locale_default:
   LANG: 'da_DK.UTF-8'
@@ -26,6 +27,7 @@ dnf_packages_role:
   'systemd-networkd': present
   'systemd-container': present
   'sudo': present
+  'chrony': present
   'nftables': present
   'openssh-server': present
   'openssh-clients': present

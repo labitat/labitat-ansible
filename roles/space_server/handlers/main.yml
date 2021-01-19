@@ -5,6 +5,12 @@
     state: reloaded
   when: not chroot
 
+- name: restart chronyd
+  systemd:
+    name: chronyd.service
+    state: restarted
+  when: not chroot
+
 - name: restart bird
   systemd:
     name: bird.service
