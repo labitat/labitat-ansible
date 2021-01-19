@@ -9,6 +9,16 @@
   tags:
   - fstab
 
+- name: Extra ssh hosts
+  copy:
+    dest: '/etc/ssh/ssh_config.d/60-switches.conf'
+    src: ssh-switches.conf
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - ssh
+
 - import_tasks: kernel.yml
   tags: kernel
 - import_tasks: gettys.yml
