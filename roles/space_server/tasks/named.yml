@@ -69,8 +69,8 @@
 
 - name: Use our own resolver
   copy:
-    dest: /etc/resolv.conf
-    content: "nameserver 127.0.0.1\nnameserver ::1\noptions edns0\n"
+    dest: '/etc/resolv.conf'
+    src: resolv.conf
     owner: root
     group: root
     mode: 0644
