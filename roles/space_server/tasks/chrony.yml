@@ -8,6 +8,22 @@
     mode: 0644
   notify: restart chronyd
 
+- name: Create service drop-in directory
+  file:
+    dest: '/etc/systemd/system/chronyd.service.d'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Start chrony after networks are configured
+  copy:
+    dest: '/etc/systemd/system/chronyd.service.d/wait-online.conf'
+    src: wait-online.conf
+    owner: root
+    group: root
+    mode: 0644
+
 - name: Enable chronyd service
   systemd:
     name: chronyd.service
