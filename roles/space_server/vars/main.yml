@@ -78,7 +78,7 @@ local_hosts:
   ipv4:
   - 10.42.0.3
 - name: foodputer
-  mac: 00:d0:59:37:5e:37
+  mac: 00:21:86:ff:fa:cc
   mdns: false
   ipv4:
   - 10.42.0.4
