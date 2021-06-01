@@ -41,6 +41,14 @@ dnf_packages_role:
   'tayga': present
   'avahi-tools': present # pulls in avahi package
   'nss-mdns': present
+  'iputils': preset # for ping
+  'bind-utils': preset # for dig
+  'screen': present
+  'patch': present
+
+  #'alsa-sof-firmware': absent
+  #'memstrack': absent
+  #'kpartx': absent
 
 users:
   'esmil': sudo
