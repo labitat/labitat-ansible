@@ -5,9 +5,9 @@
     state: reloaded
   when: not chroot
 
-- name: restart sshd
+- name: restart chronyd
   systemd:
-    name: sshd.service
+    name: chronyd.service
     state: restarted
   when: not chroot
 

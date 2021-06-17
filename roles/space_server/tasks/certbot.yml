@@ -1,0 +1,43 @@
+---
+- name: Create space.labitat.dk certificate
+  command:
+    argv:
+    - '/usr/bin/certbot'
+    - 'certonly'
+    - '--non-interactive'
+    - '--agree-tos'
+    - '--no-eff-email'
+    - '--max-log-backups'
+    - '99'
+    - '--standalone'
+    - '--preferred-challenges'
+    - 'http'
+    - '--key-type'
+    - 'rsa'
+    - '-m'
+    - 'noc@labitat.dk'
+    - '-d'
+    - 'space.labitat.dk'
+    creates: '/etc/letsencrypt/renewal/space.labitat.dk.conf'
+
+- name: Configure certbot renewal
+  lineinfile:
+    path: '/etc/sysconfig/certbot'
+    regexp: '{{ item.regexp }}'
+    line: '{{ item.line }}'
+  with_items:
+  - regexp: '^CERTBOT_ARGS='
+    line: 'CERTBOT_ARGS="--max-log-backups 99"'
+
+- name: Enable certbot renewal timer
+  systemd:
+    name: certbot-renew.timer
+    enabled: yes
+    masked: no
+    state: started
+  when: not chroot
+- name: '- when in chroot'
+  command: systemctl enable certbot-renew.timer
+  when: chroot
+
+# vim: set ts=2 sw=2 et ft=yaml:

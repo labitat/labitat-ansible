@@ -20,6 +20,8 @@
   tags: networkd
 - import_tasks: timesyncd.yml
   tags: timesyncd
+- import_tasks: homed.yml
+  tags: homed
 - import_tasks: sshd.yml
   tags: sshd
 - import_tasks: sudo.yml

@@ -9,6 +9,31 @@
   tags:
   - fstab
 
+- name: Disable selinux-autorelabel-mark service
+  systemd:
+    name: selinux-autorelabel-mark.service
+    enabled: no
+    masked: no
+    state: stopped
+  when: not chroot
+  tags:
+  - selinux
+- name: '- when in chroot'
+  command: systemctl disable selinux-autorelabel-mark.service
+  when: chroot
+  tags:
+  - selinux
+
+- name: Extra ssh hosts
+  copy:
+    dest: '/etc/ssh/ssh_config.d/60-switches.conf'
+    src: ssh-switches.conf
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - ssh
+
 - import_tasks: kernel.yml
   tags: kernel
 - import_tasks: gettys.yml
@@ -17,6 +42,10 @@
   tags: networkd
 - import_tasks: nftables.yml
   tags: nftables
+- import_tasks: certbot.yml
+  tags: certbot
+- import_tasks: chrony.yml
+  tags: chrony
 - import_tasks: bird.yml
   tags: bird
 - import_tasks: dhcpd.yml

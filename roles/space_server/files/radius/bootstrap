@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -e
+
+certname=space.labitat.dk
+privkey="/etc/letsencrypt/live/$certname/privkey.pem"
+fullchain="/etc/letsencrypt/live/$certname/fullchain.pem"
+
+umask 027
+cd "$(dirname $0)"
+
+if [ ! -f dh ]; then
+  openssl dhparam -out dh 2048
+  chown root:radiusd dh
+  chmod 640 dh
+fi
+
+if ! diff -q "$privkey" privkey.pem >/dev/null 2>&1; then
+  install -m640 -o root -g radiusd "$privkey" privkey.pem
+fi
+
+if ! diff -q "$fullchain" fullchain.pem >/dev/null 2>&1; then
+  install -m640 -o root -g radiusd "$fullchain" fullchain.pem
+fi
+
+openssl verify -untrusted fullchain.pem fullchain.pem
+
+# vim: set ts=2 sw=2 et:

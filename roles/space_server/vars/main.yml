@@ -2,6 +2,7 @@
 hostname: 'space'
 
 use_resolved: false
+use_timesyncd: false
 
 locale_default:
   LANG: 'da_DK.UTF-8'
@@ -23,8 +24,11 @@ dnf_packages_role:
   'man-db': present
   'syslinux': present
   'systemd-udev': present
+  'systemd-networkd': present
   'systemd-container': present
   'sudo': present
+  'certbot': present
+  'chrony': present
   'nftables': present
   'openssh-server': present
   'openssh-clients': present
@@ -37,6 +41,14 @@ dnf_packages_role:
   'tayga': present
   'avahi-tools': present # pulls in avahi package
   'nss-mdns': present
+  'iputils': preset # for ping
+  'bind-utils': preset # for dig
+  'screen': present
+  'patch': present
+
+  #'alsa-sof-firmware': absent
+  #'memstrack': absent
+  #'kpartx': absent
 
 users:
   'esmil': sudo
@@ -66,7 +78,7 @@ local_hosts:
   ipv4:
   - 10.42.0.3
 - name: foodputer
-  mac: 00:d0:59:37:5e:37
+  mac: 00:21:86:ff:fa:cc
   mdns: false
   ipv4:
   - 10.42.0.4
@@ -78,8 +90,13 @@ local_hosts:
   mdns: false
   ipv4:
   - 10.42.0.6
+- name: bunkerap1
+  description: Wifi accesspoint in bunkers
+  mdns: false
+  ipv4:
+  - 10.42.0.7
 - name: switch
-  mac: 00:1b:11:6f:42:f8
+  description: Main switch
   mdns: false
   ipv4:
   - 10.42.0.9
@@ -89,6 +106,11 @@ local_hosts:
   mdns: false
   ipv4:
   - 10.42.0.10
+- name: bunkerswitch
+  description: Switch in the bunkers
+  mdns: false
+  ipv4:
+  - 10.42.0.11
 - name: lathe
   mdns: false
   ipv4:
