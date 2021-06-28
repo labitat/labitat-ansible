@@ -61,6 +61,7 @@ users:
   'graffen': true
   'signout': sudo
   'rasmis': jumponly
+  'hafnium': true
 
 boot:
   device: 'LABEL=BOOT'
