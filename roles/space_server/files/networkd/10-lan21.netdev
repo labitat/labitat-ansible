@@ -1,0 +1,6 @@
+[NetDev]
+Name=lan21
+Kind=vlan
+
+[VLAN]
+Id=21

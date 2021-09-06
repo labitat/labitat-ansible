@@ -6,11 +6,12 @@
         * 185.38.175.065    - space.labitat.dk, labicolo gateway
         * 185.38.175.069    - spacebrain.labitat.dk
         * 185.38.175.070    - spacewand.labitat.dk
-        * 185.38.175.071    - reserved for tor exit node
         * 185.38.175.075    - Asbjorn
         * 185.38.175.076    - Deni
         * 185.38.175.077    - KTJ
         * 185.38.175.078    - Graffen
+    ***** 185.38.175.128/28 - Tor exit nodes
+        * 185.38.175.129    - space.labitat.dk - gateway
 
 ********************* 2a01:4262:1ab:0000::/48  - allocated and announced
  ******************** 2a01:4262:1ab:0xxx::/52  - labitat internal use
@@ -38,6 +39,8 @@
   ******************* 2a01:4262:1ab:11xx::/56  - 16x /60 delegations
    ****************** 2a01:4262:1ab:110x::/60  - Asbjorn
    ****************** 2a01:4262:1ab:111x::/60  - Esmil
+ ******************** 2a01:4262:1ab:fxxx::/52  - untrusted address space
+    ***************** 2a01:4262:1ab:ffff::/64  - Tor exit nodes
 
 
 Linknets:
