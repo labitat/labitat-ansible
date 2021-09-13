@@ -96,7 +96,7 @@ local_hosts:
   ipv4:
   - 10.42.0.7
 - name: switch
-  description: Main switch
+  description: Space switch
   mdns: false
   ipv4:
   - 10.42.0.9
@@ -115,6 +115,11 @@ local_hosts:
   mdns: false
   ipv4:
   - 10.42.0.12
+- name: infraswitch
+  description: Switch for mediaconverting our 10G
+  mdns: false
+  ipv4:
+  - 10.42.0.13
 - name: anna
   mac: 00:e0:c5:6e:d6:8d
   ipv4:
