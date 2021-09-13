@@ -1,6 +1,9 @@
 [Match]
 Name=wan
 
+[Link]
+ARP=yes
+
 [Network]
 DHCP=no
 IPv6AcceptRA=no

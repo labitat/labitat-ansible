@@ -1,6 +1,7 @@
 [Unit]
 Description=Netfilter Tables
 Documentation=man:nft(8)
+Requires=sys-devices-virtual-net-wan.device
 Requires=sys-devices-virtual-net-lan10.device
 Requires=sys-devices-virtual-net-lan11.device
 Requires=sys-devices-virtual-net-lan12.device
@@ -10,6 +11,7 @@ Requires=sys-devices-virtual-net-lan15.device
 Requires=sys-devices-virtual-net-lan20.device
 Requires=sys-devices-virtual-net-lan21.device
 Requires=sys-devices-virtual-net-nat64.device
+After=sys-devices-virtual-net-wan.device
 After=sys-devices-virtual-net-lan10.device
 After=sys-devices-virtual-net-lan11.device
 After=sys-devices-virtual-net-lan12.device

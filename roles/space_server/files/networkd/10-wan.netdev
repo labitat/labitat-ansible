@@ -1,0 +1,6 @@
+[NetDev]
+Name=wan
+Kind=vlan
+
+[VLAN]
+Id=5
