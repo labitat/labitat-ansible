@@ -71,6 +71,13 @@ root:
   options: 'noatime,ssd,compress=lzo'
 
 local_hosts:
+- name: space
+  description: Main router/infrastructure server
+  mdns: false
+  ipv4:
+  - 185.38.175.0
+  ipv6:
+  - '2a01:4262:1ab::'
 - name: doorputer
   description: Front door controlling Raspberry Pi
   mac: b8:27:eb:d9:92:00
