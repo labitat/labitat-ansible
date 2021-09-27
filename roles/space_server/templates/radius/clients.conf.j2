@@ -1,12 +1,12 @@
 client ap1 {
-	ipaddr = 10.42.0.5
+	ipaddr = {{ local_hosts['ap1'].ipv4[0] }}
 	netmask = 32
 	secret = {{ radius_passwords.ap1 }}
 	nas_type = other
 }
 
 client ap2 {
-	ipaddr = 10.42.0.6
+	ipaddr = {{ local_hosts['ap2'].ipv4[0] }}
 	netmask = 32
 	secret = {{ radius_passwords.ap2 }}
 	nas_type = other

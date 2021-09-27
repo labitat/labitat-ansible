@@ -1,9 +1,9 @@
 # our hosts
-define ap1 = 10.42.0.5
-define ap2 = 10.42.0.6
+define ap1 = {{ local_hosts['ap1'].ipv4[0] }}
+define ap2 = {{ local_hosts['ap2'].ipv4[0] }}
 define labitat = 185.38.172.72
-define jumbotron_ip4 = 10.42.1.36
-define jumbotron_ip6 = 2a01:4262:1ab:b:ba27:ebff:fed3:c162
+define jumbotron_ip4 = {{ local_hosts['jumbotron'].ipv4[0] }}
+define jumbotron_ip6 = {{ local_hosts['jumbotron'].ipv6[0] }}
 
 # internal stuff
 define ext_if    = wan

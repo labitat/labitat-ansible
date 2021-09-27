@@ -166,6 +166,8 @@ local_hosts:
     mac: b8:27:eb:d3:c1:62
     ipv4:
     - 10.42.1.36
+    ipv6:
+    - 2a01:4262:1ab:b:ba27:ebff:fed3:c162
   hplaserjet:
     mac: 94:57:a5:ce:e2:6c
     mdns: false

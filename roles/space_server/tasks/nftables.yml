@@ -8,9 +8,9 @@
     mode: 0644
 
 - name: Configure nftables
-  copy:
+  template:
     dest: '/etc/nftables.conf'
-    src: nftables.conf
+    src: nftables.conf.j2
     owner: root
     group: root
     mode: 0644
