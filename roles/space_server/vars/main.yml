@@ -71,112 +71,112 @@ root:
   options: 'noatime,ssd,compress=lzo'
 
 local_hosts:
-- name: space
-  description: Main router/infrastructure server
-  mdns: false
-  ipv4:
-  - 185.38.175.0
-  ipv6:
-  - '2a01:4262:1ab::'
-- name: doorputer
-  description: Front door controlling Raspberry Pi
-  mac: b8:27:eb:d9:92:00
-  mdns: false
-  ipv4:
-  - 10.42.0.3
-- name: foodputer
-  mac: 00:21:86:ff:fa:cc
-  mdns: false
-  ipv4:
-  - 10.42.0.4
-- name: ap1
-  mdns: false
-  ipv4:
-  - 10.42.0.5
-- name: ap2
-  mdns: false
-  ipv4:
-  - 10.42.0.6
-- name: bunkerap1
-  description: Wifi accesspoint in bunkers
-  mdns: false
-  ipv4:
-  - 10.42.0.7
-- name: switch
-  description: Space switch
-  mdns: false
-  ipv4:
-  - 10.42.0.9
-- name: voip
-  description: LinksysPAP2 SIP box for the phone
-  mac: 00:21:29:0c:91:65
-  mdns: false
-  ipv4:
-  - 10.42.0.10
-- name: bunkerswitch
-  description: Switch in the bunkers
-  mdns: false
-  ipv4:
-  - 10.42.0.11
-- name: lathe
-  mdns: false
-  ipv4:
-  - 10.42.0.12
-- name: infraswitch
-  description: Switch for mediaconverting our 10G
-  mdns: false
-  ipv4:
-  - 10.42.0.13
-- name: anna
-  mac: 00:e0:c5:6e:d6:8d
-  ipv4:
-  - 10.42.1.9
-- name: piscreen2
-  description: PixelFlut Raspberry Pi
-  mac: b8:27:eb:9b:64:d9
-  ipv4:
-  - 10.42.1.12
-- name: pixelfluthafnium
-  description: PixelFlut Odroid
-  mac: 00:1e:06:45:38:08
-  ipv4:
-  - 10.42.1.13
-  ipv6:
-  - 2a01:4262:1ab:b:f100::000d
-- name: printbrother
-  mac: 00:80:77:06:9f:26
-  ipv4:
-  - 10.42.1.32
-- name: xeroxwax
-  mac: 00:00:aa:a7:ef:8b
-  mdns: false
-  ipv4:
-  - 10.42.1.33
-- name: infotron
-  description: Infoscreen Raspberry Pi
-  mac: b8:27:eb:2c:5d:3a
-  ipv4:
-  - 10.42.1.34
-- name: spacemon
-  mac: b8:27:eb:24:f8:50
-  ipv4:
-  - 10.42.1.35
-- name: jumbotron
-  description: Jumbotron Raspberry Pi
-  mac: b8:27:eb:d3:c1:62
-  ipv4:
-  - 10.42.1.36
-- name: hplaserjet
-  mac: 94:57:a5:ce:e2:6c
-  mdns: false
-  ipv4:
-  - 10.42.1.37
-  ipv6:
-  - 2a01:4262:1ab:b:9657:a5ff:fece:e26c
-- name: snakeskin
-  description: Snakeskin controlling Raspberry Pi
-  mac: b8:27:eb:9b:64:d9
-  ipv4:
-  - 10.42.1.38
+  space:
+    description: Main router/infrastructure server
+    mdns: false
+    ipv4:
+    - 185.38.175.0
+    ipv6:
+    - '2a01:4262:1ab::'
+  doorputer:
+    description: Front door controlling Raspberry Pi
+    mac: b8:27:eb:d9:92:00
+    mdns: false
+    ipv4:
+    - 10.42.0.3
+  foodputer:
+    mac: 00:21:86:ff:fa:cc
+    mdns: false
+    ipv4:
+    - 10.42.0.4
+  ap1:
+    mdns: false
+    ipv4:
+    - 10.42.0.5
+  ap2:
+    mdns: false
+    ipv4:
+    - 10.42.0.6
+  bunkerap1:
+    description: Wifi accesspoint in bunkers
+    mdns: false
+    ipv4:
+    - 10.42.0.7
+  switch:
+    description: Space switch
+    mdns: false
+    ipv4:
+    - 10.42.0.9
+  voip:
+    description: LinksysPAP2 SIP box for the phone
+    mac: 00:21:29:0c:91:65
+    mdns: false
+    ipv4:
+    - 10.42.0.10
+  bunkerswitch:
+    description: Switch in the bunkers
+    mdns: false
+    ipv4:
+    - 10.42.0.11
+  lathe:
+    mdns: false
+    ipv4:
+    - 10.42.0.12
+  infraswitch:
+    description: Switch for mediaconverting our 10G
+    mdns: false
+    ipv4:
+    - 10.42.0.13
+  anna:
+    mac: 00:e0:c5:6e:d6:8d
+    ipv4:
+    - 10.42.1.9
+  piscreen2:
+    description: PixelFlut Raspberry Pi
+    mac: b8:27:eb:9b:64:d9
+    ipv4:
+    - 10.42.1.12
+  pixelfluthafnium:
+    description: PixelFlut Odroid
+    mac: 00:1e:06:45:38:08
+    ipv4:
+    - 10.42.1.13
+    ipv6:
+    - 2a01:4262:1ab:b:f100::000d
+  printbrother:
+    mac: 00:80:77:06:9f:26
+    ipv4:
+    - 10.42.1.32
+  xeroxwax:
+    mac: 00:00:aa:a7:ef:8b
+    mdns: false
+    ipv4:
+    - 10.42.1.33
+  infotron:
+    description: Infoscreen Raspberry Pi
+    mac: b8:27:eb:2c:5d:3a
+    ipv4:
+    - 10.42.1.34
+  spacemon:
+    mac: b8:27:eb:24:f8:50
+    ipv4:
+    - 10.42.1.35
+  jumbotron:
+    description: Jumbotron Raspberry Pi
+    mac: b8:27:eb:d3:c1:62
+    ipv4:
+    - 10.42.1.36
+  hplaserjet:
+    mac: 94:57:a5:ce:e2:6c
+    mdns: false
+    ipv4:
+    - 10.42.1.37
+    ipv6:
+    - 2a01:4262:1ab:b:9657:a5ff:fece:e26c
+  snakeskin:
+    description: Snakeskin controlling Raspberry Pi
+    mac: b8:27:eb:9b:64:d9
+    ipv4:
+    - 10.42.1.38
 
 # vim: set ts=2 sw=2 et:

@@ -1,16 +1,16 @@
-{% for host in local_hosts %}
-{%   if 'mdns' not in host or host.mdns %}
-{%     if 'ipv4' in host %}
-{%       for ip in host.ipv4 %}
+{% for name, info in local_hosts.items() %}
+{%   if 'mdns' not in info or info.mdns %}
+{%     if 'ipv4' in info %}
+{%       for ip in info.ipv4 %}
 {%         if loop.index <= 1 %}
-{{ ip }} {{ host.name }}.local
+{{ ip }} {{ name }}.local
 {%         endif %}
 {%       endfor %}
 {%     endif %}
-{%     if 'ipv6' in host %}
-{%       for ip in host.ipv6 %}
+{%     if 'ipv6' in info %}
+{%       for ip in info.ipv6 %}
 {%         if loop.index <= 1 %}
-{{ ip }} {{ host.name }}.local
+{{ ip }} {{ name }}.local
 {%         endif %}
 {%       endfor %}
 {%     endif %}

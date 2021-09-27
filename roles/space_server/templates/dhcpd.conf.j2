@@ -158,17 +158,17 @@ subnet 10.42.3.0 netmask 255.255.255.0 {
 group {
 	use-host-decl-names on;
 	ddns-updates off;
-{% for host in local_hosts %}
-{% if 'mac' in host and 'ipv4' in host %}
+{% for name, info in local_hosts.items() %}
+{% if 'mac' in info and 'ipv4' in info %}
 
-{% if 'description' in host %}
-	# {{ host.description }}
+{% if 'description' in info %}
+	# {{ info.description }}
 {% endif %}
-	host {{ host.name }} {
-		hardware ethernet {{ host.mac }};
-		fixed-address {{ host.ipv4|join(', ') }};
-{% if 'filename' in host %}
-		filename "{{ host.filename }}";
+	host {{ name }} {
+		hardware ethernet {{ info.mac }};
+		fixed-address {{ info.ipv4|join(', ') }};
+{% if 'filename' in info %}
+		filename "{{ info.filename }}";
 {% endif %}
 	}
 {% endif %}

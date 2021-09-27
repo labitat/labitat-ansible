@@ -8,17 +8,17 @@ labitrack.s.    600    IN   A     185.38.175.70
 labitrack.s.    600    IN   AAAA  2a01:4262:1ab::cafe
 track.s.        600    IN   A     185.38.175.70
 track.s.        600    IN   AAAA  2a01:4262:1ab::cafe
-{% for host in local_hosts %}
-{% if 'ipv4' in host or 'ipv6' in host %}
+{% for name, info in local_hosts.items() %}
+{% if 'ipv4' in info or 'ipv6' in info %}
 
-{% if 'ipv4' in host %}
-{% for ip in host.ipv4 %}
-{{ host.name }}.s. 600 IN A {{ ip }}
+{% if 'ipv4' in info %}
+{% for ip in info.ipv4 %}
+{{ name }}.s. 600 IN A {{ ip }}
 {% endfor %}
 {% endif %}
-{% if 'ipv6' in host %}
-{% for ip in host.ipv6 %}
-{{ host.name }}.s. 600 IN AAAA {{ ip }}
+{% if 'ipv6' in info %}
+{% for ip in info.ipv6 %}
+{{ name }}.s. 600 IN AAAA {{ ip }}
 {% endfor %}
 {% endif %}
 {% endif %}
