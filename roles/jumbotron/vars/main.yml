@@ -37,5 +37,6 @@ users:
   'knielsen': sudo
   'richard': sudo
   'max': sudo
+  'hafnium': sudo
 
 # vim: set ts=2 sw=2 et:
