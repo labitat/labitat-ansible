@@ -11,11 +11,10 @@
     state: restarted
   when: not chroot
 
-- name: restart bird
-  systemd:
-    name: bird.service
-    state: restarted
-  when: not chroot
+- name: reconfigure bird
+  command: 'birdc'
+  args:
+    stdin: 'configure soft'
 
 - name: restart dhcpd
   systemd:

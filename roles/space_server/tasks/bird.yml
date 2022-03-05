@@ -6,7 +6,7 @@
     owner: root
     group: root
     mode: 0644
-  notify: restart bird
+  notify: reconfigure bird
 
 - name: Enable bird.service
   systemd:
