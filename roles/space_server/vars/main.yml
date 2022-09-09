@@ -62,6 +62,7 @@ users:
   'signout': sudo
   'rasmis': jumponly
   'hafnium': true
+  'narzul': true
 
 boot:
   device: 'LABEL=BOOT'
