@@ -23,6 +23,7 @@ users:
   'riiiis': sudo
   'knielsen': sudo
   'signout': sudo
+  'hafnium': sudo
 
 lockserver_conf_role:
   'Database.Path': '/home/doorman/users.db'
