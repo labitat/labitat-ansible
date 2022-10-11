@@ -1,0 +1,13 @@
+[Unit]
+Description=WAN sysctl config
+Requires=sys-devices-virtual-net-wan.device
+After=sys-devices-virtual-net-wan.device
+Before=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/sysctl -f /etc/systemd/networkd/10-wan-sysctl.conf
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

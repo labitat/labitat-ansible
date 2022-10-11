@@ -1,0 +1,13 @@
+[Unit]
+Description=locix sysctl config
+Requires=sys-devices-virtual-net-locix.device
+After=sys-devices-virtual-net-locix.device
+Before=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/sysctl -f /etc/systemd/networkd/10-locix-sysctl.conf
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

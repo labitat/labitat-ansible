@@ -40,6 +40,8 @@
   tags: gettys
 - import_tasks: networkd.yml
   tags: networkd
+- import_tasks: network-sysctl.yml
+  tags: network-sysctl
 - import_tasks: nftables.yml
   tags: nftables
 - import_tasks: certbot.yml
