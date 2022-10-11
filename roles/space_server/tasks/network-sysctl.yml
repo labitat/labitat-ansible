@@ -1,0 +1,44 @@
+---
+- name: Install locix-sysctl service
+  copy:
+    dest: '/etc/systemd/system/locix-sysctl.service'
+    src: locix-sysctl.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable locix-sysctl service
+  systemd:
+    name: locix-sysctl.service
+    enabled: yes
+    masked: no
+    state: started
+  when: not chroot
+- name: '- when in chroot'
+  command: systemctl enable locix-sysctl.service
+  args:
+    creates: '/etc/systemd/system/multi-user.target.wants/locix-sysctl.service'
+  when: chroot
+
+- name: Install wan-sysctl service
+  copy:
+    dest: '/etc/systemd/system/wan-sysctl.service'
+    src: wan-sysctl.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable wan-sysctl service
+  systemd:
+    name: wan-sysctl.service
+    enabled: yes
+    masked: no
+    state: started
+  when: not chroot
+- name: '- when in chroot'
+  command: systemctl enable wan-sysctl.service
+  args:
+    creates: '/etc/systemd/system/multi-user.target.wants/wan-sysctl.service'
+  when: chroot
+
+# vim: set ts=2 sw=2 et:
