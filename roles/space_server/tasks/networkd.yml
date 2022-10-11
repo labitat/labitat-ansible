@@ -30,4 +30,34 @@
     state: absent
   with_items: "{{ networkd_existing.files|map(attribute='path')|map('basename')|difference(networkd_created.results|map(attribute='item')|map('basename'))|list }}"
 
+- name: Install network-sysctl@.service
+  copy:
+    dest: '/etc/systemd/system/network-sysctl@.service'
+    src: 'network-sysctl@.service'
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable network-sysctl@.service
+  systemd:
+    name: 'network-sysctl@{{ item }}.service'
+    enabled: yes
+    masked: no
+  when: not chroot
+  with_items:
+  - wan
+  - locix
+- name: '- when in chroot'
+  command:
+    argv:
+    - 'systemctl'
+    - 'enable'
+    - 'network-sysctl@{{ item }}.service'
+  args:
+    creates: '/etc/systemd/system/sys-devices-virtual-net-{{ item }}.device.wants/network-sysctl@{{ item }}.service'
+  when: chroot
+  with_items:
+  - wan
+  - locix
+
 # vim: set ts=2 sw=2 et:

@@ -1,0 +1,7 @@
+[NetDev]
+Name=locix
+Kind=vlan
+MACAddress=5a:06:28:18:79:01
+
+[VLAN]
+Id=3145

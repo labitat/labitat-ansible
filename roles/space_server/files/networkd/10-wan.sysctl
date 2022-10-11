@@ -1,0 +1,2 @@
+# Turn off RP filtering to allow asymmetric routing
+net.ipv4.conf.wan.rp_filter=0

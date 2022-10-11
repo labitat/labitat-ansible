@@ -1,0 +1,25 @@
+# From https://www.ams-ix.net/ams/documentation/config-guide
+# file: /etc/sysctl.conf
+# These settings should be duplicated for all interfaces that are
+# on a peering LAN.
+
+# Fix the "promiscuous ARP" thing...
+net.ipv4.conf.locix.arp_ignore=1
+net.ipv4.conf.locix.arp_announce=1
+
+# Turn off RP filtering to allow asymmetric routing
+net.ipv4.conf.locix.rp_filter=0
+
+# Multiple (non-aggregated) interfaces on the same peering LAN
+# READ THE MANUAL FIRST!
+#net.ipv4.conf.ifname.arp_filter=1
+
+# Keep the IX ARP Police happy :-)
+net.ipv4.neigh.locix.base_reachable_time_ms=14400000
+net.ipv6.neigh.locix.base_reachable_time_ms=14400000
+
+# No redirects
+net.ipv4.conf.locix.accept_redirects=0
+net.ipv4.conf.locix.secure_redirects=0
+net.ipv4.conf.locix.send_redirects=0
+net.ipv6.conf.locix.accept_redirects=0

@@ -12,6 +12,7 @@ LinkLocalAddressing=no
 LLMNR=no
 MulticastDNS=no
 VLAN=wan
+VLAN=locix
 VLAN=lan10
 VLAN=lan11
 VLAN=lan12

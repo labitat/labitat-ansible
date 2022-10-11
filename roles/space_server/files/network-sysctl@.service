@@ -1,0 +1,14 @@
+[Unit]
+Description=Apply per interface kernel variables on %I
+Documentation=man:systemd-sysctl.service(8) man:sysctl.d(5)
+DefaultDependencies=no
+After=sys-devices-virtual-net-%i.device
+Before=network-online.target
+#ConditionPathIsReadWrite=/proc/sys/net/
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/systemd/systemd-sysctl /etc/systemd/network/10-%i.sysctl
+
+[Install]
+WantedBy=sys-devices-virtual-net-%i.device
