@@ -60,7 +60,7 @@ users:
   'semi': true
   'graffen': true
   'signout': sudo
-  'hafnium': true
+  'hafnium': sudo
 
 boot:
   device: 'LABEL=BOOT'
