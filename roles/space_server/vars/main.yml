@@ -60,7 +60,6 @@ users:
   'semi': true
   'graffen': true
   'signout': sudo
-  'rasmis': jumponly
   'hafnium': true
 
 boot:
