@@ -28,11 +28,15 @@
     path: '/etc/ssh/sshd_config'
     regexp: '{{ item.regexp }}'
     line: '{{ item.line }}'
+    insertafter: '{{ (item.insertafter is string)|ternary(item.insertafter,omit) }}'
   with_items:
   - regexp: '^#*PermitRootLogin'
     line: 'PermitRootLogin no'
   - regexp: '^#*PasswordAuthentication'
     line: 'PasswordAuthentication no'
+  - regexp: '^#*AuthenticationMethods'
+    line: 'AuthenticationMethods publickey'
+    insertafter: '^#*PasswordAuthentication'
   - regexp: '^#*GSSAPIAuthentication'
     line: 'GSSAPIAuthentication no'
   notify: restart sshd
