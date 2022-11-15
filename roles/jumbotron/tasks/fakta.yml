@@ -1,7 +1,7 @@
 ---
 - name: Copy fakta bell script
   copy:
-    dest: '~jumbotron/fakta-bell.sh'
+    dest: '~/jumbotron/fakta-bell.sh'
     src: 'fakta-bell.sh'
     owner: jumbotron
     group: users
