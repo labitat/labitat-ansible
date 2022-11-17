@@ -48,7 +48,7 @@ userdata:
     name: 'Richard Graham'
     uid: 2006
     authorized_keys:
-    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD32NTv7Rqp+ft4Kpq/svyhAsZ+g5egNWeXVad8sih6C7XEAtub/tlxn7HuIbFk7E0i+LnApvfxvU5CSkNx4P5nGMkWOlPBSB4z06zW4HJ6iVEY8bFb+npCReCB15Finl72/qdEs1XEZ9jXfhpGsFkbYVJsPpOTQO9hC/xwpe8/bKKjqC3hqhF1TeXKUjr9SfRKbOQo5RI9+tXMc5rhbmNCDPz8wpqqH1YV6exwH7a6QQ5HtXBDMMsdyvc5XQOmGxsKHKyubQL20P/KT021BWDdF2UBP7rQR+B7jkaIO7MkEMjAJOPTJw/WFs74SLQc/DpLWO/m+mDyukDKO/mFHdTb richard@richard-ThinkPad-X200'
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC3qClonWiTr9cP7t6jAburDU33d4zZ7mgIVvJ6dNb1DCwBzA6pGZ4UPL85t7C1MWRBeNMTSOvqbrX+KKSRMH5ScF1Fx/GUzPivzhvweD7lq+JjAP4igzU0t+LKHVc7yNySAjfUikoNqD84XkELpoNVaRHZBtoZVbHswUyRtjj0WUT7a+fQ6z4YwnX+DnTgW5tc3M+GSeR8viIZWahPeYHVDTNE9xTOPvTALjtICTGtaunlYV4VeICUunej5r90xfzwT/wzJVFrgKeTVDRB40pCc0EG54pV6odhZJx8fk9HAS3XDRGJevzx7rzNtqclkmW1o1s2rjbSKukzN2K2XQ4XGNm4vDChR+Z7jgxcg9VgViDeyv1ji8d+xUC+lFlLzDimND7hdyY2UDJdXutVMp6L0ibhlPZjnH9OIY+iEmvipCOOnfiA8wqhYtAUlDYiWVcqIP1DgOFMOcoduKnh3KBnpCc8hcmOilgA33B2qLwpgFqkP/D9vZwhvN/7C4rH66s= richard@richard-T430s'
 
   'max':
     name: 'Max Campbell'
