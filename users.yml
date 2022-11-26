@@ -1,0 +1,21 @@
+---
+# To prevent mistakes, demand host is specified as -e "HOSTS=<servername>"
+- hosts: "{{ HOSTS }}"
+  pre_tasks:
+  - name: Detect chroot
+    set_fact:
+      chroot: "{{ ansible_connection == 'chroot' or 'container' in ansible_env }}"
+    tags: always
+# sudo_group is also set in the debian/ and fedora/ roles, but we detect it here to run users role standalone
+  - name: Set sudo_group for Fedora
+    ansible.builtin.set_fact:
+      sudo_group: wheel
+    when: ansible_distribution == "Fedora"
+  - name: Set sudo_group for debian
+    ansible.builtin.set_fact:
+      sudo_group: sudo
+    when: ansible_distribution == "Debian"
+  roles:
+  - users
+
+# vim: set ts=2 sw=2 et:
