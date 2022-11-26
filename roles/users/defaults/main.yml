@@ -85,6 +85,12 @@ userdata:
 
   'jobbe': {}
 
+  'allover':
+    name: 'Oliver Allover'
+    uid: 2025
+    authorized_keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDErwnvNA9FhRsZqd7lFmfvQmWCvCRu6OmyOUw2WZIcjY11h/dBGOZYT4PHG42IChFcFd/RczCArC3B3Li9cI+TaNNBlVxyElZsg2L+98KeGzapPx02e/bgea9Vf1DKsC5DIhDg1ZRp5BcsY9w4l53b12EPWDTzAr87bvlowoQE8DKzkOmLi3RhFqJrCY5CJOzde5RaRbAaJby+SmqVnauS0j8PgZP3QJF4cpnbVg3gdlCB4neSyeh7btKe6X3nu4ySZuUBKDc8zipd2aJX+5xJGmMcqF/ybJxNY3yzEV+Xt/nCBHwa/X78gl3QsaV6xJfqYaUiITjGj6lXKCGi3zvabKIGV/THfFR548vBqLkzRfnUkUAXdjMyx1Aqm7U6d2hpm4cboBpz2+h6troKD38MVCCcIrdEpBUZzxxK1tCYImXO1FowTmH6qWo9/3h5t+bJEZQWp0vR73ZW01exrAseSlFGT1a1vw3PRo1lspSn/B4SuziYYnwPbCpR9ZviOw8= allover@labitat'
+
 users: {}
 
 # vim: set ts=2 sw=2 et:
