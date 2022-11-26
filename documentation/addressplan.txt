@@ -10,6 +10,7 @@
         * 185.38.175.076    - Deni
         * 185.38.175.077    - KTJ
         * 185.38.175.078    - Graffen
+        * 185.38.175.087    - blackbox.labitat.dk
     ***** 185.38.175.128/28 - Tor exit nodes
         * 185.38.175.129    - space.labitat.dk - gateway
 
