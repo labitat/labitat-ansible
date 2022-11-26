@@ -63,5 +63,6 @@
   with_items: '{{ userdata|dictsort()|map(attribute=0)|difference(users|dictsort()|selectattr(1)|map(attribute=0))|list }}'
   tags:
   - users
+  when: remove_users|default(false)
 
 # vim: set ts=2 sw=2 et:
