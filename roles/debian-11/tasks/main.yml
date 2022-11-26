@@ -1,0 +1,20 @@
+---
+- import_tasks: apt.yml
+  tags: apt
+- import_tasks: hosts.yml
+  tags: hosts
+- import_tasks: timezone.yml
+  when: timezone is defined
+  tags: timezone
+- import_tasks: locale.yml
+  when: locale is defined
+  tags: locale
+- import_tasks: hostname.yml
+  when: hostname is defined
+  tags: hostname
+- import_tasks: sshd.yml
+  tags: sshd
+- import_tasks: sudo.yml
+  tags: sudo
+
+# vim: set ts=2 sw=2 et:

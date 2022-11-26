@@ -1,0 +1,45 @@
+---
+use_tmpfs: true
+use_resolved: true
+use_networkd: true
+use_timesyncd: true
+
+locale_generated: # must be sorted
+- en_US.UTF-8 UTF-8
+locale_default:
+  LANG: 'en_US.UTF-8'
+
+apt_preferences_default: {}
+apt_preferences_role: {}
+
+apt_repos_default:
+  base:
+    uri: 'https://deb.debian.org/debian'
+    suite: '{{ apt_release|default(ansible_distribution_release) }}'
+  security:
+    uri: 'https://deb.debian.org/debian-security'
+    suite: '{{ apt_release|default(ansible_distribution_release) }}/updates'
+  updates:
+    uri: 'https://deb.debian.org/debian'
+    suite: '{{ apt_release|default(ansible_distribution_release) }}-updates'
+  backports:
+    uri: 'https://deb.debian.org/debian'
+    suite: '{{ apt_release|default(ansible_distribution_release) }}-backports'
+apt_repos_role: {}
+
+apt_sources_default: {}
+apt_sources_role: {}
+
+apt_packages_default:
+  'netbase': present
+  'apt-transport-https': present
+  'vim': present
+  'openssh-server': present
+  'htop': present
+  'iotop': present
+  'ncdu': present
+apt_packages_role: {}
+
+sudo_group: 'sudo'
+
+# vim: set ts=2 sw=2 et:

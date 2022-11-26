@@ -1,0 +1,14 @@
+---
+- name: Configure timezone
+  timezone:
+    name: '{{ timezone }}'
+  when: not chroot
+- name: '- when in chroot'
+  file:
+    path: '/etc/localtime'
+    src: '../usr/share/zoneinfo/{{ timezone }}'
+    state: link
+    force: yes
+  when: chroot
+
+# vim: set ts=2 sw=2 et:

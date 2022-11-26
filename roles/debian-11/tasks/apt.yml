@@ -1,0 +1,75 @@
+---
+- name: Remove packages
+  vars:
+    apt_packages: '{{ apt_packages_default|combine(apt_packages_role) }}'
+  apt:
+    name: "{{ apt_packages|dictsort(true)|selectattr(1,'equalto','absent')|map(attribute=0)|list }}"
+    state: absent
+    autoremove: yes
+    purge: yes
+  tags:
+  - packages
+
+- name: Create /etc/apt/preferences.d
+  vars:
+    apt_preferences: '{{ apt_preferences_default|combine(apt_preferences_role) }}'
+  template:
+    dest: '/etc/apt/preferences.d/{{ item.key }}'
+    src: apt-preferences.j2
+    owner: root
+    group: root
+    mode: 0644
+  with_dict: '{{ apt_preferences }}'
+  when: item.value
+
+- name: Remove /etc/apt/preferences.d
+  vars:
+    apt_preferences: '{{ apt_preferences_default|combine(apt_preferences_role) }}'
+  file:
+    path: '/etc/apt/preferences.d/{{ item.key }}'
+    state: absent
+  with_dict: '{{ apt_preferences }}'
+  when: not item.value
+
+- name: Configure /etc/apt/sources.list
+  vars:
+    apt_repos: '{{ apt_repos_default|combine(apt_repos_role) }}'
+    apt_sources: '{{ apt_sources_default|combine(apt_sources_role) }}'
+  template:
+    dest: '/etc/apt/sources.list'
+    src: sources.list.j2
+    owner: root
+    group: root
+    mode: 0644
+  when: 'apt_sources|length > 0'
+
+- name: Download repository keys
+  vars:
+    apt_repos: '{{ apt_repos_default|combine(apt_repos_role) }}'
+    apt_sources: '{{ apt_sources_default|combine(apt_sources_role) }}'
+  apt_key:
+    url: "{{ apt_repos[item.key]['key_url'] }}"
+    id: "{{ apt_repos[item.key]['key_id'] }}"
+    state: present
+  with_dict: '{{ apt_sources }}'
+  loop_control:
+    label: '{{ item.key }}'
+  when: "'key_url' in apt_repos[item.key]"
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  tags:
+  - update
+  - packages
+
+- name: Install packages
+  vars:
+    apt_packages: '{{ apt_packages_default | combine(apt_packages_role) }}'
+  apt:
+    name: "{{ apt_packages|dictsort(true)|selectattr(1,'equalto','present')|map(attribute=0)|list }}"
+    state: present
+  tags:
+  - packages
+
+# vim: set ts=2 sw=2 et:

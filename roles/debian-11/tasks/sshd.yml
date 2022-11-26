@@ -1,0 +1,51 @@
+---
+- name: Create private host keys
+  copy:
+    dest: '/etc/ssh/{{ item.key }}'
+    content: '{{ item.value.private }}'
+    owner: root
+    group: ssh_keys
+    mode: 0640
+  with_dict: '{{ ssh_host_keys[hostname] }}'
+  loop_control:
+    label: '/etc/ssh/{{ item.key }}'
+  when: ssh_host_keys is defined and hostname in ssh_host_keys
+
+- name: Create public host keys
+  copy:
+    dest: '/etc/ssh/{{ item.key }}.pub'
+    content: '{{ item.value.public }}'
+    owner: root
+    group: root
+    mode: 0644
+  with_dict: '{{ ssh_host_keys[hostname] }}'
+  loop_control:
+    label: '/etc/ssh/{{ item.key }}.pub'
+  when: ssh_host_keys is defined and hostname in ssh_host_keys
+
+- name: Configure SSH daemon
+  lineinfile:
+    path: '/etc/ssh/sshd_config'
+    regexp: '{{ item.regexp }}'
+    line: '{{ item.line }}'
+  with_items:
+  - regexp: '^[# ]*PermitRootLogin'
+    line: 'PermitRootLogin no'
+  - regexp: '^[# ]*PasswordAuthentication'
+    line: 'PasswordAuthentication no'
+  - regexp: '^[# ]*GSSAPIAuthentication'
+    line: 'GSSAPIAuthentication no'
+  notify: restart sshd
+
+- name: Enable SSH daemon
+  systemd:
+    name: ssh.service
+    enabled: yes
+    masked: no
+    state: started
+  when: not chroot
+- name: '- when in chroot'
+  command: systemctl enable ssh.service
+  when: chroot
+
+# vim: set ts=2 sw=2 et:

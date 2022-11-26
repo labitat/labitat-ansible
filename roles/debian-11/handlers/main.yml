@@ -1,0 +1,8 @@
+---
+- name: restart sshd
+  systemd:
+    name: ssh.service
+    state: restarted
+  when: not chroot
+
+# vim: set ts=2 sw=2 et:

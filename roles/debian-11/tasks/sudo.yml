@@ -1,0 +1,11 @@
+---
+- name: Configure sudo
+  copy:
+    dest: '/etc/sudoers'
+    src: sudoers
+    owner: root
+    group: root
+    mode: 0440
+    validate: visudo -cf %s
+
+# vim: set ts=2 sw=2 et:
