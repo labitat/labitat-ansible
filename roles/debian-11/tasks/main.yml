@@ -17,10 +17,7 @@ roles/debian-11/tasks/main.yml
   tags: sshd
 - import_tasks: sudo.yml
   tags: sudo
-<<<<<<< HEAD
 - import_tasks: unattended-upgrades.yml
   tags: unattended-upgrades
-=======
->>>>>>> f1d1b9a (debian-11: Update debian role for debian 11)
 
 # vim: set ts=2 sw=2 et:
