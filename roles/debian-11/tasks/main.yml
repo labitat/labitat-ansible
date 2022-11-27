@@ -16,5 +16,7 @@
   tags: sshd
 - import_tasks: sudo.yml
   tags: sudo
+- import_tasks: unattended-upgrades.yml
+  tags: unattended-upgrades
 
 # vim: set ts=2 sw=2 et:
