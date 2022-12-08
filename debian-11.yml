@@ -1,0 +1,15 @@
+---
+
+# Run against a bare debian-11 machine to setup labitat users and install basic packages
+
+- hosts: labitat-sky
+  pre_tasks:
+  - name: Detect chroot
+    set_fact:
+      chroot: "{{ ansible_connection == 'chroot' or 'container' in ansible_env }}"
+    tags: always
+  roles:
+   - users
+   - debian-11
+
+# vim: set ts=2 sw=2 et:
