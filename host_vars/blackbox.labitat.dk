@@ -1,0 +1,7 @@
+---
+users: {
+	ast: sudo,
+	esmil: sudo,
+	signout: sudo,
+	allover: sudo
+}
