@@ -1,0 +1,7 @@
+---
+users: {
+  ast: sudo,
+  esmil: sudo,
+  allover: sudo,
+  joshbuddy: sudo
+}
