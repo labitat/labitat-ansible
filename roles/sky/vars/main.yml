@@ -34,6 +34,7 @@ apt_sources_role:
 
 apt_packages_role:
   'nginx': present
+  'certbot': present
 
 journald_conf_role:
   'Journal.Storage': 'persistent'
@@ -42,5 +43,8 @@ users:
   'esmil': sudo
   'ast': sudo
   'joshbuddy': sudo
+
+domain_name: 'new.labitat.dk'
+letsencrypt_email: 'josh@fireflop.com'
 
 # vim: set ts=2 sw=2 et:
