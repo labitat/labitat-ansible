@@ -11,5 +11,7 @@
 
 - import_tasks: certbot.yml
   tags: certbot
+- import_tasks: homepage.yml
+  tags: homepage
 
 # vim: set ts=2 sw=2 et:

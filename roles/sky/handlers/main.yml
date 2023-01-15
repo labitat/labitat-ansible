@@ -1,0 +1,8 @@
+---
+- name: restart update-homepage
+  systemd:
+    name: update-homepage.timer
+    state: restarted
+    daemon_reload: yes
+
+# vim: set ts=2 sw=2 et:
