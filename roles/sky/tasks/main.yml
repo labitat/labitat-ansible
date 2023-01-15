@@ -9,4 +9,7 @@
   tags:
   - networkd
 
+- import_tasks: certbot.yml
+  tags: certbot
+
 # vim: set ts=2 sw=2 et:

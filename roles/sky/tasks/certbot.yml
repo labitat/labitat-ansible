@@ -1,0 +1,71 @@
+---
+- name: Create letsencrypt www directory
+  file:
+    name: '/var/www/letsencrypt'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install nginx site for letsencrypt requests
+  template:
+    dest: '/etc/nginx/sites-enabled/letsencrypt'
+    src: letsencrypt.nginx.j2
+    owner: root
+    group: root
+    mode: 0644
+  register: letsencrypt_site
+  tags:
+  - nginx
+
+# We need to have the letsencrypt site loaded in the
+# running nginx before creating the certificate below
+# so we can't wait for the regular handler to run
+- name: Reload nginx
+  systemd:
+    name: nginx.service
+    state: reloaded
+  when: letsencrypt_site is changed
+
+- name: 'Create {{ domain_name }} certificate'
+  command:
+    argv:
+    - '/usr/bin/certbot'
+    - 'certonly'
+    - '--non-interactive'
+    - '--agree-tos'
+    - '--max-log-backups'
+    - '99'
+    - '--webroot'
+    - '--webroot-path'
+    - '/var/www/letsencrypt'
+    - '--preferred-challenges'
+    - 'http'
+    - '--key-type'
+    - 'rsa'
+    - '-m'
+    - '{{ letsencrypt_email }}'
+    - '-d'
+    - '{{ domain_name }}'
+    - '-d'
+    - 'www.labitat.dk'
+    creates: '/etc/letsencrypt/renewal/{{ domain_name }}.conf'
+  notify:
+  - reload nginx
+
+- name: Enable certbot renewal timer
+  systemd:
+    name: certbot.timer
+    enabled: yes
+    masked: no
+    state: started
+
+- name: Add deploy hook to reload nginx
+  template:
+    dest: '/etc/letsencrypt/renewal-hooks/deploy/nginx.sh'
+    src: certbot-nginx.sh.j2
+    owner: root
+    group: root
+    mode: 0755
+
+# vim: set ts=2 sw=2 et:

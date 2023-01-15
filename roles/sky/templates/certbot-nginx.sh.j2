@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case "$RENEWED_LINEAGE" in
+*'/{{ domain_name }}')
+  exec systemctl reload nginx.service
+  ;;
+esac
+
+# vim: set ts=2 sw=2 et:
