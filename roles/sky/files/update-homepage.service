@@ -1,0 +1,13 @@
+[Unit]
+Description=Update Homepage
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/homepage/homepage/make
+WorkingDirectory=/home/homepage/homepage
+User=homepage
+Group=homepage
+ProtectSystem=full
+PrivateTmp=yes

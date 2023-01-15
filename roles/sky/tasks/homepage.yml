@@ -1,0 +1,82 @@
+---
+- name: Create homepage user
+  user:
+    comment: 'user for homepage'
+    name: homepage
+    group: homepage
+    uid: 3000
+    shell: '/bin/bash'
+
+- name: Clone/update homepage git repo
+  git:
+    dest: '~homepage/homepage'
+    repo: 'https://github.com/labitat/homepage'
+    version: main
+    remote: origin
+    #single_branch: yes
+    #accept_newhostkey: yes
+    clone: yes
+    update: yes
+  become_user: homepage
+  register: homepage_git
+
+- name: Deploy new homepage
+  block:
+  - name: Delete old gems
+    file:
+      path: '~homepage/homepage/{{ item }}'
+      state: absent
+    with_items:
+    - Gemfile.lock
+    - lib
+    - bin
+  - name: Install dependencies
+    command: /usr/bin/bundle
+    args:
+      chdir: '~homepage/homepage'
+    become_user: homepage
+  - name: Create build and out directories
+    file:
+      path: '~homepage/homepage/{{ item }}'
+      state: directory
+      owner: homepage
+      group: homepage
+      mode: 0755
+    with_items:
+    - build
+    - out
+  when: homepage_git is changed
+
+- name: Create update-homepage service and timer
+  copy:
+    dest: '/etc/systemd/system/{{ item }}'
+    src: '{{ item }}'
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+  - update-homepage.service
+  - update-homepage.timer
+  notify:
+  - restart update-homepage
+
+- name: Enable update-homepage timer
+  systemd:
+    name: update-homepage.timer
+    enabled: yes
+    masked: no
+    state: started
+
+- name: Install nginx site for homepage
+  template:
+    dest: '/etc/nginx/sites-enabled/homepage'
+    src: homepage.nginx.j2
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+  - reload nginx
+  tags:
+  - nginx
+
+# vim: set ts=2 sw=2 et:

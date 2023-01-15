@@ -35,6 +35,9 @@ apt_sources_role:
 apt_packages_role:
   'nginx': present
   'certbot': present
+  'ruby': present
+  'bundler': present
+  'curl': present
 
 journald_conf_role:
   'Journal.Storage': 'persistent'

@@ -1,0 +1,12 @@
+[Unit]
+Description=Update homepage every minute
+
+[Timer]
+Unit=update-homepage.service
+OnBootSec=1min
+OnUnitActiveSec=1min
+AccuracySec=1min
+Persistent=no
+
+[Install]
+WantedBy=timers.target
