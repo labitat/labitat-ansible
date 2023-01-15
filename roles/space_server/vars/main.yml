@@ -61,6 +61,7 @@ users:
   'graffen': true
   'signout': sudo
   'hafnium': sudo
+  'joshbuddy': sudo
 
 boot:
   device: 'LABEL=BOOT'
