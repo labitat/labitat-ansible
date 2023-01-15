@@ -1,0 +1,46 @@
+---
+- name: "Create homepage user"
+  user:
+    name: homepage
+    comment: user for homepage
+
+- name: "Install curl"
+  apt:
+    name: curl
+    update_cache: yes
+
+- name: "Clone homepage git repo"
+  git:
+    repo: https://github.com/labitat/homepage
+    dest: /usr/local/homepage
+    clone: yes
+    update: yes
+
+- name: "Create build directory"
+  file:
+    path: /usr/local/homepage/build
+    owner: homepage
+    state: directory
+
+- name: "Create out directory"
+  file:
+    path: /usr/local/homepage/out
+    owner: homepage
+    state: directory
+
+- name: "Install deps"
+  shell: bundle
+  args:
+    chdir: /usr/local/homepage
+
+- name: "Install cronjob for generating page"
+  cron:
+  args:
+    name: "Make homepage"
+    minute: "*"
+    hour: "*"
+    job: "cd /usr/local/homepage && ./make"
+  become: true
+  become_user: homepage
+
+- include_tasks: web.yml

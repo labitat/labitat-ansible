@@ -1,0 +1,10 @@
+---
+__ruby_packages:
+  - ruby
+  - ruby-devel
+  - "{{ ruby_rubygems_package_name }}"
+  - '@development tools'
+__ruby_build_packages:
+  - '@development tools'
+  - zlib-devel
+  - openssl-static
