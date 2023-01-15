@@ -1,0 +1,7 @@
+---
+- name: reload nginx
+  systemd:
+    name: nginx.service
+    state: reloaded
+
+# vim: set ts=2 sw=2 et:
