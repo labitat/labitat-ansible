@@ -1,0 +1,46 @@
+---
+hostname: 'labitat-sky'
+
+apt_repos_role:
+  base:
+    uri: 'https://deb.debian.org/debian'
+    suite: '{{ apt_release|default(ansible_distribution_release) }}'
+  security:
+    uri: 'https://security.debian.org/debian-security'
+    suite: '{{ apt_release|default(ansible_distribution_release) }}-security'
+  updates:
+    uri: 'https://deb.debian.org/debian'
+    suite: '{{ apt_release|default(ansible_distribution_release) }}-updates'
+  backports:
+    uri: 'https://deb.debian.org/debian'
+    suite: '{{ apt_release|default(ansible_distribution_release) }}-backports'
+
+apt_sources_role:
+  base:
+    components:
+    - main
+    - contrib
+    - non-free
+  security:
+    components:
+    - main
+    - contrib
+    - non-free
+  updates:
+    components:
+    - main
+    - contrib
+    - non-free
+
+apt_packages_role:
+  'nginx': present
+
+journald_conf_role:
+  'Journal.Storage': 'persistent'
+
+users:
+  'esmil': sudo
+  'ast': sudo
+  'joshbuddy': sudo
+
+# vim: set ts=2 sw=2 et:

@@ -1,0 +1,11 @@
+---
+- hosts: sky.labitat.dk
+  pre_tasks:
+  - name: Detect chroot
+    set_fact:
+      chroot: "{{ ansible_connection == 'chroot' or 'container' in ansible_env }}"
+    tags: always
+  roles:
+  - sky
+
+# vim: set ts=2 sw=2 et:
