@@ -8,7 +8,7 @@ case "$RENEWED_LINEAGE" in
     "$RENEWED_LINEAGE/privkey.pem" \
     "$RENEWED_LINEAGE/fullchain.pem" \
     /etc/raddb/certs/
-  systemctl reload radiusd.service
+  systemctl restart radiusd.service
   ;;
 esac
 
