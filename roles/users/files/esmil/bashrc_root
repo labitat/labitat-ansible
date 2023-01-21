@@ -9,7 +9,7 @@ export -n PROMPT_COMMAND
 
 # directory listing
 if type dircolors > /dev/null 2>&1; then
-  eval "$(dircolors -b)"
+  eval "$(TERM=ansi dircolors -b)"
 fi
 alias ls='ls --color=auto -F'
 alias ll='ls -Ahl'
