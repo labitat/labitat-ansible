@@ -27,7 +27,7 @@
 - name: Symlink /etc/resolv.conf
   file:
     path: '/etc/resolv.conf'
-    src: '/run/systemd/resolve/resolv.conf'
+    src: '/lib/systemd/resolv.conf'
     state: link
     force: yes
   when: use_resolved
@@ -35,7 +35,7 @@
   lineinfile:
     path: /etc/nsswitch.conf
     regexp: '^hosts:'
-    line: 'hosts:          files resolve [!UNAVAIL=return] dns myhostname'
+    line: "hosts:          {{ ((ansible_distribution_major_version|int) >= 11)|ternary('resolve','files resolve') }}"
   when: use_resolved
 
 # vim: set ts=2 sw=2 et:
