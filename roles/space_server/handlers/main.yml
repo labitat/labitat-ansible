@@ -15,6 +15,7 @@
   command: 'birdc'
   args:
     stdin: 'configure soft'
+  when: not chroot
 
 - name: restart dhcpd
   systemd:
