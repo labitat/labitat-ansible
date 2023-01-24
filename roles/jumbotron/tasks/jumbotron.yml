@@ -26,12 +26,7 @@
     clone: yes
     update: yes
     remote: origin
-
-- name: Make sure jumbotron owns git repo
-  file:
-    dest: '~jumbotron/jumbotron'
-    owner: jumbotron
-    group: users
-    recurse: yes
+  become: yes
+  become_user: jumbotron
 
 # vim: set ts=2 sw=2 et:
