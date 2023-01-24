@@ -18,7 +18,6 @@ apt_packages_default:
   'apt-transport-https': present
   'dialog': present
   'libpam-systemd': present
-  'libnss-myhostname': present
   'libnss-resolve': present
   'vim': present
   'deborphan': present
