@@ -18,6 +18,8 @@
     clone: yes
     update: yes
     remote: origin
+  become: yes
+  become_user: doorman
 
 - name: Make sure doorman owns git repo
   file:
