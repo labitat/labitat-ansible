@@ -14,19 +14,12 @@
   git:
     dest: '~doorman/lockserver'
     repo: 'https://github.com/labitat/lockserver.git'
+    version: master
+    remote: origin
     accept_hostkey: yes
     clone: yes
     update: yes
-    remote: origin
-  become: yes
   become_user: doorman
-
-- name: Make sure doorman owns git repo
-  file:
-    dest: '~doorman/lockserver'
-    owner: doorman
-    group: users
-    recurse: yes
 
 - name: Initialize database
   command:
