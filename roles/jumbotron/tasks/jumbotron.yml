@@ -22,11 +22,11 @@
   git:
     dest: '~jumbotron/jumbotron'
     repo: 'https://github.com/labitat/jumbotron.git'
+    version: master
+    remote: origin
     accept_hostkey: yes
     clone: yes
     update: yes
-    remote: origin
-  become: yes
   become_user: jumbotron
 
 # vim: set ts=2 sw=2 et:
