@@ -1,7 +1,7 @@
 server {
 	listen *:80;
 	listen [::]:80;
-	server_name {{ domain_name }};
+	server_name {{ domain_name }} www.labitat.dk;
 
 	location /.well-known/acme-challenge {
 		root /var/www/letsencrypt;

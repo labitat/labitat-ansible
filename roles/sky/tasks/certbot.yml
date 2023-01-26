@@ -47,6 +47,8 @@
     - '{{ letsencrypt_email }}'
     - '-d'
     - '{{ domain_name }}'
+    - '-d'
+    - www.labitat.dk
     creates: '/etc/letsencrypt/renewal/{{ domain_name }}.conf'
 
 - name: Enable certbot renewal timer
