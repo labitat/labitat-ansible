@@ -1,4 +1,6 @@
 *.retry
 /secrets.yml
+/passwd
 *~
 .*.swp
+/env

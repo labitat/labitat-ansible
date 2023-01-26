@@ -13,5 +13,7 @@
   tags: certbot
 - import_tasks: homepage.yml
   tags: homepage
+- import_tasks: wiki.yml
+  tags: wiki
 
 # vim: set ts=2 sw=2 et:
