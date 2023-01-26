@@ -269,8 +269,8 @@ table ip nat {
 
 	chain postrouting {
 		type nat hook postrouting priority -150;
-		oif $ext_if ip saddr $free_net4 snat $free_nat
-		oif $ext_if ip saddr $int_net4 snat $ext_ip4
+		oif { $ext_if, $colo_if } ip saddr $free_net4 snat $free_nat
+		oif { $ext_if, $colo_if } ip saddr $int_net4 snat $ext_ip4
         }
 }
 
