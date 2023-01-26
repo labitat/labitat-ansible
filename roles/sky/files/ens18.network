@@ -1,0 +1,17 @@
+[Match]
+Name=ens18
+#Type=ether
+
+[Network]
+DHCP=no
+IPv6AcceptRA=no
+Address=85.209.118.135/28
+Gateway=85.209.118.129
+Address=2a09:94c4:55d1:7680::87/64
+Gateway=2a09:94c4:55d1:7680::1
+DNS=91.239.100.100#anycast.censurfridns.dk 89.233.43.71#unicast.censurfridns.dk
+DNSOverTLS=yes
+DNSSEC=yes
+LLMNR=no
+MulticastDNS=no
+LLDP=yes

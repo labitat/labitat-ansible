@@ -1,0 +1,64 @@
+---
+- name: Configure /etc/nginx/nginx.conf
+  template:
+    dest: '/etc/nginx/nginx.conf'
+    src: nginx.conf.j2
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+  - reload nginx
+  tags:
+  - nginx
+
+- name: Disable default site
+  file:
+    path: '/etc/nginx/sites-enabled/default'
+    state: absent
+  notify:
+  - reload nginx
+  tags:
+  - nginx
+
+- name: Download dhparam
+  get_url:
+    dest: '/etc/nginx/dhparam'
+    url: 'https://ssl-config.mozilla.org/ffdhe2048.txt'
+    owner: root
+    group: root
+    mode: 0440
+  notify:
+  - reload nginx
+  tags:
+  - nginx
+
+- name: Create service drop-in directory
+  file:
+    dest: '/etc/systemd/system/nginx.service.d'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+  - nginx
+
+- name: Start nginx after networks are configured
+  copy:
+    dest: '/etc/systemd/system/nginx.service.d/wait-online.conf'
+    src: wait-online.conf
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - nginx
+
+- name: Enable nginx service
+  systemd:
+    name: nginx.service
+    enabled: yes
+    masked: no
+    state: started
+  tags:
+  - nginx
+
+# vim: set ts=2 sw=2 et:

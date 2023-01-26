@@ -1,0 +1,19 @@
+---
+- name: Install network configuration
+  copy:
+    dest: '/etc/systemd/network/ens18.network'
+    src: ens18.network
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+  - networkd
+
+- import_tasks: certbot.yml
+  tags: certbot
+- import_tasks: homepage.yml
+  tags: homepage
+- import_tasks: wiki.yml
+  tags: wiki
+
+# vim: set ts=2 sw=2 et:

@@ -1,4 +1,5 @@
 space.labitat.dk
+sky.labitat.dk ansible_host=85.209.118.135
 mail1.labitat.dk
 
 [rpis]

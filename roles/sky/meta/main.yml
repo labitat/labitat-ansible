@@ -1,0 +1,8 @@
+---
+dependencies:
+- role: debian
+- role: users
+- role: nginx
+- role: geerlingguy.mysql
+
+# vim: set ts=2 sw=2 et:
