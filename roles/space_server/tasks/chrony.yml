@@ -24,6 +24,14 @@
     group: root
     mode: 0644
 
+- name: Add certbot deploy hook
+  copy:
+    dest: '/etc/letsencrypt/renewal-hooks/deploy/chrony.sh'
+    src: 'certbot-chrony.sh'
+    owner: root
+    group: root
+    mode: 0755
+
 - name: Enable chronyd service
   systemd:
     name: chronyd.service

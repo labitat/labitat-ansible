@@ -107,6 +107,7 @@ table ip filter {
 
 		# ntp
 		udp dport 123 ip saddr { $int_net4, $ext_net4 } accept
+		tcp dport 4460 ip saddr { $int_net4, $ext_net4 } accept
 
 		# avahi
 		ip daddr 224.0.0.251 udp dport 5353 iif $avahi_ifs accept
@@ -205,6 +206,7 @@ table ip6 filter {
 
 		# ntp
 		udp dport 123 ip6 saddr $ext_net6 accept
+		tcp dport 4460 ip6 saddr $ext_net6 accept
 
 		# avahi
 		ip6 daddr ff02::fb udp dport 5353 iif $avahi_ifs accept
