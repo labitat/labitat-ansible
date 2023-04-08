@@ -34,6 +34,17 @@
   tags:
   - ssh
 
+- name: Disable pam_sss plugin
+  replace:
+    path: '/etc/pam.d/{{ item }}'
+    regexp: '^([^#].*pam_sss\.so.*)'
+    replace: '#\1'
+  with_items:
+  - system-auth
+  - password-auth
+  tags:
+  - pam
+
 - import_tasks: kernel.yml
   tags: kernel
 - import_tasks: gettys.yml
