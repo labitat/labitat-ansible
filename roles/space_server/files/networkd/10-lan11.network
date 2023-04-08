@@ -10,19 +10,19 @@ IPv6AcceptRA=no
 Address=10.42.1.1/24
 #Address=2a01:4262:1ab:b::1/64
 Address=fe80::1/64
-IPv6PrefixDelegation=static
 IPForward=yes
 LLMNR=yes
 MulticastDNS=yes
 LLDP=yes
 EmitLLDP=yes
+IPv6SendRA=yes
 
 [Route]
 Destination=2a01:4262:1ab:b::/64
 PreferredSource=2a01:4262:1ab::
 
-[IPv6PrefixDelegation]
-RouterLifetimeSec=14400
+[IPv6SendRA]
+RouterLifetimeSec=9000
 RouterPreference=medium
 EmitDNS=yes
 DNS=2a01:4262:1ab::
@@ -32,3 +32,6 @@ DNSLifetimeSec=14400
 Prefix=2a01:4262:1ab:b::/64
 ValidLifetimeSec=86400
 PreferredLifetimeSec=14400
+
+[IPv6RoutePrefix]
+LifetimeSec=14400
