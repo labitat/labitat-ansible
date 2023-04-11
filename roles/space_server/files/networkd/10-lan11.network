@@ -32,6 +32,3 @@ DNSLifetimeSec=14400
 Prefix=2a01:4262:1ab:b::/64
 ValidLifetimeSec=86400
 PreferredLifetimeSec=14400
-
-[IPv6RoutePrefix]
-LifetimeSec=14400
