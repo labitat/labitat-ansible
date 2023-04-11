@@ -1,5 +1,10 @@
 [Match]
 Path=pci-0000:01:00.0
 
+[Link]
+ARP=no
+RequiredForOnline=no
+
 [Network]
 Bond=bond0
+ConfigureWithoutCarrier=yes
