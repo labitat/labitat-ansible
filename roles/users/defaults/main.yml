@@ -56,6 +56,12 @@ userdata:
     authorized_keys:
     - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDtbHB0B+IEPtC5ni2A9wGGehq21euv46cpowXlucXpe8Q+n3hILAJ2Ce5qvYFTDbpK72gifhXtq5xaG4ZXZJy/QYaKO00mS/Xq50WegqA9bZ9u4Ddw3XAHOyc1QYyoa5edGrbb46/PC861G5KdQgNc4PHf6iTQWYdD/0FAx4B7sqMYC4IMjFmlZWWgzKBOQG+LQ3CZ7UVj70X2YU5l31crJaCPS9za3m/Q5XH+2pYp5q5ixzfU7RVa1AqYwiCJDFsaQ5wxDsLCvy5IxOLsV3NW7iElnvTU+sBavRi3CEi5CH22eBbOj/HPsKnuxQomnOJRa4epM6YR3NfsWshBJo0x max@max-Laptop'
 
+  'otbm':
+    name: 'Oliver Taubenheim'
+    uid: 2008
+    authorized_keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDHfHWPDbb/DdFgsWHoz5DK3A0Wo/U1ACYsH2IvRNfnSAk8U7VUerjnBCg2GbJbrKj0JzxxeG5FLS4GqifqQ+vEXQvMYB8j22nf6g0Cr35xcuR35bdVVWDc8V+w4R8n64QE41OS8Ty+oMqerwyggu+m8KHPXuvg5d4weV3GIKhBjScECnKCCXEMsAwzCDnn6F0UCXAKHpSKB/KW0q+Q0r+1jBQxtS2g11CqtGczxzg2RbGag3LJ593n/2X/tgKGBC4GUc/0Sz2ZkjjTScJRHeLhqxKz8fOHedpcyALJeqAO6Oht1NNu8Nl4is9M5/HM1vhufddGUxObE3MahxSTSBSMmIYgExItPms1v3ZvgRC/KtBabmzdAwomM+6Lmgm8wq0RJAGU8nOvh/Mr12UInSy8WRzBKJcKpSI5VBkmYis3+FwM8/0xL0znS9cJyixpQHBNgiwGg/v2idOEuwF5KUCixOx+rL7kMXjAnlNt0G7tzzVex4WIVAIrOZVq6WfHwAGLPRT0GC/Q8W2BAx+tbhnYNoq70AjDUX7ilMJmdwFkwy8A+WvWMNK3YyOqGw1gooPmPGub/AgN+3IcRCY0zH7xYyvzpAOslpOKiMleGe8wg5mxzfF2zhOZDYguYTrq3rcbcJAtvRmSv0nTiEPLvrltZl6qVRJOxjayTiJGrYjUJQ== oliver@seagull'
+
   'semi':
     name: 'Troels Bang Jensen'
     uid: 2010
