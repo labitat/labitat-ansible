@@ -58,7 +58,6 @@ users:
   'knielsen': sudo
   'k2OS': true
   'semi': true
-  'graffen': true
   'signout': sudo
   'hafnium': sudo
   'joshbuddy': sudo

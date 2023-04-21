@@ -68,12 +68,6 @@ userdata:
     authorized_keys:
     - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUqzAFehYCGZNUZkpARApPI4P/RjrL3qS8KniOyZOpL2YLE7WzzQWoLFhlmuKPygWqHBSPkZNm6JMi36fI5NurIk9GkLw8RnWhcqlA1miaD2wC3iQ2hoFOko2artgM7urZ2HCO0ILfjNzMdWvdBnQQWHudzUvPFNKmOuagp6GvEbs0X7kXi3X1+8lfCkRe0H6i4/RuHakUGQ9xipiIR5SoYdpnwHWlJp3trEM4WQtmQcxFkZZbW0yrujo2iqZ3MwWBkfA9PZG9BuooAWGZzUt/NxF5ImZISyaKG/DTlsEe+cEvjRmLYXZHKcgngC3zsQZAfoNjGXqlbsXbjont1u5p marvin@merlin'
 
-  'graffen':
-    name: 'Jesper Hess Nielsen'
-    uid: 2011
-    authorized_keys:
-    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCbxFVukt5TIzoB0HX2q8b8lHJmXD1juzsWOu5XkexVDlCsvupa1cZ/OVkrIEAbDKk6RmJQj0TJ2O5+v9hbf0TDi0Pi+V8ADZIgO+OW5a4EeXsU72a4CN0nEocQhUPfQuC4IU+F7icoG2/I9jXg7U6p1LhBr8vlC3cNHnrH3yqrakrUR51/iRVIwo4FKvQg7jutaKTyOjlYa1uTdaczvAzNHWEdytCQgFnkzpR9fHvzkA79qHUD9n32rIpJicRJsHY3NnyDGfBcDv+4sLq15sM9jN83duGnSuMMtZgfSriwMUd/UwVReU2ZKxjMLe3WHB7+ZE/p39OJk/gjVfWJVh/za1/teTAwaLLmxh/HFt+AVYWkCj22fUxscl0dh2zy6Ki1Ua3ApChn6v6Gvng6khobFlxawSJZ49+0KoAl1qqFMR1o9EGWvqgDPuITAqJFN+ik0jxcxfmKrG3mbOYM1ikhJd0ER8wbS8e6NowHUBV7PUyDqxP5VM2gum58IYrDqaP2RYYi9vWWnXJJA8J1t+Wp3bF7fdktyVgkd7HQk02uVkxdMQQ802GCrQQuvJhWTCzrgkgrjPY8p0KcbCNt6jYQOUKV0T2vp6PbTJ5XWKb5u7gVXW1xiP9dYzgAr0DroiTK4xIuF80mv1Rfst0ceHAIQVcQ3GcGbh000QUYzbHT2Q== openpgp:0x265EE03C (Graffen)'
-
   'hafnium':
     name: 'Emil Petersen'
     uid: 2012
