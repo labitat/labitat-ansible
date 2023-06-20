@@ -13,16 +13,21 @@
   when: use_resolved
   notify: restart resolved
 
+- name: Stat systemd-resolved.service
+  stat:
+    path: '/lib/systemd/system/systemd-resolved.service'
+  register: resolved_service
+
 - name: Enable/disable systemd-resolved
   systemd:
     name: systemd-resolved.service
     enabled: "{{ use_resolved|ternary('yes','no') }}"
     masked: no
     state: "{{ use_resolved|ternary('started','stopped') }}"
-  when: not chroot
+  when: resolved_service.stat.exists and not chroot
 - name: '- when in chroot'
   command: "systemctl {{ use_resolved|ternary('enable','disable') }} systemd-resolved.service"
-  when: chroot
+  when: resolved_service.stat.exists and chroot
 
 - name: Symlink /etc/resolv.conf
   file:
