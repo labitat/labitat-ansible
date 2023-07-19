@@ -53,6 +53,7 @@ users:
   'esmil': sudo
   'ast': sudo
   'joshbuddy': sudo
+  'hafnium': sudo
 
 domain_name: 'new.labitat.dk'
 letsencrypt_email: 'josh@fireflop.com'
