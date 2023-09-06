@@ -45,6 +45,16 @@
   tags:
   - pam
 
+- name: Add graceful reboot script
+  copy:
+    dest: '/usr/local/sbin/reboot-graceful'
+    src: reboot-graceful.sh
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+  - reboot
+
 - import_tasks: kernel.yml
   tags: kernel
 - import_tasks: gettys.yml
