@@ -24,6 +24,7 @@ users:
   'knielsen': sudo
   'signout': sudo
   'hafnium': sudo
+  'otbm': sudo
 
 lockserver_conf_role:
   'Database.Path': '/home/doorman/users.db'
