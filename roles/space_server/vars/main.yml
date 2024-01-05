@@ -61,6 +61,7 @@ users:
   'signout': sudo
   'hafnium': sudo
   'joshbuddy': sudo
+  'cadero': sudo
 
 boot:
   device: 'LABEL=BOOT'
