@@ -5,11 +5,6 @@
   ******* 185.38.175.064/26 - labicolo
         * 185.38.175.065    - space.labitat.dk, labicolo gateway
         * 185.38.175.069    - spacebrain.labitat.dk
-        * 185.38.175.070    - spacewand.labitat.dk
-        * 185.38.175.075    - Asbjorn
-        * 185.38.175.076    - Deni
-        * 185.38.175.077    - KTJ
-        * 185.38.175.078    - Graffen
         * 185.38.175.087    - blackbox.labitat.dk
     ***** 185.38.175.128/28 - Tor exit nodes
         * 185.38.175.129    - space.labitat.dk - gateway
@@ -28,12 +23,7 @@
     ***************** 2a01:4262:1ab:000e::/64  - vlan 14 - member compat wireless
     ***************** 2a01:4262:1ab:000f::/64  - vlan 15 - member nat64
     ***************** 2a01:4262:1ab:0020::/64  - vlan 20 - labicolo
-                    * 2a01:4262:1ab:0020::5    - spacewand.labitat.dk
                     * 2a01:4262:1ab:0020::6    - spacebrain.labitat.dk
-                    * 2a01:4262:1ab:0020::75   - Asbjorn
-                    * 2a01:4262:1ab:0020::76   - Deni
-                    * 2a01:4262:1ab:0020::77   - KTJ
-                    * 2a01:4262:1ab:0020::78   - Graffen
 
  ******************** 2a01:4262:1ab:1xxx::/52  - labicolo 16x /56
   ******************* 2a01:4262:1ab:10xx::/56  - 256x /64 delegations
