@@ -6,6 +6,8 @@
         * 185.38.175.065    - space.labitat.dk, labicolo gateway
         * 185.38.175.069    - spacebrain.labitat.dk
         * 185.38.175.087    - blackbox.labitat.dk
+   ****** 185.38.175.096/27 - labicolo network B
+        * 185.38.175.097    - space.labitat.dk, labicolo gateway
     ***** 185.38.175.128/28 - Tor exit nodes
         * 185.38.175.129    - space.labitat.dk - gateway
 
@@ -24,6 +26,7 @@
     ***************** 2a01:4262:1ab:000f::/64  - vlan 15 - member nat64
     ***************** 2a01:4262:1ab:0020::/64  - vlan 20 - labicolo network A
                     * 2a01:4262:1ab:0020::6    - spacebrain.labitat.dk
+    ***************** 2a01:4262:1ab:0021::/64  - vlan 21 - labicolo network B
 
  ******************** 2a01:4262:1ab:1xxx::/52  - labicolo 16x /56
   ******************* 2a01:4262:1ab:10xx::/56  - 256x /64 delegations
