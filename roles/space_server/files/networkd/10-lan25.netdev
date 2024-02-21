@@ -1,6 +1,6 @@
 [NetDev]
-Name=lan21
+Name=lan25
 Kind=vlan
 
 [VLAN]
-Id=21
+Id=25
