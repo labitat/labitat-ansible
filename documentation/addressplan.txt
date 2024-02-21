@@ -2,7 +2,7 @@
   ******* 185.38.175.000/26 - labitat internal use
         * 185.38.175.000    - space.labitat.dk, router-id + NAT (wired + auth wifi)
         * 185.38.175.001    - space.labitat.dk, NAT (unauth wifi)
-  ******* 185.38.175.064/26 - labicolo
+   ****** 185.38.175.064/27 - labicolo network A
         * 185.38.175.065    - space.labitat.dk, labicolo gateway
         * 185.38.175.069    - spacebrain.labitat.dk
         * 185.38.175.087    - blackbox.labitat.dk
@@ -22,7 +22,7 @@
     ***************** 2a01:4262:1ab:000d::/64  - vlan 13 - free
     ***************** 2a01:4262:1ab:000e::/64  - vlan 14 - member compat wireless
     ***************** 2a01:4262:1ab:000f::/64  - vlan 15 - member nat64
-    ***************** 2a01:4262:1ab:0020::/64  - vlan 20 - labicolo
+    ***************** 2a01:4262:1ab:0020::/64  - vlan 20 - labicolo network A
                     * 2a01:4262:1ab:0020::6    - spacebrain.labitat.dk
 
  ******************** 2a01:4262:1ab:1xxx::/52  - labicolo 16x /56

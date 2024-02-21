@@ -8,7 +8,7 @@ vlan   13 - wireless free
 vlan   14 - wireless compat
 vlan   15 - wireless nat64
 
-vlan   20 - Labicolo
+vlan   20 - Labicolo network A
 vlan   25 - Tor network
 vlan   42 - LabIX
 vlan 3145 - LocIX Frankfurt
