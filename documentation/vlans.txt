@@ -1,0 +1,14 @@
+vlan    5 - Fiberby transit
+
+Space-related VLANs:
+vlan   10 - management
+vlan   11 - member wired
+vlan   12 - member wirelss
+vlan   13 - wireless free
+vlan   14 - wireless compat
+vlan   15 - wireless nat64
+
+vlan   20 - Labicolo
+vlan   21 - Tor network
+vlan   42 - LabIX
+vlan 3145 - LocIX Frankfurt
