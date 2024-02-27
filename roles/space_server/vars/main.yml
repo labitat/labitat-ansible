@@ -159,11 +159,12 @@ local_hosts:
     - 10.42.1.35
   jumbotron:
     description: Jumbotron Raspberry Pi
-    mac: b8:27:eb:d3:c1:62
+    mac: b8:27:eb:ad:29:48
+    mdns: false
     ipv4:
     - 10.42.1.36
     ipv6:
-    - 2a01:4262:1ab:b:ba27:ebff:fed3:c162
+    - 2a01:4262:1ab:b:ba27:ebff:fead:2948
   hplaserjet:
     mac: 94:57:a5:ce:e2:6c
     mdns: false
