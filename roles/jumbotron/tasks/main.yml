@@ -1,7 +1,7 @@
 ---
 - name: Install network configuration
   copy:
-    dest: '/etc/systemd/network/10-eth0.network'
+    dest: '/etc/systemd/network/eth0.network'
     src: eth0.network
     owner: root
     group: root

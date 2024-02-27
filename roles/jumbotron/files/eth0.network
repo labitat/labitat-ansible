@@ -5,3 +5,5 @@ Name=eth0
 DHCP=yes
 IPv6AcceptRA=yes
 IPv6PrivacyExtensions=no
+MulticastDNS=yes
+LLMNR=yes

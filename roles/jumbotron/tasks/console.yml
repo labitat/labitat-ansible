@@ -5,13 +5,11 @@
     regexp: "^{{ item.rsplit('=', 1)[0] }}="
     line: '{{ item }}'
   with_items:
-  - 'dtoverlay=vga666'
-  - 'enable_dpi_lcd=1'
-  - 'display_default_lcd=1'
-  - 'dpi_group=2'
-  - 'dpi_mode=35'
-  - 'dtparam=spi=off'
+  - 'display_rotate=1' # rotate 90deg counterclockwise
+  - 'dtparam=audio=on'
   - 'dtparam=i2c_arm=off'
+  - 'dtparam=i2s=off'
+  - 'dtparam=spi=off'
 
 - name: Configure console font
   lineinfile:
@@ -21,8 +19,8 @@
   with_items:
   - 'CHARMAP="UTF-8"'
   - 'CODESET="Lat15"'
-  - 'FONTFACE="Terminus"'
-  - 'FONTSIZE="32x16"'
+  - 'FONTFACE="TerminusBold"'
+  - 'FONTSIZE="12x24"'
 
 - name: Configure console keyboard
   lineinfile:

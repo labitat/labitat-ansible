@@ -1,9 +1,6 @@
 ---
 hostname: 'jumbotron'
 
-resolved_conf_role:
-  'Resolve.DNSSEC': 'yes'
-
 apt_sources_role:
   raspbian:
     components:
