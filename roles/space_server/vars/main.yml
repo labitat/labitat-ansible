@@ -132,11 +132,6 @@ local_hosts:
     mac: 00:e0:c5:6e:d6:8d
     ipv4:
     - 10.42.1.9
-  piscreen2:
-    description: PixelFlut Raspberry Pi
-    mac: b8:27:eb:9b:64:d9
-    ipv4:
-    - 10.42.1.12
   pixelfluthafnium:
     description: PixelFlut Odroid
     mac: 00:1e:06:45:38:08
