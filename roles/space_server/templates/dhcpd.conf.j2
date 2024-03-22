@@ -77,6 +77,12 @@ subnet 10.42.1.0 netmask 255.255.255.0 {
 	next-server 10.42.1.1;
 	filename "pxelinux.0";
 
+	# Set static route to 10.42.0.0/16
+	# Because RFC3442 tells clients to ignore default route if
+	# classless-static-route is set, we also set default route here
+	# See man dhcp-options(5)
+	option classless-static-routes 0.0.0.0/0 10.42.1.1, 10.42.0.0/16 10.42.1.1;
+
 	if exists host-name and option host-name ~= "^[0-9A-Za-z-]*$" {
 		ddns-hostname = option host-name;
 		ddns-domainname "dhcp";
@@ -100,6 +106,12 @@ subnet 10.42.2.0 netmask 255.255.255.0 {
 	next-server 10.42.2.1;
 	filename "pxelinux.0";
 
+	# Set static route to 10.42.0.0/16
+	# Because RFC3442 tells clients to ignore default route if
+	# classless-static-route is set, we also set default route here
+	# See man dhcp-options(5)
+	option classless-static-routes 0.0.0.0/0 10.42.2.1, 10.42.0.0/16 10.42.2.1;
+
 	if exists host-name and option host-name ~= "^[0-9A-Za-z-]*$" {
 		ddns-hostname = option host-name;
 		ddns-domainname "dhcp";
@@ -120,6 +132,12 @@ subnet 10.42.3.0 netmask 255.255.255.0 {
 	option routers 10.42.3.1;
 	option domain-name-servers 185.38.175.0;
 	option ntp-servers 185.38.175.0;
+
+	# Set static route to 10.42.0.0/16
+	# Because RFC3442 tells clients to ignore default route if
+	# classless-static-route is set, we also set default route here
+	# See man dhcp-options(5)
+	option classless-static-routes 0.0.0.0/0 10.42.3.1, 10.42.0.0/16 10.42.3.1;
 
 	if exists host-name and option host-name ~= "^[0-9A-Za-z-]*$" {
 		ddns-hostname = option host-name;
