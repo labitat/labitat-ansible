@@ -41,8 +41,8 @@ dnf_packages_role:
   'tayga': present
   'avahi-tools': present # pulls in avahi package
   'nss-mdns': present
-  'iputils': preset # for ping
-  'bind-utils': preset # for dig
+  'iputils': present # for ping
+  'bind-utils': present # for dig
   'screen': present
   'patch': present
 
