@@ -61,6 +61,12 @@ userdata:
     uid: 2008
     authorized_keys:
     - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDHfHWPDbb/DdFgsWHoz5DK3A0Wo/U1ACYsH2IvRNfnSAk8U7VUerjnBCg2GbJbrKj0JzxxeG5FLS4GqifqQ+vEXQvMYB8j22nf6g0Cr35xcuR35bdVVWDc8V+w4R8n64QE41OS8Ty+oMqerwyggu+m8KHPXuvg5d4weV3GIKhBjScECnKCCXEMsAwzCDnn6F0UCXAKHpSKB/KW0q+Q0r+1jBQxtS2g11CqtGczxzg2RbGag3LJ593n/2X/tgKGBC4GUc/0Sz2ZkjjTScJRHeLhqxKz8fOHedpcyALJeqAO6Oht1NNu8Nl4is9M5/HM1vhufddGUxObE3MahxSTSBSMmIYgExItPms1v3ZvgRC/KtBabmzdAwomM+6Lmgm8wq0RJAGU8nOvh/Mr12UInSy8WRzBKJcKpSI5VBkmYis3+FwM8/0xL0znS9cJyixpQHBNgiwGg/v2idOEuwF5KUCixOx+rL7kMXjAnlNt0G7tzzVex4WIVAIrOZVq6WfHwAGLPRT0GC/Q8W2BAx+tbhnYNoq70AjDUX7ilMJmdwFkwy8A+WvWMNK3YyOqGw1gooPmPGub/AgN+3IcRCY0zH7xYyvzpAOslpOKiMleGe8wg5mxzfF2zhOZDYguYTrq3rcbcJAtvRmSv0nTiEPLvrltZl6qVRJOxjayTiJGrYjUJQ== oliver@seagull'
+  
+  'adrian':
+    name: 'Adrian Hansen'
+    uid: 2009
+    authorized_keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCaSgDNphGzzBcjVRKxCYQrlOT7wowFf1kngEvXO/+e9T9aZQ+G9k3zpVyGkxF36lE13PpxlNU9l0lUB+DZN+TMMQUg7g7m/hZKTmCXn7CaVpAyZKxZiesBVfDQVtWsYVSHUb3iMKNnjtWmSFb+2XcmrccQYA66QPEdhRLEePqs5W68AqRO8p6lHfB4eGeQX3w/PPHb3DrglIoXvdJ6Xvjp1NpqH0QNg5Uo6j3JQ106tiPEm/fG9A0MeYg/OianPxyTrP2p7JEzKoUXMXWg7NcKF6uzQpuxiJRVQn7NZ5HQOtBjentYNvI661ZadldtHBciEHQsMA/oeGOz0Doou48kMz76ey7QyXQdrSJ3eMGCTXjkx1Xc7vrxl/FpflkmT0twd45k2WxNQ7X5vbBBsDVwFtkOusDrp8CwRvDTaNMmJbu/VGdwK3wAvImdolB7fWUJwzI0z3mNF53VaPeSnXW+xp0C8VKMcXZei7HIkPlJl8ymEL5n3hPNQwg3iu9PZg8= adrian@1
 
   'semi':
     name: 'Troels Bang Jensen'

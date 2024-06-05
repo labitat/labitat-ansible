@@ -62,6 +62,7 @@ users:
   'hafnium': sudo
   'joshbuddy': sudo
   'otbm': true
+  'adrian': true
 
 boot:
   device: 'LABEL=BOOT'
