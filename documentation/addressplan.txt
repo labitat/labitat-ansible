@@ -36,6 +36,8 @@
  ******************** 2a01:4262:1ab:fxxx::/52  - untrusted address space
     ***************** 2a01:4262:1ab:ffff::/64  - Tor exit nodes
 
+********************* 2a0e:8f02:f059:0000::/48 - allocated from freetransit and announced
+
 
 Linknets:
 
